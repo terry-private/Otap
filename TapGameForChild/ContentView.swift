@@ -75,7 +75,8 @@ public struct ColorGame: TapGame {
     }
 }
 
-public enum AfterOptionState {
+public enum OptionState {
+    case unresolved
     case unselected
     case correct
     case wrong
@@ -147,7 +148,7 @@ struct ContentView<Game: TapGame>: View {
                                         .opacity(tappedOption == nil ? 1 : 0.5)
                                 }
                                 .overlay {
-                                    switch afterOptionState(option: option) {
+                                    switch optionState(option) {
                                     case .correct:
                                         Image(systemName: "circle")
                                             .resizable()
@@ -160,7 +161,7 @@ struct ContentView<Game: TapGame>: View {
                                             .foregroundColor(.red)
                                             .padding()
                                             .shadow(color: .black.opacity(0.2), radius: 8)
-                                    case .unselected:
+                                    default:
                                         EmptyView()
                                     }
                                 }
@@ -179,7 +180,10 @@ struct ContentView<Game: TapGame>: View {
         }
     }
     
-    func afterOptionState(option: Game.Option) -> AfterOptionState {
+    func optionState(_ option: Game.Option) -> OptionState {
+        guard let tappedOption else {
+            return .unresolved
+        }
         guard tappedOption == option else {
             return .unselected
         }
