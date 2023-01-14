@@ -10,11 +10,9 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "SoundEffectUseCase",
-            targets: ["SoundEffectUseCase"]
-        ),
-        .library(name: "OrientationAdaptiveStackView", targets: ["OrientationAdaptiveStackView"])
+        .library(name: "SoundEffectUseCase", targets: ["SoundEffectUseCase"]),
+        .library(name: "OrientationAdaptiveStackView", targets: ["OrientationAdaptiveStackView"]),
+        .library(name: "TapGame", targets: ["TapGame"])
     ],
     dependencies: [],
     targets: [
@@ -23,9 +21,7 @@ let package = Package(
             dependencies: [],
             resources: [.copy("./Resources/correct.mp3"), .copy("./Resources/wrong.mp3")]
         ),
-        .target(
-            name: "OrientationAdaptiveStackView",
-            dependencies: []
-        ),
+        .target(name: "OrientationAdaptiveStackView", dependencies: []),
+        .target(name: "TapGame", dependencies: [])
     ]
 )
