@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import SoundEffectUseCase
 
 public protocol TapOption: Hashable {
     var foregroundColor: Color { get }
@@ -84,14 +85,11 @@ struct ContentView<Game: TapGame>: View {
     private let paddingSize: CGFloat = 16
     private let cellSpacing: CGFloat = 8
     
-    @State var player: AVAudioPlayer
     @State var tappedOption: Game.Option?
     @State var game: Game
     let speechSynthesizer = AVSpeechSynthesizer()
     init(game: Game = ColorGame()) {
         self._game = .init(wrappedValue: game)
-        let soundURL = Bundle.main.url(forResource: "correct", withExtension: "mp3")!
-        self._player = .init(wrappedValue: try! AVAudioPlayer(contentsOf: soundURL))
     }
     var body: some View {
         GeometryReader { proxy in
@@ -198,14 +196,10 @@ struct ContentView<Game: TapGame>: View {
     }
     
     func playSoundEffect() {
-        let fileName = game.answer == tappedOption ? "correct" : "wrong"
-        if let soundURL = Bundle.main.url(forResource: fileName, withExtension: "mp3") {
-            do {
-                player = try AVAudioPlayer(contentsOf: soundURL)
-                player.play()
-            } catch {
-                print("error")
-            }
+        if game.answer == tappedOption {
+            SoundEffectUseCase.playCorrect()
+        } else {
+            SoundEffectUseCase.playWrong()
         }
     }
 }
