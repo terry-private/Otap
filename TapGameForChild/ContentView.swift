@@ -8,6 +8,7 @@
 import SwiftUI
 import AVFoundation
 import SoundEffectUseCase
+import OrientationAdaptiveStackView
 
 public protocol TapOption: Hashable {
     var foregroundColor: Color { get }
@@ -96,7 +97,7 @@ struct ContentView<Game: TapGame>: View {
         GeometryReader { proxy in
             let sideLength = (min(proxy.size.width, proxy.size.height) - paddingSize * 2 - cellSpacing) / 2
             ZStack {
-                OrientationAdaptiveStack {
+                OrientationAdaptiveStackView {
                     Button {
                         guard !speechSynthesizer.isSpeaking else { return }
                         speakAnswer()
@@ -112,7 +113,7 @@ struct ContentView<Game: TapGame>: View {
                     Spacer()
                 }
                 
-                OrientationAdaptiveStack {
+                OrientationAdaptiveStackView {
                     Spacer()
                     
                     LazyVGrid(

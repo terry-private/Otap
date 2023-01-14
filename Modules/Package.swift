@@ -5,11 +5,16 @@ import PackageDescription
 
 let package = Package(
     name: "Modules",
+    platforms: [
+        .iOS(.v16),
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "SoundEffectUseCase",
-            targets: ["SoundEffectUseCase"]),
+            targets: ["SoundEffectUseCase"]
+        ),
+        .library(name: "OrientationAdaptiveStackView", targets: ["OrientationAdaptiveStackView"])
     ],
     dependencies: [],
     targets: [
@@ -17,9 +22,10 @@ let package = Package(
             name: "SoundEffectUseCase",
             dependencies: [],
             resources: [.copy("./Resources/correct.mp3"), .copy("./Resources/wrong.mp3")]
-        )
-//        .testTarget(
-//            name: "ModulesTests",
-//            dependencies: ["Modules"]),
+        ),
+        .target(
+            name: "OrientationAdaptiveStackView",
+            dependencies: []
+        ),
     ]
 )

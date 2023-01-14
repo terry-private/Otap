@@ -1,13 +1,13 @@
 //
-//  OrientationAdaptiveStack.swift
-//  TapGameForChild
+//  OrientationAdaptiveStackView.swift
+//  
 //
 //  Created by 若江照仁 on 2023/01/14.
 //
 
 import SwiftUI
 
-public struct OrientationAdaptiveStack<C: View>: View {
+public struct OrientationAdaptiveStackView<C: View>: View {
     private let isReverse: Bool
     private let content: C
     
@@ -52,9 +52,9 @@ public struct OrientationAdaptiveStack<C: View>: View {
     }
 }
 
-struct OrientationAdaptiveStack_Previews: PreviewProvider {
+struct OrientationAdaptiveStackView_Previews: PreviewProvider {
     static var previews: some View {
-        OrientationAdaptiveStack {
+        OrientationAdaptiveStackView {
             Text("1")
             Text("2")
         }
