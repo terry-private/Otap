@@ -19,14 +19,29 @@ public enum SoundEffectUseCase: SoundEffectUseCaseProtocol {
         Bundle.module.url(forResource: name, withExtension: "mp3")
     }
     
-    public static let correctSoundPlayer: AVAudioPlayer? = resourceUrl("correct").map { try! AVAudioPlayer(contentsOf: $0) }
-    public static let wrongSoundPlayer: AVAudioPlayer? = resourceUrl("wrong").map { try! AVAudioPlayer(contentsOf: $0) }
+    public static let correctSoundPlayer: AVAudioPlayer? = {
+        let player = resourceUrl("correct").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
+        player?.volume = 0.05
+        return player
+    }()
+    
+    public static let wrongSoundPlayer: AVAudioPlayer? = {
+        let player = resourceUrl("wrong").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
+        player?.volume = 0.05
+        return player
+    }()
     
     public static func playCorrect() {
+        if correctSoundPlayer?.isPlaying == true {
+            correctSoundPlayer?.stop()
+        }
         correctSoundPlayer?.play()
     }
     
     public static func playWrong() {
+        if wrongSoundPlayer?.isPlaying == true {
+            wrongSoundPlayer?.stop()
+        }
         wrongSoundPlayer?.play()
     }
 }
