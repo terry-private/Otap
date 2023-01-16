@@ -12,3 +12,10 @@ public protocol TapOption: Hashable {
     var call: String { get }
     var imageName: String? { get }
 }
+
+public enum OptionState {
+    case unanswered
+    case unselected
+    case correct
+    case wrong
+}

@@ -1,5 +1,5 @@
 //
-//  OrientationAdaptiveStackView.swift
+//  OAStackView.swift
 //  
 //
 //  Created by 若江照仁 on 2023/01/14.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct OrientationAdaptiveStackView<C: View>: View {
+public struct OAStackView<C: View>: View {
     private let isReverse: Bool
     private let content: C
     
@@ -52,9 +52,9 @@ public struct OrientationAdaptiveStackView<C: View>: View {
     }
 }
 
-struct OrientationAdaptiveStackView_Previews: PreviewProvider {
+struct OAStackView_Previews: PreviewProvider {
     static var previews: some View {
-        OrientationAdaptiveStackView {
+        OAStackView {
             Text("1")
             Text("2")
         }

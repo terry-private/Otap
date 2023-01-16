@@ -17,6 +17,7 @@ public struct ColorGame: TapGame {
         case pink
         case orange
         case brown
+        case gray
         
         public var foregroundColor: Color {
             switch self {
@@ -28,6 +29,7 @@ public struct ColorGame: TapGame {
             case .pink: return .pink
             case .orange: return .orange
             case .brown: return .brown
+            case .gray: return .gray
             }
         }
         
@@ -41,6 +43,7 @@ public struct ColorGame: TapGame {
             case .pink: return "ぴんく"
             case .orange: return "おれんじ"
             case .brown: return "ちゃいろ"
+            case .gray: return "はいいろ"
             }
         }
         
@@ -53,7 +56,7 @@ public struct ColorGame: TapGame {
     public init(
         options: [ColorOption] = ColorOption.allCases
             .shuffled()
-            .prefix(4)
+            .prefix(9)
             .map{ $0 }
     ) {
         self.options = options
