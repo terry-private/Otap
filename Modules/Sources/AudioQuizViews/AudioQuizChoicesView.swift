@@ -7,6 +7,7 @@
 
 import SwiftUI
 import OrientationAdaptiveViews
+import AudioQuiz
 
 public struct AudioQuizChoicesView<Quiz: AudioQuiz>: View {
     private let selectedChoice: Quiz.Choice?

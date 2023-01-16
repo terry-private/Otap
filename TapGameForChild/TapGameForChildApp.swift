@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import AudioQuizViews
 
 @main
 struct TapGameForChildApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AudioQuizView()
         }
     }
 }

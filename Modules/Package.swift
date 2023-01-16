@@ -12,7 +12,8 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(name: "SoundEffectUseCase", targets: ["SoundEffectUseCase"]),
         .library(name: "OrientationAdaptiveViews", targets: ["OrientationAdaptiveViews"]),
-        .library(name: "AudioQuiz", targets: ["AudioQuiz"])
+        .library(name: "AudioQuiz", targets: ["AudioQuiz"]),
+        .library(name: "AudioQuizViews", targets: ["AudioQuizViews"])
     ],
     dependencies: [],
     targets: [
@@ -22,6 +23,7 @@ let package = Package(
             resources: [.copy("./Resources/correct.mp3"), .copy("./Resources/wrong.mp3")]
         ),
         .target(name: "OrientationAdaptiveViews", dependencies: []),
-        .target(name: "AudioQuiz", dependencies: ["OrientationAdaptiveViews"])
+        .target(name: "AudioQuiz", dependencies: []),
+        .target(name: "AudioQuizViews", dependencies: ["AudioQuiz", "OrientationAdaptiveViews", "SoundEffectUseCase"])
     ]
 )

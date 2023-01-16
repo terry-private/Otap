@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AudioQuizView.swift
 //  TapGameForChild
 //
 //  Created by 若江照仁 on 2023/01/10.
@@ -11,15 +11,17 @@ import SoundEffectUseCase
 import OrientationAdaptiveViews
 import AudioQuiz
 
-struct ContentView<Quiz: AudioQuiz>: View {
+public struct AudioQuizView<Quiz: AudioQuiz>: View {
     
     @State var selectedChoice: Quiz.Choice?
     @State var quiz: Quiz
     let speechSynthesizer = AVSpeechSynthesizer()
-    init(quiz: Quiz = ColorQuiz()) {
+    
+    public init(quiz: Quiz = ColorQuiz()) {
         self._quiz = .init(wrappedValue: quiz)
     }
-    var body: some View {
+    
+    public var body: some View {
         ZStack {
             OAStackView {
                 Button {
@@ -67,7 +69,7 @@ struct ContentView<Quiz: AudioQuiz>: View {
             )
             .padding(16)
         }
-        .background { Color(uiColor: .tertiarySystemBackground) }
+        .background { Color(uiColor: .secondarySystemBackground) }
         .onAppear {
             speakAnswer()
         }
@@ -89,6 +91,6 @@ struct ContentView<Quiz: AudioQuiz>: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AudioQuizView()
     }
 }
