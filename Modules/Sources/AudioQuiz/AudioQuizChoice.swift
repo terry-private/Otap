@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-public protocol TapOption: Hashable {
+public protocol AudioQuizChoice: Hashable {
     var foregroundColor: Color { get }
     var call: String { get }
     var imageName: String? { get }
 }
 
-public enum OptionState {
+public enum AudioQuizChoiceState {
     case unanswered
     case unselected
     case correct

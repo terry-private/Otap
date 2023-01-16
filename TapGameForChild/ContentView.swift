@@ -9,15 +9,15 @@ import SwiftUI
 import AVFoundation
 import SoundEffectUseCase
 import OrientationAdaptiveViews
-import TapGame
+import AudioQuiz
 
-struct ContentView<Game: TapGame>: View {
+struct ContentView<Quiz: AudioQuiz>: View {
     
-    @State var tappedOption: Game.Option?
-    @State var game: Game
+    @State var selectedChoice: Quiz.Choice?
+    @State var quiz: Quiz
     let speechSynthesizer = AVSpeechSynthesizer()
-    init(game: Game = ColorGame()) {
-        self._game = .init(wrappedValue: game)
+    init(quiz: Quiz = ColorQuiz()) {
+        self._quiz = .init(wrappedValue: quiz)
     }
     var body: some View {
         ZStack {
@@ -36,29 +36,29 @@ struct ContentView<Game: TapGame>: View {
                 Spacer()
             }
             
-            TapOptionsView(
-                tappedOption: tappedOption,
-                game: game,
-                optionTapped: { option in
-                    guard tappedOption == nil else {
+            AudioQuizChoicesView(
+                selectedChoice: selectedChoice,
+                quiz: quiz,
+                choiceTapped: { choice in
+                    guard selectedChoice == nil else {
                         return
                     }
-                    tappedOption = option
+                    selectedChoice = choice
                     playSoundEffect()
                     Task { @MainActor in
                         try? await Task.sleep(nanoseconds: 500_000_000)
-                        game = ColorGame() as! Game
-                        tappedOption = nil
+                        quiz = ColorQuiz() as! Quiz
+                        selectedChoice = nil
                         speakAnswer()
                     }
-                }, getState: { option in
-                    guard let tappedOption else {
+                }, getState: { choice in
+                    guard let selectedChoice else {
                         return .unanswered
                     }
-                    guard tappedOption == option else {
+                    guard selectedChoice == choice else {
                         return .unselected
                     }
-                    if game.answer == option {
+                    if quiz.answer == choice {
                         return .correct
                     } else {
                         return .wrong
@@ -67,18 +67,19 @@ struct ContentView<Game: TapGame>: View {
             )
             .padding(16)
         }
+        .background { Color(uiColor: .tertiarySystemBackground) }
         .onAppear {
             speakAnswer()
         }
     }
     
     func speakAnswer() {
-        let utterance = AVSpeechUtterance(string: game.answer.call)
+        let utterance = AVSpeechUtterance(string: quiz.answer.call)
         speechSynthesizer.speak(utterance)
     }
     
     func playSoundEffect() {
-        if game.answer == tappedOption {
+        if quiz.answer == selectedChoice {
             SoundEffectUseCase.playCorrect()
         } else {
             SoundEffectUseCase.playWrong()
