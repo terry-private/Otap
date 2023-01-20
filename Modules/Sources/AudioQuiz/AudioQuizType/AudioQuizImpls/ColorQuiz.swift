@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct ColorQuiz: AudioQuiz {
-    public enum ChoiceColor: AudioQuizChoice, CaseIterable {
+    public enum ChoiceColor: AudioQuizChoice {
         case red
         case pink
         case blue
@@ -59,15 +59,12 @@ public struct ColorQuiz: AudioQuiz {
         public var imageName: String? { nil }
     }
     
-    public var choices: [ChoiceColor]
-    public var answer: ChoiceColor
+    public let choices: [ChoiceColor]
+    public let answer: ChoiceColor
+    public let level: AudioQuizLevel
     
-    public init(
-        choices: [ChoiceColor] = ChoiceColor.allCases
-            .shuffled()
-            .prefix(12)
-            .map{ $0 }
-    ) {
+    public init(choices: [ChoiceColor]) {
+        self.level = .init(by: choices.count)
         self.choices = choices
         answer = choices.randomElement()!
     }

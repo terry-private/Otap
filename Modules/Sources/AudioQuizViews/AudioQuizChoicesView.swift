@@ -10,40 +10,48 @@ import OrientationAdaptiveViews
 import AudioQuiz
 
 public struct AudioQuizChoicesView<Quiz: AudioQuiz>: View {
-    private let selectedChoice: Quiz.Choice?
+    private let selectedIndex: Int?
     private let quiz: Quiz
-    private let choiceTapped: (Quiz.Choice) -> Void
-    private let getState: (Quiz.Choice) -> AudioQuizChoiceState
+    private let choiceTapped: (Int) -> Void
+    private let getState: (Int) -> AudioQuizChoiceState
     
-    public init(selectedChoice: Quiz.Choice?, quiz: Quiz, choiceTapped: @escaping (Quiz.Choice) -> Void, getState: @escaping (Quiz.Choice) -> AudioQuizChoiceState) {
-        self.selectedChoice = selectedChoice
+    private var itemCount: Int {
+        if quiz.choices.count >= 9 {
+            return 3
+        } else {
+            return 2
+        }
+    }
+    
+    public init(selectedIndex: Int?, quiz: Quiz, choiceTapped: @escaping (Int) -> Void, getState: @escaping (Int) -> AudioQuizChoiceState) {
+        self.selectedIndex = selectedIndex
         self.quiz = quiz
         self.choiceTapped = choiceTapped
         self.getState = getState
     }
     
     public var body: some View {
-        OALazyGridView(
-            gridItems: Array(repeating: GridItem(), count: 3),
+        LazyVGrid(
+            columns: Array(repeating: GridItem(), count: itemCount),
             spacing: 8
         ) {
-            ForEach(quiz.choices, id: \.self) { option in
+            ForEach(Array(quiz.choices.enumerated()), id: \.element) { index, choice in
                 Button {
-                    choiceTapped(option)
+                    choiceTapped(index)
                 } label: {
                     RoundedRectangle(cornerRadius: 8)
                         .aspectRatio(1, contentMode: .fill)
-                        .foregroundColor(option.foregroundColor)
-                        .opacity(selectedChoice == nil ? 1 : 0.5)
+                        .foregroundColor(choice.foregroundColor)
+                        .opacity(selectedIndex == nil ? 1 : 0.5)
                         .overlay {
-                            if let imageName = option.imageName {
+                            if let imageName = choice.imageName {
                                 Image(imageName)
                             }
                         }
                         .shadow(color: .black.opacity(0.3), radius: 8)
                 }
                 .overlay {
-                    switch getState(option) {
+                    switch getState(index) {
                     case .correct:
                         Image(systemName: "circle")
                             .resizable()
@@ -63,7 +71,7 @@ public struct AudioQuizChoicesView<Quiz: AudioQuiz>: View {
                         EmptyView()
                     }
                 }
-                .allowsHitTesting(selectedChoice == nil)
+                .allowsHitTesting(selectedIndex == nil)
             }
         }
     }
@@ -71,6 +79,11 @@ public struct AudioQuizChoicesView<Quiz: AudioQuiz>: View {
 
 struct AudioQuizChoicesView_Previews: PreviewProvider {
     static var previews: some View {
-        AudioQuizChoicesView(selectedChoice: nil, quiz: ColorQuiz(), choiceTapped: {_ in }, getState: { _ in .unanswered })
+        AudioQuizChoicesView(
+            selectedIndex: nil,
+            quiz: ColorQuiz(),
+            choiceTapped: {_ in },
+            getState: { _ in .unanswered }
+        )
     }
 }

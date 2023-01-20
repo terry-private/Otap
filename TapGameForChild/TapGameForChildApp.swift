@@ -7,12 +7,14 @@
 
 import SwiftUI
 import AudioQuizViews
-
+import SoundEffectUseCase
+import Combine
 @main
 struct TapGameForChildApp: App {
     var body: some Scene {
         WindowGroup {
-            AudioQuizView()
+            AudioQuizView<AudioQuizViewModel<SoundEffectUseCase>>()
         }
     }
 }
+

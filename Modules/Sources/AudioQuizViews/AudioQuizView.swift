@@ -7,26 +7,37 @@
 
 import SwiftUI
 import AVFoundation
-import SoundEffectUseCase
 import OrientationAdaptiveViews
 import AudioQuiz
+import SoundEffectUseCase
 
-public struct AudioQuizView<Quiz: AudioQuiz>: View {
+public struct AudioQuizView<ViewModel: AudioQuizViewModelProtocol>: View {
+    @StateObject var viewModel: ViewModel
     
-    @State var selectedChoice: Quiz.Choice?
-    @State var quiz: Quiz
-    let speechSynthesizer = AVSpeechSynthesizer()
+    public init(viewModel: ViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
-    public init(quiz: Quiz = ColorQuiz()) {
-        self._quiz = .init(wrappedValue: quiz)
+    public init() {
+        _viewModel = StateObject(wrappedValue: AudioQuizViewModel<SoundEffectUseCase>(
+            quizzes: (0..<30).map { _ in .colorQuiz(ColorQuiz()) }) as! ViewModel)
     }
     
     public var body: some View {
         ZStack {
-            OAStackView {
+            
+            if !viewModel.isEmpty {
+                AudioQuizChoicesView(
+                    selectedIndex: viewModel.selectedIndex,
+                    quiz: viewModel.currentQuizType.quiz,
+                    choiceTapped: { index in viewModel.choiceTapped(index) },
+                    getState: { index in viewModel.getState(index) }
+                )
+                .padding(18)
+            }
+            VStack {
                 Button {
-                    guard !speechSynthesizer.isSpeaking else { return }
-                    speakAnswer()
+                    viewModel.speakerButtonTapped()
                 } label: {
                     Image(systemName: "speaker.wave.2.circle")
                         .resizable()
@@ -36,61 +47,24 @@ public struct AudioQuizView<Quiz: AudioQuiz>: View {
                 .padding(40)
                 
                 Spacer()
+                
+                Text(viewModel.currentQuizType.quiz.answer.call +  viewModel.currentQuizType.quiz.choices.count.description + "個")
+                    .padding(60)
             }
+        }
+        .background {
+            Color(uiColor: .secondarySystemBackground)
+                .ignoresSafeArea()
             
-            AudioQuizChoicesView(
-                selectedChoice: selectedChoice,
-                quiz: quiz,
-                choiceTapped: { choice in
-                    guard selectedChoice == nil else {
-                        return
-                    }
-                    selectedChoice = choice
-                    playSoundEffect()
-                    Task { @MainActor in
-                        try? await Task.sleep(nanoseconds: 500_000_000)
-                        quiz = ColorQuiz() as! Quiz
-                        selectedChoice = nil
-                        speakAnswer()
-                    }
-                }, getState: { choice in
-                    guard let selectedChoice else {
-                        return .unanswered
-                    }
-                    guard selectedChoice == choice else {
-                        return .unselected
-                    }
-                    if quiz.answer == choice {
-                        return .correct
-                    } else {
-                        return .wrong
-                    }
-                }
-            )
-            .padding(16)
         }
-        .background { Color(uiColor: .secondarySystemBackground) }
         .onAppear {
-            speakAnswer()
-        }
-    }
-    
-    func speakAnswer() {
-        let utterance = AVSpeechUtterance(string: quiz.answer.call)
-        speechSynthesizer.speak(utterance)
-    }
-    
-    func playSoundEffect() {
-        if quiz.answer == selectedChoice {
-            SoundEffectUseCase.playCorrect()
-        } else {
-            SoundEffectUseCase.playWrong()
+            viewModel.onAppear()
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        AudioQuizView()
+        AudioQuizView<AudioQuizViewModel<SoundEffectUseCase>>()
     }
 }
