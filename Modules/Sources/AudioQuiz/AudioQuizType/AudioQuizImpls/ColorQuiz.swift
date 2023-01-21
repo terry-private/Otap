@@ -55,7 +55,6 @@ public struct ColorQuiz: AudioQuiz {
             case .black: return "くろ"
             }
         }
-        
         public var imageName: String? { nil }
     }
     

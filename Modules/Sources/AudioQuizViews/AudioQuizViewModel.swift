@@ -5,7 +5,7 @@
 //  Created by 若江照仁 on 2023/01/17.
 //
 
-import Foundation
+import SwiftUI
 import SoundEffectUseCase
 import AudioQuiz
 
@@ -15,6 +15,7 @@ public protocol AudioQuizViewModelProtocol: ObservableObject {
     var currentIndex: Int { get }
     var isEmpty: Bool { get }
     var currentQuizType: AudioQuizType { get }
+    var quizzesCount: Int { get }
     
     func onAppear()
     func speakerButtonTapped()
@@ -41,8 +42,14 @@ public final class AudioQuizViewModel<SEUseCase: SoundEffectUseCaseProtocol>: Ob
     @Published private(set) public var currentIndex: Int = 0
     @Published private(set) public var isEmpty: Bool = false
     
+    public let quizzesCount: Int
+    
+    // ------------------------------------------------
+    // MARK: init
+    // ------------------------------------------------
     public init(quizzes: [AudioQuizType]) {
         self.quizTypes = quizzes
+        quizzesCount = quizzes.count
     }
 }
 
@@ -71,9 +78,6 @@ extension AudioQuizViewModel: AudioQuizViewModelProtocol {
             guard currentIndex < quizTypes.count - 1 else { return }
             selectedIndex = nil
             currentIndex += 1
-            isEmpty = true
-            await Task.yield() // レイアウトの計算がずれる時があるのでわざと再描画させている。
-            isEmpty = false
             speak()
         }
     }
