@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SoundEffectUseCaseProtocol.swift
 //  
 //
 //  Created by 若江照仁 on 2023/01/14.
@@ -7,13 +7,15 @@
 
 import AVFoundation
 
-public protocol SoundEffectUseCaseProtocol {
+// MARK: - UseCaseProtocol
+public protocol SoundEffectUseCase {
     static func playCorrect()
     static func playWrong()
     static func speak(_ words: String)
 }
 
-public enum SoundEffectUseCase {
+// MARK: - Interactor
+public enum SoundEffectInteractor {
     // ---------------------------------
     // MARK: private static properties
     // ---------------------------------
@@ -36,14 +38,14 @@ public enum SoundEffectUseCase {
 }
 
 // MARK: - private methods
-private extension SoundEffectUseCase {
+private extension SoundEffectInteractor {
     static func resourceUrl(_ name: String) -> URL? {
         Bundle.module.url(forResource: name, withExtension: "mp3")
     }
 }
 
 // MARK: - public methods
-extension SoundEffectUseCase: SoundEffectUseCaseProtocol {
+extension SoundEffectInteractor: SoundEffectUseCase {
     public static func playCorrect() {
         if correctSoundPlayer?.isPlaying == true {
             correctSoundPlayer?.stop()

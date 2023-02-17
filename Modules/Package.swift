@@ -2,28 +2,71 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+// 👤⚛
+// 
+// 🌐
+enum Modules: String, CaseIterable {
+    case Components
+    case Core
+    case Extensions
+    case Feature
+    case Repository
+    case UseCase
+    
+    var dependencies: [Self] {
+        switch self {
+        case .Components: return [
+            .Extensions
+        ]
+            
+        case .Core: return [
+            .Extensions
+        ]
+            
+        case .Extensions: return []
+            
+        case .Feature: return [
+            .Core,
+            .Components,
+            .Extensions,
+            .UseCase
+        ]
+        case .Repository: return [
+            .Core
+        ]
+            
+        case .UseCase: return [
+            .Core
+        ]
+    }}
+    
+    var resources: [String] {
+        switch self {
+        case .Components: return []
+        case .Core: return []
+        case .Extensions: return []
+        case .Feature: return []
+        case .Repository: return []
+        case .UseCase: return [
+            "./Resources/correct.mp3",
+            "./Resources/wrong.mp3"
+        ]
+    }}
+}
+
 
 let package = Package(
     name: "Modules",
     platforms: [
-        .iOS(.v15),
+        .iOS(.v16),
     ],
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(name: "SoundEffectUseCase", targets: ["SoundEffectUseCase"]),
-        .library(name: "OrientationAdaptiveViews", targets: ["OrientationAdaptiveViews"]),
-        .library(name: "AudioQuiz", targets: ["AudioQuiz"]),
-        .library(name: "AudioQuizViews", targets: ["AudioQuizViews"])
-    ],
+    products: Modules.allCases.map { .library(name: $0.rawValue, targets: [$0.rawValue])},
     dependencies: [],
-    targets: [
+    targets: Modules.allCases.map {
         .target(
-            name: "SoundEffectUseCase",
-            dependencies: [],
-            resources: [.copy("./Resources/correct.mp3"), .copy("./Resources/wrong.mp3")]
-        ),
-        .target(name: "OrientationAdaptiveViews", dependencies: []),
-        .target(name: "AudioQuiz", dependencies: []),
-        .target(name: "AudioQuizViews", dependencies: ["AudioQuiz", "OrientationAdaptiveViews", "SoundEffectUseCase"])
-    ]
+            name: $0.rawValue,
+            dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) },
+            resources: $0.resources.map { str in .copy(str) }
+        )
+    }
 )

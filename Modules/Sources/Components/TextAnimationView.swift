@@ -1,0 +1,118 @@
+//
+//  TextAnimationView.swift
+//  
+//
+//  Created by 若江照仁 on 2023/02/16.
+//
+
+import SwiftUI
+import Foundation
+
+public extension View {
+    func addNewBadge(_ isAdd: Bool, isFit: Bool = false) -> some View {
+        padding(.trailing, 30)
+            .padding(.top, 13)
+            .padding(.bottom, isFit ? 0 : 13)
+            .overlay(alignment: .topTrailing) {
+                if isAdd {
+                    TextAnimationView(
+                        text: "New!!",
+                        font: .system(size: 12),
+                        italic: true,
+                        foregroundColor: .red
+                    )
+                }
+            }
+    }
+}
+
+public struct TextAnimationView: View {
+    struct AnimationData: Identifiable {
+        var id: Int
+        var text: String
+        var delay: TimeInterval
+        var ty: CGFloat
+    }
+    
+    struct AnimationText: View {
+        @Binding var transY: CGFloat
+        let font: Font?
+        let italic: Bool
+        let foregroundColor: Color
+        let text: String
+        var body: some View {
+            Text(text)
+                .font(font)
+                .italic(italic)
+                .foregroundColor(foregroundColor)
+                .offset(x: 0, y: transY)
+        }
+    }
+    
+    let font: Font?
+    let italic: Bool
+    let foregroundColor: Color
+    let items: [AnimationData]
+    @State var transY: [CGFloat]
+    
+    public init(text: String, font: Font? = nil, italic: Bool = false, foregroundColor: Color = .init(uiColor: .label)) {
+        self.font = font
+        self.italic = italic
+        self.foregroundColor = foregroundColor
+        items = text.enumerated().map { .init(
+            id: $0.offset,
+            text: String($0.element),
+            delay: .init(CGFloat($0.offset) * (0.5 / CGFloat(text.count - 1))),
+            ty: -2 - CGFloat($0.offset) * (10 / CGFloat(text.count - 1))
+        )}
+        _transY = .init(initialValue: .init(repeating: 0 ,count: text.count))
+    }
+    
+    var animation = Animation.easeInOut(duration: 0.2)
+    
+    public var body: some View {
+        HStack(spacing: 0) {
+            ForEach(items) { item in
+                AnimationText(
+                    transY: $transY[item.id],
+                    font: font,
+                    italic: italic,
+                    foregroundColor: foregroundColor,
+                    text: item.text
+                )
+            }
+        }
+        .onAppear {
+            animateDots()
+        }
+    }
+    func animateDots() {
+        for item in items {
+            DispatchQueue.main.asyncAfter(deadline: .now() + item.delay) {
+                animateDot(binding: $transY[item.id], animationData: item)
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            animateDots()
+        }
+    }
+    func animateDot(binding: Binding<CGFloat>, animationData: AnimationData) {
+        withAnimation(animation) {
+            binding.wrappedValue = animationData.ty
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            withAnimation(animation) {
+                binding.wrappedValue = 0
+            }
+        }
+    }
+}
+
+
+struct TextAnimationView_Previews: PreviewProvider {
+    static var previews: some View {
+        TextAnimationView(text: "New!!", foregroundColor: .red)
+    }
+}

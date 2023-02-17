@@ -6,15 +6,33 @@
 //
 
 import SwiftUI
-import AudioQuizViews
-import SoundEffectUseCase
 import Combine
+import Components
+import Feature
+import Core
+import UseCase
+import Repository
+
 @main
 struct TapGameForChildApp: App {
     var body: some Scene {
         WindowGroup {
-            AudioQuizView<AudioQuizViewModel<SoundEffectUseCase>>()
+            SoundQuizView(
+                viewModel: SoundQuizViewModel<
+                    ColorQuiz,
+                    SoundEffectInteractor,
+                    SoundQuizInteractor<ColorQuiz, SoundQuizRepositoryImpl>
+                >(
+                    useCase: .init(
+                        levelManager: ColorQuizLevels.level1.manager,
+                        achievement: .init(
+                            star1: false,
+                            star2: false,
+                            star3: false
+                        )
+                    )
+                )
+            )
         }
     }
 }
-
