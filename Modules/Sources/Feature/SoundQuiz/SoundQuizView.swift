@@ -27,23 +27,11 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                     // MARK: 👈Left Space
                     // ----------------------------------------------------
                     VStack {
-                        Button {
-                            
-                        } label: {
-                            Capsule()
-                                .frame(width: 60, height: 30)
-                                .foregroundColor(.red)
-                                .overlay {
-                                    Image(systemName: "xmark")
-                                        .foregroundColor(.white)
-                                }
-                        }
-                        VStack {
+                        
                             Text(viewModel.currentQuiz.answer.call +  viewModel.currentQuiz.options.count.description + "個")
-                        }
-                        .layoutLikeSpacer()
                     }
                     .layoutLikeSpacer()
+                    .padding(.top, 40)
                     
                     // ----------------------------------------------------
                     // MARK: 🟡Center ProgressRings
@@ -79,48 +67,38 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                     // MARK: 👉Right Space
                     // ----------------------------------------------------
                     VStack {
-                        Button {
-                            viewModel.restart()
-                        } label: {
-                            Capsule()
-                                .frame(width: 60, height: 30)
-                                .foregroundColor(.green)
-                                .overlay {
-                                    Image(systemName: "arrow.clockwise")
-                                        .foregroundColor(.white)
-                                }
-                        }
                         Grid(verticalSpacing: 4) {
                             GridRow {
                                 Image(systemName: "star.fill")
                                     .foregroundColor(viewModel.achievement.star1 ? .yellow : .gray)
                                 Text(viewModel.star1Description)
-                                    .font(.system(size: 12))
+                                    .font(.caption)
                             }
                             GridRow {
                                 Image(systemName: "star.fill")
                                     .foregroundColor(viewModel.achievement.star2 ? .yellow : .gray)
                                 Text(viewModel.star2Description)
-                                    .font(.system(size: 12))
+                                    .font(.caption)
                             }
                             GridRow {
                                 Image(systemName: "star.fill")
                                     .foregroundColor(viewModel.achievement.star3 ? .yellow : .gray)
                                 Text(viewModel.star3Description)
-                                    .font(.system(size: 12))
+                                    .font(.caption)
                             }
                             Divider()
                             GridRow {
                                 Text("レコード")
-                                    .font(.system(size: 12))
+                                    .font(.caption)
                                 
                                 Text(viewModel.achievement.record.map { String(format: "%.2f", $0) } ?? "--.--")
-                                    .font(.system(size: 12))
+                                    .font(.caption)
                             }
                         }
                         .layoutLikeSpacer()
                     }
                     .layoutLikeSpacer()
+                    .padding(.top, 40)
                 }
                 .padding(.horizontal, 16)
                 .frame(maxWidth: .infinity)
@@ -176,10 +154,10 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                         .overlay {
                             HStack {
                                 Image(systemName: "speaker.wave.2.circle")
-                                    .font(.system(size: 22))
+                                    .font(.system(size: 26))
                                 Spacer()
                                 Text("もう一度聞く")
-                                    .font(.system(size: 14, weight: .bold))
+                                    .font(.system(size: 16, weight: .bold))
                                 Spacer()
                             }
                             .foregroundColor(.white)
@@ -210,10 +188,10 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                                         ProgressView()
                                     } else {
                                         Image(systemName: "speaker.wave.2.circle")
-                                            .font(.system(size: 22))
+                                            .font(.system(size: 26))
                                         Spacer()
                                         Text("スタート!!")
-                                            .font(.system(size: 14, weight: .bold))
+                                            .font(.system(size: 16, weight: .bold))
                                         Spacer()
                                     }
                                 }
@@ -233,6 +211,39 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
             default:
                 EmptyView()
             }
+            
+            VStack {
+                HStack(spacing: 80) {
+                    Button {
+                        
+                    } label: {
+                        Capsule()
+                            .frame(width: 60, height: 30)
+                            .foregroundColor(.red)
+                            .overlay {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.white)
+                            }
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                        viewModel.restart()
+                    } label: {
+                        Capsule()
+                            .frame(width: 60, height: 30)
+                            .foregroundColor(.green)
+                            .overlay {
+                                Image(systemName: "arrow.clockwise")
+                                    .foregroundColor(.white)
+                            }
+                    }
+                }
+                .padding(.horizontal, 16)
+                Spacer()
+            }
+            .zIndex(viewModel.gameState == .ready ? -1 : 0)
         }
         .background {
             Color(uiColor: .secondarySystemBackground)
@@ -247,26 +258,24 @@ private extension SoundQuizView {
             Spacer()
             switch result {
             case .success(let grades):
-                Grid(verticalSpacing: 5) {
-                    Text("クリア!!")
-                        .font(.system(size: 30, weight: .bold))
-                        .padding(.bottom, 10)
+                Grid(verticalSpacing: 23) {
+                    Text("Congratulations!!")
+                        .font(.title)
+                        .italic()
+                        .padding(.bottom, 5)
                     
                     GridRow {
                         Text(viewModel.star1Description)
-                            .font(.system(size: 17))
                         starView(unlocked: grades.star1.unlocked, isFirst: grades.star1.isFirst)
                     }
                     
                     GridRow {
                         Text(viewModel.star2Description)
-                            .font(.system(size: 17))
                         starView(unlocked: grades.star2.unlocked, isFirst: grades.star2.isFirst)
                     }
                     
                     GridRow {
                         Text(viewModel.star3Description)
-                            .font(.system(size: 17))
                         starView(unlocked: grades.star3.unlocked, isFirst: grades.star3.isFirst)
                     }
                     
@@ -274,50 +283,26 @@ private extension SoundQuizView {
                     
                     GridRow {
                         Text("タイム")
-                            .font(.system(size: 17))
                         
                         Text(String(format: "%.2f", viewModel.time))
-                            .font(.system(size: 17, weight: .bold))
-                            .addNewBadge(viewModel.isNewRecord)
+                            .font(.headline)
+                            .addTextAnimationBadge(viewModel.isNewRecord)
                     }
                 }
                 .padding(30)
                 .background(.ultraThinMaterial)
-                .cornerRadius(10)
-                .padding(40)
+                .cornerRadius(20)
+                .fixedSize()
             case .gameOver:
                 Text("Game Over!!")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.title)
                     .foregroundColor(.red)
+                    .padding(40)
             case .timeOver:
                 Text("Time Over!!")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.title)
                     .foregroundColor(.red)
-            }
-            HStack(spacing: 80) {
-                Button {
-                    
-                } label: {
-                    Capsule()
-                        .frame(width: 60, height: 30)
-                        .foregroundColor(.red)
-                        .overlay {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.white)
-                        }
-                }
-                
-                Button {
-                    viewModel.restart()
-                } label: {
-                    Capsule()
-                        .frame(width: 60, height: 30)
-                        .foregroundColor(.green)
-                        .overlay {
-                            Image(systemName: "arrow.clockwise")
-                                .foregroundColor(.white)
-                        }
-                }
+                    .padding(40)
             }
             Spacer()
         }
@@ -332,10 +317,9 @@ private extension SoundQuizView {
     
     func starView(unlocked: Bool, isFirst: Bool) -> some View {
         Image(systemName: "star.fill")
-            .resizable()
-            .frame(width: 40, height: 36)
+            .font(.system(size: 30))
             .foregroundColor(unlocked ? .yellow : .gray)
-            .addNewBadge(isFirst)
+            .addTextAnimationBadge(isFirst)
     }
 }
 

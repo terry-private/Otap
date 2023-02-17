@@ -9,18 +9,22 @@ import SwiftUI
 import Foundation
 
 public extension View {
-    func addNewBadge(_ isAdd: Bool, isFit: Bool = false) -> some View {
-        padding(.trailing, 30)
-            .padding(.top, 13)
-            .padding(.bottom, isFit ? 0 : 13)
-            .overlay(alignment: .topTrailing) {
+    func addTextAnimationBadge(
+        _ isAdd: Bool,
+        text: String = "New!!",
+        size: CGFloat = 12,
+        x: CGFloat = 30,
+        y: CGFloat = -13
+    ) -> some View {
+        overlay(alignment: .topTrailing) {
                 if isAdd {
                     TextAnimationView(
-                        text: "New!!",
-                        font: .system(size: 12),
+                        text: text,
+                        font: .system(size: size),
                         italic: true,
                         foregroundColor: .red
                     )
+                    .offset(x: x, y: y)
                 }
             }
     }
@@ -35,7 +39,7 @@ public struct TextAnimationView: View {
     }
     
     struct AnimationText: View {
-        @Binding var transY: CGFloat
+        let transY: CGFloat
         let font: Font?
         let italic: Bool
         let foregroundColor: Color
@@ -74,7 +78,7 @@ public struct TextAnimationView: View {
         HStack(spacing: 0) {
             ForEach(items) { item in
                 AnimationText(
-                    transY: $transY[item.id],
+                    transY: transY[item.id],
                     font: font,
                     italic: italic,
                     foregroundColor: foregroundColor,
@@ -109,7 +113,6 @@ public struct TextAnimationView: View {
         }
     }
 }
-
 
 struct TextAnimationView_Previews: PreviewProvider {
     static var previews: some View {
