@@ -11,7 +11,8 @@ enum Modules: String, CaseIterable {
     case Extensions
     case Feature
     case Repository
-    case UseCase
+    case SoundEffectInteractor
+    case SoundEffectUseCase
     
     var dependencies: [Self] {
         switch self {
@@ -29,15 +30,15 @@ enum Modules: String, CaseIterable {
             .Core,
             .Components,
             .Extensions,
-            .UseCase
+            .SoundEffectUseCase
         ]
         case .Repository: return [
             .Core
         ]
-            
-        case .UseCase: return [
-            .Core
+        case .SoundEffectInteractor: return [
+            .SoundEffectUseCase
         ]
+        case .SoundEffectUseCase: return []
     }}
     
     var resources: [String] {
@@ -47,7 +48,8 @@ enum Modules: String, CaseIterable {
         case .Extensions: return []
         case .Feature: return []
         case .Repository: return []
-        case .UseCase: return [
+        case .SoundEffectUseCase: return []
+        case .SoundEffectInteractor: return [
             "./Resources/correct.mp3",
             "./Resources/wrong.mp3"
         ]

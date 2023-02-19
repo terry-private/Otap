@@ -10,7 +10,7 @@ import Combine
 import Components
 import Feature
 import Core
-import UseCase
+import SoundEffectInteractor
 import Repository
 
 @main

@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 import Core
-import UseCase
 import Repository
 
 public enum QuizVerificationResult: Equatable {

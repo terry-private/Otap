@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Core
-import UseCase
+import SoundEffectUseCase
 import Components
 import Extensions
 import Repository
@@ -252,6 +252,7 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
     }
 }
 
+#if DEBUG
 private extension SoundQuizView {
     func resultView(result: GameResult) -> some View {
         VStack {
@@ -328,7 +329,7 @@ struct SoundQuizView_Previews: PreviewProvider {
         SoundQuizView(
             viewModel: SoundQuizViewModel<
             ColorQuiz,
-            SoundEffectInteractor,
+            SoundEffectUseCaseDummy,
             SoundQuizInteractor<ColorQuiz, SoundQuizRepositoryImpl>
             >(
                 useCase: .init(
@@ -343,3 +344,5 @@ struct SoundQuizView_Previews: PreviewProvider {
         )
     }
 }
+
+#endif

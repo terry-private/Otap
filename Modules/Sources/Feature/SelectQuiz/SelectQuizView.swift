@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UseCase
 import Core
 import Components
 
@@ -124,18 +123,18 @@ import Components
 //    }
 //    
 //}
-
-enum SelectQuizRoute {
-    case quiz(any SelectQuizUseCaseProtocol)
-    case level(any SelectQuizUseCaseProtocol)
-}
-
-final class SelectQuizRouter: ObservableObject {
-    @Published var path: [SelectQuizRoute] = []
-}
+//
+//enum SelectQuizRoute {
+//    case quiz(any SelectQuizUseCaseProtocol)
+//    case level(any SelectQuizUseCaseProtocol)
+//}
+//
+//final class SelectQuizRouter: ObservableObject {
+//    @Published var path: [SelectQuizRoute] = []
+//}
 
 public struct SelectQuizView: View {
-    @EnvironmentObject var router: SelectQuizRouter
+//    @EnvironmentObject var router: SelectQuizRouter
     struct Cell<Quiz: SoundQuiz>: View {
         let quiz: Quiz
         var body: some View {
