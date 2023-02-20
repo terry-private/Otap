@@ -29,7 +29,6 @@ public protocol SoundQuizViewModelProtocol<Quiz>: ObservableObject {
     var currentQuiz: Quiz { get }
     var isWarning: Bool { get }
     var isLoading: Bool { get }
-    var isNewRecord: Bool { get }
     var achievement: Achievement { get }
     var star1Description: String { get }
     var star2Description: String { get }

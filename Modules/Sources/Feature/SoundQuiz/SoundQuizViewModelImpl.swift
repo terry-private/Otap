@@ -48,12 +48,6 @@ extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
     public var star2Description: String { useCase.star2Description }
     public var star3Description: String { useCase.star3Description }
     
-    public var isNewRecord: Bool {
-        guard case let .gameOver(result) = gameState, case .success = result else {
-            return false
-        }
-        return time < achievement.record ?? .infinity
-    }
     public var timeLimit: Double {
         useCase.timeLimit
     }

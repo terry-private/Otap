@@ -284,7 +284,7 @@ private extension SoundQuizView {
                         
                         Text(String(format: "%.2f", viewModel.time))
                             .font(.headline)
-                            .addTextAnimationBadge(viewModel.isNewRecord)
+                            .addTextAnimationBadge(grades.isNewTimeRecord)
                     }
                 }
                 .padding(30)
@@ -306,7 +306,7 @@ private extension SoundQuizView {
         }
         .frame(maxWidth: .infinity)
         .background {
-            if viewModel.isNewRecord || result.hasFirst {
+            if result.hasFirst {
                 ConfettiView()
             }
         }
