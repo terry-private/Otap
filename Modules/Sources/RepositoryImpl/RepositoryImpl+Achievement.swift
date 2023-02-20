@@ -7,16 +7,8 @@
 
 import Foundation
 import Core
+import Data
 import Repository
-
-public final actor LocaleCache {
-    private init() {}
-    public static var shared: LocaleCache = .init()
-    var achievement: Achievement = .init(star1: false, star2: false, star3: false)
-    func update(_ achievement: Achievement) {
-        self.achievement.merge(achievement)
-    }
-}
 
 extension RepositoryImpl: AchievementRepository {
     public static func fetchAchievement() async throws -> Achievement {
