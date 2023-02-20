@@ -21,3 +21,43 @@ public extension SoundQuiz {
         .init(options: Option.randoms(by: count))
     }
 }
+
+#if DEBUG
+import SwiftUI
+public struct SoundQuizDummy: SoundQuiz {
+    public enum DummyOption: String, SoundQuizOption {
+        case red, blue, yellow, green
+        public var foregroundColor: Color {
+            switch self {
+            case .red: return .init(red: 1, green: 0, blue: 0)
+            case .blue: return .init(red: 0, green: 0, blue: 1)
+            case .green: return .init(red: 0, green: 0.5, blue: 0)
+            case .yellow: return .init(red: 1, green: 1, blue: 0)
+            }
+        }
+        public var call: String {
+            switch self {
+            case .red: return "あか"
+            case .blue: return "あお"
+            case .green: return "みどり"
+            case .yellow: return "きいろ"
+            }
+        }
+        public var imageName: String? { nil }
+        
+        public var id: Self { self }
+    }
+    public static let title: String = "ダミーゲーム"
+    public var options: [DummyOption]
+    public let answer: DummyOption
+    
+    public init(options: [DummyOption]) {
+        self.options = options
+        answer = options.randomElement()!
+    }
+    public init(options: [DummyOption], answer: DummyOption) {
+        self.options = options
+        self.answer = answer
+    }
+}
+#endif

@@ -11,6 +11,7 @@ import Components
 import Feature
 import Core
 import SoundEffectInteractor
+import SoundQuizInteractor
 import Repository
 
 @main

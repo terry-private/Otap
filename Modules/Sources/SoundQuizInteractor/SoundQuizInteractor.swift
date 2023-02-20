@@ -1,87 +1,14 @@
 //
-//  SoundQuizUseCase.swift
+//  SoundQuizInteractor.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/15.
 //
 
 import Foundation
-import Combine
+import SoundQuizUseCase
 import Core
 import Repository
-
-public enum QuizVerificationResult: Equatable {
-    case correct
-    case wrong(PenaltyType)
-}
-
-public struct Grades: Equatable {
-    public enum StarState: Equatable {
-        case unlocked(isFirst: Bool)
-        case locked
-        public init(before: Bool, after: Bool) {
-            if before && after {
-                self = .unlocked(isFirst: false)
-            } else if after {
-                self = .unlocked(isFirst: true)
-            } else {
-                self = .locked
-            }
-        }
-        var unlocked: Bool {
-            switch self {
-            case .locked: return false
-            default: return true
-            }
-        }
-        var isFirst: Bool {
-            switch self {
-            case let .unlocked(isFirst):
-                return isFirst
-            default: return false
-            }
-        }
-    }
-    public var star1: StarState
-    public var star2: StarState
-    public var star3: StarState
-    var hasFirst: Bool {
-        star1.isFirst || star2.isFirst || star3.isFirst
-    }
-}
-
-public enum GameResult: Equatable {
-    case success(Grades)
-    case timeOver
-    case gameOver
-    
-    var hasFirst: Bool {
-        guard case let .success(grades) = self else {
-            return false
-        }
-        return grades.hasFirst
-    }
-}
-
-// 📝 use case
-public protocol SoundQuizUseCase<Quiz> {
-    associatedtype Quiz: SoundQuiz
-    var achievement: Achievement { get }
-    var timeLimit: Double { get }
-    var penalty: PenaltyType { get }
-    
-    var quizCount: Int { get }
-    
-    var star1Description: String { get }
-    var star2Description: String { get }
-    var star3Description: String { get }
-    
-    func answer(isCorrect: Bool)
-    func nextQuiz() -> Quiz
-    func gameResult(time: Double) -> GameResult
-    func refresh() async throws
-}
-
 
 public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: SoundQuizRepositoryProtocol> {
     // ------------------------------------------------

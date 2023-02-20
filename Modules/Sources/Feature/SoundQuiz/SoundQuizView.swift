@@ -252,7 +252,6 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
     }
 }
 
-#if DEBUG
 private extension SoundQuizView {
     func resultView(result: GameResult) -> some View {
         VStack {
@@ -324,25 +323,20 @@ private extension SoundQuizView {
     }
 }
 
+
+#if DEBUG
+import SoundQuizUseCase
 struct SoundQuizView_Previews: PreviewProvider {
     static var previews: some View {
         SoundQuizView(
             viewModel: SoundQuizViewModel<
-            ColorQuiz,
+            SoundQuizDummy,
             SoundEffectUseCaseDummy,
-            SoundQuizInteractor<ColorQuiz, SoundQuizRepositoryImpl>
+            SoundQuizUseCaseDummy
             >(
-                useCase: .init(
-                    levelManager: ColorQuizLevels.level1.manager,
-                    achievement: .init(
-                        star1: false,
-                        star2: false,
-                        star3: false
-                    )
-                )
+                useCase: .init()
             )
         )
     }
 }
-
 #endif

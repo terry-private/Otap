@@ -14,7 +14,14 @@ public enum PenaltyType {
 
 public struct Star {
     public var description: String
+    
+    /// 達成判定ロジック: (クリア時間, 失敗数) -> 達成したかどうか
     public var isUnlock: (Double, Int) -> Bool
+    
+    /// 初期化
+    /// - Parameters:
+    ///   - description: 達成条件の説明文
+    ///   - isUnlock: 達成判定ロジック: (クリア時間, 失敗数) -> 達成したかどうか
     public init(description: String, isUnlock: @escaping (Double, Int) -> Bool) {
         self.description = description
         self.isUnlock = isUnlock
