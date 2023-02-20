@@ -19,7 +19,7 @@ public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementR
     // ------------------------------------------------
     // MARK: 🚪📦private stored properties
     // ------------------------------------------------
-    private let levelManager: SoundQuizLevelManager<Quiz>
+    private let generator: SoundQuizGenerator<Quiz>
     private var quizzes: [Quiz]
     private var correctCount: Int = 0
     private var wrongCount: Int = 0
@@ -27,10 +27,10 @@ public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementR
     // ------------------------------------------------
     // MARK: init
     // ------------------------------------------------
-    public init(levelManager: SoundQuizLevelManager<Quiz>, achievement: Achievement) {
-        self.levelManager = levelManager
+    public init(generator: SoundQuizGenerator<Quiz>, achievement: Achievement) {
+        self.generator = generator
         self.achievement = achievement
-        quizzes = levelManager.quizzes()
+        quizzes = generator.quizzes()
     }
 }
 
@@ -39,18 +39,18 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🧮 computed properties
     // ------------------------------------------------
-    public var star1Description: String { levelManager.star1.description }
-    public var star2Description: String { levelManager.star2.description }
-    public var star3Description: String { levelManager.star3.description }
+    public var star1Description: String { generator.star1.description }
+    public var star2Description: String { generator.star2.description }
+    public var star3Description: String { generator.star3.description }
     
     public var quizCount: Int {
         quizzes.count
     }
     public var timeLimit: Double {
-        levelManager.timeLimit
+        generator.timeLimit
     }
     public var penalty: PenaltyType {
-        levelManager.penalty
+        generator.penalty
     }
     
     // ------------------------------------------------
@@ -70,14 +70,14 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     
     public func gameResult(time: Double) -> GameResult {
         if correctCount == quizCount {
-            let newAchievement = levelManager.newAchievement(time: time, wrongCount: wrongCount)
+            let newAchievement = generator.newAchievement(time: time, wrongCount: wrongCount)
             Task.detached {
                 try await Repository.updateAchievement(
                     self.achievement.merged(newAchievement)
                 )
             }
             return .success(.init(oldAchievement: achievement, newAchievement: newAchievement))
-        } else if time >= levelManager.timeLimit {
+        } else if time >= generator.timeLimit {
             return .timeOver
         } else {
             return .gameOver
@@ -86,7 +86,7 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     
     public func refresh() async throws {
         achievement = try await Repository.fetchAchievement()
-        quizzes = levelManager.quizzes()
+        quizzes = generator.quizzes()
         correctCount = 0
         wrongCount = 0
     }

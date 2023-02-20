@@ -28,7 +28,8 @@ public struct Star {
     }
 }
 
-public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
+public struct SoundQuizGenerator<Quiz: SoundQuiz>: Identifiable {
+    public var id: Int
     public var title: String
     public var quizzes: () -> [Quiz]
     public var timeLimit: Double
@@ -38,6 +39,7 @@ public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
     public var star3: Star
     
     public init(
+        id: Int,
         title: String,
         quizzes: @escaping () -> [Quiz],
         timeLimit: Double,
@@ -46,6 +48,7 @@ public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
         star2: Star,
         star3: Star
     ) {
+        self.id = id
         self.title = title
         self.quizzes = quizzes
         self.timeLimit = timeLimit
@@ -56,7 +59,7 @@ public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
     }
 }
 
-public extension SoundQuizLevelManager {
+public extension SoundQuizGenerator {
     func newAchievement(time: Double, wrongCount: Int) -> Achievement {
         let star1 = star1.isUnlock(time, wrongCount)
         let star2 = star2.isUnlock(time, wrongCount)

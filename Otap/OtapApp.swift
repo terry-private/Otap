@@ -24,7 +24,7 @@ struct OtapApp: App {
                     SoundQuizInteractor<ColorQuiz, RepositoryImpl>
                 >(
                     useCase: .init(
-                        levelManager: ColorQuizLevels.level1.manager,
+                        generator: ColorQuizCategory.level1.generator,
                         achievement: .init(
                             star1: false,
                             star2: false,
