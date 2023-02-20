@@ -12,7 +12,7 @@ import Feature
 import Core
 import SoundEffectInteractor
 import SoundQuizInteractor
-import Repository
+import RepositoryImpl
 
 @main
 struct OtapApp: App {
@@ -22,7 +22,7 @@ struct OtapApp: App {
                 viewModel: SoundQuizViewModel<
                     ColorQuiz,
                     SoundEffectInteractor,
-                    SoundQuizInteractor<ColorQuiz, SoundQuizRepositoryImpl>
+                    SoundQuizInteractor<ColorQuiz, RepositoryImpl>
                 >(
                     useCase: .init(
                         levelManager: ColorQuizLevels.level1.manager,

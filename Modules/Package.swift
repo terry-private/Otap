@@ -11,6 +11,7 @@ enum Modules: String, CaseIterable {
     case Extensions
     case Feature
     case Repository
+    case RepositoryImpl
     case SoundEffectInteractor
     case SoundEffectUseCase
     case SoundQuizInteractor
@@ -37,6 +38,10 @@ enum Modules: String, CaseIterable {
         case .Repository: return [
             .Core
         ]
+        case .RepositoryImpl: return [
+            .Core,
+            .Repository
+        ]
         case .SoundEffectInteractor: return [
             .SoundEffectUseCase
         ]
@@ -57,6 +62,7 @@ enum Modules: String, CaseIterable {
         case .Extensions: return []
         case .Feature: return []
         case .Repository: return []
+        case .RepositoryImpl: return []
         case .SoundEffectUseCase: return []
         case .SoundEffectInteractor: return [
             "./Resources/correct.mp3",

@@ -2,11 +2,12 @@
 //  File.swift
 //  
 //
-//  Created by 若江照仁 on 2023/02/16.
+//  Created by 若江照仁 on 2023/02/20.
 //
 
 import Foundation
 import Core
+import Repository
 
 public final actor LocaleCache {
     private init() {}
@@ -17,13 +18,7 @@ public final actor LocaleCache {
     }
 }
 
-// 📁 repository
-public protocol SoundQuizRepositoryProtocol {
-    static func fetchAchievement() async throws -> Achievement
-    static func updateAchievement(_ achievement: Achievement) async throws
-}
-
-public enum SoundQuizRepositoryImpl: SoundQuizRepositoryProtocol {
+public enum RepositoryImpl: AchievementRepository {
     public static func fetchAchievement() async throws -> Achievement {
         await LocaleCache.shared.achievement
     }

@@ -10,7 +10,7 @@ import SoundQuizUseCase
 import Core
 import Repository
 
-public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: SoundQuizRepositoryProtocol> {
+public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementRepository> {
     // ------------------------------------------------
     // MARK: 🌎📦public stored properties
     // ------------------------------------------------
