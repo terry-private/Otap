@@ -7,10 +7,8 @@
 
 import SwiftUI
 import Core
-import SoundEffectUseCase
 import Components
 import Extensions
-import Repository
 
 public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
@@ -324,7 +322,7 @@ private extension SoundQuizView {
 }
 
 #if DEBUG
-import SoundQuizUseCase
+import UseCase
 struct SoundQuizView_Previews: PreviewProvider {
     typealias Quiz = SoundQuizDummy
     typealias SoundEffect = SoundEffectUseCaseDummy

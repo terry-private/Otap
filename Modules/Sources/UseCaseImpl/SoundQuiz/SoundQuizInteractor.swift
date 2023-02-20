@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SoundQuizUseCase
+import UseCase
 import Core
 import Repository
 

@@ -10,8 +10,7 @@ import Combine
 import Components
 import Feature
 import Core
-import SoundEffectInteractor
-import SoundQuizInteractor
+import UseCaseImpl
 import RepositoryImpl
 
 @main

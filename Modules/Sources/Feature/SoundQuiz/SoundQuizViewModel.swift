@@ -7,9 +7,8 @@
 
 import Foundation
 import Core
-import SoundEffectUseCase
 import SwiftUI
-import SoundQuizUseCase
+import UseCase
 
 public enum GameState<Option: SoundQuizOption>: Equatable {
     case ready
