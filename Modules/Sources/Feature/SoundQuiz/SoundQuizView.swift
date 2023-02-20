@@ -327,7 +327,7 @@ struct SoundQuizView_Previews: PreviewProvider {
     typealias Quiz = SoundQuizDummy
     typealias SoundEffect = SoundEffectUseCaseDummy
     typealias UseCase = SoundQuizUseCaseDummy
-    typealias ViewModel = SoundQuizViewModel<Quiz, SoundEffect, UseCase>
+    typealias ViewModel = SoundQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     static var previews: some View {
         SoundQuizView(
             viewModel: ViewModel(useCase: .init())

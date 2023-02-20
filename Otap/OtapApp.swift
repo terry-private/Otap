@@ -18,7 +18,7 @@ struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
             SoundQuizView(
-                viewModel: SoundQuizViewModel<
+                viewModel: SoundQuizViewModelImpl<
                     ColorQuiz,
                     SoundEffectInteractor,
                     SoundQuizInteractor<ColorQuiz, RepositoryImpl>
