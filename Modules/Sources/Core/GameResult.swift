@@ -25,15 +25,27 @@ public extension  GameResult {
         public var star1: StarState
         public var star2: StarState
         public var star3: StarState
-        
+        public var time: Double
+        public var isNewTimeRecord: Bool
         var hasFirst: Bool {
-            star1.isFirst || star2.isFirst || star3.isFirst
+            star1.isFirst || star2.isFirst || star3.isFirst || isNewTimeRecord
         }
         
-        public init(star1: StarState, star2: StarState, star3: StarState) {
+        public init(star1: StarState, star2: StarState, star3: StarState, time: Double, isNewTimeRecord: Bool) {
             self.star1 = star1
             self.star2 = star2
             self.star3 = star3
+            self.time = time
+            self.isNewTimeRecord = isNewTimeRecord
+        }
+        
+        public init(oldAchievement: Achievement, newAchievement: Achievement) {
+            precondition(newAchievement.record != nil, "クリア結果にはクリアタイムが必須です。")
+            self.star1 = .init(before: oldAchievement.star1, after: newAchievement.star1)
+            self.star2 = .init(before: oldAchievement.star2, after: newAchievement.star2)
+            self.star3 = .init(before: oldAchievement.star3, after: newAchievement.star3)
+            self.time = newAchievement.record!
+            self.isNewTimeRecord = oldAchievement.record ?? .infinity > newAchievement.record!
         }
     }
 }

@@ -323,19 +323,16 @@ private extension SoundQuizView {
     }
 }
 
-
 #if DEBUG
 import SoundQuizUseCase
 struct SoundQuizView_Previews: PreviewProvider {
+    typealias Quiz = SoundQuizDummy
+    typealias SoundEffect = SoundEffectUseCaseDummy
+    typealias UseCase = SoundQuizUseCaseDummy
+    typealias ViewModel = SoundQuizViewModel<Quiz, SoundEffect, UseCase>
     static var previews: some View {
         SoundQuizView(
-            viewModel: SoundQuizViewModel<
-            SoundQuizDummy,
-            SoundEffectUseCaseDummy,
-            SoundQuizUseCaseDummy
-            >(
-                useCase: .init()
-            )
+            viewModel: ViewModel(useCase: .init())
         )
     }
 }

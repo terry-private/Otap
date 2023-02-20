@@ -65,7 +65,9 @@ public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
                 .init(
                     star1: .init(before: achievement.star1, after: true),
                     star2: .init(before: achievement.star2, after: true),
-                    star3: .init(before: achievement.star3, after: false)
+                    star3: .init(before: achievement.star3, after: false),
+                    time: time,
+                    isNewTimeRecord: achievement.record ?? .infinity > time
                 )
             )
         } else if time >= timeLimit {

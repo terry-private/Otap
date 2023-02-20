@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RepositoryImpl+Achievement.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/20.
@@ -18,7 +18,7 @@ public final actor LocaleCache {
     }
 }
 
-public enum RepositoryImpl: AchievementRepository {
+extension RepositoryImpl: AchievementRepository {
     public static func fetchAchievement() async throws -> Achievement {
         await LocaleCache.shared.achievement
     }

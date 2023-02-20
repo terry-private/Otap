@@ -70,26 +70,13 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     
     public func gameResult(time: Double) -> GameResult {
         if correctCount == quizCount {
-            let star1 = levelManager.star1.isUnlock(time, wrongCount)
-            let star2 = levelManager.star2.isUnlock(time, wrongCount)
-            let star3 = levelManager.star3.isUnlock(time, wrongCount)
+            let newAchievement = levelManager.newAchievement(time: time, wrongCount: wrongCount)
             Task.detached {
                 try await Repository.updateAchievement(
-                    .init(
-                        record: min(self.achievement.record ?? .infinity, time),
-                        star1: self.achievement.star1 || star1,
-                        star2: self.achievement.star2 || star2,
-                        star3: self.achievement.star3 || star3
-                    )
+                    self.achievement.merged(newAchievement)
                 )
             }
-            return .success(
-                .init(
-                    star1: .init(before: achievement.star1, after: star1),
-                    star2: .init(before: achievement.star2, after: star2),
-                    star3: .init(before: achievement.star3, after: star3)
-                )
-            )
+            return .success(.init(oldAchievement: achievement, newAchievement: newAchievement))
         } else if time >= levelManager.timeLimit {
             return .timeOver
         } else {
