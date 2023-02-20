@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Core
 
 public enum ColorQuizLevels {
     public typealias Quiz = ColorQuiz

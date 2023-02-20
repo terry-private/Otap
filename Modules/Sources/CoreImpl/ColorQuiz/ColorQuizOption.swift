@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Extensions
+import Core
 
 public enum ColorQuizOption: String {
     case red

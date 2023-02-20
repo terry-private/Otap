@@ -133,51 +133,51 @@ import Components
 //    @Published var path: [SelectQuizRoute] = []
 //}
 
-public struct SelectQuizView: View {
-//    @EnvironmentObject var router: SelectQuizRouter
-    struct Cell<Quiz: SoundQuiz>: View {
-        let quiz: Quiz
-        var body: some View {
-            HStack {
-                SquareGrid(quiz.options, spacing: 4) { option in
-                    Rectangle()
-                        .fill(option.foregroundColor.gradient)
-                }
-                .frame(width: 64, height: 64)
-                VStack {
-                    Text(Quiz.title)
-                        .font(.title3)
-                }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .padding(.trailing, 6)
-                    .foregroundColor(.gray)
-            }
-            .padding(10)
-            .background { Color(uiColor: .systemBackground)}
-            .cornerRadius(10)
-        }
-    }
-    
-    public var body: some View {
-        NavigationStack {
-            ScrollView {
-                LazyVStack {
-                    Cell(quiz: ColorQuiz(options: [.red, .yellow, .blue, .green]))
-                }
-                .padding()
-            }
-            .background {
-                Color(uiColor: .secondarySystemBackground)
-                    .ignoresSafeArea()
-            }
-            .navigationTitle("ゲームを選択")
-        }
-    }
-}
-
-struct SelectQuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectQuizView()
-    }
-}
+//public struct SelectQuizView: View {
+////    @EnvironmentObject var router: SelectQuizRouter
+//    struct Cell<Quiz: SoundQuiz>: View {
+//        let quiz: Quiz
+//        var body: some View {
+//            HStack {
+//                SquareGrid(quiz.options, spacing: 4) { option in
+//                    Rectangle()
+//                        .fill(option.foregroundColor.gradient)
+//                }
+//                .frame(width: 64, height: 64)
+//                VStack {
+//                    Text(Quiz.title)
+//                        .font(.title3)
+//                }
+//                Spacer()
+//                Image(systemName: "chevron.right")
+//                    .padding(.trailing, 6)
+//                    .foregroundColor(.gray)
+//            }
+//            .padding(10)
+//            .background { Color(uiColor: .systemBackground)}
+//            .cornerRadius(10)
+//        }
+//    }
+//    
+//    public var body: some View {
+//        NavigationStack {
+//            ScrollView {
+//                LazyVStack {
+//                    Cell(quiz: ColorQuiz(options: [.red, .yellow, .blue, .green]))
+//                }
+//                .padding()
+//            }
+//            .background {
+//                Color(uiColor: .secondarySystemBackground)
+//                    .ignoresSafeArea()
+//            }
+//            .navigationTitle("ゲームを選択")
+//        }
+//    }
+//}
+//
+//struct SelectQuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SelectQuizView()
+//    }
+//}

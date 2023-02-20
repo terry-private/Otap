@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import Components
 import Feature
-import Core
+import CoreImpl
 import UseCaseImpl
 import RepositoryImpl
 

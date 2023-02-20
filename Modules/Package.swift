@@ -8,6 +8,7 @@ import PackageDescription
 enum Modules: String, CaseIterable {
     case Components
     case Core
+    case CoreImpl
     case Data
     case Extensions
     case Feature
@@ -23,6 +24,10 @@ enum Modules: String, CaseIterable {
         ]
             
         case .Core: return [
+            .Extensions
+        ]
+        case .CoreImpl: return [
+            .Core,
             .Extensions
         ]
             
@@ -59,6 +64,7 @@ enum Modules: String, CaseIterable {
         switch self {
         case .Components: return []
         case .Core: return []
+        case .CoreImpl: return []
         case .Data: return []
         case .Extensions: return []
         case .Feature: return []
