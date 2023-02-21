@@ -24,7 +24,7 @@ public enum ColorQuizOption: String {
     case black
 }
 
-extension ColorQuizOption: SoundQuizOption {
+extension ColorQuizOption: VoiceQuizOption {
     public var foregroundColor: Color {
         switch self {
         case .red: return .init(red: 1, green: 0, blue: 0)

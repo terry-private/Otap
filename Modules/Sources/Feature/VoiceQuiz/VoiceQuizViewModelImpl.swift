@@ -1,5 +1,5 @@
 //
-//  SoundQuizViewModelProtocol.swift
+//  VoiceQuizViewModelProtocol.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/08.
@@ -11,10 +11,10 @@ import SwiftUI
 import UseCase
 
 @MainActor
-public final class SoundQuizViewModelImpl<
-    Quiz: SoundQuiz,
+public final class VoiceQuizViewModelImpl<
+    Quiz: VoiceQuiz,
     SoundEffect: SoundEffectUseCase,
-    UseCase: SoundQuizUseCase<Quiz>
+    UseCase: VoiceQuizUseCase<Quiz>
 >: ObservableObject {
     // ------------------------------------------------
     // MARK: 🚪📦private properties
@@ -39,37 +39,28 @@ public final class SoundQuizViewModelImpl<
     public init(useCase: UseCase) {
         self.useCase = useCase
         currentQuiz = useCase.nextQuiz()
+        SoundEffect.readyAllPlayer() // TODO: いずれはAppDelegateなどアプリ起動後一度だけ処理する箇所で呼びたい
     }
 }
 
-// MARK: - AudioQuizViewModelProtocol methods
-extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
+// MARK: - AudioQuizViewModelProtocol get only properties
+extension VoiceQuizViewModelImpl: VoiceQuizViewModelProtocol {
     public var star1Description: String { useCase.star1Description }
     public var star2Description: String { useCase.star2Description }
     public var star3Description: String { useCase.star3Description }
     
-    public var timeLimit: Double {
-        useCase.timeLimit
-    }
-    public var achievement: Achievement {
-        useCase.achievement
-    }
+    public var timeLimit: Double { useCase.timeLimit }
+    public var lastRecord: GameRecord { useCase.lastRecord }
     public var ghostProgress: Double {
-        guard let record = achievement.record else {
+        guard let lastRecordTime = lastRecord.time else {
             return .zero
         }
-        return time / record
+        return time / lastRecordTime
     }
-    public var currentTime: String {
-        String(format: "%.2f", time)
-    }
-    public var currentTimeSecond: String {
-        "\(Int(time))"
-    }
-    public var currentTimeDecimal: String {
-       ".\(String(format: "%02d", Int(time * 100) - Int(time) * 100))"
-    }
-    
+}
+
+// MARK: - AudioQuizViewModelProtocol methods
+extension VoiceQuizViewModelImpl {
     public func start() {
         Task {
             timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
@@ -128,11 +119,15 @@ extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
                 quizProgress = Double(currentQuizIndex) / Double(useCase.quizCount)
             }
         }
+        
+        if currentQuizIndex == useCase.quizCount || (!isCorrect && useCase.penalty == .gameOver) {
+            stopTimer()
+        }
         Task {
             try? await Task.sleep(seconds: 0.4)
-            useCase.answer(isCorrect: isCorrect)
+            
+            useCase.recordQuizResult(isCorrect: isCorrect)
             guard currentQuizIndex < useCase.quizCount else {
-                stopTimer()
                 gameState = .gameOver(useCase.gameResult(time: time))
                 return
             }
@@ -141,16 +136,16 @@ extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
             } else {
                 switch useCase.penalty {
                 case .gameOver:
-                    stopTimer()
                     gameState = .gameOver(useCase.gameResult(time: time))
                     return
                 case .shuffle:
-                    try await shuffle(3)
+                    gameState = .penaltyTime
+                    try await shuffle(4)
                 }
             }
             
             // シャッフルアニメーション中などにタイムオーバーになっている場合を考慮している
-            guard case .verifying = gameState else {
+            guard gameState.shouldStartQuiz else {
                 return
             }
             startQuiz()
@@ -164,16 +159,12 @@ extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
         guard selectedOption == option else {
             return .unselected
         }
-        if currentQuiz.answer == option {
-            return .correct
-        } else {
-            return .wrong
-        }
+        return .selected(isCorrect: currentQuiz.answer == option)
     }
 }
 
 // MARK: - 🚪🧮private methods
-private extension SoundQuizViewModelImpl {
+private extension VoiceQuizViewModelImpl {
     func startQuiz() {
         gameState = .playing
         speak()
@@ -205,7 +196,7 @@ private extension SoundQuizViewModelImpl {
             currentQuiz = .init(options: currentQuiz.options.shuffled(), answer: currentQuiz.answer)
         }
         if count > 0 {
-            try? await Task.sleep(seconds: 0.1)
+            try? await Task.sleep(seconds: 0.05)
             try await shuffle(count - 1)
         }
     }

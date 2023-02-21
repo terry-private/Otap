@@ -40,6 +40,12 @@ private extension SoundEffectInteractor {
 
 // MARK: - public methods
 extension SoundEffectInteractor: SoundEffectUseCase {
+    public static func readyAllPlayer() {
+        _ = correctSoundPlayer
+        _ = wrongSoundPlayer
+        _ = speechSynthesizer
+    }
+    
     public static func playCorrect() {
         if correctSoundPlayer?.isPlaying == true {
             correctSoundPlayer?.stop()

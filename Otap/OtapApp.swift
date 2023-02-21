@@ -17,15 +17,15 @@ import RepositoryImpl
 struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
-            SoundQuizView(
-                viewModel: SoundQuizViewModelImpl<
+            VoiceQuizView(
+                viewModel: VoiceQuizViewModelImpl<
                     ColorQuiz,
                     SoundEffectInteractor,
-                    SoundQuizInteractor<ColorQuiz, RepositoryImpl>
+                    VoiceQuizInteractor<ColorQuiz, RepositoryImpl>
                 >(
                     useCase: .init(
                         generator: ColorQuizCategory.level1.generator,
-                        achievement: .init(
+                        lastRecord: .init(
                             star1: false,
                             star2: false,
                             star3: false

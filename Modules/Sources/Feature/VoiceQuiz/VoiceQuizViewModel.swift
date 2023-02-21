@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  VoiceQuizViewModel.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/20.
@@ -8,28 +8,37 @@
 import Foundation
 import Core
 
-public enum GameState<Option: SoundQuizOption>: Equatable {
+public enum GameState<Option: VoiceQuizOption>: Equatable {
     case ready
     case playing
     case verifying(Option)
+    case penaltyTime
     case gameOver(GameResult)
+    
+    var shouldStartQuiz: Bool {
+        switch self {
+        case .verifying, .penaltyTime:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 public enum OptionState {
     case unanswered
     case unselected
-    case correct
-    case wrong
+    case selected(isCorrect: Bool)
 }
 
 @MainActor
-public protocol SoundQuizViewModelProtocol<Quiz>: ObservableObject {
-    associatedtype Quiz: SoundQuiz
+public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
+    associatedtype Quiz: VoiceQuiz
     var gameState: GameState<Quiz.Option> { get }
     var currentQuiz: Quiz { get }
     var isWarning: Bool { get }
     var isLoading: Bool { get }
-    var achievement: Achievement { get }
+    var lastRecord: GameRecord { get }
     var star1Description: String { get }
     var star2Description: String { get }
     var star3Description: String { get }
@@ -37,8 +46,6 @@ public protocol SoundQuizViewModelProtocol<Quiz>: ObservableObject {
     var timeLimit: Double { get }
     var quizProgress: Double { get }
     var ghostProgress: Double { get }
-    var currentTimeSecond: String { get }
-    var currentTimeDecimal: String { get }
     
     func start()
     func restart()

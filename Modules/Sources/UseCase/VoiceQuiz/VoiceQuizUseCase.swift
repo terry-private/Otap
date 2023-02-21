@@ -1,5 +1,5 @@
 //
-//  SoundQuizUseCase.swift
+//  VoiceQuizUseCase.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/19.
@@ -8,9 +8,9 @@
 import Foundation
 import Core
 
-public protocol SoundQuizUseCase<Quiz> {
-    associatedtype Quiz: SoundQuiz
-    var achievement: Achievement { get }
+public protocol VoiceQuizUseCase<Quiz> {
+    associatedtype Quiz: VoiceQuiz
+    var lastRecord: GameRecord { get }
     var timeLimit: Double { get }
     var penalty: PenaltyType { get }
     
@@ -20,7 +20,7 @@ public protocol SoundQuizUseCase<Quiz> {
     var star2Description: String { get }
     var star3Description: String { get }
     
-    func answer(isCorrect: Bool)
+    func recordQuizResult(isCorrect: Bool)
     func nextQuiz() -> Quiz
     func gameResult(time: Double) -> GameResult
     func refresh() async throws
@@ -28,19 +28,19 @@ public protocol SoundQuizUseCase<Quiz> {
 
 // MARK: - Dummy!!
 #if DEBUG
-public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
+public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
     private var quizzes: [Quiz] = [
         .init(options: Quiz.Option.allCases)
     ]
     private var correctCount: Int = 0
     private var wrongCount: Int = 0
-    public func nextQuiz() -> SoundQuizDummy {
+    public func nextQuiz() -> VoiceQuizDummy {
         quizzes[min(correctCount, quizzes.count - 1)]
     }
     
-    public typealias Quiz = SoundQuizDummy
+    public typealias Quiz = VoiceQuizDummy
     
-    public var achievement: Achievement
+    public var lastRecord: GameRecord
     
     public let timeLimit: Double
     public var penalty: PenaltyType
@@ -51,7 +51,7 @@ public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
     public let star2Description: String
     public let star3Description: String
     
-    public func answer(isCorrect: Bool) {
+    public func recordQuizResult(isCorrect: Bool) {
         if isCorrect {
             correctCount += 1
         } else {
@@ -63,11 +63,11 @@ public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
         if correctCount == quizCount {
             return .success(
                 .init(
-                    star1: .init(before: achievement.star1, after: true),
-                    star2: .init(before: achievement.star2, after: true),
-                    star3: .init(before: achievement.star3, after: false),
+                    star1: .init(before: lastRecord.star1, after: true),
+                    star2: .init(before: lastRecord.star2, after: true),
+                    star3: .init(before: lastRecord.star3, after: false),
                     time: time,
-                    isNewTimeRecord: achievement.record ?? .infinity > time
+                    isNewTimeRecord: lastRecord.time ?? .infinity > time
                 )
             )
         } else if time >= timeLimit {
@@ -83,7 +83,7 @@ public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
     }
     
     public init(
-        achievement: Achievement = .init(
+        lastRecord: GameRecord = .init(
             star1: false,
             star2: false,
             star3: false
@@ -94,7 +94,7 @@ public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
         star2Description: String = "ノーミス",
         star3Description: String = "40秒以内"
     ) {
-        self.achievement = achievement
+        self.lastRecord = lastRecord
         self.timeLimit = timeLimit
         self.penalty = penalty
         self.star1Description = star1Description

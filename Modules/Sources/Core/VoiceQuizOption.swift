@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-public protocol SoundQuizOption: Identifiable, Hashable, CaseIterable {
+public protocol VoiceQuizOption: Identifiable, Hashable, CaseIterable {
     var foregroundColor: Color { get }
     var call: String { get }
     var imageName: String? { get }
 }
 
-//public func == (lhs: any SoundQuizOption, rhs: any SoundQuizOption) -> Bool {
+//public func == (lhs: any VoiceQuizOption, rhs: any VoiceQuizOption) -> Bool {
 //    lhs.hashValue == rhs.hashValue
 //}
 
-public extension SoundQuizOption {
+public extension VoiceQuizOption {
     static func randoms(by count: Int) -> [Self] {
         Self.allCases
             .shuffled()

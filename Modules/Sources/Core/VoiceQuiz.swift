@@ -1,5 +1,5 @@
 //
-//  SoundQuiz.swift.swift
+//  VoiceQuiz.swift.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/08.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-public protocol SoundQuiz<Option>: Hashable {
-    associatedtype Option: SoundQuizOption
+public protocol VoiceQuiz<Option>: Hashable {
+    associatedtype Option: VoiceQuizOption
     static var title: String { get }
     var options: [Option] { get }
     var answer: Option { get }
@@ -16,7 +16,7 @@ public protocol SoundQuiz<Option>: Hashable {
     init(options: [Option], answer: Option)
 }
 
-public extension SoundQuiz {
+public extension VoiceQuiz {
     static func random(by count: Int) -> Self {
         .init(options: Option.randoms(by: count))
     }
@@ -24,8 +24,8 @@ public extension SoundQuiz {
 
 #if DEBUG
 import SwiftUI
-public struct SoundQuizDummy: SoundQuiz {
-    public enum DummyOption: String, SoundQuizOption {
+public struct VoiceQuizDummy: VoiceQuiz {
+    public enum DummyOption: String, VoiceQuizOption {
         case red, blue, yellow, green
         public var foregroundColor: Color {
             switch self {

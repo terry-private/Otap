@@ -28,7 +28,7 @@ public struct Star {
     }
 }
 
-public struct SoundQuizGenerator<Quiz: SoundQuiz>: Identifiable {
+public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
     public var id: Int
     public var title: String
     public var quizzes: () -> [Quiz]
@@ -59,11 +59,11 @@ public struct SoundQuizGenerator<Quiz: SoundQuiz>: Identifiable {
     }
 }
 
-public extension SoundQuizGenerator {
-    func newAchievement(time: Double, wrongCount: Int) -> Achievement {
+public extension VoiceQuizGenerator {
+    func newRecord(time: Double, wrongCount: Int) -> GameRecord {
         let star1 = star1.isUnlock(time, wrongCount)
         let star2 = star2.isUnlock(time, wrongCount)
         let star3 = star3.isUnlock(time, wrongCount)
-        return .init(record: time, star1: star1, star2: star2, star3: star3)
+        return .init(time: time, star1: star1, star2: star2, star3: star3)
     }
 }

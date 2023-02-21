@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  VoiceQuizView.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/07.
@@ -10,7 +10,7 @@ import Core
 import Components
 import Extensions
 
-public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
+public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
     @Namespace var startButton
     public init(viewModel: ViewModel) {
@@ -45,19 +45,8 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                         
                     }
                     .overlay {
-                        HStack(alignment: .bottom, spacing: -1) {
-                            Spacer()
-                                .overlay(alignment: .bottomTrailing) {
-                                    Text(viewModel.currentTimeSecond)
-                                        .font(.system(size: 18, weight: .bold, design: .monospaced))
-                                }
-                            Text(viewModel.currentTimeDecimal)
-                                .font(.system(size: 11, design: .monospaced))
-                            Spacer()
-                        }
-                        .foregroundColor(viewModel.isWarning ? .red : .init(uiColor: .label))
-                        .padding(.leading, 22)
-                        .padding(.top, 5.5)
+                        TimeSecondsView(viewModel.time)
+                            .foregroundColor(viewModel.isWarning ? .red : .init(uiColor: .label))
                     }
                     .padding(.vertical, 5)
                     
@@ -68,19 +57,19 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                         Grid(verticalSpacing: 4) {
                             GridRow {
                                 Image(systemName: "star.fill")
-                                    .foregroundColor(viewModel.achievement.star1 ? .yellow : .gray)
+                                    .foregroundColor(viewModel.lastRecord.star1 ? .yellow : .gray)
                                 Text(viewModel.star1Description)
                                     .font(.caption)
                             }
                             GridRow {
                                 Image(systemName: "star.fill")
-                                    .foregroundColor(viewModel.achievement.star2 ? .yellow : .gray)
+                                    .foregroundColor(viewModel.lastRecord.star2 ? .yellow : .gray)
                                 Text(viewModel.star2Description)
                                     .font(.caption)
                             }
                             GridRow {
                                 Image(systemName: "star.fill")
-                                    .foregroundColor(viewModel.achievement.star3 ? .yellow : .gray)
+                                    .foregroundColor(viewModel.lastRecord.star3 ? .yellow : .gray)
                                 Text(viewModel.star3Description)
                                     .font(.caption)
                             }
@@ -89,7 +78,7 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                                 Text("レコード")
                                     .font(.caption)
                                 
-                                Text(viewModel.achievement.record.map { String(format: "%.2f", $0) } ?? "--.--")
+                                Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
                                     .font(.caption)
                             }
                         }
@@ -119,23 +108,14 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                     }
                     .opacity(viewModel.gameState == .playing ? 1 : 0.2)
                     .overlay {
-                        switch viewModel.getState(option) {
-                        case .correct:
-                            Image(systemName: "circle")
+                        if case let .selected(isCorrect) = viewModel.getState(option) {
+                            Image(systemName: isCorrect ? "circle" : "xmark")
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fill)
                                 .foregroundColor(.red)
                                 .padding()
                                 .shadow(color: .black.opacity(0.2), radius: 8)
-                        case .wrong:
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fill)
-                                .scaledToFill()
-                                .foregroundColor(.red)
-                                .padding()
-                                .shadow(color: .black.opacity(0.2), radius: 8)
-                        default:
+                        } else {
                             EmptyView()
                         }
                     }
@@ -145,24 +125,15 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                 // ----------------------------------------------------
                 // MARK: Speaker Button
                 // ----------------------------------------------------
-                Button {
+                bottomButton {
                     viewModel.speakerButtonTapped()
                 } label: {
-                    Capsule()
-                        .overlay {
-                            HStack {
-                                Image(systemName: "speaker.wave.2.circle")
-                                    .font(.system(size: 26))
-                                Spacer()
-                                Text("もう一度聞く")
-                                    .font(.system(size: 16, weight: .bold))
-                                Spacer()
-                            }
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 20)
-                        }
-                        .frame(width: 180, height: 48)
-                        .shadow(color: .black.opacity(0.2), radius: 8)
+                    Image(systemName: "speaker.wave.2.circle")
+                        .font(.system(size: 26))
+                    Spacer()
+                    Text("もう一度聞く")
+                        .font(.system(size: 16, weight: .bold))
+                    Spacer()
                 }
                 .disabled(viewModel.gameState != .playing)
                 .padding(.vertical, 30)
@@ -174,33 +145,25 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                     Spacer()
                     Text("Ready")
                         .font(.title)
+                    
                     Spacer()
                     
-                    Button {
+                    bottomButton {
                         viewModel.start()
                     } label: {
-                        Capsule()
-                            .overlay {
-                                HStack {
-                                    if viewModel.isLoading {
-                                        ProgressView()
-                                    } else {
-                                        Image(systemName: "speaker.wave.2.circle")
-                                            .font(.system(size: 26))
-                                        Spacer()
-                                        Text("スタート!!")
-                                            .font(.system(size: 16, weight: .bold))
-                                        Spacer()
-                                    }
-                                }
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 20)
-                            }
-                            .frame(width: 180, height: 48)
-                            .shadow(color: .black.opacity(0.2), radius: 8)
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            Image(systemName: "speaker.wave.2.circle")
+                                .font(.system(size: 26))
+                            Spacer()
+                            Text("スタート!!")
+                                .font(.system(size: 16, weight: .bold))
+                            Spacer()
+                        }
                     }
-                    .padding(.vertical, 30)
                     .disabled(viewModel.isLoading)
+                    .padding(.vertical, 30)
                 }
                 .frame(maxWidth: .infinity)
                 .background(.ultraThinMaterial)
@@ -250,7 +213,24 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
     }
 }
 
-private extension SoundQuizView {
+private extension VoiceQuizView {
+    func bottomButton(action: @escaping() -> Void, @ViewBuilder label: @escaping () -> some View) -> some View {
+        Button {
+            action()
+        } label: {
+            Capsule()
+                .overlay {
+                    HStack {
+                        label()
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                }
+                .frame(width: 180, height: 48)
+                .shadow(color: .black.opacity(0.2), radius: 8)
+        }
+    }
+    
     func resultView(result: GameResult) -> some View {
         VStack {
             Spacer()
@@ -323,13 +303,13 @@ private extension SoundQuizView {
 
 #if DEBUG
 import UseCase
-struct SoundQuizView_Previews: PreviewProvider {
-    typealias Quiz = SoundQuizDummy
+struct VoiceQuizView_Previews: PreviewProvider {
+    typealias Quiz = VoiceQuizDummy
     typealias SoundEffect = SoundEffectUseCaseDummy
-    typealias UseCase = SoundQuizUseCaseDummy
-    typealias ViewModel = SoundQuizViewModelImpl<Quiz, SoundEffect, UseCase>
+    typealias UseCase = VoiceQuizUseCaseDummy
+    typealias ViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     static var previews: some View {
-        SoundQuizView(
+        VoiceQuizView(
             viewModel: ViewModel(useCase: .init())
         )
     }

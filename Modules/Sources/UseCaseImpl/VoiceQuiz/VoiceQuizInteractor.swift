@@ -1,5 +1,5 @@
 //
-//  SoundQuizInteractor.swift
+//  VoiceQuizInteractor.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/15.
@@ -10,16 +10,16 @@ import UseCase
 import Core
 import Repository
 
-public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementRepository> {
+public final class VoiceQuizInteractor<Quiz: VoiceQuiz, Repository: GameRecordRepository> {
     // ------------------------------------------------
     // MARK: 🌎📦public stored properties
     // ------------------------------------------------
-    public var achievement: Achievement
+    public var lastRecord: GameRecord
     
     // ------------------------------------------------
     // MARK: 🚪📦private stored properties
     // ------------------------------------------------
-    private let generator: SoundQuizGenerator<Quiz>
+    private let generator: VoiceQuizGenerator<Quiz>
     private var quizzes: [Quiz]
     private var correctCount: Int = 0
     private var wrongCount: Int = 0
@@ -27,15 +27,15 @@ public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementR
     // ------------------------------------------------
     // MARK: init
     // ------------------------------------------------
-    public init(generator: SoundQuizGenerator<Quiz>, achievement: Achievement) {
+    public init(generator: VoiceQuizGenerator<Quiz>, lastRecord: GameRecord) {
         self.generator = generator
-        self.achievement = achievement
+        self.lastRecord = lastRecord
         quizzes = generator.quizzes()
     }
 }
 
-// MARK: - SoundQuizUseCase
-extension SoundQuizInteractor: SoundQuizUseCase {
+// MARK: - VoiceQuizUseCase
+extension VoiceQuizInteractor: VoiceQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🧮 computed properties
     // ------------------------------------------------
@@ -56,7 +56,7 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🛠️ methods
     // ------------------------------------------------
-    public func answer(isCorrect: Bool) {
+    public func recordQuizResult(isCorrect: Bool) {
         if isCorrect {
             correctCount += 1
         } else {
@@ -70,13 +70,13 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     
     public func gameResult(time: Double) -> GameResult {
         if correctCount == quizCount {
-            let newAchievement = generator.newAchievement(time: time, wrongCount: wrongCount)
+            let newRecord = generator.newRecord(time: time, wrongCount: wrongCount)
             Task.detached {
-                try await Repository.updateAchievement(
-                    self.achievement.merged(newAchievement)
+                try await Repository.updateGameRecord(
+                    self.lastRecord.merged(newRecord)
                 )
             }
-            return .success(.init(oldAchievement: achievement, newAchievement: newAchievement))
+            return .success(.init(lastRecord: lastRecord, newRecord: newRecord))
         } else if time >= generator.timeLimit {
             return .timeOver
         } else {
@@ -85,7 +85,7 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     }
     
     public func refresh() async throws {
-        achievement = try await Repository.fetchAchievement()
+        lastRecord = try await Repository.fetchGameRecord()
         quizzes = generator.quizzes()
         correctCount = 0
         wrongCount = 0
