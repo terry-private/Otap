@@ -125,24 +125,15 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                 // ----------------------------------------------------
                 // MARK: Speaker Button
                 // ----------------------------------------------------
-                Button {
+                bottomButton {
                     viewModel.speakerButtonTapped()
                 } label: {
-                    Capsule()
-                        .overlay {
-                            HStack {
-                                Image(systemName: "speaker.wave.2.circle")
-                                    .font(.system(size: 26))
-                                Spacer()
-                                Text("もう一度聞く")
-                                    .font(.system(size: 16, weight: .bold))
-                                Spacer()
-                            }
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 20)
-                        }
-                        .frame(width: 180, height: 48)
-                        .shadow(color: .black.opacity(0.2), radius: 8)
+                    Image(systemName: "speaker.wave.2.circle")
+                        .font(.system(size: 26))
+                    Spacer()
+                    Text("もう一度聞く")
+                        .font(.system(size: 16, weight: .bold))
+                    Spacer()
                 }
                 .disabled(viewModel.gameState != .playing)
                 .padding(.vertical, 30)
@@ -154,33 +145,25 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                     Spacer()
                     Text("Ready")
                         .font(.title)
+                    
                     Spacer()
                     
-                    Button {
+                    bottomButton {
                         viewModel.start()
                     } label: {
-                        Capsule()
-                            .overlay {
-                                HStack {
-                                    if viewModel.isLoading {
-                                        ProgressView()
-                                    } else {
-                                        Image(systemName: "speaker.wave.2.circle")
-                                            .font(.system(size: 26))
-                                        Spacer()
-                                        Text("スタート!!")
-                                            .font(.system(size: 16, weight: .bold))
-                                        Spacer()
-                                    }
-                                }
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 20)
-                            }
-                            .frame(width: 180, height: 48)
-                            .shadow(color: .black.opacity(0.2), radius: 8)
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            Image(systemName: "speaker.wave.2.circle")
+                                .font(.system(size: 26))
+                            Spacer()
+                            Text("スタート!!")
+                                .font(.system(size: 16, weight: .bold))
+                            Spacer()
+                        }
                     }
-                    .padding(.vertical, 30)
                     .disabled(viewModel.isLoading)
+                    .padding(.vertical, 30)
                 }
                 .frame(maxWidth: .infinity)
                 .background(.ultraThinMaterial)
@@ -231,6 +214,23 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
 }
 
 private extension VoiceQuizView {
+    func bottomButton(action: @escaping() -> Void, @ViewBuilder label: @escaping () -> some View) -> some View {
+        Button {
+            action()
+        } label: {
+            Capsule()
+                .overlay {
+                    HStack {
+                        label()
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                }
+                .frame(width: 180, height: 48)
+                .shadow(color: .black.opacity(0.2), radius: 8)
+        }
+    }
+    
     func resultView(result: GameResult) -> some View {
         VStack {
             Spacer()

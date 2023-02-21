@@ -39,6 +39,7 @@ public final class VoiceQuizViewModelImpl<
     public init(useCase: UseCase) {
         self.useCase = useCase
         currentQuiz = useCase.nextQuiz()
+        SoundEffect.readyAllPlayer() // TODO: いずれはAppDelegateなどアプリ起動後一度だけ処理する箇所で呼びたい
     }
 }
 

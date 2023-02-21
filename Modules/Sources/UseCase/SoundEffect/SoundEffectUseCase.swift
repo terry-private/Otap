@@ -7,6 +7,7 @@
 
 // MARK: - UseCaseProtocol
 public protocol SoundEffectUseCase {
+    static func readyAllPlayer()
     static func playCorrect()
     static func playWrong()
     static func speak(_ words: String)
@@ -14,6 +15,10 @@ public protocol SoundEffectUseCase {
 
 #if DEBUG
 public enum SoundEffectUseCaseDummy: SoundEffectUseCase {
+    public static func readyAllPlayer() {
+        print(#file, #function)
+    }
+    
     public static func playCorrect() {
         print(#file, #function)
     }
