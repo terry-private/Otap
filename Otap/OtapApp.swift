@@ -25,7 +25,7 @@ struct OtapApp: App {
                 >(
                     useCase: .init(
                         generator: ColorQuizCategory.level1.generator,
-                        achievement: .init(
+                        lastRecord: .init(
                             star1: false,
                             star2: false,
                             star3: false

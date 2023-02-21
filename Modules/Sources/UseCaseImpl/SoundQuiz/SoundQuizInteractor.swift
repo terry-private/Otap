@@ -10,11 +10,11 @@ import UseCase
 import Core
 import Repository
 
-public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementRepository> {
+public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: GameRecordRepository> {
     // ------------------------------------------------
     // MARK: 🌎📦public stored properties
     // ------------------------------------------------
-    public var achievement: Achievement
+    public var lastRecord: GameRecord
     
     // ------------------------------------------------
     // MARK: 🚪📦private stored properties
@@ -27,9 +27,9 @@ public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: AchievementR
     // ------------------------------------------------
     // MARK: init
     // ------------------------------------------------
-    public init(generator: SoundQuizGenerator<Quiz>, achievement: Achievement) {
+    public init(generator: SoundQuizGenerator<Quiz>, lastRecord: GameRecord) {
         self.generator = generator
-        self.achievement = achievement
+        self.lastRecord = lastRecord
         quizzes = generator.quizzes()
     }
 }
@@ -56,7 +56,7 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🛠️ methods
     // ------------------------------------------------
-    public func answer(isCorrect: Bool) {
+    public func recordQuizResult(isCorrect: Bool) {
         if isCorrect {
             correctCount += 1
         } else {
@@ -70,13 +70,13 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     
     public func gameResult(time: Double) -> GameResult {
         if correctCount == quizCount {
-            let newAchievement = generator.newAchievement(time: time, wrongCount: wrongCount)
+            let newRecord = generator.newRecord(time: time, wrongCount: wrongCount)
             Task.detached {
-                try await Repository.updateAchievement(
-                    self.achievement.merged(newAchievement)
+                try await Repository.updateGameRecord(
+                    self.lastRecord.merged(newRecord)
                 )
             }
-            return .success(.init(oldAchievement: achievement, newAchievement: newAchievement))
+            return .success(.init(lastRecord: lastRecord, newRecord: newRecord))
         } else if time >= generator.timeLimit {
             return .timeOver
         } else {
@@ -85,7 +85,7 @@ extension SoundQuizInteractor: SoundQuizUseCase {
     }
     
     public func refresh() async throws {
-        achievement = try await Repository.fetchAchievement()
+        lastRecord = try await Repository.fetchGameRecord()
         quizzes = generator.quizzes()
         correctCount = 0
         wrongCount = 0

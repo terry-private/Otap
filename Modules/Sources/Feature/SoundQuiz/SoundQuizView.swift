@@ -45,19 +45,8 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                         
                     }
                     .overlay {
-                        HStack(alignment: .bottom, spacing: -1) {
-                            Spacer()
-                                .overlay(alignment: .bottomTrailing) {
-                                    Text(viewModel.currentTimeSecond)
-                                        .font(.system(size: 18, weight: .bold, design: .monospaced))
-                                }
-                            Text(viewModel.currentTimeDecimal)
-                                .font(.system(size: 11, design: .monospaced))
-                            Spacer()
-                        }
-                        .foregroundColor(viewModel.isWarning ? .red : .init(uiColor: .label))
-                        .padding(.leading, 22)
-                        .padding(.top, 5.5)
+                        TimeSecondsView(viewModel.time)
+                            .foregroundColor(viewModel.isWarning ? .red : .init(uiColor: .label))
                     }
                     .padding(.vertical, 5)
                     
@@ -68,19 +57,19 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                         Grid(verticalSpacing: 4) {
                             GridRow {
                                 Image(systemName: "star.fill")
-                                    .foregroundColor(viewModel.achievement.star1 ? .yellow : .gray)
+                                    .foregroundColor(viewModel.lastRecord.star1 ? .yellow : .gray)
                                 Text(viewModel.star1Description)
                                     .font(.caption)
                             }
                             GridRow {
                                 Image(systemName: "star.fill")
-                                    .foregroundColor(viewModel.achievement.star2 ? .yellow : .gray)
+                                    .foregroundColor(viewModel.lastRecord.star2 ? .yellow : .gray)
                                 Text(viewModel.star2Description)
                                     .font(.caption)
                             }
                             GridRow {
                                 Image(systemName: "star.fill")
-                                    .foregroundColor(viewModel.achievement.star3 ? .yellow : .gray)
+                                    .foregroundColor(viewModel.lastRecord.star3 ? .yellow : .gray)
                                 Text(viewModel.star3Description)
                                     .font(.caption)
                             }
@@ -89,7 +78,7 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                                 Text("レコード")
                                     .font(.caption)
                                 
-                                Text(viewModel.achievement.record.map { String(format: "%.2f", $0) } ?? "--.--")
+                                Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
                                     .font(.caption)
                             }
                         }
@@ -119,23 +108,14 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
                     }
                     .opacity(viewModel.gameState == .playing ? 1 : 0.2)
                     .overlay {
-                        switch viewModel.getState(option) {
-                        case .correct:
-                            Image(systemName: "circle")
+                        if case let .selected(isCorrect) = viewModel.getState(option) {
+                            Image(systemName: isCorrect ? "circle" : "xmark")
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fill)
                                 .foregroundColor(.red)
                                 .padding()
                                 .shadow(color: .black.opacity(0.2), radius: 8)
-                        case .wrong:
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fill)
-                                .scaledToFill()
-                                .foregroundColor(.red)
-                                .padding()
-                                .shadow(color: .black.opacity(0.2), radius: 8)
-                        default:
+                        } else {
                             EmptyView()
                         }
                     }

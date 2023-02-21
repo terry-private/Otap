@@ -39,13 +39,13 @@ public extension  GameResult {
             self.isNewTimeRecord = isNewTimeRecord
         }
         
-        public init(oldAchievement: Achievement, newAchievement: Achievement) {
-            precondition(newAchievement.record != nil, "クリア結果にはクリアタイムが必須です。")
-            self.star1 = .init(before: oldAchievement.star1, after: newAchievement.star1)
-            self.star2 = .init(before: oldAchievement.star2, after: newAchievement.star2)
-            self.star3 = .init(before: oldAchievement.star3, after: newAchievement.star3)
-            self.time = newAchievement.record!
-            self.isNewTimeRecord = oldAchievement.record ?? .infinity > newAchievement.record!
+        public init(lastRecord: GameRecord, newRecord: GameRecord) {
+            precondition(newRecord.time != nil, "クリア結果にはクリアタイムが必須です。")
+            self.star1 = .init(before: lastRecord.star1, after: newRecord.star1)
+            self.star2 = .init(before: lastRecord.star2, after: newRecord.star2)
+            self.star3 = .init(before: lastRecord.star3, after: newRecord.star3)
+            self.time = newRecord.time!
+            self.isNewTimeRecord = lastRecord.time ?? .infinity > newRecord.time!
         }
     }
 }
