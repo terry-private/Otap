@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  VoiceQuizView.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/07.
@@ -10,7 +10,7 @@ import Core
 import Components
 import Extensions
 
-public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
+public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
     @Namespace var startButton
     public init(viewModel: ViewModel) {
@@ -230,7 +230,7 @@ public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
     }
 }
 
-private extension SoundQuizView {
+private extension VoiceQuizView {
     func resultView(result: GameResult) -> some View {
         VStack {
             Spacer()
@@ -303,13 +303,13 @@ private extension SoundQuizView {
 
 #if DEBUG
 import UseCase
-struct SoundQuizView_Previews: PreviewProvider {
-    typealias Quiz = SoundQuizDummy
+struct VoiceQuizView_Previews: PreviewProvider {
+    typealias Quiz = VoiceQuizDummy
     typealias SoundEffect = SoundEffectUseCaseDummy
-    typealias UseCase = SoundQuizUseCaseDummy
-    typealias ViewModel = SoundQuizViewModelImpl<Quiz, SoundEffect, UseCase>
+    typealias UseCase = VoiceQuizUseCaseDummy
+    typealias ViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     static var previews: some View {
-        SoundQuizView(
+        VoiceQuizView(
             viewModel: ViewModel(useCase: .init())
         )
     }

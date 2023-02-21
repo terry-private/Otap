@@ -8,11 +8,11 @@
 import Foundation
 import Core
 
-public enum ColorQuizCategory: SoundQuizCategory {
+public enum ColorQuizCategory: VoiceQuizCategory {
     public typealias Quiz = ColorQuiz
     case level1
     
-    public var generator: SoundQuizGenerator<Quiz> {
+    public var generator: VoiceQuizGenerator<Quiz> {
         switch self {
         case .level1:
             return .init(

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  VoiceQuizViewModel.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/20.
@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-public enum GameState<Option: SoundQuizOption>: Equatable {
+public enum GameState<Option: VoiceQuizOption>: Equatable {
     case ready
     case playing
     case verifying(Option)
@@ -32,8 +32,8 @@ public enum OptionState {
 }
 
 @MainActor
-public protocol SoundQuizViewModelProtocol<Quiz>: ObservableObject {
-    associatedtype Quiz: SoundQuiz
+public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
+    associatedtype Quiz: VoiceQuiz
     var gameState: GameState<Quiz.Option> { get }
     var currentQuiz: Quiz { get }
     var isWarning: Bool { get }

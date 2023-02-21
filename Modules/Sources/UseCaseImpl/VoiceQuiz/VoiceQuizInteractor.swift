@@ -1,5 +1,5 @@
 //
-//  SoundQuizInteractor.swift
+//  VoiceQuizInteractor.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/15.
@@ -10,7 +10,7 @@ import UseCase
 import Core
 import Repository
 
-public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: GameRecordRepository> {
+public final class VoiceQuizInteractor<Quiz: VoiceQuiz, Repository: GameRecordRepository> {
     // ------------------------------------------------
     // MARK: 🌎📦public stored properties
     // ------------------------------------------------
@@ -19,7 +19,7 @@ public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: GameRecordRe
     // ------------------------------------------------
     // MARK: 🚪📦private stored properties
     // ------------------------------------------------
-    private let generator: SoundQuizGenerator<Quiz>
+    private let generator: VoiceQuizGenerator<Quiz>
     private var quizzes: [Quiz]
     private var correctCount: Int = 0
     private var wrongCount: Int = 0
@@ -27,15 +27,15 @@ public final class SoundQuizInteractor<Quiz: SoundQuiz, Repository: GameRecordRe
     // ------------------------------------------------
     // MARK: init
     // ------------------------------------------------
-    public init(generator: SoundQuizGenerator<Quiz>, lastRecord: GameRecord) {
+    public init(generator: VoiceQuizGenerator<Quiz>, lastRecord: GameRecord) {
         self.generator = generator
         self.lastRecord = lastRecord
         quizzes = generator.quizzes()
     }
 }
 
-// MARK: - SoundQuizUseCase
-extension SoundQuizInteractor: SoundQuizUseCase {
+// MARK: - VoiceQuizUseCase
+extension VoiceQuizInteractor: VoiceQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🧮 computed properties
     // ------------------------------------------------

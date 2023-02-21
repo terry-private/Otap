@@ -1,5 +1,5 @@
 //
-//  SoundQuizUseCase.swift
+//  VoiceQuizUseCase.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/19.
@@ -8,8 +8,8 @@
 import Foundation
 import Core
 
-public protocol SoundQuizUseCase<Quiz> {
-    associatedtype Quiz: SoundQuiz
+public protocol VoiceQuizUseCase<Quiz> {
+    associatedtype Quiz: VoiceQuiz
     var lastRecord: GameRecord { get }
     var timeLimit: Double { get }
     var penalty: PenaltyType { get }
@@ -28,17 +28,17 @@ public protocol SoundQuizUseCase<Quiz> {
 
 // MARK: - Dummy!!
 #if DEBUG
-public final class SoundQuizUseCaseDummy: SoundQuizUseCase {
+public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
     private var quizzes: [Quiz] = [
         .init(options: Quiz.Option.allCases)
     ]
     private var correctCount: Int = 0
     private var wrongCount: Int = 0
-    public func nextQuiz() -> SoundQuizDummy {
+    public func nextQuiz() -> VoiceQuizDummy {
         quizzes[min(correctCount, quizzes.count - 1)]
     }
     
-    public typealias Quiz = SoundQuizDummy
+    public typealias Quiz = VoiceQuizDummy
     
     public var lastRecord: GameRecord
     

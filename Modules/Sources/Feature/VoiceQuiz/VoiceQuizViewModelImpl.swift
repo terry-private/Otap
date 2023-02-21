@@ -1,5 +1,5 @@
 //
-//  SoundQuizViewModelProtocol.swift
+//  VoiceQuizViewModelProtocol.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/08.
@@ -11,10 +11,10 @@ import SwiftUI
 import UseCase
 
 @MainActor
-public final class SoundQuizViewModelImpl<
-    Quiz: SoundQuiz,
+public final class VoiceQuizViewModelImpl<
+    Quiz: VoiceQuiz,
     SoundEffect: SoundEffectUseCase,
-    UseCase: SoundQuizUseCase<Quiz>
+    UseCase: VoiceQuizUseCase<Quiz>
 >: ObservableObject {
     // ------------------------------------------------
     // MARK: 🚪📦private properties
@@ -43,7 +43,7 @@ public final class SoundQuizViewModelImpl<
 }
 
 // MARK: - AudioQuizViewModelProtocol get only properties
-extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
+extension VoiceQuizViewModelImpl: VoiceQuizViewModelProtocol {
     public var star1Description: String { useCase.star1Description }
     public var star2Description: String { useCase.star2Description }
     public var star3Description: String { useCase.star3Description }
@@ -59,7 +59,7 @@ extension SoundQuizViewModelImpl: SoundQuizViewModelProtocol {
 }
 
 // MARK: - AudioQuizViewModelProtocol methods
-extension SoundQuizViewModelImpl {
+extension VoiceQuizViewModelImpl {
     public func start() {
         Task {
             timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
@@ -163,7 +163,7 @@ extension SoundQuizViewModelImpl {
 }
 
 // MARK: - 🚪🧮private methods
-private extension SoundQuizViewModelImpl {
+private extension VoiceQuizViewModelImpl {
     func startQuiz() {
         gameState = .playing
         speak()
