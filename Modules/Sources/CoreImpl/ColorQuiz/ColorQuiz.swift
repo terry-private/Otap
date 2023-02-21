@@ -5,6 +5,8 @@
 //  Created by 若江照仁 on 2023/01/14.
 //
 
+import Core
+
 public struct ColorQuiz: SoundQuiz {
     public static let title: String = "カラーゲーム"
     public var options: [ColorQuizOption]

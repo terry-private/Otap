@@ -1,20 +1,22 @@
 //
-//  File.swift
+//  ColorQuizCategory.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/16.
 //
 
 import Foundation
+import Core
 
-public enum ColorQuizLevels {
+public enum ColorQuizCategory: SoundQuizCategory {
     public typealias Quiz = ColorQuiz
     case level1
     
-    public var manager: SoundQuizLevelManager<Quiz> {
+    public var generator: SoundQuizGenerator<Quiz> {
         switch self {
         case .level1:
             return .init(
+                id: 0,
                 title: "レベル1",
                 quizzes: { (0..<10).map { ColorQuiz.random(by: [2, 4, 6, 9, 12][$0 % 5]) } },
                 timeLimit: 30,

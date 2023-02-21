@@ -9,22 +9,22 @@ import SwiftUI
 import Combine
 import Components
 import Feature
-import Core
-import UseCase
-import Repository
+import CoreImpl
+import UseCaseImpl
+import RepositoryImpl
 
 @main
 struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
             SoundQuizView(
-                viewModel: SoundQuizViewModel<
+                viewModel: SoundQuizViewModelImpl<
                     ColorQuiz,
                     SoundEffectInteractor,
-                    SoundQuizInteractor<ColorQuiz, SoundQuizRepositoryImpl>
+                    SoundQuizInteractor<ColorQuiz, RepositoryImpl>
                 >(
                     useCase: .init(
-                        levelManager: ColorQuizLevels.level1.manager,
+                        generator: ColorQuizCategory.level1.generator,
                         achievement: .init(
                             star1: false,
                             star2: false,

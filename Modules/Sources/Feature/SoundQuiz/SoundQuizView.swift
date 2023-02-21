@@ -7,10 +7,8 @@
 
 import SwiftUI
 import Core
-import UseCase
 import Components
 import Extensions
-import Repository
 
 public struct SoundQuizView<ViewModel: SoundQuizViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
@@ -286,7 +284,7 @@ private extension SoundQuizView {
                         
                         Text(String(format: "%.2f", viewModel.time))
                             .font(.headline)
-                            .addTextAnimationBadge(viewModel.isNewRecord)
+                            .addTextAnimationBadge(grades.isNewTimeRecord)
                     }
                 }
                 .padding(30)
@@ -308,7 +306,7 @@ private extension SoundQuizView {
         }
         .frame(maxWidth: .infinity)
         .background {
-            if viewModel.isNewRecord || result.hasFirst {
+            if result.hasFirst {
                 ConfettiView()
             }
         }
@@ -323,23 +321,17 @@ private extension SoundQuizView {
     }
 }
 
+#if DEBUG
+import UseCase
 struct SoundQuizView_Previews: PreviewProvider {
+    typealias Quiz = SoundQuizDummy
+    typealias SoundEffect = SoundEffectUseCaseDummy
+    typealias UseCase = SoundQuizUseCaseDummy
+    typealias ViewModel = SoundQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     static var previews: some View {
         SoundQuizView(
-            viewModel: SoundQuizViewModel<
-            ColorQuiz,
-            SoundEffectInteractor,
-            SoundQuizInteractor<ColorQuiz, SoundQuizRepositoryImpl>
-            >(
-                useCase: .init(
-                    levelManager: ColorQuizLevels.level1.manager,
-                    achievement: .init(
-                        star1: false,
-                        star2: false,
-                        star3: false
-                    )
-                )
-            )
+            viewModel: ViewModel(useCase: .init())
         )
     }
 }
+#endif

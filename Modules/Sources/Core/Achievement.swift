@@ -18,16 +18,14 @@ public struct Achievement {
         self.star2 = star2
         self.star3 = star3
     }
-    
 }
 
-// MARK: - ✉️
 public extension Achievement {
-    public mutating func merge(_ achievement: Self) {
+    mutating func merge(_ achievement: Self) {
         self = merged(achievement)
     }
     
-    public func merged(_ achievement: Self) -> Self {
+    func merged(_ achievement: Self) -> Self {
         let newRecord: Double?
         if self.record == nil && achievement.record == nil {
             newRecord = nil

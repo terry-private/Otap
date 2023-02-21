@@ -1,18 +1,12 @@
 //
-//  SoundEffectUseCaseProtocol.swift
+//  SoundEffectInteractor.swift
 //  
 //
-//  Created by 若江照仁 on 2023/01/14.
+//  Created by 若江照仁 on 2023/02/19.
 //
 
 import AVFoundation
-
-// MARK: - UseCaseProtocol
-public protocol SoundEffectUseCase {
-    static func playCorrect()
-    static func playWrong()
-    static func speak(_ words: String)
-}
+import UseCase
 
 // MARK: - Interactor
 public enum SoundEffectInteractor {

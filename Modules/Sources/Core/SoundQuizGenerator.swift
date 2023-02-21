@@ -14,14 +14,22 @@ public enum PenaltyType {
 
 public struct Star {
     public var description: String
+    
+    /// 達成判定ロジック: (クリア時間, 失敗数) -> 達成したかどうか
     public var isUnlock: (Double, Int) -> Bool
+    
+    /// 初期化
+    /// - Parameters:
+    ///   - description: 達成条件の説明文
+    ///   - isUnlock: 達成判定ロジック: (クリア時間, 失敗数) -> 達成したかどうか
     public init(description: String, isUnlock: @escaping (Double, Int) -> Bool) {
         self.description = description
         self.isUnlock = isUnlock
     }
 }
 
-public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
+public struct SoundQuizGenerator<Quiz: SoundQuiz>: Identifiable {
+    public var id: Int
     public var title: String
     public var quizzes: () -> [Quiz]
     public var timeLimit: Double
@@ -31,6 +39,7 @@ public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
     public var star3: Star
     
     public init(
+        id: Int,
         title: String,
         quizzes: @escaping () -> [Quiz],
         timeLimit: Double,
@@ -39,6 +48,7 @@ public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
         star2: Star,
         star3: Star
     ) {
+        self.id = id
         self.title = title
         self.quizzes = quizzes
         self.timeLimit = timeLimit
@@ -46,5 +56,14 @@ public struct SoundQuizLevelManager<Quiz: SoundQuiz> {
         self.star1 = star1
         self.star2 = star2
         self.star3 = star3
+    }
+}
+
+public extension SoundQuizGenerator {
+    func newAchievement(time: Double, wrongCount: Int) -> Achievement {
+        let star1 = star1.isUnlock(time, wrongCount)
+        let star2 = star2.isUnlock(time, wrongCount)
+        let star3 = star3.isUnlock(time, wrongCount)
+        return .init(record: time, star1: star1, star2: star2, star3: star3)
     }
 }
