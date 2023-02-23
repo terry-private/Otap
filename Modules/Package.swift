@@ -12,6 +12,7 @@ enum Modules: String, CaseIterable {
     case Data
     case Extensions
     case Feature
+    case FeatureImpl
     case Repository
     case RepositoryImpl
     case UseCase
@@ -44,6 +45,14 @@ enum Modules: String, CaseIterable {
             .UseCase,
             .UseCaseImpl
         ]
+        case .FeatureImpl: return [
+            .CoreImpl,
+            .Components,
+            .Extensions,
+            .Feature,
+            .UseCaseImpl,
+            .RepositoryImpl
+        ]
         case .Repository: return [
             .Core
         ]
@@ -69,6 +78,7 @@ enum Modules: String, CaseIterable {
         case .Data: return []
         case .Extensions: return []
         case .Feature: return []
+        case .FeatureImpl: return []
         case .Repository: return []
         case .RepositoryImpl: return []
         case .UseCase: return []

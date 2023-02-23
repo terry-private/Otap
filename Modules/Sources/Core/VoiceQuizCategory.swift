@@ -32,6 +32,7 @@ public enum VoiceQuizCategoryDummy: VoiceQuizCategory {
             return .init(
                 id: 0,
                 title: "レベル1",
+                requirements: "30秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in .random(by: 4) } },
                 timeLimit: 30,
                 penalty: .shuffle,
@@ -49,6 +50,7 @@ public enum VoiceQuizCategoryDummy: VoiceQuizCategory {
             return .init(
                 id: 1,
                 title: "レベル2",
+                requirements: "30秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in .random(by: 6) } },
                 timeLimit: 30,
                 penalty: .shuffle,

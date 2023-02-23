@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import Components
 import Feature
+import FeatureImpl
 import CoreImpl
 import UseCaseImpl
 import RepositoryImpl
@@ -33,7 +34,9 @@ struct OtapApp: App {
 //                    )
 //                )
 //            )
-            SelectCategoryView<ColorQuizCategory>()
+            NavigationStack {
+                SelectCategoryView<ColorQuizCategory>()
+            }
         }
     }
 }

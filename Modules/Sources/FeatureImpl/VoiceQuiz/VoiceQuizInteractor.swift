@@ -9,6 +9,7 @@ import Foundation
 import UseCase
 import Core
 import Repository
+import Feature
 
 public final class VoiceQuizInteractor<Quiz: VoiceQuiz, Repository: GameRecordRepository> {
     // ------------------------------------------------

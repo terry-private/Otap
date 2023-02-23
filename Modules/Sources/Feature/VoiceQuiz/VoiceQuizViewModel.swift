@@ -15,7 +15,7 @@ public enum GameState<Option: VoiceQuizOption>: Equatable {
     case penaltyTime
     case gameOver(GameResult)
     
-    var shouldStartQuiz: Bool {
+    public var shouldStartQuiz: Bool {
         switch self {
         case .verifying, .penaltyTime:
             return true
@@ -46,6 +46,7 @@ public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
     var timeLimit: Double { get }
     var quizProgress: Double { get }
     var ghostProgress: Double { get }
+    var dismiss: () -> Void { get }
     
     func start()
     func restart()

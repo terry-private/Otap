@@ -31,7 +31,9 @@ public struct Star {
 public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
     public var id: Int
     public var title: String
+    public var requirements: String
     public var quizzes: () -> [Quiz]
+    public var previewQuiz: Quiz
     public var timeLimit: Double
     public var penalty: PenaltyType
     public var star1: Star
@@ -41,6 +43,7 @@ public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
     public init(
         id: Int,
         title: String,
+        requirements: String,
         quizzes: @escaping () -> [Quiz],
         timeLimit: Double,
         penalty: PenaltyType,
@@ -50,7 +53,9 @@ public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
     ) {
         self.id = id
         self.title = title
+        self.requirements = requirements
         self.quizzes = quizzes
+        self.previewQuiz = quizzes().first!
         self.timeLimit = timeLimit
         self.penalty = penalty
         self.star1 = star1

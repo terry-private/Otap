@@ -8,6 +8,7 @@
 import SwiftUI
 import Core
 import Components
+import Feature
 import UseCaseImpl
 import RepositoryImpl
 
@@ -27,18 +28,24 @@ public struct SelectCategoryView<Category: VoiceQuizCategory>: View {
                         viewModel.selectedGenerator = generator
                     } label: {
                         HStack{
-                            SquareGrid(generator.quizzes().first!.options) { option in
+                            SquareGrid(generator.previewQuiz.options) { option in
                                 option.foregroundColor
                             }
                             .frame(width: 140, height: 140)
-                            VStack(alignment: .leading, spacing: 16) {
+                            VStack(alignment: .leading, spacing: 0) {
                                 Text(generator.title)
                                     .font(.title)
                                     .foregroundColor(.init(uiColor: .label))
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("条件: 60秒以内に10問正解")
+                                
+                                Spacer()
+                                
+                                Text("条件: \(generator.requirements)")
                                     .font(.caption)
                                     .foregroundColor(.init(uiColor: .secondaryLabel))
+                                
+                                Spacer()
+                                
                                 HStack {
                                     Image(systemName: "star.fill")
                                         .font(.system(size: 30))
@@ -80,7 +87,7 @@ public struct SelectCategoryView<Category: VoiceQuizCategory>: View {
             Color(uiColor: .secondarySystemBackground)
                 .ignoresSafeArea()
         }
-        .sheet(item: $viewModel.selectedGenerator) { generator in
+        .fullScreenCover(item: $viewModel.selectedGenerator) { generator in
             VoiceQuizView(
                 viewModel: VoiceQuizViewModelImpl<
                     Category.Quiz,
@@ -94,7 +101,7 @@ public struct SelectCategoryView<Category: VoiceQuizCategory>: View {
                             star2: false,
                             star3: false
                         )
-                    )
+                    ), dismiss: { viewModel.selectedGenerator = nil }
                 )
             )
         }

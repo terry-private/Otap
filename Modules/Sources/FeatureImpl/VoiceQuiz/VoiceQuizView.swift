@@ -9,6 +9,7 @@ import SwiftUI
 import Core
 import Components
 import Extensions
+import Feature
 
 public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
@@ -176,7 +177,7 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
             VStack {
                 HStack(spacing: 80) {
                     Button {
-                        
+                        viewModel.dismiss()
                     } label: {
                         Capsule()
                             .frame(width: 60, height: 30)
@@ -310,7 +311,7 @@ struct VoiceQuizView_Previews: PreviewProvider {
     typealias ViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     static var previews: some View {
         VoiceQuizView(
-            viewModel: ViewModel(useCase: .init())
+            viewModel: ViewModel(useCase: .init(), dismiss: {})
         )
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import Core
 import SwiftUI
 import UseCase
+import Feature
 
 @MainActor
 public final class VoiceQuizViewModelImpl<
@@ -32,12 +33,14 @@ public final class VoiceQuizViewModelImpl<
     @Published private(set) public var isWarning: Bool = false
     @Published private(set) public var isLoading: Bool = false
     @Published private(set) public var currentQuiz: Quiz
+    public let dismiss: () -> Void
     
     // ------------------------------------------------
     // MARK: init
     // ------------------------------------------------
-    public init(useCase: UseCase) {
+    public init(useCase: UseCase, dismiss: @escaping () -> Void) {
         self.useCase = useCase
+        self.dismiss = dismiss
         currentQuiz = useCase.nextQuiz()
         SoundEffect.readyAllPlayer() // TODO: いずれはAppDelegateなどアプリ起動後一度だけ処理する箇所で呼びたい
     }
