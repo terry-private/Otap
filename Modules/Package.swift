@@ -41,7 +41,8 @@ enum Modules: String, CaseIterable {
             .Core,
             .Components,
             .Extensions,
-            .UseCase
+            .UseCase,
+            .UseCaseImpl
         ]
         case .Repository: return [
             .Core
@@ -60,7 +61,7 @@ enum Modules: String, CaseIterable {
         ]
     }}
     
-    var resources: [String] {
+    var resources: [PackageDescription.Resource] {
         switch self {
         case .Components: return []
         case .Core: return []
@@ -72,8 +73,8 @@ enum Modules: String, CaseIterable {
         case .RepositoryImpl: return []
         case .UseCase: return []
         case .UseCaseImpl: return [
-            "./SoundEffect/Resources/correct.mp3",
-            "./SoundEffect/Resources/wrong.mp3"
+            .copy("./SoundEffect/Resources/correct.mp3"),
+            .copy("./SoundEffect/Resources/wrong.mp3")
         ]
     }}
 }
@@ -90,7 +91,7 @@ let package = Package(
         .target(
             name: $0.rawValue,
             dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) },
-            resources: $0.resources.map { str in .copy(str) }
+            resources: $0.resources.map { resource in return resource }
         )
     }
 )

@@ -73,7 +73,7 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
                     }
                 case 13:
                     VStack(spacing: spacing) {
-                        column(0, 1, 2, 3)
+                        row(0, 1, 2, 3)
                         HStack(spacing: centeringSpace) {
                             column(4, 5)
                             cell(elements[6])
@@ -175,9 +175,10 @@ struct SquareGrid_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("test")
-            SquareGrid(Tap.array(4)) { tap in
+            SquareGrid(Tap.array(9)) { tap in
                 Rectangle()
             }
+            .clipped()
         }
     }
 }

@@ -26,13 +26,17 @@ public extension VoiceQuiz {
 import SwiftUI
 public struct VoiceQuizDummy: VoiceQuiz {
     public enum DummyOption: String, VoiceQuizOption {
-        case red, blue, yellow, green
+        case red, blue, yellow, green, white, black, pink, purple
         public var foregroundColor: Color {
             switch self {
-            case .red: return .init(red: 1, green: 0, blue: 0)
-            case .blue: return .init(red: 0, green: 0, blue: 1)
-            case .green: return .init(red: 0, green: 0.5, blue: 0)
-            case .yellow: return .init(red: 1, green: 1, blue: 0)
+            case .red: return .red
+            case .blue: return .blue
+            case .green: return .green
+            case .yellow: return .yellow
+            case .white: return .white
+            case .black: return .black
+            case .pink: return .pink
+            case .purple: return .purple
             }
         }
         public var call: String {
@@ -41,6 +45,10 @@ public struct VoiceQuizDummy: VoiceQuiz {
             case .blue: return "あお"
             case .green: return "みどり"
             case .yellow: return "きいろ"
+            case .white: return "しろ"
+            case .black: return "くろ"
+            case .pink: return "ぴんく"
+            case .purple: return "むらさき"
             }
         }
         public var imageName: String? { nil }

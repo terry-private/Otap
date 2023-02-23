@@ -17,22 +17,23 @@ import RepositoryImpl
 struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
-            VoiceQuizView(
-                viewModel: VoiceQuizViewModelImpl<
-                    ColorQuiz,
-                    SoundEffectInteractor,
-                    VoiceQuizInteractor<ColorQuiz, RepositoryImpl>
-                >(
-                    useCase: .init(
-                        generator: ColorQuizCategory.level1.generator,
-                        lastRecord: .init(
-                            star1: false,
-                            star2: false,
-                            star3: false
-                        )
-                    )
-                )
-            )
+//            VoiceQuizView(
+//                viewModel: VoiceQuizViewModelImpl<
+//                    ColorQuiz,
+//                    SoundEffectInteractor,
+//                    VoiceQuizInteractor<ColorQuiz, RepositoryImpl>
+//                >(
+//                    useCase: .init(
+//                        generator: ColorQuizCategory.level1.generator,
+//                        lastRecord: .init(
+//                            star1: false,
+//                            star2: false,
+//                            star3: false
+//                        )
+//                    )
+//                )
+//            )
+            SelectCategoryView<ColorQuizCategory>()
         }
     }
 }
