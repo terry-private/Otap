@@ -12,11 +12,9 @@ enum Modules: String, CaseIterable {
     case Data
     case Extensions
     case Feature
-    case FeatureImpl
     case Repository
-    case RepositoryImpl
-    case UseCase
-    case UseCaseImpl
+    case Utility
+    case ViewFactoryImpl
     
     var dependencies: [Self] {
         switch self {
@@ -42,31 +40,19 @@ enum Modules: String, CaseIterable {
             .Core,
             .Components,
             .Extensions,
-            .UseCase,
-            .UseCaseImpl
-        ]
-        case .FeatureImpl: return [
-            .CoreImpl,
-            .Components,
-            .Extensions,
-            .Feature,
-            .UseCaseImpl,
-            .RepositoryImpl
+            .Repository,
+            .Utility,
         ]
         case .Repository: return [
             .Core
         ]
-        case .RepositoryImpl: return [
+        case .Utility: return []
+        case .ViewFactoryImpl: return [
             .Core,
-            .Data,
-            .Repository
-        ]
-        case .UseCase: return [
-            .Core
-        ]
-        case .UseCaseImpl: return [
-            .Core,
-            .UseCase
+            .Extensions,
+            .Feature,
+            .Repository,
+            .Utility
         ]
     }}
     
@@ -78,14 +64,12 @@ enum Modules: String, CaseIterable {
         case .Data: return []
         case .Extensions: return []
         case .Feature: return []
-        case .FeatureImpl: return []
         case .Repository: return []
-        case .RepositoryImpl: return []
-        case .UseCase: return []
-        case .UseCaseImpl: return [
+        case .Utility: return [
             .copy("./SoundEffect/Resources/correct.mp3"),
             .copy("./SoundEffect/Resources/wrong.mp3")
         ]
+        case .ViewFactoryImpl: return []
     }}
 }
 

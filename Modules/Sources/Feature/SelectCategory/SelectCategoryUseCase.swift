@@ -7,7 +7,14 @@
 
 import Foundation
 import Core
+import Repository
 
 public protocol SelectCategoryUseCase {
     static func fetchGameRecord(id: Int) async throws -> GameRecord?
+}
+
+public enum SelectCategoryInteractor<Repository: GameRecordRepository>: SelectCategoryUseCase {
+    public static func fetchGameRecord(id: Int) async throws -> GameRecord? {
+        try await Repository.fetchGameRecord(generatorID: id)
+    }
 }

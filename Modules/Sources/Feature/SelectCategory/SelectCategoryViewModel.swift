@@ -9,7 +9,7 @@ import Foundation
 import Core
 
 @MainActor
-public protocol SelectCategoryViewModelProtocol: ObservableObject {
+public protocol SelectCategoryViewModelProtocol<Quiz>: ObservableObject {
     associatedtype Quiz: VoiceQuiz
     var generators: [VoiceQuizGenerator<Quiz>] { get }
     var gameRecords: [Int: GameRecord] { get }
@@ -18,6 +18,30 @@ public protocol SelectCategoryViewModelProtocol: ObservableObject {
     func dismissGame()
     func refresh() async throws
 }
+
+@MainActor
+public final class SelectCategoryViewModelImpl<Category: VoiceQuizCategory, UseCase: SelectCategoryUseCase>: ObservableObject, SelectCategoryViewModelProtocol {
+    @Published public var generators: [VoiceQuizGenerator<Category.Quiz>] = Category.allCases.map { $0.generator }
+    @Published public var gameRecords: [Int: GameRecord] = [:]
+    @Published public var selectedGenerator: VoiceQuizGenerator<Category.Quiz>? = nil
+    public init() {
+        Task {
+            try await refresh()
+        }
+    }
+    public func selectGenerator(generator: VoiceQuizGenerator<Category.Quiz>?) {
+        selectedGenerator = generator
+    }
+    public func dismissGame() {
+        selectedGenerator = nil
+    }
+    public func refresh() async throws {
+        for generator in generators {
+            gameRecords[generator.id] = try await UseCase.fetchGameRecord(id: generator.id)
+        }
+    }
+}
+
 
 #if DEBUG
 @MainActor

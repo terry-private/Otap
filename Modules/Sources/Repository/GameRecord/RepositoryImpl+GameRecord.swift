@@ -8,7 +8,6 @@
 import Foundation
 import Core
 import Data
-import Repository
 
 extension RepositoryImpl: GameRecordRepository {    
     public static func fetchGameRecord(generatorID: Int) async throws -> GameRecord? {

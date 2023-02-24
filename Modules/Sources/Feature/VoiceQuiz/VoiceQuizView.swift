@@ -9,7 +9,6 @@ import SwiftUI
 import Core
 import Components
 import Extensions
-import Feature
 
 public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
@@ -303,7 +302,7 @@ private extension VoiceQuizView {
 }
 
 #if DEBUG
-import UseCase
+import Utility
 struct VoiceQuizView_Previews: PreviewProvider {
     typealias Quiz = VoiceQuizDummy
     typealias SoundEffect = SoundEffectUseCaseDummy

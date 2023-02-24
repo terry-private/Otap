@@ -8,18 +8,17 @@
 import SwiftUI
 import Core
 import Components
-import Feature
 
-// TODO: 依存したくない
-import UseCaseImpl
-import RepositoryImpl
-import Repository
-
-public struct SelectCategoryView<ViewModel: SelectCategoryViewModelProtocol>: View {
-    @StateObject var viewModel: ViewModel
+public struct SelectCategoryView<Factory: SelectCategoryViewFactoryProtocol>: View {
+    public typealias Quiz = Factory.Quiz
+    public typealias ViewModel = Factory.SelectCategoryViewModel
+    
+    @StateObject private var viewModel: ViewModel
+    
     public init(viewModel: ViewModel) {
         self._viewModel = .init(wrappedValue: viewModel)
     }
+    
     public var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
@@ -106,18 +105,12 @@ public struct SelectCategoryView<ViewModel: SelectCategoryViewModelProtocol>: Vi
                 }
             }
         ) { generator in
-            VoiceQuizView(
-                viewModel: VoiceQuizViewModelImpl<
-                ViewModel.Quiz,
-                SoundEffectInteractor,
-                VoiceQuizInteractor<ViewModel.Quiz, RepositoryImpl>
-                >(
-                    useCase: .init(
-                        generator: generator,
-                        lastRecord: viewModel.gameRecords[generator.id]! // force unwrap: タップできるならレコードがある前提
-                    ), dismiss: { viewModel.dismissGame() }
-                )
-            )
+            Factory.voiceQuizView(
+                generator: generator,
+                lastRecord: viewModel.gameRecords[generator.id]! // force unwrap: タップできるならレコードがある前提,
+            ) {
+                viewModel.dismissGame()
+            }
         }
     }
 }
@@ -125,7 +118,7 @@ public struct SelectCategoryView<ViewModel: SelectCategoryViewModelProtocol>: Vi
 #if DEBUG
 struct SelectCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCategoryView<SelectCategoryViewModelDummy>(viewModel: .init())
+        SelectCategoryView<SelectCategoryViewFactoryDummy>(viewModel: .init())
     }
 }
 #endif
