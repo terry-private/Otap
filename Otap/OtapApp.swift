@@ -35,7 +35,7 @@ struct OtapApp: App {
 //                )
 //            )
             NavigationStack {
-                SelectCategoryView<ColorQuizCategory>()
+                SelectCategoryView<SelectCategoryViewModel<ColorQuizCategory, SelectCategoryInteractor<RepositoryImpl>>>(viewModel: .init())
             }
         }
     }

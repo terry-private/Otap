@@ -31,6 +31,7 @@ public enum VoiceQuizCategoryDummy: VoiceQuizCategory {
         case .level1:
             return .init(
                 id: 0,
+                nextID: 1,
                 title: "レベル1",
                 requirements: "30秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in .random(by: 4) } },
@@ -49,6 +50,7 @@ public enum VoiceQuizCategoryDummy: VoiceQuizCategory {
         case .level2:
             return .init(
                 id: 1,
+                nextID: nil,
                 title: "レベル2",
                 requirements: "30秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in .random(by: 6) } },

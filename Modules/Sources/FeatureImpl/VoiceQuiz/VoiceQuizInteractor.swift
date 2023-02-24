@@ -73,9 +73,14 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
         if correctCount == quizCount {
             let newRecord = generator.newRecord(time: time, wrongCount: wrongCount)
             Task.detached {
+                // save
                 try await Repository.updateGameRecord(
-                    self.lastRecord.merged(newRecord)
+                    generatorID: self.generator.id, gameRecord: self.lastRecord.merged(newRecord)
                 )
+                // open next if needed
+                if let nextID = self.generator.nextID, try await Repository.fetchGameRecord(generatorID: nextID) == nil {
+                    try await Repository.updateGameRecord(generatorID: nextID, gameRecord: .init(star1: false, star2: false, star3: false))
+                }
             }
             return .success(.init(lastRecord: lastRecord, newRecord: newRecord))
         } else if time >= generator.timeLimit {
@@ -86,7 +91,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
     }
     
     public func refresh() async throws {
-        lastRecord = try await Repository.fetchGameRecord()
+        lastRecord = try await Repository.fetchGameRecord(generatorID: generator.id) ?? .init(star1: false, star2: false, star3: false)
         quizzes = generator.quizzes()
         correctCount = 0
         wrongCount = 0

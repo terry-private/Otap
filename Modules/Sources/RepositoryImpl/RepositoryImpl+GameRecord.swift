@@ -10,11 +10,11 @@ import Core
 import Data
 import Repository
 
-extension RepositoryImpl: GameRecordRepository {
-    public static func fetchGameRecord() async throws -> GameRecord {
-        await LocaleCache.shared.record
+extension RepositoryImpl: GameRecordRepository {    
+    public static func fetchGameRecord(generatorID: Int) async throws -> GameRecord? {
+        await LocaleCache.shared.records[generatorID]
     }
-    public static func updateGameRecord(_ gameRecord: GameRecord) async throws {
-        await LocaleCache.shared.update(gameRecord)
+    public static func updateGameRecord(generatorID: Int, gameRecord: Core.GameRecord) async throws {
+        await LocaleCache.shared.update(id: generatorID, gameRecord)
     }
 }

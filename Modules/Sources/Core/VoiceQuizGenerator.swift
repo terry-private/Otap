@@ -30,6 +30,7 @@ public struct Star {
 
 public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
     public var id: Int
+    public var nextID: Int?
     public var title: String
     public var requirements: String
     public var quizzes: () -> [Quiz]
@@ -42,6 +43,7 @@ public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
     
     public init(
         id: Int,
+        nextID: Int?,
         title: String,
         requirements: String,
         quizzes: @escaping () -> [Quiz],
@@ -52,6 +54,7 @@ public struct VoiceQuizGenerator<Quiz: VoiceQuiz>: Identifiable {
         star3: Star
     ) {
         self.id = id
+        self.nextID = nextID
         self.title = title
         self.requirements = requirements
         self.quizzes = quizzes
