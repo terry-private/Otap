@@ -1,5 +1,5 @@
 //
-//  SelectCategoryView.swift
+//  SelectLevelView.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/22.
@@ -9,9 +9,9 @@ import SwiftUI
 import Core
 import Components
 
-public struct SelectCategoryView<Factory: SelectCategoryViewFactoryProtocol>: View {
+public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol>: View {
     public typealias Quiz = Factory.Quiz
-    public typealias ViewModel = Factory.SelectCategoryViewModel
+    public typealias ViewModel = Factory.SelectLevelViewModel
     
     @StateObject private var viewModel: ViewModel
     
@@ -116,9 +116,9 @@ public struct SelectCategoryView<Factory: SelectCategoryViewFactoryProtocol>: Vi
 }
 
 #if DEBUG
-struct SelectCategoryView_Previews: PreviewProvider {
+struct SelectLevelView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCategoryView<SelectCategoryViewFactoryDummy>(viewModel: .init())
+        SelectLevelView<SelectLevelViewFactoryDummy>(viewModel: .init())
     }
 }
 #endif

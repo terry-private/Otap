@@ -1,5 +1,5 @@
 //
-//  ColorQuizCategory.swift
+//  ColorQuizLevelSelector.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/16.
@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-public enum ColorQuizCategory: VoiceQuizCategory {
+public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
     public typealias Quiz = ColorQuiz
     case level1
     case level2

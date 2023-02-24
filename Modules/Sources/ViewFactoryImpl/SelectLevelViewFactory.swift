@@ -1,5 +1,5 @@
 //
-//  SelectCategoryViewFactory.swift
+//  SelectLevelViewFactory.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/24.
@@ -11,9 +11,9 @@ import Feature
 import Repository
 import Utility
 
-public enum SelectCategoryViewFactoryImpl<Category: VoiceQuizCategory>: SelectCategoryViewFactoryProtocol {
-    public typealias Quiz = Category.Quiz
-    public typealias SelectCategoryViewModel = SelectCategoryViewModelImpl<Category, SelectCategoryInteractor<RepositoryImpl>>
+public enum SelectLevelViewFactoryImpl<LevelSelector: VoiceQuizLevelSelector>: SelectLevelViewFactoryProtocol {
+    public typealias Quiz = LevelSelector.Quiz
+    public typealias SelectLevelViewModel = SelectLevelViewModelImpl<LevelSelector, SelectLevelInteractor<RepositoryImpl>>
     public typealias VoiceQuizViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffectInteractor, VoiceQuizInteractor<Quiz, RepositoryImpl>>
     
     @MainActor

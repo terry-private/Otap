@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SelectLevelViewModel.swift
 //  
 //
 //  Created by 若江照仁 on 2023/02/24.
@@ -9,7 +9,7 @@ import Foundation
 import Core
 
 @MainActor
-public protocol SelectCategoryViewModelProtocol<Quiz>: ObservableObject {
+public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
     associatedtype Quiz: VoiceQuiz
     var generators: [VoiceQuizGenerator<Quiz>] { get }
     var gameRecords: [Int: GameRecord] { get }
@@ -20,16 +20,16 @@ public protocol SelectCategoryViewModelProtocol<Quiz>: ObservableObject {
 }
 
 @MainActor
-public final class SelectCategoryViewModelImpl<Category: VoiceQuizCategory, UseCase: SelectCategoryUseCase>: ObservableObject, SelectCategoryViewModelProtocol {
-    @Published public var generators: [VoiceQuizGenerator<Category.Quiz>] = Category.allCases.map { $0.generator }
+public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelector, UseCase: SelectLevelUseCase>: ObservableObject, SelectLevelViewModelProtocol {
+    @Published public var generators: [VoiceQuizGenerator<LevelSelector.Quiz>] = LevelSelector.allCases.map { $0.generator }
     @Published public var gameRecords: [Int: GameRecord] = [:]
-    @Published public var selectedGenerator: VoiceQuizGenerator<Category.Quiz>? = nil
+    @Published public var selectedGenerator: VoiceQuizGenerator<LevelSelector.Quiz>? = nil
     public init() {
         Task {
             try await refresh()
         }
     }
-    public func selectGenerator(generator: VoiceQuizGenerator<Category.Quiz>?) {
+    public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) {
         selectedGenerator = generator
     }
     public func dismissGame() {
@@ -45,10 +45,10 @@ public final class SelectCategoryViewModelImpl<Category: VoiceQuizCategory, UseC
 
 #if DEBUG
 @MainActor
-public final class SelectCategoryViewModelDummy: ObservableObject, SelectCategoryViewModelProtocol {
+public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewModelProtocol {
     public typealias Quiz = VoiceQuizDummy
     
-    public var generators: [VoiceQuizGenerator<VoiceQuizDummy>] = VoiceQuizCategoryDummy.allCases.map { $0.generator }
+    public var generators: [VoiceQuizGenerator<VoiceQuizDummy>] = VoiceQuizLevelSelectorDummy.allCases.map { $0.generator }
     public var gameRecords: [Int : GameRecord] = [:]
     
     public var selectedGenerator: VoiceQuizGenerator<VoiceQuizDummy>? = nil

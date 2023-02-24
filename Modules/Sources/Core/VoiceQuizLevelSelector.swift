@@ -7,20 +7,20 @@
 
 import Foundation
 
-public protocol VoiceQuizCategory: Hashable, Identifiable, CaseIterable {
+public protocol VoiceQuizLevelSelector: Hashable, Identifiable, CaseIterable {
     associatedtype Quiz: VoiceQuiz
     
     var generator: VoiceQuizGenerator<Quiz> { get }
 }
 
-public extension VoiceQuizCategory {
+public extension VoiceQuizLevelSelector {
     var id: VoiceQuizGenerator<Quiz>.ID {
         generator.id
     }
 }
 
 #if DEBUG
-public enum VoiceQuizCategoryDummy: VoiceQuizCategory {
+public enum VoiceQuizLevelSelectorDummy: VoiceQuizLevelSelector {
     public typealias Quiz = VoiceQuizDummy
     
     case level1

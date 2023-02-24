@@ -10,20 +10,20 @@ import Core
 import Utility
 import Repository
 
-public protocol SelectCategoryViewFactoryProtocol<Quiz> {
+public protocol SelectLevelViewFactoryProtocol<Quiz> {
     associatedtype Quiz: VoiceQuiz
-    associatedtype SelectCategoryViewModel: SelectCategoryViewModelProtocol<Quiz>
+    associatedtype SelectLevelViewModel: SelectLevelViewModelProtocol<Quiz>
     associatedtype VoiceQuizViewModel: VoiceQuizViewModelProtocol<Quiz>
     
     static func voiceQuizView(generator: VoiceQuizGenerator<Quiz>, lastRecord: GameRecord, dismiss: @escaping () -> Void) -> VoiceQuizView<VoiceQuizViewModel>
 }
 
 #if DEBUG
-public enum SelectCategoryViewFactoryDummy: SelectCategoryViewFactoryProtocol {
+public enum SelectLevelViewFactoryDummy: SelectLevelViewFactoryProtocol {
     public typealias Quiz = VoiceQuizDummy
     public typealias SoundEffect = SoundEffectUseCaseDummy
     public typealias UseCase = VoiceQuizUseCaseDummy
-    public typealias SelectCategoryViewModel = SelectCategoryViewModelDummy
+    public typealias SelectLevelViewModel = SelectLevelViewModelDummy
     public typealias VoiceQuizViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     
     @MainActor
