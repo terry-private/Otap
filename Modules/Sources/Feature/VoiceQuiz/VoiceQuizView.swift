@@ -98,13 +98,7 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                     Button {
                         viewModel.optionTapped(option)
                     } label: {
-                        Rectangle()
-                            .fill(option.foregroundColor.gradient)
-                            .overlay {
-                                if let imageName = option.imageName {
-                                    Image(imageName)
-                                }
-                            }
+                        option.viewType.view()
                     }
                     .opacity(viewModel.gameState == .playing ? 1 : 0.2)
                     .overlay {

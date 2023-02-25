@@ -25,21 +25,10 @@ public enum ColorQuizOption: String {
 }
 
 extension ColorQuizOption: VoiceQuizOption {
-    public var foregroundColor: Color {
-        switch self {
-        case .red: return .init(red: 1, green: 0, blue: 0)
-        case .pink: return .init(hex: "FF7FBF")
-        case .blue: return .init(red: 0, green: 0, blue: 1)
-        case .lightBlue: return .init(red: 0, green: 1, blue: 1)
-        case .green: return .init(red: 0, green: 0.5, blue: 0)
-        case .yellow: return .init(red: 1, green: 1, blue: 0)
-        case .purple: return .init(red: 0.5, green: 0, blue: 0.5)
-        case .orange: return .init(hex: "FF8020")
-        case .brown: return .init(hex: "8B4513")
-        case .white: return .init(hex: "FFFFFF")
-        case .gray: return .init(red: 0.5, green: 0.5, blue: 0.5)
-        case .black: return .init(red: 0, green: 0, blue: 0)
-        }
+    public var id: Self { self }
+    
+    public var viewType: Core.OptionViewType {
+        .color(foregroundColor)
     }
     
     public var call: String {
@@ -58,8 +47,24 @@ extension ColorQuizOption: VoiceQuizOption {
         case .black: return "くろ"
         }
     }
+}
+ 
+private extension ColorQuizOption {
+    var foregroundColor: Color {
+        switch self {
+        case .red: return .init(red: 1, green: 0, blue: 0)
+        case .pink: return .init(hex: "FF7FBF")
+        case .blue: return .init(red: 0, green: 0, blue: 1)
+        case .lightBlue: return .init(red: 0, green: 1, blue: 1)
+        case .green: return .init(red: 0, green: 0.5, blue: 0)
+        case .yellow: return .init(red: 1, green: 1, blue: 0)
+        case .purple: return .init(red: 0.5, green: 0, blue: 0.5)
+        case .orange: return .init(hex: "FF8020")
+        case .brown: return .init(hex: "8B4513")
+        case .white: return .init(hex: "FFFFFF")
+        case .gray: return .init(red: 0.5, green: 0.5, blue: 0.5)
+        case .black: return .init(red: 0, green: 0, blue: 0)
+        }
+    }
     
-    public var imageName: String? { nil }
-    
-    public var id: Self { self }
 }

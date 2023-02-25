@@ -29,7 +29,7 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol>: View {
                         } label: {
                             HStack{
                                 SquareGrid(generator.previewQuiz.options) { option in
-                                    option.foregroundColor
+                                    option.viewType.view()
                                 }
                                 .frame(width: 140, height: 140)
                                 VStack(alignment: .leading, spacing: 0) {

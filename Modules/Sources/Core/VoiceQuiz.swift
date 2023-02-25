@@ -24,9 +24,16 @@ public extension VoiceQuiz {
 
 #if DEBUG
 import SwiftUI
+import Extensions
+
 public struct VoiceQuizDummy: VoiceQuiz {
     public enum DummyOption: String, VoiceQuizOption {
         case red, blue, yellow, green, white, black, pink, purple
+        
+        public var viewType: OptionViewType {
+            .color(foregroundColor)
+        }
+        
         public var foregroundColor: Color {
             switch self {
             case .red: return .red
@@ -39,6 +46,7 @@ public struct VoiceQuizDummy: VoiceQuiz {
             case .purple: return .purple
             }
         }
+        
         public var call: String {
             switch self {
             case .red: return "あか"
@@ -51,7 +59,6 @@ public struct VoiceQuizDummy: VoiceQuiz {
             case .purple: return "むらさき"
             }
         }
-        public var imageName: String? { nil }
         
         public var id: Self { self }
     }
