@@ -11,9 +11,9 @@ public final actor LocaleCache {
     private init() {}
     public static var shared: LocaleCache = .init()
     
-    public var record: GameRecord = .init(star1: false, star2: false, star3: false)
+    public var records: [Int: GameRecord] = [0: .init(star1: false, star2: false, star3: false)]
     
-    public func update(_ gameRecord: GameRecord) {
-        self.record.merge(gameRecord)
+    public func update(id: Int, _ gameRecord: GameRecord) {
+        records[id, default: .init(star1: false, star2: false, star3: false)].merge(gameRecord)
     }
 }

@@ -13,9 +13,8 @@ enum Modules: String, CaseIterable {
     case Extensions
     case Feature
     case Repository
-    case RepositoryImpl
-    case UseCase
-    case UseCaseImpl
+    case Utility
+    case ViewFactoryImpl
     
     var dependencies: [Self] {
         switch self {
@@ -41,26 +40,23 @@ enum Modules: String, CaseIterable {
             .Core,
             .Components,
             .Extensions,
-            .UseCase
+            .Repository,
+            .Utility,
         ]
         case .Repository: return [
             .Core
         ]
-        case .RepositoryImpl: return [
+        case .Utility: return []
+        case .ViewFactoryImpl: return [
             .Core,
-            .Data,
-            .Repository
-        ]
-        case .UseCase: return [
-            .Core
-        ]
-        case .UseCaseImpl: return [
-            .Core,
-            .UseCase
+            .Extensions,
+            .Feature,
+            .Repository,
+            .Utility
         ]
     }}
     
-    var resources: [String] {
+    var resources: [PackageDescription.Resource] {
         switch self {
         case .Components: return []
         case .Core: return []
@@ -69,12 +65,11 @@ enum Modules: String, CaseIterable {
         case .Extensions: return []
         case .Feature: return []
         case .Repository: return []
-        case .RepositoryImpl: return []
-        case .UseCase: return []
-        case .UseCaseImpl: return [
-            "./SoundEffect/Resources/correct.mp3",
-            "./SoundEffect/Resources/wrong.mp3"
+        case .Utility: return [
+            .copy("./SoundEffect/Resources/correct.mp3"),
+            .copy("./SoundEffect/Resources/wrong.mp3")
         ]
+        case .ViewFactoryImpl: return []
     }}
 }
 
@@ -90,7 +85,7 @@ let package = Package(
         .target(
             name: $0.rawValue,
             dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) },
-            resources: $0.resources.map { str in .copy(str) }
+            resources: $0.resources.map { resource in return resource }
         )
     }
 )

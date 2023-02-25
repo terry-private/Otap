@@ -98,13 +98,7 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                     Button {
                         viewModel.optionTapped(option)
                     } label: {
-                        Rectangle()
-                            .fill(option.foregroundColor.gradient)
-                            .overlay {
-                                if let imageName = option.imageName {
-                                    Image(imageName)
-                                }
-                            }
+                        option.viewType.view()
                     }
                     .opacity(viewModel.gameState == .playing ? 1 : 0.2)
                     .overlay {
@@ -176,7 +170,7 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
             VStack {
                 HStack(spacing: 80) {
                     Button {
-                        
+                        viewModel.dismiss()
                     } label: {
                         Capsule()
                             .frame(width: 60, height: 30)
@@ -302,7 +296,7 @@ private extension VoiceQuizView {
 }
 
 #if DEBUG
-import UseCase
+import Utility
 struct VoiceQuizView_Previews: PreviewProvider {
     typealias Quiz = VoiceQuizDummy
     typealias SoundEffect = SoundEffectUseCaseDummy
@@ -310,7 +304,7 @@ struct VoiceQuizView_Previews: PreviewProvider {
     typealias ViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffect, UseCase>
     static var previews: some View {
         VoiceQuizView(
-            viewModel: ViewModel(useCase: .init())
+            viewModel: ViewModel(useCase: .init(), dismiss: {})
         )
     }
 }

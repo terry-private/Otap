@@ -6,33 +6,17 @@
 //
 
 import SwiftUI
-import Combine
-import Components
-import Feature
+import ViewFactoryImpl
 import CoreImpl
-import UseCaseImpl
-import RepositoryImpl
+import Feature
 
 @main
 struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
-            VoiceQuizView(
-                viewModel: VoiceQuizViewModelImpl<
-                    ColorQuiz,
-                    SoundEffectInteractor,
-                    VoiceQuizInteractor<ColorQuiz, RepositoryImpl>
-                >(
-                    useCase: .init(
-                        generator: ColorQuizCategory.level1.generator,
-                        lastRecord: .init(
-                            star1: false,
-                            star2: false,
-                            star3: false
-                        )
-                    )
-                )
-            )
+            NavigationStack {
+                SelectLevelView<SelectLevelViewFactoryImpl<ColorQuizLevelSelector>>(viewModel: .init())
+            }
         }
     }
 }

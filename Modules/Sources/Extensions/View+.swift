@@ -39,4 +39,8 @@ public extension View {
     func layoutLikeSpacer() -> some View {
         modifier(OnSpacer())
     }
+    
+    func toAnyView() -> AnyView {
+        AnyView(self)
+    }
 }
