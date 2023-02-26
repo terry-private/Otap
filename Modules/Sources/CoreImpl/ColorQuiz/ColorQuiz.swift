@@ -8,7 +8,7 @@
 import Core
 
 public struct ColorQuiz: VoiceQuiz {
-    public static let title: String = "カラーゲーム"
+    public static let title: String = "カラークイズ"
     public var options: [ColorQuizOption]
     public let answer: ColorQuizOption
     
