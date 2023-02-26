@@ -30,10 +30,12 @@ public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelecto
         }
     }
     public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) {
-        selectedGenerator = generator
+        Task {
+            selectedGenerator = generator
+        }
     }
     public func dismissGame() {
-        selectedGenerator = nil
+        selectGenerator(generator: nil)
     }
     public func refresh() async throws {
         for generator in generators {
@@ -55,7 +57,7 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
     
     public init() {
         gameRecords = generators.reduce(into: [:]) { records, generator in
-            records[generator.id] = .init(star1: false, star2: false, star3: false)
+            records[generator.id] = .init()
         }
     }
     

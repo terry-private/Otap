@@ -173,7 +173,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
                 )
                 // open next if needed
                 if let nextID = self.generator.nextID, try await Repository.fetchGameRecord(generatorID: nextID) == nil {
-                    try await Repository.updateGameRecord(generatorID: nextID, gameRecord: .init(star1: false, star2: false, star3: false))
+                    try await Repository.updateGameRecord(generatorID: nextID, gameRecord: .init())
                 }
             }
             return .success(.init(lastRecord: lastRecord, newRecord: newRecord))
@@ -185,7 +185,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
     }
     
     public func refresh() async throws {
-        lastRecord = try await Repository.fetchGameRecord(generatorID: generator.id) ?? .init(star1: false, star2: false, star3: false)
+        lastRecord = try await Repository.fetchGameRecord(generatorID: generator.id) ?? .init()
         quizzes = generator.quizzes()
         correctCount = 0
         wrongCount = 0

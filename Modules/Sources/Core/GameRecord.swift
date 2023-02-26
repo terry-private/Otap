@@ -12,7 +12,7 @@ public struct GameRecord {
     public var star1: Bool
     public var star2: Bool
     public var star3: Bool
-    public init(time: Double? = nil, star1: Bool, star2: Bool, star3: Bool) {
+    public init(time: Double? = nil, star1: Bool = false, star2: Bool = false, star3: Bool = false) {
         self.time = time
         self.star1 = star1
         self.star2 = star2

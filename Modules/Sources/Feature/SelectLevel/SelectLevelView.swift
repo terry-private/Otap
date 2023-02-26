@@ -34,7 +34,9 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol>: View {
                                 .frame(width: 140, height: 140)
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(generator.title)
-                                        .font(.title)
+                                        .font(.title3)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.6)
                                         .foregroundColor(.init(uiColor: .label))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                     
@@ -58,13 +60,15 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol>: View {
                                             .foregroundColor(gameRecord.star3 ? .yellow : .gray)
                                     }
                                 }
-                                .padding(.vertical, 12)
+                                .padding(.vertical, 20)
                                 .overlay(alignment: .topTrailing) {
                                     HStack(spacing: 8) {
-                                        CrownImage()
-                                            .frame(width: 16, height: 12)
-                                        Text("\(gameRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")")
-                                            .font(.caption)
+                                        if let time = gameRecord.time {
+                                            CrownImage()
+                                                .frame(width: 16, height: 12)
+                                            Text("\(String(format: "%.2f", time))")
+                                                .font(.caption)
+                                        }
                                         
                                     }
                                     .foregroundColor(.pink)

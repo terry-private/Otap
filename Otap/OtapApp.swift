@@ -15,7 +15,8 @@ struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                SelectLevelView<SelectLevelViewFactoryImpl<ColorQuizLevelSelector>>(viewModel: .init())
+//                SelectLevelView<SelectLevelViewFactoryImpl<ColorQuizLevelSelector>>(viewModel: .init())
+                SelectLevelView<SelectLevelViewFactoryImpl<AnimalQuizLevelSelector>>(viewModel: .init())
             }
         }
     }
