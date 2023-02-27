@@ -12,7 +12,7 @@ import Core
 public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
     associatedtype Quiz: VoiceQuiz
     var generators: [VoiceQuizGenerator<Quiz>] { get }
-    var gameRecords: [Int: GameRecord] { get }
+    var gameRecords: [LevelSelectorID: GameRecord] { get }
     var selectedGenerator: VoiceQuizGenerator<Quiz>? { get }
     func selectGenerator(generator: VoiceQuizGenerator<Quiz>?)
     func dismissGame()
@@ -21,8 +21,8 @@ public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
 
 @MainActor
 public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelector, UseCase: SelectLevelUseCase>: ObservableObject, SelectLevelViewModelProtocol {
-    @Published public var generators: [VoiceQuizGenerator<LevelSelector.Quiz>] = LevelSelector.allCases.map { $0.generator }
-    @Published public var gameRecords: [Int: GameRecord] = [:]
+    public let generators: [VoiceQuizGenerator<LevelSelector.Quiz>] = LevelSelector.allCases.map { $0.generator }
+    @Published public var gameRecords: [LevelSelectorID: GameRecord] = [:]
     @Published public var selectedGenerator: VoiceQuizGenerator<LevelSelector.Quiz>? = nil
     public init() {
         Task {
@@ -51,7 +51,7 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
     public typealias Quiz = VoiceQuizDummy
     
     public var generators: [VoiceQuizGenerator<VoiceQuizDummy>] = VoiceQuizLevelSelectorDummy.allCases.map { $0.generator }
-    public var gameRecords: [Int : GameRecord] = [:]
+    public var gameRecords: [LevelSelectorID : GameRecord] = [:]
     
     public var selectedGenerator: VoiceQuizGenerator<VoiceQuizDummy>? = nil
     
