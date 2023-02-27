@@ -6,7 +6,6 @@
 //
 
 import AVFoundation
-import UseCase
 
 // MARK: - Interactor
 public enum SoundEffectInteractor {

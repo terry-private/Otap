@@ -29,8 +29,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
         switch self {
         case .funny1:
             return .init(
-                id: 7,
-                nextID: 8,
+                id: .animalFunny1,
+                nextID: .animalFunny2,
                 title: "かわいい動物たち 1",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<4].shuffled()) } },
@@ -48,8 +48,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .funny2:
             return .init(
-                id: 8,
-                nextID: 9,
+                id: .animalFunny2,
+                nextID: .animalFunny3,
                 title: "かわいい動物たち 2",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<6].shuffled()) } },
@@ -67,8 +67,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .funny3:
             return .init(
-                id: 9,
-                nextID: 10,
+                id: .animalFunny3,
+                nextID: .animalFunny4,
                 title: "かわいい動物たち 3",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<9].shuffled()) } },
@@ -86,8 +86,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .funny4:
             return .init(
-                id: 10,
-                nextID: 11,
+                id: .animalFunny4,
+                nextID: nil,
                 title: "かわいい動物たち 4",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<12].shuffled()) } },
@@ -105,8 +105,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .animal1:
             return .init(
-                id: 11,
-                nextID: 12,
+                id: .animalAnimal1,
+                nextID: .animalAnimal2,
                 title: "いろんな動物たち 1",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<16].shuffled()) } },
@@ -124,8 +124,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .animal2:
             return .init(
-                id: 12,
-                nextID: 13,
+                id: .animalAnimal2,
+                nextID: .animalAnimal3,
                 title: "いろんな動物たち 2",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<18].shuffled()) } },
@@ -143,8 +143,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .animal3:
             return .init(
-                id: 13,
-                nextID: 14,
+                id: .animalAnimal3,
+                nextID: .animalAnimal4,
                 title: "いろんな動物たち 3",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<21].shuffled()) } },
@@ -162,8 +162,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .animal4:
             return .init(
-                id: 14,
-                nextID: 15,
+                id: .animalAnimal4,
+                nextID: .animalAnimal5,
                 title: "いろんな動物たち 4",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<24].shuffled()) } },
@@ -181,8 +181,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .animal5:
             return .init(
-                id: 15,
-                nextID: 20,
+                id: .animalAnimal5,
+                nextID: .animalAll1,
                 title: "いろんな動物たち 5",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<28].shuffled()) } },
@@ -200,8 +200,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .bird:
             return .init(
-                id: 16,
-                nextID: 17,
+                id: .animalBird,
+                nextID: nil,
                 title: "鳥たち",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[28..<34].shuffled()) } },
@@ -219,8 +219,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .reptile:
             return .init(
-                id: 17,
-                nextID: 18,
+                id: .animalReptile,
+                nextID: nil,
                 title: "爬虫類たち",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[34..<38].shuffled()) } },
@@ -238,8 +238,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .marineLife:
             return .init(
-                id: 18,
-                nextID: 19,
+                id: .animalMarineLife,
+                nextID: nil,
                 title: "海の生き物たち",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[38..<42].shuffled()) } },
@@ -257,7 +257,7 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .insect:
             return .init(
-                id: 19,
+                id: .animalInsect,
                 nextID: nil,
                 title: "虫たち",
                 requirements: "60秒以内に10問正解",
@@ -276,8 +276,8 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .all1:
             return .init(
-                id: 20,
-                nextID: 21,
+                id: .animalAll1,
+                nextID: .animalAll2,
                 title: "いろんな生き物",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in AnimalQuiz(options: Array(AnimalQuizOption.allCases[12..<48].shuffled()[0..<16])) } },
@@ -295,13 +295,13 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .all2:
             return .init(
-                id: 21,
-                nextID: 22,
+                id: .animalAll2,
+                nextID: nil,
                 title: "いろんな生き物 2",
                 requirements: "60秒以内に20問正解（ノーミス）",
                 quizzes: { (0..<20).map { _ in AnimalQuiz(options: Array(AnimalQuizOption.allCases[12..<48].shuffled()[0..<16])) } },
                 timeLimit: 60,
-                penalty: .shuffle,
+                penalty: .gameOver,
                 star1: .init(description: "クリア") { time, missCount in
                     return true
                 },

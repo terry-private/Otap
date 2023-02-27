@@ -5,13 +5,14 @@ import PackageDescription
 // 👤⚛
 // 
 // 🌐
-enum Modules: String, CaseIterable {
+enum Modules: String, CaseIterable, Hashable {
     case Components
     case Core
     case CoreImpl
     case Data
     case Extensions
     case Feature
+    case FeatureSelectQuiz
     case Repository
     case Utility
     case ViewFactoryImpl
@@ -43,8 +44,18 @@ enum Modules: String, CaseIterable {
             .Repository,
             .Utility,
         ]
+        case .FeatureSelectQuiz: return [
+            .Core,
+            .CoreImpl,
+            .Components,
+            .Extensions,
+            .Repository,
+            .Feature,
+            .ViewFactoryImpl
+        ]
         case .Repository: return [
-            .Core
+            .Core,
+            .Data
         ]
         case .Utility: return []
         case .ViewFactoryImpl: return [
@@ -56,6 +67,22 @@ enum Modules: String, CaseIterable {
         ]
     }}
     
+    var dependenciesProducts: [PackageDescription.Target.Dependency] {
+        switch self {
+        case .Components: return []
+        case .Core: return []
+        case .CoreImpl: return []
+        case .Data: return []
+        case .Extensions: return []
+        case .Feature: return [
+            .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
+        ]
+        case .FeatureSelectQuiz: return []
+        case .Repository: return []
+        case .Utility: return []
+        case .ViewFactoryImpl: return []
+    }}
+    
     var resources: [PackageDescription.Resource] {
         switch self {
         case .Components: return []
@@ -64,6 +91,7 @@ enum Modules: String, CaseIterable {
         case .Data: return []
         case .Extensions: return []
         case .Feature: return []
+        case .FeatureSelectQuiz: return []
         case .Repository: return []
         case .Utility: return [
             .copy("./SoundEffect/Resources/correct.mp3"),
@@ -73,18 +101,19 @@ enum Modules: String, CaseIterable {
     }}
 }
 
-
 let package = Package(
     name: "Modules",
     platforms: [
         .iOS(.v16),
     ],
     products: Modules.allCases.map { .library(name: $0.rawValue, targets: [$0.rawValue])},
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1")
+    ],
     targets: Modules.allCases.map {
         .target(
             name: $0.rawValue,
-            dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) },
+            dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) } + $0.dependenciesProducts,
             resources: $0.resources.map { resource in return resource }
         )
     }

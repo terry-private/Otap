@@ -22,8 +22,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
         switch self {
         case .level1:
             return .init(
-                id: 0,
-                nextID: 1,
+                id: .colorLevel1,
+                nextID: .colorLevel2,
                 title: "レベル1",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.white, .black].shuffled()) } },
@@ -41,8 +41,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .level2:
             return .init(
-                id: 1,
-                nextID: 2,
+                id: .colorLevel2,
+                nextID: .colorLevel3,
                 title: "レベル2",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow].shuffled()) } },
@@ -60,8 +60,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .level3:
             return .init(
-                id: 2,
-                nextID: 3,
+                id: .colorLevel3,
+                nextID: .colorLevel4,
                 title: "レベル3",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green].shuffled()) } },
@@ -79,8 +79,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .level4:
             return .init(
-                id: 3,
-                nextID: 4,
+                id: .colorLevel4,
+                nextID: .colorLevel5,
                 title: "レベル4",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green, .white, .black].shuffled()) } },
@@ -98,8 +98,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .level5:
             return .init(
-                id: 4,
-                nextID: 5,
+                id: .colorLevel5,
+                nextID: .colorLevel6,
                 title: "レベル5",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green, .white, .black, .lightBlue, .orange, .pink].shuffled()) } },
@@ -117,8 +117,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .level6:
             return .init(
-                id: 5,
-                nextID: 6,
+                id: .colorLevel6,
+                nextID: .colorLevel7,
                 title: "レベル6",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz.random(by: 12) } },
@@ -136,7 +136,7 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .level7:
             return .init(
-                id: 6,
+                id: .colorLevel7,
                 nextID: nil,
                 title: "レベル7",
                 requirements: "60秒以内に20問正解（ノーミス）",

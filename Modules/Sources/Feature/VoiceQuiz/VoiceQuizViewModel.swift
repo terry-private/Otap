@@ -17,6 +17,22 @@ public enum GameState<Option: VoiceQuizOption>: Equatable {
     case penaltyTime
     case gameOver(GameResult)
     
+    public var isReady: Bool {
+        if case .ready = self {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    public var isGameOver: Bool {
+        if case .gameOver = self {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     public var shouldStartQuiz: Bool {
         switch self {
         case .verifying, .penaltyTime:
@@ -174,6 +190,10 @@ extension VoiceQuizViewModelImpl {
         }
         Task {
             try? await Task.sleep(seconds: 0.4)
+            // タイムオーバーになっている場合を考慮している
+            guard gameState.shouldStartQuiz else {
+                return
+            }
             
             useCase.recordQuizResult(isCorrect: isCorrect)
             guard currentQuizIndex < useCase.quizCount else {
@@ -193,7 +213,7 @@ extension VoiceQuizViewModelImpl {
                 }
             }
             
-            // シャッフルアニメーション中などにタイムオーバーになっている場合を考慮している
+            // シャッフルアニメーション中にタイムオーバーになっている場合を考慮している
             guard gameState.shouldStartQuiz else {
                 return
             }

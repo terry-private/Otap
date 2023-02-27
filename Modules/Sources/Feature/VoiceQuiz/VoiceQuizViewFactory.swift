@@ -7,9 +7,6 @@
 
 import Foundation
 import Core
-import RepositoryImpl
-import UseCaseImpl
-
 
 public protocol VoiceQuizViewFactoryProtocol {
     associatedtype Quiz: VoiceQuiz

@@ -9,6 +9,7 @@ import SwiftUI
 import ViewFactoryImpl
 import CoreImpl
 import Feature
+import FeatureSelectQuiz
 
 @main
 struct OtapApp: App {
@@ -16,7 +17,8 @@ struct OtapApp: App {
         WindowGroup {
             NavigationStack {
 //                SelectLevelView<SelectLevelViewFactoryImpl<ColorQuizLevelSelector>>(viewModel: .init())
-                SelectLevelView<SelectLevelViewFactoryImpl<AnimalQuizLevelSelector>>(viewModel: .init())
+//                SelectLevelView<SelectLevelViewFactoryImpl<AnimalQuizLevelSelector>>(viewModel: .init())
+                SelectQuizView()
             }
         }
     }
