@@ -28,6 +28,9 @@ public struct SelectQuizView: View {
         .onAppear {
             SoundEffectInteractor.readyAllPlayer()
         }
+        .background {
+            Color(uiColor: .secondarySystemBackground).ignoresSafeArea()
+        }
     }
     
     @MainActor // for ViewModel.init()
@@ -51,7 +54,7 @@ public struct SelectQuizView: View {
                 Color(uiColor: .tertiarySystemBackground)
             }
             .cornerRadius(16)
-            .shadow(radius: 4)
+            .shadow(color: .black.opacity(0.2), radius: 4)
         }
     }
 }

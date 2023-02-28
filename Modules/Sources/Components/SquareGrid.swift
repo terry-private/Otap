@@ -134,7 +134,12 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
             .frame(width: abs(length), height: abs(length))
             .cornerRadius(length / 10)
             .matchedGeometryEffect(id: element.id, in: globalNamespace ?? localNamespace)
-            .shadow(color: .black.opacity(0.2), radius: length / 10)
+            .overlay {
+                RoundedRectangle(cornerRadius: length / 10)
+                    .stroke(style: .init(lineWidth: 0.5))
+                    .foregroundColor(.init(uiColor: .label))
+                    .opacity(0.2)
+            }
     }
     
     // MARK: size calculator methods

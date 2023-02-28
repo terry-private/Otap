@@ -66,7 +66,7 @@ public struct TextAnimationView: View {
         items = text.enumerated().map { .init(
             id: $0.offset,
             text: String($0.element),
-            delay: .init(CGFloat($0.offset) * (0.4 / CGFloat(text.count - 1))),
+            delay: .init(0.4 / CGFloat(text.count)),
             ty: -2 - CGFloat($0.offset) * (10 / CGFloat(text.count - 1))
         )}
         _transY = .init(initialValue: .init(repeating: 0 ,count: text.count))
@@ -93,20 +93,19 @@ public struct TextAnimationView: View {
         }
     }
     func animateDots() async throws {
-        for item in items {
-            Task.detached { @MainActor in
-                try await Task.sleep(seconds: item.delay)
-                self.animateDot(binding: $transY[item.id], animationData: item)
-            }
-        }
         try await Task.sleep(seconds: 6)
+        for item in items {
+            try await Task.sleep(seconds: item.delay)
+            animateDot(binding: $transY[item.id], animationData: item)
+        }
         try await animateDots()
     }
+    
     func animateDot(binding: Binding<CGFloat>, animationData: AnimationData) {
-        withAnimation(animation) {
-            binding.wrappedValue = animationData.ty
-        }
         Task { @MainActor in
+            withAnimation(animation) {
+                binding.wrappedValue = animationData.ty
+            }
             try await Task.sleep(seconds: 0.2)
             withAnimation(animation) {
                 binding.wrappedValue = 0

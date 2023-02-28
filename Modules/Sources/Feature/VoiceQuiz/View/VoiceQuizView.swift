@@ -49,9 +49,6 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                     .padding(.vertical, 30)
                 }
                 .frame(maxWidth: .infinity)
-                .background {
-                    Color(uiColor: .secondarySystemBackground)
-                }
             case let .gameOver(result):
                 VoiceQuizResultView(
                     result: result,
