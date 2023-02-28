@@ -17,20 +17,6 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
     private let star3: Bool?
     private let time: Double?
     private let locked: Bool
-    var length: CGFloat { 135 / CGFloat(max(rowCount , columnCount)) - 5 }
-    var columnCount: Int {
-        switch generator.previewQuiz.options.count {
-        case 0 ... 6:
-            return 2
-        case 7 ... 12:
-            return 3
-        default:
-            return 4
-        }
-    }
-    var rowCount: Int {
-        generator.previewQuiz.options.count/columnCount
-    }
     
     public init(generator: VoiceQuizGenerator<Quiz>, star1: Bool?, star2: Bool?, star3: Bool?, time: Double?, locked: Bool, select: @escaping (VoiceQuizGenerator<Quiz>) -> Void) {
         self.select = select
@@ -47,19 +33,11 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
             select(generator)
         } label: {
             HStack{
-                VStack(spacing: 5) {
-                    ForEach(0..<generator.previewQuiz.options.count/columnCount, id: \.self) { index in
-                        HStack(spacing: 5) {
-                            ForEach(0..<columnCount, id: \.self) { i in
-                                let option = generator.previewQuiz.options[index*columnCount + i]
-                                option.viewType.view()
-                                    .frame(width: length, height: length)
-                                    .cornerRadius(5)
-                            }
-                        }
-                    }
+                SquareGrid(generator.previewQuiz.options) { option in
+                    option.viewType.view()
                 }
                 .frame(width: 140, height: 140)
+                
                 VStack(alignment: .leading, spacing: 0) {
                     Text(generator.title)
                         .font(.title3)
@@ -109,7 +87,7 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
             }
             .cornerRadius(16)
             .padding(.horizontal, 16)
-            .shadow(radius: 4)
+            .shadow(color: .black.opacity(0.2), radius: 4)
         }
         .overlay {
             if locked {

@@ -63,15 +63,7 @@ public struct VoiceQuizResultView: View {
                             .addTextAnimationBadge(grades.isNewTimeRecord)
                     }
                 }
-                .padding(30)
-                .background(.ultraThinMaterial)
-                .cornerRadius(20)
                 .fixedSize()
-                .onTapGesture {
-                    if result.hasFirst {
-                        count += 1
-                    }
-                }
             case .gameOver:
                 Text("Game Over!!")
                     .font(.title)
@@ -98,8 +90,16 @@ public struct VoiceQuizResultView: View {
             .padding(.vertical, 30)
         }
         .frame(maxWidth: .infinity)
-        .background(.ultraThinMaterial)
-        .confettiCannon(counter: $count)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if result.hasFirst {
+                count += 1
+            }
+        }
+        .overlay {
+            ConfettiCannon(counter: $count)
+                .padding(.bottom, 50)
+        }
         .onAppear {
             if result.hasFirst {
                 Task {
