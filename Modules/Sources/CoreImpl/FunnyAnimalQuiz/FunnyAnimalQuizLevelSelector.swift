@@ -1,15 +1,14 @@
 //
-//  ColorQuizLevelSelector.swift
+//  FunnyAnimalQuizLevelSelector.swift
 //  
 //
-//  Created by 若江照仁 on 2023/02/16.
+//  Created by 若江照仁 on 2023/03/01.
 //
 
-import Foundation
 import Core
 
-public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
-    public typealias Quiz = ColorQuiz
+public enum FunnyAnimalQuizLevelSelector: VoiceQuizLevelSelector {
+    public typealias Quiz = FunnyAnimalQuiz
     case basic1
     case basic2
     case basic3
@@ -23,11 +22,11 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
         switch self {
         case .basic1:
             return .init(
-                id: .colorBasic1,
-                nextID: nil,
+                id: .funnyAnimalBasic1,
+                nextID: .funnyAnimalBasic2,
                 title: "基本1",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.dogFace🐶, .catFace🐱, .pigFace🐷, .rabbitFace🐰].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -42,11 +41,11 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .basic2:
             return .init(
-                id: .colorBasic2,
-                nextID: .colorBasic3,
+                id: .funnyAnimalBasic2,
+                nextID: .funnyAnimalBasic3,
                 title: "基本2",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.white, .black, .lightBlue, .pink].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.lionFace🦁, .cowFace🐮, .horseFace🐴, .mouseFace🐭].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -61,11 +60,11 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .basic3:
             return .init(
-                id: .colorBasic3,
-                nextID: .colorAdvanced1,
+                id: .funnyAnimalBasic3,
+                nextID: .funnyAnimalAdvanced1,
                 title: "基本3",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.orange, .purple, .gray, .brown].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.monkeyFace🐵, .pandaFace🐼, .tigerFace🐯, .bearFace🐻].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -80,8 +79,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .advanced1:
             return .init(
-                id: .colorAdvanced1,
-                nextID: .colorAdvanced2,
+                id: .funnyAnimalAdvanced1,
+                nextID: .funnyAnimalAdvanced2,
                 title: "応用1",
                 requirements: "60秒以内に15問正解",
                 quizzes: { (0..<15).map { _ in .random(by: 4) } },
@@ -99,8 +98,8 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .advanced2:
             return .init(
-                id: .colorAdvanced2,
-                nextID: .colorAdvanced3,
+                id: .funnyAnimalAdvanced2,
+                nextID: .funnyAnimalAdvanced3,
                 title: "応用2",
                 requirements: "60秒以内に15問正解",
                 quizzes: { (0..<15).map { _ in .random(by: 6) } },
@@ -118,11 +117,11 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .advanced3:
             return .init(
-                id: .colorAdvanced3,
-                nextID: .colorAdvanced4,
+                id: .funnyAnimalAdvanced3,
+                nextID: .funnyAnimalAdvanced4,
                 title: "応用3",
                 requirements: "60秒以内に15問正解",
-                quizzes: { (0..<15).map { _ in .random(by: 12) } },
+                quizzes: { (0..<15).map { _ in .random(by: 9) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -137,13 +136,13 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .advanced4:
             return .init(
-                id: .colorAdvanced4,
-                nextID: .colorChallenge,
+                id: .funnyAnimalAdvanced4,
+                nextID: .funnyAnimalChallenge,
                 title: "応用4",
                 requirements: "60秒以内に15問正解",
                 quizzes: { (0..<15).map { _ in .random(by: 12) } },
                 timeLimit: 60,
-                penalty: .gameOver,
+                penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
                     return true
                 },
@@ -156,13 +155,13 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
             )
         case .challenge:
             return .init(
-                id: .colorChallenge,
+                id: .funnyAnimalChallenge,
                 nextID: nil,
                 title: "チャレンジ",
                 requirements: "60秒以内に20問正解（ノーミス）",
                 quizzes: { (0..<20).map { _ in .random(by: 12) } },
                 timeLimit: 60,
-                penalty: .gameOver,
+                penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
                     return true
                 },

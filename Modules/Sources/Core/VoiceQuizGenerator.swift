@@ -87,6 +87,15 @@ public enum LevelSelectorID: String {
     case colorAdvanced4
     case colorChallenge
     
+    case funnyAnimalBasic1
+    case funnyAnimalBasic2
+    case funnyAnimalBasic3
+    case funnyAnimalAdvanced1
+    case funnyAnimalAdvanced2
+    case funnyAnimalAdvanced3
+    case funnyAnimalAdvanced4
+    case funnyAnimalChallenge
+    
     case animalFunny1
     case animalFunny2
     case animalFunny3

@@ -17,6 +17,7 @@ enum Factory {
     @MainActor
     static var navigationCells: [AnyView] = [
         navigationCell(ColorQuizLevelSelector.basic1).toAnyView(),
+        navigationCell(FunnyAnimalQuizLevelSelector.basic1).toAnyView(),
         navigationCell(AnimalQuizLevelSelector.funny1).toAnyView()
     ]
     @MainActor
