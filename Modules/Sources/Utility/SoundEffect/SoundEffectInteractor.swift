@@ -14,13 +14,13 @@ public enum SoundEffectInteractor {
     // ---------------------------------
     private static let correctSoundPlayer: AVAudioPlayer? = {
         let player = resourceUrl("correct").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
-        player?.volume = 0.05
+        player?.volume = 0.02
         return player
     }()
     
     private static let wrongSoundPlayer: AVAudioPlayer? = {
         let player = resourceUrl("wrong").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
-        player?.volume = 0.05
+        player?.volume = 0.03
         return player
     }()
     

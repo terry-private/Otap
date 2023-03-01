@@ -10,59 +10,22 @@ import Core
 
 public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
     public typealias Quiz = ColorQuiz
-    case level1
-    case level2
-    case level3
-    case level4
-    case level5
-    case level6
-    case level7
+    case basic1
+    case basic2
+    case basic3
+    case advanced1
+    case advanced2
+    case advanced3
+    case advanced4
+    case challenge
     
     public var generator: VoiceQuizGenerator<Quiz> {
         switch self {
-        case .level1:
+        case .basic1:
             return .init(
-                id: .colorLevel1,
-                nextID: .colorLevel2,
-                title: "レベル1",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.white, .black].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .level2:
-            return .init(
-                id: .colorLevel2,
-                nextID: .colorLevel3,
-                title: "レベル2",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .level3:
-            return .init(
-                id: .colorLevel3,
-                nextID: .colorLevel4,
-                title: "レベル3",
+                id: .colorBasic1,
+                nextID: nil,
+                title: "基本1",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green].shuffled()) } },
                 timeLimit: 60,
@@ -74,16 +37,16 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
-        case .level4:
+        case .basic2:
             return .init(
-                id: .colorLevel4,
-                nextID: .colorLevel5,
-                title: "レベル4",
+                id: .colorBasic2,
+                nextID: .colorBasic3,
+                title: "基本2",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green, .white, .black].shuffled()) } },
+                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.white, .black, .lightBlue, .pink].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -93,16 +56,54 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
-        case .level5:
+        case .basic3:
             return .init(
-                id: .colorLevel5,
-                nextID: .colorLevel6,
-                title: "レベル5",
+                id: .colorBasic3,
+                nextID: .colorAdvanced1,
+                title: "基本3",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green, .white, .black, .lightBlue, .orange, .pink].shuffled()) } },
+                quizzes: { (0..<10).map { _ in ColorQuiz(options: [.orange, .purple, .gray, .brown].shuffled()) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "20s以内") { time, missCount in
+                    return time <= 20
+                }
+            )
+        case .advanced1:
+            return .init(
+                id: .colorAdvanced1,
+                nextID: .colorAdvanced2,
+                title: "応用1",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in ColorQuiz(options: Array(ColorQuizOption.randoms(by: 12).prefix(4))) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "20s以内") { time, missCount in
+                    return time <= 20
+                }
+            )
+        case .advanced2:
+            return .init(
+                id: .colorAdvanced2,
+                nextID: .colorAdvanced3,
+                title: "応用2",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in ColorQuiz(options: Array(ColorQuizOption.randoms(by: 12).prefix(6))) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -112,16 +113,16 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "30s以内") { time, missCount in
-                    return time < 30
+                    return time <= 30
                 }
             )
-        case .level6:
+        case .advanced3:
             return .init(
-                id: .colorLevel6,
-                nextID: .colorLevel7,
-                title: "レベル6",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in ColorQuiz.random(by: 12) } },
+                id: .colorAdvanced3,
+                nextID: .colorAdvanced4,
+                title: "応用3",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in ColorQuiz(options: Array(ColorQuizOption.randoms(by: 12).prefix(9))) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -131,14 +132,33 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "30s以内") { time, missCount in
-                    return time < 30
+                    return time <= 30
                 }
             )
-        case .level7:
+        case .advanced4:
             return .init(
-                id: .colorLevel7,
+                id: .colorAdvanced4,
+                nextID: .colorChallenge,
+                title: "応用4",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in ColorQuiz.random(by: 12) } },
+                timeLimit: 60,
+                penalty: .gameOver,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "30s以内") { time, missCount in
+                    return time <= 30
+                }
+            )
+        case .challenge:
+            return .init(
+                id: .colorChallenge,
                 nextID: nil,
-                title: "レベル7",
+                title: "チャレンジ",
                 requirements: "60秒以内に20問正解（ノーミス）",
                 quizzes: { (0..<20).map { _ in ColorQuiz.random(by: 12) } },
                 timeLimit: 60,
@@ -150,7 +170,7 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "30s以内") { time, missCount in
-                    return time < 30
+                    return time <= 30
                 }
             )
         }

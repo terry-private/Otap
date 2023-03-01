@@ -172,7 +172,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
                     generatorID: self.generator.id, gameRecord: self.lastRecord.merged(newRecord)
                 )
                 // open next if needed
-                if let nextID = self.generator.nextID, try await Repository.fetchGameRecord(generatorID: nextID) == nil {
+                if let nextID = self.generator.nextID {
                     try await Repository.updateGameRecord(generatorID: nextID, gameRecord: .init())
                 }
             }

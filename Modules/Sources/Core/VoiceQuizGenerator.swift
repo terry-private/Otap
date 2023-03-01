@@ -77,28 +77,29 @@ public extension VoiceQuizGenerator {
 }
 
 /// ⚠️実装に依存しています。(IDがユニークかどうかチェックするためにenumでID型を定義したい)
-public enum LevelSelectorID: Int {
-    case colorLevel1 = 0
-    case colorLevel2 = 1
-    case colorLevel3 = 2
-    case colorLevel4 = 3
-    case colorLevel5 = 4
-    case colorLevel6 = 5
-    case colorLevel7 = 6
+public enum LevelSelectorID: String {
+    case colorBasic1
+    case colorBasic2
+    case colorBasic3
+    case colorAdvanced1
+    case colorAdvanced2
+    case colorAdvanced3
+    case colorAdvanced4
+    case colorChallenge
     
-    case animalFunny1 = 7
-    case animalFunny2 = 8
-    case animalFunny3 = 9
-    case animalFunny4 = 10
-    case animalAnimal1 = 11
-    case animalAnimal2 = 12
-    case animalAnimal3 = 13
-    case animalAnimal4 = 14
-    case animalAnimal5 = 15
-    case animalBird = 16
-    case animalReptile = 17
-    case animalMarineLife = 18
-    case animalInsect = 19
-    case animalAll1 = 20
-    case animalAll2 = 21
+    case animalFunny1
+    case animalFunny2
+    case animalFunny3
+    case animalFunny4
+    case animalAnimal1
+    case animalAnimal2
+    case animalAnimal3
+    case animalAnimal4
+    case animalAnimal5
+    case animalBird
+    case animalReptile
+    case animalMarineLife
+    case animalInsect
+    case animalAll1
+    case animalAll2
 }
