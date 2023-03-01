@@ -24,7 +24,7 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
         case .basic1:
             return .init(
                 id: .colorBasic1,
-                nextID: nil,
+                nextID: .colorBasic2,
                 title: "基本1",
                 requirements: "60秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in ColorQuiz(options: [.red, .blue, .yellow, .green].shuffled()) } },
