@@ -14,11 +14,7 @@ public final actor LocaleCache {
     public var records: [LevelSelectorID: GameRecord] = [
         .colorBasic1: .init(),
         .funnyAnimalBasic1: .init(),
-        .animalAnimal1: .init(),
-        .animalBird: .init(),
-        .animalReptile: .init(),
-        .animalMarineLife: .init(),
-        .animalInsect: .init()
+        .creatureAnimal1: .init()
     ]
     
     public func update(id: LevelSelectorID, _ gameRecord: GameRecord) {
