@@ -18,6 +18,10 @@ public enum FunnyAnimalQuizLevelSelector: VoiceQuizLevelSelector {
     case advanced4
     case challenge
     
+    public static var previewQuiz: FunnyAnimalQuiz {
+        .init(options: [.dogFace🐶, .horseFace🐴, .pandaFace🐼, .lionFace🦁])
+    }
+    
     public var generator: VoiceQuizGenerator<Quiz> {
         switch self {
         case .basic1:

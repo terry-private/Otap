@@ -11,6 +11,7 @@ public protocol VoiceQuizLevelSelector: Hashable, Identifiable, CaseIterable {
     associatedtype Quiz: VoiceQuiz
     
     var generator: VoiceQuizGenerator<Quiz> { get }
+    static var previewQuiz: Quiz { get }
 }
 
 public extension VoiceQuizLevelSelector {
@@ -25,6 +26,10 @@ public enum VoiceQuizLevelSelectorDummy: VoiceQuizLevelSelector {
     
     case level1
     case level2
+    
+    public static var previewQuiz: VoiceQuizDummy {
+        VoiceQuizLevelSelectorDummy.level1.generator.previewQuiz
+    }
     
     public var generator: VoiceQuizGenerator<VoiceQuizDummy> {
         switch self {

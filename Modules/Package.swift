@@ -46,12 +46,10 @@ enum Modules: String, CaseIterable, Hashable {
         ]
         case .FeatureSelectQuiz: return [
             .Core,
-            .CoreImpl,
             .Components,
             .Extensions,
             .Repository,
-            .Feature,
-            .ViewFactoryImpl
+            .Feature
         ]
         case .Repository: return [
             .Core,
@@ -62,6 +60,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Core,
             .Extensions,
             .Feature,
+            .FeatureSelectQuiz,
             .Repository,
             .Utility
         ]
