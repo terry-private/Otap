@@ -9,13 +9,12 @@ import SwiftUI
 import Core
 import Components
 
-public struct SelectQuizView<Factory: SelectQuizViewFactoryProtocol>: View {
-    @StateObject var viewModel: Factory.ViewModel
+public struct SelectQuizView<Factory: SelectQuizViewFactoryProtocol, ViewModel: SelectQuizViewModelProtocol>: View {
+    @StateObject var viewModel: ViewModel
     @State var columnsCount: Int = 0
     
     @MainActor
-    public init() {
-        let viewModel = Factory.viewModel
+    public init(viewModel: ViewModel) {
         _viewModel = .init(wrappedValue: viewModel)
     }
     
@@ -85,6 +84,6 @@ public struct SelectQuizView<Factory: SelectQuizViewFactoryProtocol>: View {
 
 struct SelectQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectQuizView<SelectQuizViewFactoryDummy>()
+        SelectQuizView<SelectQuizViewFactoryDummy, SelectQuizViewModelImpl>(viewModel: .init(selectors: [VoiceQuizLevelSelectorDummy.level1]))
     }
 }

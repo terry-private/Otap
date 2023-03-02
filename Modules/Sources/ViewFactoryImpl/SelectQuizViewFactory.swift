@@ -8,15 +8,20 @@
 import SwiftUI
 import Core
 import CoreImpl
-import Feature
+import FeatureSelectLevel
 import FeatureSelectQuiz
+import Repository
 
 public enum SelectQuizViewFactoryImpl: SelectQuizViewFactoryProtocol {
     public typealias ViewModel = SelectQuizViewModelImpl
     
     @MainActor
     public static func quizLevelSelectorView<T: VoiceQuizLevelSelector>(_ selector: T) -> AnyView {
-        SelectLevelView<SelectLevelViewFactoryImpl<T>>(viewModel: .init()).toAnyView()
+        typealias useCase = SelectLevelInteractor<RepositoryImpl>
+        typealias viewModel = SelectLevelViewModelImpl<T, useCase>
+        return SelectLevelView<SelectLevelViewFactoryImpl, viewModel>(
+            viewModel: .init()
+        ).toAnyView()
     }
     
     public static var viewModel: ViewModel {

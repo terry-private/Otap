@@ -7,17 +7,20 @@
 
 import Foundation
 import Core
-import Feature
+import FeatureSelectLevel
+import FeatureVoiceQuiz
 import Repository
 import Utility
+import SwiftUI
 
-public enum SelectLevelViewFactoryImpl<LevelSelector: VoiceQuizLevelSelector>: SelectLevelViewFactoryProtocol {
-    public typealias Quiz = LevelSelector.Quiz
-    public typealias SelectLevelViewModel = SelectLevelViewModelImpl<LevelSelector, SelectLevelInteractor<RepositoryImpl>>
-    public typealias VoiceQuizViewModel = VoiceQuizViewModelImpl<Quiz, SoundEffectInteractor, VoiceQuizInteractor<Quiz, RepositoryImpl>>
+public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
     
     @MainActor
-    public static func voiceQuizView(generator: VoiceQuizGenerator<Quiz>, lastRecord: GameRecord, dismiss: @escaping () -> Void) -> VoiceQuizView<VoiceQuizViewModel> {
-        .init(viewModel: .init(useCase: .init(generator: generator, lastRecord: lastRecord), dismiss: dismiss))
+    public static func voiceQuizView<Q: VoiceQuiz>(generator: VoiceQuizGenerator<Q>, lastRecord: GameRecord, dismiss: @escaping () -> Void) -> AnyView {
+        VoiceQuizView<VoiceQuizViewModelImpl<Q, SoundEffectInteractor, VoiceQuizInteractor<Q, RepositoryImpl>>>(
+            viewModel: .init(
+                useCase: .init(generator: generator, lastRecord: lastRecord),
+                dismiss: dismiss)
+        ).toAnyView()
     }
 }

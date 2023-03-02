@@ -2,17 +2,16 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
-// 👤⚛
-// 
-// 🌐
+
 enum Modules: String, CaseIterable, Hashable {
     case Components
     case Core
     case CoreImpl
     case Data
     case Extensions
-    case Feature
+    case FeatureSelectLevel
     case FeatureSelectQuiz
+    case FeatureVoiceQuiz
     case Repository
     case Utility
     case ViewFactoryImpl
@@ -37,19 +36,24 @@ enum Modules: String, CaseIterable, Hashable {
             
         case .Extensions: return []
             
-        case .Feature: return [
+        case .FeatureSelectLevel: return [
             .Core,
             .Components,
             .Extensions,
             .Repository,
-            .Utility,
         ]
         case .FeatureSelectQuiz: return [
             .Core,
             .Components,
             .Extensions,
             .Repository,
-            .Feature
+        ]
+        case .FeatureVoiceQuiz: return [
+            .Core,
+            .Components,
+            .Extensions,
+            .Repository,
+            .Utility
         ]
         case .Repository: return [
             .Core,
@@ -59,8 +63,9 @@ enum Modules: String, CaseIterable, Hashable {
         case .ViewFactoryImpl: return [
             .Core,
             .Extensions,
-            .Feature,
+            .FeatureSelectLevel,
             .FeatureSelectQuiz,
+            .FeatureVoiceQuiz,
             .Repository,
             .Utility
         ]
@@ -73,10 +78,11 @@ enum Modules: String, CaseIterable, Hashable {
         case .CoreImpl: return []
         case .Data: return []
         case .Extensions: return []
-        case .Feature: return [
+        case .FeatureSelectLevel: return []
+        case .FeatureSelectQuiz: return []
+        case .FeatureVoiceQuiz: return [
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
         ]
-        case .FeatureSelectQuiz: return []
         case .Repository: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
@@ -89,8 +95,9 @@ enum Modules: String, CaseIterable, Hashable {
         case .CoreImpl: return []
         case .Data: return []
         case .Extensions: return []
-        case .Feature: return []
+        case .FeatureSelectLevel: return []
         case .FeatureSelectQuiz: return []
+        case .FeatureVoiceQuiz: return []
         case .Repository: return []
         case .Utility: return [
             .copy("./SoundEffect/Resources/correct.mp3"),
