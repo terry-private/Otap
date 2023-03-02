@@ -7,6 +7,13 @@
 
 /// ⚠️実装に依存しています。(IDがユニークかどうかチェックするためにenumでID型を定義したい)
 public enum LevelSelectorID: String {
+    case shapeBasic1
+    case shapeBasic2
+    case shapeBasic3
+    case shapeAdvanced1
+    case shapeAdvanced2
+    case shapeChallenge
+    
     case colorBasic1
     case colorBasic2
     case colorBasic3
