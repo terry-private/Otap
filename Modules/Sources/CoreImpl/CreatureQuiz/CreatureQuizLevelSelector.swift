@@ -24,6 +24,10 @@ public enum CreatureQuizLevelSelector: VoiceQuizLevelSelector {
     case advanced5
     case challenge
     
+    public static var previewQuiz: CreatureQuiz {
+        .init(options: [.giraffe🦒, .rooster🐓, .ladyBeetle🐞, .dolphin🐬])
+    }
+    
     public var generator: VoiceQuizGenerator<Quiz> {
         switch self {
         case .animal1:

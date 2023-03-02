@@ -9,10 +9,7 @@ import SwiftUI
 import Core
 import Components
 
-public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol>: View {
-    public typealias Quiz = Factory.Quiz
-    public typealias ViewModel = Factory.SelectLevelViewModel
-    
+public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel: SelectLevelViewModelProtocol>: View {
     @StateObject private var viewModel: ViewModel
     
     public init(viewModel: ViewModel) {
@@ -71,7 +68,7 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol>: View {
 #if DEBUG
 struct SelectLevelView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectLevelView<SelectLevelViewFactoryDummy>(viewModel: .init())
+        SelectLevelView<SelectLevelViewFactoryDummy, SelectLevelViewModelDummy>(viewModel: .init())
     }
 }
 #endif

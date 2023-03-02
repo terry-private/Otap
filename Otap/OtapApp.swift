@@ -7,9 +7,7 @@
 
 import SwiftUI
 import ViewFactoryImpl
-import CoreImpl
 import Utility
-import FeatureSelectQuiz
 
 @main
 struct OtapApp: App {
@@ -19,7 +17,7 @@ struct OtapApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                SelectQuizView<SelectQuizViewFactoryImpl>()
+                AppViewFactory.selectQuizView()
             }
         }
     }

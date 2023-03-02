@@ -19,6 +19,10 @@ public enum ColorQuizLevelSelector: VoiceQuizLevelSelector {
     case advanced4
     case challenge
     
+    public static var previewQuiz: ColorQuiz {
+        .init(options: [.red, .blue, .green, .yellow])
+    }
+    
     public var generator: VoiceQuizGenerator<Quiz> {
         switch self {
         case .basic1:
