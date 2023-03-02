@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Extensions
 
 public enum OptionViewType: Hashable {
     case color(Color)
@@ -38,10 +39,10 @@ public protocol VoiceQuizOption: Identifiable, Hashable, CaseIterable {
 }
 
 public extension VoiceQuizOption {
-    static func randoms(by count: Int) -> [Self] {
+    static func randoms(by count: Int = allCases.count) -> [Self] {
         Self.allCases
             .shuffled()
             .prefix(min(count, Self.allCases.count))
-            .map { $0 }
+            .toArray()
     }
 }

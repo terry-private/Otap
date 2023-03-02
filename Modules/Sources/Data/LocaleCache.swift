@@ -12,13 +12,9 @@ public final actor LocaleCache {
     public static var shared: LocaleCache = .init()
     
     public var records: [LevelSelectorID: GameRecord] = [
-        .colorLevel1: .init(),
-        .animalFunny1: .init(),
-        .animalAnimal1: .init(),
-        .animalBird: .init(),
-        .animalReptile: .init(),
-        .animalMarineLife: .init(),
-        .animalInsect: .init()
+        .colorBasic1: .init(),
+        .funnyAnimalBasic1: .init(),
+        .creatureAnimal1: .init()
     ]
     
     public func update(id: LevelSelectorID, _ gameRecord: GameRecord) {

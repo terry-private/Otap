@@ -30,8 +30,8 @@ public enum VoiceQuizLevelSelectorDummy: VoiceQuizLevelSelector {
         switch self {
         case .level1:
             return .init(
-                id: .colorLevel1,
-                nextID: .colorLevel2,
+                id: .colorBasic1,
+                nextID: .colorBasic2,
                 title: "レベル1",
                 requirements: "30秒以内に10問正解",
                 quizzes: { (0..<10).map { _ in .random(by: 4) } },
@@ -49,7 +49,7 @@ public enum VoiceQuizLevelSelectorDummy: VoiceQuizLevelSelector {
             )
         case .level2:
             return .init(
-                id: .colorLevel2,
+                id: .colorBasic2,
                 nextID: nil,
                 title: "レベル2",
                 requirements: "30秒以内に10問正解",

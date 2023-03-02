@@ -8,17 +8,18 @@
 import SwiftUI
 import ViewFactoryImpl
 import CoreImpl
-import Feature
+import Utility
 import FeatureSelectQuiz
 
 @main
 struct OtapApp: App {
+    init() {
+        SoundEffectInteractor.readyAllPlayer()
+    }
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-//                SelectLevelView<SelectLevelViewFactoryImpl<ColorQuizLevelSelector>>(viewModel: .init())
-//                SelectLevelView<SelectLevelViewFactoryImpl<AnimalQuizLevelSelector>>(viewModel: .init())
-                SelectQuizView()
+                SelectQuizView<SelectQuizViewFactoryImpl>()
             }
         }
     }

@@ -1,115 +1,38 @@
 //
-//  AnimalQuizLevelSelector.swift
+//  CreatureQuizLevelSelector.swift
 //  
 //
-//  Created by 若江照仁 on 2023/02/25.
+//  Created by 若江照仁 on 2023/03/01.
 //
 
 import Core
 
-public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
-    public typealias Quiz = AnimalQuiz
-    case funny1
-    case funny2
-    case funny3
-    case funny4
+public enum CreatureQuizLevelSelector: VoiceQuizLevelSelector {
+    public typealias Quiz = CreatureQuiz
     case animal1
     case animal2
     case animal3
     case animal4
-    case animal5
     case bird
     case reptile
     case marineLife
     case insect
-    case all1
-    case all2
+    case advanced1
+    case advanced2
+    case advanced3
+    case advanced4
+    case advanced5
+    case challenge
     
     public var generator: VoiceQuizGenerator<Quiz> {
         switch self {
-        case .funny1:
-            return .init(
-                id: .animalFunny1,
-                nextID: .animalFunny2,
-                title: "かわいい動物たち 1",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<4].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .funny2:
-            return .init(
-                id: .animalFunny2,
-                nextID: .animalFunny3,
-                title: "かわいい動物たち 2",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<6].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .funny3:
-            return .init(
-                id: .animalFunny3,
-                nextID: .animalFunny4,
-                title: "かわいい動物たち 3",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<9].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .funny4:
-            return .init(
-                id: .animalFunny4,
-                nextID: nil,
-                title: "かわいい動物たち 4",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[0..<12].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
         case .animal1:
             return .init(
-                id: .animalAnimal1,
-                nextID: .animalAnimal2,
-                title: "いろんな動物たち 1",
+                id: .creatureAnimal1,
+                nextID: .creatureAnimal2,
+                title: "基本動物1",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<16].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.dog🐕, .cat🐈, .pig🐖, .rabbit🐇].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -119,16 +42,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .animal2:
             return .init(
-                id: .animalAnimal2,
-                nextID: .animalAnimal3,
-                title: "いろんな動物たち 2",
+                id: .creatureAnimal2,
+                nextID: .creatureAnimal3,
+                title: "基本動物2",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<18].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.elephant🐘, .giraffe🦒, .chipmunk🐿️, .cow🐄].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -138,16 +61,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .animal3:
             return .init(
-                id: .animalAnimal3,
-                nextID: .animalAnimal4,
-                title: "いろんな動物たち 3",
+                id: .creatureAnimal3,
+                nextID: .creatureAnimal4,
+                title: "基本動物3",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<21].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.horse🐎, .monkey🐒, .mouse🐁, .tiger🐅].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -157,16 +80,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .animal4:
             return .init(
-                id: .animalAnimal4,
-                nextID: .animalAnimal5,
-                title: "いろんな動物たち 4",
+                id: .creatureAnimal4,
+                nextID: .creatureBird,
+                title: "基本動物4",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<24].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.zebra🦓, .camel🐪, .kangaroo🦘, .rhinoceros🦏].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -176,35 +99,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .animal5:
-            return .init(
-                id: .animalAnimal5,
-                nextID: .animalAll1,
-                title: "いろんな動物たち 5",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[12..<28].shuffled()) } },
-                timeLimit: 60,
-                penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .bird:
             return .init(
-                id: .animalBird,
-                nextID: nil,
-                title: "鳥たち",
+                id: .creatureBird,
+                nextID: .creatureReptile,
+                title: "鳥",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[28..<34].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.rooster🐓, .owl🦉, .flamingo🦩, .swan🦢, .duck🦆, .bat🦇].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -214,16 +118,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .reptile:
             return .init(
-                id: .animalReptile,
-                nextID: nil,
-                title: "爬虫類たち",
+                id: .creatureReptile,
+                nextID: .creatureMarineLife,
+                title: "爬虫類",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[34..<38].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.turtle🐢, .crocodile🐊, .lizard🦎, .snake🐍].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -233,16 +137,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .marineLife:
             return .init(
-                id: .animalMarineLife,
-                nextID: nil,
-                title: "海の生き物たち",
+                id: .creatureMarineLife,
+                nextID: .creatureInsect,
+                title: "海の生き物",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[38..<42].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.whale🐋, .dolphin🐬, .shark🦈, .octopus🐙].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -252,16 +156,16 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
         case .insect:
             return .init(
-                id: .animalInsect,
-                nextID: nil,
-                title: "虫たち",
+                id: .creatureInsect,
+                nextID: .creatureAdvanced1,
+                title: "虫",
                 requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: AnimalQuizOption.allCases[42..<48].shuffled()) } },
+                quizzes: { (0..<10).map { _ in .init(options: [.bug🐛, .butterfly🦋, .ant🐜, .honeybee🐝, .ladyBeetle🐞, .spider🕷].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: "クリア") { time, missCount in
@@ -271,37 +175,18 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
+                    return time <= 20
                 }
             )
-        case .all1:
+        case .advanced1:
             return .init(
-                id: .animalAll1,
-                nextID: .animalAll2,
-                title: "いろんな生き物",
-                requirements: "60秒以内に10問正解",
-                quizzes: { (0..<10).map { _ in AnimalQuiz(options: Array(AnimalQuizOption.allCases[12..<48].shuffled()[0..<16])) } },
+                id: .creatureAdvanced1,
+                nextID: .creatureAdvanced2,
+                title: "応用1",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in .random(by: 4) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
-                    return true
-                },
-                star2: .init(description: "ノーミス") { time, missCount in
-                    return missCount == 0
-                },
-                star3: .init(description: "20s以内") { time, missCount in
-                    return time < 20
-                }
-            )
-        case .all2:
-            return .init(
-                id: .animalAll2,
-                nextID: nil,
-                title: "いろんな生き物 2",
-                requirements: "60秒以内に20問正解（ノーミス）",
-                quizzes: { (0..<20).map { _ in AnimalQuiz(options: Array(AnimalQuizOption.allCases[12..<48].shuffled()[0..<16])) } },
-                timeLimit: 60,
-                penalty: .gameOver,
                 star1: .init(description: "クリア") { time, missCount in
                     return true
                 },
@@ -309,7 +194,102 @@ public enum AnimalQuizLevelSelector: VoiceQuizLevelSelector {
                     return missCount == 0
                 },
                 star3: .init(description: "30s以内") { time, missCount in
-                    return time < 30
+                    return time <= 30
+                }
+            )
+        case .advanced2:
+            return .init(
+                id: .creatureAdvanced2,
+                nextID: .creatureAdvanced3,
+                title: "応用2",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in .random(by: 6) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "30s以内") { time, missCount in
+                    return time <= 30
+                }
+            )
+        case .advanced3:
+            return .init(
+                id: .creatureAdvanced3,
+                nextID: .creatureAdvanced4,
+                title: "応用3",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in .random(by: 9) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "30s以内") { time, missCount in
+                    return time <= 30
+                }
+            )
+        case .advanced4:
+            return .init(
+                id: .creatureAdvanced4,
+                nextID: .creatureAdvanced5,
+                title: "応用4",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in .random(by: 12) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "30s以内") { time, missCount in
+                    return time <= 30
+                }
+            )
+        case .advanced5:
+            return .init(
+                id: .creatureAdvanced5,
+                nextID: .creatureChallenge,
+                title: "応用5",
+                requirements: "60秒以内に15問正解",
+                quizzes: { (0..<15).map { _ in .random(by: 16) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "30s以内") { time, missCount in
+                    return time <= 30
+                }
+            )
+        case .challenge:
+            return .init(
+                id: .creatureChallenge,
+                nextID: nil,
+                title: "チャレンジ",
+                requirements: "60秒以内に20問正解",
+                quizzes: { (0..<20).map { _ in .random(by: 16) } },
+                timeLimit: 60,
+                penalty: .shuffle,
+                star1: .init(description: "クリア") { time, missCount in
+                    return true
+                },
+                star2: .init(description: "ノーミス") { time, missCount in
+                    return missCount == 0
+                },
+                star3: .init(description: "30s以内") { time, missCount in
+                    return time <= 30
                 }
             )
         }

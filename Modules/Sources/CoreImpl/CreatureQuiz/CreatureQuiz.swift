@@ -1,15 +1,15 @@
 //
-//  ColorQuiz.swift
+//  CreatureQuiz.swift
 //  
 //
-//  Created by 若江照仁 on 2023/01/14.
+//  Created by 若江照仁 on 2023/03/01.
 //
 
 import Core
 
-public struct ColorQuiz: VoiceQuiz {
-    public typealias Option = ColorQuizOption
-    public static let title: String = "色"
+public struct CreatureQuiz: VoiceQuiz {
+    public typealias Option = CreatureQuizOption
+    public static let title: String = "生き物"
     public var options: [Option]
     public let answer: Option
     
@@ -21,4 +21,5 @@ public struct ColorQuiz: VoiceQuiz {
         self.options = options
         self.answer = answer
     }
+    
 }

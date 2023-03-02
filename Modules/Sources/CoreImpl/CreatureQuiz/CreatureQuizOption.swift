@@ -2,46 +2,28 @@
 //  File.swift
 //  
 //
-//  Created by 若江照仁 on 2023/02/25.
+//  Created by 若江照仁 on 2023/03/01.
 //
 
 import SwiftUI
 import Extensions
 import Core
 
-public enum AnimalQuizOption: String {
-    // funny
-    case dogFace🐶
-    case catFace🐱
-    case mouseFace🐭
-    case rabbitFace🐰
-    
-    case lionFace🦁
-    case pigFace🐷
-    
-    case pandaFace🐼
-    case horseFace🐴
-    case monkeyFace🐵
-    
-    case tigerFace🐯
-    case cowFace🐮
-    case bearFace🐻
-    
+public enum CreatureQuizOption: String {
     // animal
     case dog🐕
     case cat🐈
-    case mouse🐁
     case rabbit🐇
+    case pig🐖
     
     case elephant🐘
     case giraffe🦒
-    
-    case pig🐖
-    case cow🐄
-    case horse🐎
-    
-    case monkey🐒
     case chipmunk🐿️
+    case cow🐄
+    
+    case horse🐎
+    case monkey🐒
+    case mouse🐁
     case tiger🐅
     
     case zebra🦓
@@ -78,27 +60,15 @@ public enum AnimalQuizOption: String {
     case spider🕷
 }
 
-extension AnimalQuizOption: VoiceQuizOption {
+extension CreatureQuizOption: VoiceQuizOption {
     public var id: Self { self }
     
-    public var viewType: Core.OptionViewType {
+    public var viewType: OptionViewType {
         .text(title: emoji, textColor: .init(uiColor: .label), backgroundColor: .init(uiColor: .systemFill))
     }
     
     public var call: String {
         switch self {
-        case .dogFace🐶: return "いぬ"
-        case .monkeyFace🐵: return "さる"
-        case .lionFace🦁: return "らいおん"
-        case .tigerFace🐯: return "とら"
-        case .cowFace🐮: return "うし"
-        case .pigFace🐷: return "ぶた"
-        case .mouseFace🐭: return "ねずみ"
-        case .bearFace🐻: return "くま"
-        case .pandaFace🐼: return "ぱんだ"
-        case .rabbitFace🐰: return "うさぎ"
-        case .catFace🐱: return "ねこ"
-        case .horseFace🐴: return "うま"
         case .dog🐕: return "いぬ"
         case .cat🐈: return "ねこ"
         case .mouse🐁: return "ねずみ"
@@ -139,21 +109,9 @@ extension AnimalQuizOption: VoiceQuizOption {
     }
 }
  
-private extension AnimalQuizOption {
+private extension CreatureQuizOption {
     var emoji: String {
         switch self {
-        case .dogFace🐶: return "🐶"
-        case .monkeyFace🐵: return "🐵"
-        case .lionFace🦁: return "🦁"
-        case .tigerFace🐯: return "🐯"
-        case .cowFace🐮: return "🐮"
-        case .pigFace🐷: return "🐷"
-        case .mouseFace🐭: return "🐭"
-        case .bearFace🐻: return "🐻"
-        case .pandaFace🐼: return "🐼"
-        case .rabbitFace🐰: return "🐰"
-        case .catFace🐱: return "🐱"
-        case .horseFace🐴: return "🐴"
         case .dog🐕: return "🐕"
         case .cat🐈: return "🐈"
         case .mouse🐁: return "🐁"
