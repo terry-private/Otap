@@ -11,10 +11,14 @@ public struct TimeSecondsView: View {
     private let time: Double
     private let secondsSize: CGFloat
     private let decimalSize: CGFloat
+    private let secondsCapHeight: CGFloat
+    private let decimalCapHeight: CGFloat
     public init(_ time: Double = 0, secondsSize: CGFloat = 18, decimalSize: CGFloat = 11) {
         self.time = time
         self.secondsSize = secondsSize
         self.decimalSize = decimalSize
+        secondsCapHeight = UIFont.systemFont(ofSize: secondsSize).capHeight
+        decimalCapHeight = UIFont.systemFont(ofSize: decimalSize).capHeight
     }
     public var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
@@ -22,18 +26,18 @@ public struct TimeSecondsView: View {
                 .overlay(alignment: .bottomTrailing) {
                     Text("\(Int(time))")
                         .font(.system(size: secondsSize, weight: .bold, design: .monospaced))
-                        .frame(height: secondsSize*0.7)
+                        .frame(height: secondsCapHeight)
                         .fixedSize()
                 }
             Spacer()
                 .overlay(alignment: .bottomLeading) {
                     Text(".\(String(format: "%02d", Int(time * 100) - Int(time) * 100))")
                         .font(.system(size: decimalSize, design: .monospaced))
-                        .frame(height: decimalSize*0.7)
+                        .frame(height: decimalCapHeight)
                         .fixedSize()
                 }
         }
-        .offset(x: (secondsSize*2 - decimalSize*3)/3, y: max(secondsSize, decimalSize)*0.7/2)
+        .offset(x: (secondsSize*2 - decimalSize*3)/3, y: max(secondsCapHeight, decimalCapHeight)/2)
     }
 }
 
