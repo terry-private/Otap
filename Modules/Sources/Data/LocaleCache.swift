@@ -12,6 +12,7 @@ public final actor LocaleCache {
     public static var shared: LocaleCache = .init()
     
     public var records: [LevelSelectorID: GameRecord] = [
+        .shapeBasic1: .init(),
         .colorBasic1: .init(),
         .funnyAnimalBasic1: .init(),
         .creatureAnimal1: .init()

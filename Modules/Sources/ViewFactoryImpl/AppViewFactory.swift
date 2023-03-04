@@ -16,6 +16,7 @@ public enum AppViewFactory {
         SelectQuizView<SelectQuizViewFactoryImpl, SelectQuizViewModelImpl>(
             viewModel: .init(
                 selectors: [
+                    ShapeQuizLevelSelector.basic1,
                     ColorQuizLevelSelector.basic1,
                     FunnyAnimalQuizLevelSelector.basic1,
                     CreatureQuizLevelSelector.advanced1

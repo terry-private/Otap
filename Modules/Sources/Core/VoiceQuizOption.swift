@@ -12,6 +12,7 @@ public enum OptionViewType: Hashable {
     case color(Color)
     case text(title: String, textColor: Color, backgroundColor: Color)
     case image(name: String)
+    case systemIcon(systemName: String, foregroundColor: Color = .cyan, backgroundColor: Color = .init(uiColor: .systemFill))
     
     @ViewBuilder
     public func view() -> some View {
@@ -29,6 +30,12 @@ public enum OptionViewType: Hashable {
         case let .image(name):
             Image(name)
                 .resizable()
+        case let .systemIcon(systemName, foregroundColor, backgroundColor):
+            Image(systemName: systemName)
+                .resizable()
+                .scaleEffect(x: 0.8, y: 0.8)
+                .foregroundColor(foregroundColor)
+                .background{ backgroundColor }
         }
     }
 }
