@@ -84,7 +84,7 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                             
                         }
                         .overlay {
-                            TimeSecondsView(viewModel.time)
+                            TimeSecondsView(viewModel.remainTime)
                                 .foregroundColor(viewModel.isWarning ? .red : .init(uiColor: .label))
                         }
                         .padding(.vertical, 5)

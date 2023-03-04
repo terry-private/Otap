@@ -61,6 +61,7 @@ public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
     var star2Description: String { get }
     var star3Description: String { get }
     var time: Double { get }
+    var remainTime: Double { get }
     var timeLimit: Double { get }
     var quizProgress: Double { get }
     var ghostProgress: Double { get }
@@ -114,6 +115,7 @@ extension VoiceQuizViewModelImpl: VoiceQuizViewModelProtocol {
     public var star2Description: String { useCase.star2Description }
     public var star3Description: String { useCase.star3Description }
     
+    public var remainTime: Double { useCase.timeLimit - time }
     public var timeLimit: Double { useCase.timeLimit }
     public var lastRecord: GameRecord { useCase.lastRecord }
     public var ghostProgress: Double {
