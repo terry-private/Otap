@@ -9,10 +9,10 @@ import SwiftUI
 import Extensions
 
 public struct SquareGrid<Element: Identifiable, V: View>: View {
-    let elements: [Element]
-    let content: (Element) -> V
-    let spacing: CGFloat
-    let globalNamespace: Namespace.ID?
+    private let elements: [Element]
+    private let content: (Element) -> V
+    private let spacing: CGFloat
+    private let globalNamespace: Namespace.ID?
     @State private var size: CGSize = .zero
     @Namespace var localNamespace
     
@@ -30,18 +30,18 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
             .overlay {
                 switch elements.count {
                 case 1:
-                    cell(elements[0])
+                    cell(0)
                 case 2, 4, 6:
                     grid(columnsCount: 2)
                 case 3:
                     VStack(spacing: spacing) {
-                        cell(elements[0])
+                        cell(0)
                         row(1, 2)
                     }
                 case 5:
                     VStack(spacing: spacing) {
                         row(0, 1)
-                        cell(elements[2])
+                        cell(2)
                         row(3, 4)
                     }
                 case 7:
@@ -76,7 +76,7 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
                         row(0, 1, 2, 3)
                         HStack(spacing: centeringSpace) {
                             column(4, 5)
-                            cell(elements[6])
+                            cell(6)
                             column(7, 8)
                         }
                         row(9, 10, 11, 12)
@@ -107,7 +107,7 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
     private func row(_ indices: Int ..., isLargeSpace: Bool = false) -> some View {
         HStack(spacing: isLargeSpace ? centeringSpace : spacing) {
             ForEach(indices.map { elements[$0] }) { element in
-                cell(element)
+                cell(by: element)
             }
         }
     }
@@ -115,25 +115,33 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
     private func column(_ indices: Int ..., isLargeSpace: Bool = false) -> some View {
         VStack(spacing: isLargeSpace ? centeringSpace : spacing) {
             ForEach(indices.map { elements[$0] }) { element in
-                cell(element)
+                cell(by: element)
             }
         }
     }
     
     private func grid(columnsCount: Int) -> some View{
-        LazyVGrid(columns: .init(repeating: .init(.fixed(length), spacing: spacing), count: columnsCount), spacing: spacing) {
-            ForEach(elements) { element in
-                cell(element)
+        Grid(horizontalSpacing: spacing, verticalSpacing: spacing) {
+            ForEach(0...(elements.count-1)/columnsCount, id: \.self) { rowIndex in
+                GridRow {
+                    ForEach(elements[columnsCount*rowIndex...min(elements.count, columnsCount*(rowIndex+1)) - 1]) { element in
+                        cell(by: element)
+                    }
+                }
             }
         }
     }
     
-    private func cell(_ element: Element) -> some View {
-        let length = length
-        return content(element)
+    private func cell(_ index: Int) -> some View {
+        cell(by: elements[index])
+    }
+    
+    @ViewBuilder
+    private func cell(by element: Element) -> some View {
+        content(element)
             .frame(width: abs(length), height: abs(length))
             .cornerRadius(length / 10)
-            .matchedGeometryEffect(id: element.id, in: globalNamespace ?? localNamespace)
+            .matchedGeometryEffect(id: element.id, in: localNamespace)
             .overlay {
                 RoundedRectangle(cornerRadius: length / 10)
                     .stroke(style: .init(lineWidth: 1))
