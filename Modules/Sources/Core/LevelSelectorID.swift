@@ -46,4 +46,17 @@ public enum LevelSelectorID: String {
     case creatureAdvanced4
     case creatureAdvanced5
     case creatureChallenge
+    
+    case fruitsAndVegetablesVegetable1
+    case fruitsAndVegetablesVegetable2
+    case fruitsAndVegetablesVegetable3
+    case fruitsAndVegetablesFruit1
+    case fruitsAndVegetablesFruit2
+    case fruitsAndVegetablesFruit3
+    case fruitsAndVegetablesAdvanced1
+    case fruitsAndVegetablesAdvanced2
+    case fruitsAndVegetablesAdvanced3
+    case fruitsAndVegetablesAdvanced4
+    case fruitsAndVegetablesAdvanced5
+    case fruitsAndVegetablesChallenge
 }

@@ -64,7 +64,7 @@ extension CreatureQuizOption: VoiceQuizOption {
     public var id: Self { self }
     
     public var viewType: OptionViewType {
-        .text(title: emoji, textColor: .init(uiColor: .label), backgroundColor: .init(uiColor: .systemFill))
+        .text(title: emoji)
     }
     
     public var call: String {

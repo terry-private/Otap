@@ -28,7 +28,7 @@ public struct SelectQuizView<Factory: SelectQuizViewFactoryProtocol, ViewModel: 
             .padding(16)
         }
         .onChangeFrame { size in
-            columnsCount = max(Int(size.width / 300), 2)
+            columnsCount = max(Int(size.width / 250), 2)
         }
         .navigationTitle("クイズを選択")
         .background {
