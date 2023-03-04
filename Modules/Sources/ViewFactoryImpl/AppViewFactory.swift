@@ -20,7 +20,8 @@ public enum AppViewFactory {
                     ColorQuizLevelSelector.basic1,
                     FunnyAnimalQuizLevelSelector.basic1,
                     CreatureQuizLevelSelector.advanced1,
-                    FruitsAndVegetablesQuizLevelSelector.fruit1
+                    FruitsAndVegetablesQuizLevelSelector.fruit1,
+                    VehicleQuizLevelSelector.basic1
                 ]
             )
         )
