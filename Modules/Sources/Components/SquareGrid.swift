@@ -136,9 +136,8 @@ public struct SquareGrid<Element: Identifiable, V: View>: View {
             .matchedGeometryEffect(id: element.id, in: globalNamespace ?? localNamespace)
             .overlay {
                 RoundedRectangle(cornerRadius: length / 10)
-                    .stroke(style: .init(lineWidth: 0.5))
-                    .foregroundColor(.init(uiColor: .label))
-                    .opacity(0.2)
+                    .stroke(style: .init(lineWidth: 1))
+                    .foregroundColor(.init(uiColor: .opaqueSeparator))
             }
     }
     

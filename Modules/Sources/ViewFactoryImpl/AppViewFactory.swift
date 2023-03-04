@@ -19,7 +19,8 @@ public enum AppViewFactory {
                     ShapeQuizLevelSelector.basic1,
                     ColorQuizLevelSelector.basic1,
                     FunnyAnimalQuizLevelSelector.basic1,
-                    CreatureQuizLevelSelector.advanced1
+                    CreatureQuizLevelSelector.advanced1,
+                    FruitsAndVegetablesQuizLevelSelector.fruit1
                 ]
             )
         )

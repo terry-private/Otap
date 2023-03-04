@@ -18,7 +18,8 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
     
     public var body: some View {
         ScrollView {
-            LazyVStack(spacing: 16) {
+            // TODO: 本当はLazyにするべきだが、要素が多い時に一番下から上にスクロールしている途中でなぜか落ちる。
+            VStack(spacing: 16) {
                 ForEach(Array(viewModel.generators)) { generator in
                     SelectLevelViewCell(
                         generator: generator,
@@ -55,11 +56,15 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                 }
             }
         ) { generator in
-            Factory.voiceQuizView(
-                generator: generator,
-                lastRecord: viewModel.gameRecords[generator.id]! // force unwrap: タップできるならレコードがある前提,
-            ) {
-                viewModel.dismissGame()
+            if let record = viewModel.gameRecords[generator.id] {
+                Factory.voiceQuizView(
+                    generator: generator,
+                    lastRecord: record
+                ) {
+                    viewModel.dismissGame()
+                }
+            } else {
+                EmptyView()
             }
         }
     }

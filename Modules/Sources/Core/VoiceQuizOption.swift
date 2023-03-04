@@ -10,9 +10,9 @@ import Extensions
 
 public enum OptionViewType: Hashable {
     case color(Color)
-    case text(title: String, textColor: Color, backgroundColor: Color)
+    case text(title: String, textColor: Color = .primary, backgroundColor: Color = .init(uiColor: .systemFill))
     case image(name: String)
-    case systemIcon(systemName: String, foregroundColor: Color = .cyan, backgroundColor: Color = .init(uiColor: .systemFill))
+    case systemIcon(systemName: String, foregroundColor: Color = .white, backgroundColor: Color = .green)
     
     @ViewBuilder
     public func view() -> some View {
