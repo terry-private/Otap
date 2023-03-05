@@ -68,4 +68,17 @@ public enum LevelSelectorID: String {
     case vehicleAdvanced3
     case vehicleAdvanced4
     case vehicleChallenge
+    
+    case numberDice123
+    case numberDice456
+    case numberDiceAll
+    case numberFinger
+    case numberNumeral0123
+    case numberNumeral4567
+    case numberNumeral8910
+    case numberNumeralAll
+    case numberAdvanced1
+    case numberAdvanced2
+    case numberAdvanced3
+    case numberChallenge
 }
