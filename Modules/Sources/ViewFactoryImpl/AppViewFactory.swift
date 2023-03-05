@@ -22,7 +22,8 @@ public enum AppViewFactory {
                     CreatureQuizLevelSelector.advanced1,
                     FruitsAndVegetablesQuizLevelSelector.fruit1,
                     VehicleQuizLevelSelector.basic1,
-                    NumberQuizLevelSelector.dice123
+                    NumberQuizLevelSelector.dice123,
+                    HiraganaQuizLevelSelector.あ行
                 ]
             )
         )

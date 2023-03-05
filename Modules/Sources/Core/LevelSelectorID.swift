@@ -81,4 +81,30 @@ public enum LevelSelectorID: String {
     case numberAdvanced2
     case numberAdvanced3
     case numberChallenge
+    
+    case hiraganaあ行
+    case hiraganaか行
+    case hiraganaReview1
+    case hiraganaさ行
+    case hiraganaReview2
+    case hiraganaた行
+    case hiraganaReview3
+    case hiraganaな行
+    case hiraganaReview4
+    case hiraganaは行
+    case hiraganaReview5
+    case hiraganaま行
+    case hiraganaReview6
+    case hiraganaや行
+    case hiraganaReview7
+    case hiraganaら行
+    case hiraganaReview8
+    case hiraganaわ行
+    case hiraganaReview9
+    case hiraganaAdvanced1
+    case hiraganaAdvanced2
+    case hiraganaAdvanced3
+    case hiraganaAdvanced4
+    case hiraganaAdvanced5
+    case hiraganaChallenge
 }
