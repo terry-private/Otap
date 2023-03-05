@@ -11,6 +11,7 @@ import Components
 
 public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel: SelectLevelViewModelProtocol>: View {
     @StateObject private var viewModel: ViewModel
+    @State var columnsCount: Int = 0
     
     public init(viewModel: ViewModel) {
         self._viewModel = .init(wrappedValue: viewModel)
@@ -18,7 +19,7 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
     
     public var body: some View {
         ScrollView {
-            LazyVStack(spacing: 16) {
+            LazyVGrid(columns: .init(repeating: .init(spacing: 16), count: columnsCount)) {
                 ForEach(Array(viewModel.generators)) { generator in
                     SelectLevelViewCell(
                         generator: generator,
@@ -32,6 +33,9 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                     }
                 }
             }
+        }
+        .onChangeFrame { size in
+            columnsCount = max(Int(size.width / 400), 1)
         }
         .navigationTitle(ViewModel.Quiz.title)
         .background {

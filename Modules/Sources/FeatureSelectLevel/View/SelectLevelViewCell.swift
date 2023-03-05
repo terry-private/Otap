@@ -32,11 +32,13 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
         Button {
             select(generator)
         } label: {
-            HStack{
+            HStack(spacing: 0){
                 SquareGrid(generator.previewQuiz.options) { option in
                     option.viewType.view()
                 }
                 .frame(width: 140, height: 140)
+                
+                Spacer(minLength: 0)
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text(generator.title)
@@ -44,7 +46,6 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
                         .foregroundColor(.init(uiColor: .label))
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer()
                     
@@ -79,8 +80,8 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
                     }
                     .foregroundColor(.pink)
                 }
+                Spacer(minLength: 0)
             }
-            .frame(maxWidth: .infinity)
             .padding(16)
             .background {
                 Color(uiColor: .tertiarySystemBackground)
