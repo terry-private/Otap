@@ -76,7 +76,10 @@ enum Modules: String, CaseIterable, Hashable {
         case .Components: return []
         case .Core: return []
         case .CoreImpl: return []
-        case .Data: return []
+        case .Data: return [
+            .product(name: "Realm", package: "realm-swift"),     // Realm
+            .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
+        ]
         case .Extensions: return []
         case .FeatureSelectLevel: return []
         case .FeatureSelectQuiz: return []
@@ -114,7 +117,8 @@ let package = Package(
     ],
     products: Modules.allCases.map { .library(name: $0.rawValue, targets: [$0.rawValue])},
     dependencies: [
-        .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1")
+        .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1"),
+        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0")
     ],
     targets: Modules.allCases.map {
         .target(

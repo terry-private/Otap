@@ -88,6 +88,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
     
     public init(
         lastRecord: GameRecord = .init(
+            id: .colorBasic1,
             star1: false,
             star2: false,
             star3: false
@@ -174,12 +175,10 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
             let newRecord = generator.newRecord(time: time, wrongCount: wrongCount)
             Task.detached {
                 // save
-                try await Repository.updateGameRecord(
-                    generatorID: self.generator.id, gameRecord: self.lastRecord.merged(newRecord)
-                )
+                try await Repository.updateGameRecord(gameRecord: self.lastRecord.merged(newRecord))
                 // open next if needed
                 if let nextID = self.generator.nextID {
-                    try await Repository.updateGameRecord(generatorID: nextID, gameRecord: .init())
+                    try await Repository.updateGameRecord(gameRecord: .init(id: nextID))
                 }
             }
             return .success(.init(lastRecord: lastRecord, newRecord: newRecord))
@@ -191,7 +190,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
     }
     
     public func refresh() async throws {
-        lastRecord = try await Repository.fetchGameRecord(generatorID: generator.id) ?? .init()
+        lastRecord = try await Repository.fetchGameRecord(generatorID: generator.id) ?? .init(id: generator.id)
         quizzes = generator.quizzes()
         correctCount = 0
         wrongCount = 0

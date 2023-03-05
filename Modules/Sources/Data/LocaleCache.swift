@@ -12,17 +12,17 @@ public final actor LocaleCache {
     public static var shared: LocaleCache = .init()
     
     public var records: [LevelSelectorID: GameRecord] = [
-        .shapeBasic1: .init(),
-        .colorBasic1: .init(),
-        .funnyAnimalBasic1: .init(),
-        .creatureAnimal1: .init(),
-        .fruitsAndVegetablesVegetable1: .init(),
-        .vehicleBasic1: .init(),
-        .numberDice123: .init(),
-        .hiraganaあ行: .init()
+        .shapeBasic1: .init(id: .shapeBasic1),
+        .colorBasic1: .init(id:.colorBasic1),
+        .funnyAnimalBasic1: .init(id: .funnyAnimalBasic1),
+        .creatureAnimal1: .init(id: .creatureAnimal1),
+        .fruitsAndVegetablesVegetable1: .init(id: .fruitsAndVegetablesVegetable1),
+        .vehicleBasic1: .init(id: .vehicleBasic1),
+        .numberDice123: .init(id: .numberDice123),
+        .hiraganaあ行: .init(id: .hiraganaあ行)
     ]
     
     public func update(id: LevelSelectorID, _ gameRecord: GameRecord) {
-        records[id, default: .init()].merge(gameRecord)
+        records[id, default: .init(id: id)].merge(gameRecord)
     }
 }
