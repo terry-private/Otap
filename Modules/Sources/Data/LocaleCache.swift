@@ -18,7 +18,8 @@ public final actor LocaleCache {
         .creatureAnimal1: .init(),
         .fruitsAndVegetablesVegetable1: .init(),
         .vehicleBasic1: .init(),
-        .numberDice123: .init()
+        .numberDice123: .init(),
+        .hiraganaあ行: .init()
     ]
     
     public func update(id: LevelSelectorID, _ gameRecord: GameRecord) {
