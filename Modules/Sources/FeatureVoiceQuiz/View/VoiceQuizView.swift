@@ -27,8 +27,39 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                 VStack {
                     Spacer()
                     Text("Ready")
-                        .font(.title)
+                        .font(.largeTitle)
                     
+                    Spacer()
+                    Text("条件: \(viewModel.requirements)")
+                        .font(.title3)
+                    
+                    Grid(verticalSpacing: 16) {
+                        GridRow {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(viewModel.lastRecord.star1 ? .yellow : .gray)
+                            Text(viewModel.star1Description)
+                        }
+                        GridRow {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(viewModel.lastRecord.star2 ? .yellow : .gray)
+                            Text(viewModel.star2Description)
+                        }
+                        GridRow {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(viewModel.lastRecord.star3 ? .yellow : .gray)
+                            Text(viewModel.star3Description)
+                        }
+                        Divider()
+                        GridRow {
+                            Text("レコード")
+                            
+                            Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
+                        }
+                        .padding(.horizontal, 40)
+                    }
+                    .font(.title3)
+                    .fixedSize()
+                    .padding(40)
                     Spacer()
                     
                     BottomButton {
@@ -63,10 +94,23 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                         // ----------------------------------------------------
                         // MARK: 👈Left Space
                         // ----------------------------------------------------
-                        VStack {
-                            
-                                Text(viewModel.currentQuiz.answer.call +  viewModel.currentQuiz.options.count.description + "個")
+                        Grid(verticalSpacing: 4) {
+                            GridRow {
+                                Text("残り")
+                                    .font(.body)
+                                Text("\(viewModel.remainQuizCount)")
+                                    .font(.system(size: 22, design: .monospaced))
+                            }
+                            GridRow {
+                                Image(systemName: "xmark")
+                                    .font(.body)
+                                    .foregroundColor(.red)
+                                    .padding()
+                                Text("\(viewModel.wrongCount)")
+                                    .font(.system(size: 17, design: .monospaced))
+                            }
                         }
+                        .fixedSize()
                         .layoutLikeSpacer()
                         .padding(.top, 40)
                         
@@ -92,37 +136,37 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                         // ----------------------------------------------------
                         // MARK: 👉Right Space
                         // ----------------------------------------------------
-                        VStack {
-                            Grid(verticalSpacing: 4) {
-                                GridRow {
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(viewModel.lastRecord.star1 ? .yellow : .gray)
-                                    Text(viewModel.star1Description)
-                                        .font(.caption)
-                                }
-                                GridRow {
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(viewModel.lastRecord.star2 ? .yellow : .gray)
-                                    Text(viewModel.star2Description)
-                                        .font(.caption)
-                                }
-                                GridRow {
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(viewModel.lastRecord.star3 ? .yellow : .gray)
-                                    Text(viewModel.star3Description)
-                                        .font(.caption)
-                                }
-                                Divider()
-                                GridRow {
-                                    Text("レコード")
-                                        .font(.caption)
-                                    
-                                    Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
-                                        .font(.caption)
-                                }
+                        
+                        Grid(verticalSpacing: 4) {
+                            GridRow {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(viewModel.lastRecord.star1 ? .yellow : .gray)
+                                Text(viewModel.star1Description)
+                                    .font(.caption)
                             }
-                            .layoutLikeSpacer()
+                            GridRow {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(viewModel.lastRecord.star2 ? .yellow : .gray)
+                                Text(viewModel.star2Description)
+                                    .font(.caption)
+                            }
+                            GridRow {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(viewModel.lastRecord.star3 ? .yellow : .gray)
+                                Text(viewModel.star3Description)
+                                    .font(.caption)
+                            }
+                            Divider()
+                            GridRow {
+                                Text("レコード")
+                                    .font(.caption)
+                                
+                                Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
+                                    .font(.caption)
+                            }
+                            .padding(.horizontal, 10)
                         }
+                        .fixedSize()
                         .layoutLikeSpacer()
                         .padding(.top, 40)
                     }
