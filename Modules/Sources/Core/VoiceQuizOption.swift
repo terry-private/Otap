@@ -11,7 +11,7 @@ import Extensions
 public enum OptionViewType: Hashable {
     case color(Color)
     case text(title: String, textColor: Color = .primary, backgroundColor: Color = .init(uiColor: .systemFill))
-    case image(name: String)
+    case image(uiImage: UIImage, foregroundColor: Color = .primary, backgroundColor: Color = .init(uiColor: .systemFill))
     case systemIcon(systemName: String, foregroundColor: Color = .white, backgroundColor: Color = .green)
     
     @ViewBuilder
@@ -27,9 +27,12 @@ public enum OptionViewType: Hashable {
                 .foregroundColor(textColor)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background { backgroundColor }
-        case let .image(name):
-            Image(name)
+        case let .image(uiImage, foregroundColor, backgroundColor):
+            Image(uiImage: uiImage)
+                .renderingMode(.template)
                 .resizable()
+                .foregroundColor(foregroundColor)
+                .background{ backgroundColor }
         case let .systemIcon(systemName, foregroundColor, backgroundColor):
             Image(systemName: systemName)
                 .resizable()

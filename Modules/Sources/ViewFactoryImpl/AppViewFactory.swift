@@ -21,7 +21,8 @@ public enum AppViewFactory {
                     FunnyAnimalQuizLevelSelector.basic1,
                     CreatureQuizLevelSelector.advanced1,
                     FruitsAndVegetablesQuizLevelSelector.fruit1,
-                    VehicleQuizLevelSelector.basic1
+                    VehicleQuizLevelSelector.basic1,
+                    NumberQuizLevelSelector.dice123
                 ]
             )
         )
