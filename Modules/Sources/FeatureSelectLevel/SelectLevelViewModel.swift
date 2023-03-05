@@ -57,7 +57,7 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
     
     public init() {
         gameRecords = generators.reduce(into: [:]) { records, generator in
-            records[generator.id] = .init()
+            records[generator.id] = .init(id: generator.id)
         }
     }
     

@@ -72,6 +72,6 @@ public extension VoiceQuizGenerator {
         let star1 = star1.isUnlock(time, wrongCount)
         let star2 = star2.isUnlock(time, wrongCount)
         let star3 = star3.isUnlock(time, wrongCount)
-        return .init(time: time, star1: star1, star2: star2, star3: star3)
+        return .init(id: id,time: time, star1: star1, star2: star2, star3: star3)
     }
 }

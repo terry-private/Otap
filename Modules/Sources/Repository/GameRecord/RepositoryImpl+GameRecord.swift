@@ -11,9 +11,12 @@ import Data
 
 extension RepositoryImpl: GameRecordRepository {    
     public static func fetchGameRecord(generatorID: LevelSelectorID) async throws -> GameRecord? {
-        await LocaleCache.shared.records[generatorID]
+        guard let record = RealmClientImpl.readGameRecord(for: generatorID) else {
+            return await LocaleCache.shared.records[generatorID]
+        }
+        return record
     }
-    public static func updateGameRecord(generatorID: LevelSelectorID, gameRecord: Core.GameRecord) async throws {
-        await LocaleCache.shared.update(id: generatorID, gameRecord)
+    public static func updateGameRecord(gameRecord: Core.GameRecord) async throws {
+        RealmClientImpl.updateGameRecord(gameRecord)
     }
 }

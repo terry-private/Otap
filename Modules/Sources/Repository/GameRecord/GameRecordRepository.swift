@@ -10,17 +10,14 @@ import Core
 
 public protocol GameRecordRepository {
     static func fetchGameRecord(generatorID: LevelSelectorID) async throws -> GameRecord?
-    static func updateGameRecord(generatorID: LevelSelectorID, gameRecord: GameRecord) async throws
+    static func updateGameRecord(gameRecord: GameRecord) async throws
 }
 
 #if DEBUG
 enum GameRecordRepositoryDummy: GameRecordRepository {
-    static var record: GameRecord = .init(star1: false, star2: false, star3: false)
     static func fetchGameRecord(generatorID: LevelSelectorID) async throws -> Core.GameRecord? {
-        record
+        .init(id: generatorID)
     }
-    static func updateGameRecord(generatorID: LevelSelectorID, gameRecord: Core.GameRecord) async throws {
-        record = gameRecord
-    }
+    static func updateGameRecord(gameRecord: Core.GameRecord) async throws {}
 }
 #endif
