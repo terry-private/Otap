@@ -68,19 +68,19 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
                     }
                 }
                 .padding(.vertical, 20)
-                .overlay(alignment: .topTrailing) {
-                    HStack(spacing: 8) {
-                        if let time {
-                            CrownImage()
-                                .frame(width: 16, height: 12)
-                            Text("\(String(format: "%.2f", time))")
-                                .font(.caption)
-                        }
-                        
-                    }
-                    .foregroundColor(.pink)
-                }
                 Spacer(minLength: 0)
+            }
+            .overlay(alignment: .topTrailing) {
+                HStack(spacing: 8) {
+                    if let time {
+                        CrownImage()
+                            .frame(width: 16, height: 12)
+                        Text("\(String(format: "%.2f", time))")
+                            .font(.caption)
+                    }
+                    
+                }
+                .foregroundColor(.pink)
             }
             .padding(16)
             .background {
