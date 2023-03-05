@@ -56,7 +56,10 @@ public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
     var currentQuiz: Quiz { get }
     var isWarning: Bool { get }
     var isLoading: Bool { get }
+    var remainQuizCount: Int { get }
+    var wrongCount: Int { get }
     var lastRecord: GameRecord { get }
+    var requirements: String { get }
     var star1Description: String { get }
     var star2Description: String { get }
     var star3Description: String { get }
@@ -111,9 +114,13 @@ public final class VoiceQuizViewModelImpl<
 
 // MARK: - AudioQuizViewModelProtocol get only properties
 extension VoiceQuizViewModelImpl: VoiceQuizViewModelProtocol {
+    public var requirements: String { useCase.requirements }
     public var star1Description: String { useCase.star1Description }
     public var star2Description: String { useCase.star2Description }
     public var star3Description: String { useCase.star3Description }
+    
+    public var remainQuizCount: Int { useCase.quizCount - currentQuizIndex }
+    public var wrongCount: Int { useCase.wrongCount }
     
     public var remainTime: Double { useCase.timeLimit - time }
     public var timeLimit: Double { useCase.timeLimit }

@@ -16,7 +16,9 @@ public protocol VoiceQuizUseCase<Quiz> {
     var penalty: PenaltyType { get }
     
     var quizCount: Int { get }
+    var wrongCount: Int { get }
     
+    var requirements: String { get }
     var star1Description: String { get }
     var star2Description: String { get }
     var star3Description: String { get }
@@ -34,7 +36,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
         .init(options: Quiz.Option.allCases)
     ]
     private var correctCount: Int = 0
-    private var wrongCount: Int = 0
+    public var wrongCount: Int = 0
     public func nextQuiz() -> VoiceQuizDummy {
         quizzes[min(correctCount, quizzes.count - 1)]
     }
@@ -48,6 +50,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
     
     public var quizCount: Int { quizzes.count }
     
+    public let requirements: String
     public let star1Description: String
     public let star2Description: String
     public let star3Description: String
@@ -91,6 +94,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
         ),
         timeLimit: Double = 60,
         penalty: PenaltyType = .shuffle,
+        requirements: String = "30秒以内に10問",
         star1Description: String = "クリア",
         star2Description: String = "ノーミス",
         star3Description: String = "40秒以内"
@@ -98,6 +102,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
         self.lastRecord = lastRecord
         self.timeLimit = timeLimit
         self.penalty = penalty
+        self.requirements = requirements
         self.star1Description = star1Description
         self.star2Description = star2Description
         self.star3Description = star3Description
@@ -110,6 +115,7 @@ public final class VoiceQuizInteractor<Quiz: VoiceQuiz, Repository: GameRecordRe
     // MARK: 🌎📦public stored properties
     // ------------------------------------------------
     public var lastRecord: GameRecord
+    public var wrongCount: Int = 0
     
     // ------------------------------------------------
     // MARK: 🚪📦private stored properties
@@ -117,7 +123,6 @@ public final class VoiceQuizInteractor<Quiz: VoiceQuiz, Repository: GameRecordRe
     private let generator: VoiceQuizGenerator<Quiz>
     private var quizzes: [Quiz]
     private var correctCount: Int = 0
-    private var wrongCount: Int = 0
         
     // ------------------------------------------------
     // MARK: init
@@ -134,6 +139,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🧮 computed properties
     // ------------------------------------------------
+    public var requirements: String { generator.requirements }
     public var star1Description: String { generator.star1.description }
     public var star2Description: String { generator.star2.description }
     public var star3Description: String { generator.star3.description }
