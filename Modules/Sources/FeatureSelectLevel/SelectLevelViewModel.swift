@@ -14,8 +14,13 @@ public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
     var generators: [VoiceQuizGenerator<Quiz>] { get }
     var gameRecords: [LevelSelectorID: GameRecord] { get }
     var selectedGenerator: VoiceQuizGenerator<Quiz>? { get }
-    func selectGenerator(generator: VoiceQuizGenerator<Quiz>?)
-    func dismissGame()
+    
+    @discardableResult
+    func selectGenerator(generator: VoiceQuizGenerator<Quiz>?) -> Task<Void, Never>
+    
+    @discardableResult
+    func dismissGame() -> Task<Void, Never>
+    
     func refresh() async throws
 }
 
@@ -29,14 +34,19 @@ public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelecto
             try await refresh()
         }
     }
-    public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) {
+    
+    @discardableResult
+    public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) -> Task<Void, Never> {
         Task {
             selectedGenerator = generator
         }
     }
-    public func dismissGame() {
-        selectGenerator(generator: nil)
+    
+    @discardableResult
+    public func dismissGame() -> Task<Void, Never> {
+        return selectGenerator(generator: nil)
     }
+    
     public func refresh() async throws {
         for generator in generators {
             gameRecords[generator.id] = try await UseCase.fetchGameRecord(id: generator.id)
@@ -61,13 +71,16 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
         }
     }
     
-    public func selectGenerator(generator: VoiceQuizGenerator<VoiceQuizDummy>?) {
-        selectedGenerator = generator
+    @discardableResult
+    public func selectGenerator(generator: VoiceQuizGenerator<VoiceQuizDummy>?) -> Task<Void, Never> {
+        Task {
+            selectedGenerator = generator
+        }
     }
     
-    
-    public func dismissGame() {
-        selectedGenerator = nil
+    @discardableResult
+    public func dismissGame() -> Task<Void, Never> {
+        return selectGenerator(generator: nil)
     }
     
     public func refresh() async throws {
