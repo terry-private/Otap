@@ -18,7 +18,14 @@ final class ViewModelTests: XCTestCase {
                 return nil
             }
         }
-        
+    }
+    
+    @MainActor
+    func test初期化後に非同期でgameRecordsを取得() async throws {
+        let viewModel = SelectLevelViewModelImpl<VoiceQuizLevelSelectorDummy, SelectLevelUseCaseMock>()
+        XCTAssertEqual(viewModel.gameRecords, [:], "初期化と同期状態ではgameRecordsが空")
+        _ = await viewModel.initialRefreshTask?.result
+        XCTAssertEqual(viewModel.gameRecords, [.colorBasic1:.init(id: .colorBasic1)], "initialRefreshTask後gameRecordsは.colorBasic1のみ")
     }
         
     @MainActor
