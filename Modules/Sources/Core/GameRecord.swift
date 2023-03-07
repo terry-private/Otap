@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GameRecord: Identifiable {
+public struct GameRecord: Identifiable, Hashable {
     public let id: LevelSelectorID
     public var time: Double?
     public var star1: Bool

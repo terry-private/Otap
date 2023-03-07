@@ -14,29 +14,41 @@ public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
     var generators: [VoiceQuizGenerator<Quiz>] { get }
     var gameRecords: [LevelSelectorID: GameRecord] { get }
     var selectedGenerator: VoiceQuizGenerator<Quiz>? { get }
-    func selectGenerator(generator: VoiceQuizGenerator<Quiz>?)
-    func dismissGame()
+    var initialRefreshTask: Task<Void, Error>? { get }
+    
+    @discardableResult
+    func selectGenerator(generator: VoiceQuizGenerator<Quiz>?) -> Task<Void, Never>
+    
+    @discardableResult
+    func dismissGame() -> Task<Void, Never>
+    
     func refresh() async throws
 }
 
 @MainActor
 public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelector, UseCase: SelectLevelUseCase>: ObservableObject, SelectLevelViewModelProtocol {
     public let generators: [VoiceQuizGenerator<LevelSelector.Quiz>] = LevelSelector.allCases.map { $0.generator }
+    public private(set) var initialRefreshTask: Task<Void, Error>? = nil
     @Published public var gameRecords: [LevelSelectorID: GameRecord] = [:]
     @Published public var selectedGenerator: VoiceQuizGenerator<LevelSelector.Quiz>? = nil
     public init() {
-        Task {
+        initialRefreshTask = Task {
             try await refresh()
         }
     }
-    public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) {
+    
+    @discardableResult
+    public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) -> Task<Void, Never> {
         Task {
             selectedGenerator = generator
         }
     }
-    public func dismissGame() {
-        selectGenerator(generator: nil)
+    
+    @discardableResult
+    public func dismissGame() -> Task<Void, Never> {
+        return selectGenerator(generator: nil)
     }
+    
     public func refresh() async throws {
         for generator in generators {
             gameRecords[generator.id] = try await UseCase.fetchGameRecord(id: generator.id)
@@ -52,7 +64,7 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
     
     public var generators: [VoiceQuizGenerator<VoiceQuizDummy>] = VoiceQuizLevelSelectorDummy.allCases.map { $0.generator }
     public var gameRecords: [LevelSelectorID : GameRecord] = [:]
-    
+    public var initialRefreshTask: Task<Void, Error>? = nil
     public var selectedGenerator: VoiceQuizGenerator<VoiceQuizDummy>? = nil
     
     public init() {
@@ -61,13 +73,16 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
         }
     }
     
-    public func selectGenerator(generator: VoiceQuizGenerator<VoiceQuizDummy>?) {
-        selectedGenerator = generator
+    @discardableResult
+    public func selectGenerator(generator: VoiceQuizGenerator<VoiceQuizDummy>?) -> Task<Void, Never> {
+        Task {
+            selectedGenerator = generator
+        }
     }
     
-    
-    public func dismissGame() {
-        selectedGenerator = nil
+    @discardableResult
+    public func dismissGame() -> Task<Void, Never> {
+        return selectGenerator(generator: nil)
     }
     
     public func refresh() async throws {

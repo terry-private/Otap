@@ -126,5 +126,10 @@ let package = Package(
             dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) } + $0.dependenciesProducts,
             resources: $0.resources.map { resource in return resource }
         )
-    }
+    } + [
+        .testTarget(
+            name: "SelectLevelTests",
+            dependencies: ["Core", "FeatureSelectLevel", "Repository"]
+        )
+    ]
 )
