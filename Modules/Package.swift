@@ -110,6 +110,25 @@ enum Modules: String, CaseIterable, Hashable {
     }}
 }
 
+enum TestModule: String, CaseIterable {
+    case SelectLevelTests
+    case VoiceQuizTests
+    
+    var dependencies: [Modules] {
+        switch self {
+        case .SelectLevelTests: return [
+            .Core,
+            .FeatureSelectLevel
+        ]
+        case .VoiceQuizTests: return [
+            .Core,
+            .FeatureVoiceQuiz,
+            .Repository,
+            .Utility
+        ]
+    }}
+}
+
 let package = Package(
     name: "Modules",
     platforms: [
@@ -126,10 +145,10 @@ let package = Package(
             dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) } + $0.dependenciesProducts,
             resources: $0.resources.map { resource in return resource }
         )
-    } + [
+    } + TestModule.allCases.map {
         .testTarget(
-            name: "SelectLevelTests",
-            dependencies: ["Core", "FeatureSelectLevel", "Repository"]
+            name: $0.rawValue,
+            dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) }
         )
-    ]
+    }
 )
