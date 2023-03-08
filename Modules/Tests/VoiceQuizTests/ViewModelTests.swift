@@ -82,7 +82,7 @@ final class ViewModelTests: XCTestCase {
     }
     
     @MainActor
-    func testクリアまでのシナリオ() async throws {
+    func testクリア後再開するまでのシナリオ() async throws {
         let useCase: VoiceQuizUseCaseStub = .init(penalty: .gameOver)
         let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectStub, VoiceQuizUseCaseStub>(useCase: useCase, dismiss: {})
         XCTContext.runActivity(named: "ゲーム開始時") {_ in
@@ -126,6 +126,23 @@ final class ViewModelTests: XCTestCase {
         XCTContext.runActivity(named: "第2問 判定結果") {_ in
             XCTAssertEqual(viewModel.time, time, "ゲーム終了判定の場合、解答時にタイマーがストップするので0.01秒経ってもtimeに変更がない")
             XCTAssertEqual(viewModel.gameState, .gameOver(useCase.clearTestResult(time: time)), "GameStateが.gameOver(.success(.useCase.clearTestResult))")
+        }
+        
+        viewModel.optionTapped(viewModel.currentQuiz.answer)
+        XCTContext.runActivity(named: "ゲームオーバーの状態でタップできた場合") {_ in
+            XCTAssertEqual(viewModel.gameState, .gameOver(useCase.clearTestResult(time: time)), "verifyにならず.gameOverのまま")
+        }
+        
+        viewModel.restart()
+        let duration = Date()
+        while viewModel.isLoading { // useCase.refreshが完了するまで待つ
+            await Task.yield()
+            if duration.timeIntervalSinceNow < -3 { fatalError("cant refresh") }
+        }
+        XCTContext.runActivity(named: "リスタート時の状態") {_ in
+            XCTAssertEqual(viewModel.gameState, .ready, "GameStateが.ready")
+            XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount, "残りの問題数が総問題数と一致")
+            XCTAssertEqual(viewModel.wrongCount, 0, "失敗数が0")
         }
     }
     

@@ -179,6 +179,7 @@ extension VoiceQuizViewModelImpl {
         speak()
     }
     
+    @discardableResult
     public func optionTapped(_ option: Quiz.Option) -> Task<Void, Error> {
         guard case .playing = gameState else {
             return Task {}
