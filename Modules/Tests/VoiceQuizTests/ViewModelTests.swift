@@ -11,7 +11,7 @@ import XCTest
 @testable import Utility
 
 final class ViewModelTests: XCTestCase {
-    enum SoundEffectMock: SoundEffectUseCase {
+    enum SoundEffectStub: SoundEffectUseCase {
         static var isPlayCorrect: Bool = false
         static var isPlayWrong: Bool = false
         static var spokenWords: String? = nil
@@ -27,7 +27,7 @@ final class ViewModelTests: XCTestCase {
         }
     }
     
-    final class VoiceQuizUseCaseMock: VoiceQuizUseCase {
+    final class VoiceQuizUseCaseStub: VoiceQuizUseCase {
         typealias Quiz = VoiceQuizDummy
         private var quizzes: [Quiz] = [
             .init(options: [.red, .yellow], answer: .red),
@@ -83,8 +83,8 @@ final class ViewModelTests: XCTestCase {
     
     @MainActor
     func testクリアまでのシナリオ() async throws {
-        let useCase: VoiceQuizUseCaseMock = .init(penalty: .gameOver)
-        let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectMock, VoiceQuizUseCaseMock>(useCase: useCase, dismiss: {})
+        let useCase: VoiceQuizUseCaseStub = .init(penalty: .gameOver)
+        let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectStub, VoiceQuizUseCaseStub>(useCase: useCase, dismiss: {})
         XCTContext.runActivity(named: "ゲーム開始時") {_ in
             XCTAssertEqual(viewModel.gameState, .ready, "GameStateが.ready")
             XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount, "残りの問題数が総問題数と一致")
@@ -96,13 +96,13 @@ final class ViewModelTests: XCTestCase {
             XCTAssertEqual(viewModel.gameState, .playing, "GameStateが.playing")
             XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount, "残りの問題数が総問題数と一致")
             XCTAssertEqual(viewModel.wrongCount, 0, "失敗数が0")
-            XCTAssertEqual(SoundEffectMock.spokenWords, viewModel.currentQuiz.answer.call, "読み上げと第一問の答えが一致")
+            XCTAssertEqual(SoundEffectStub.spokenWords, viewModel.currentQuiz.answer.call, "読み上げと第一問の答えが一致")
         }
                 
         let verifyTask1 = viewModel.optionTapped(viewModel.currentQuiz.answer)
         XCTContext.runActivity(named: "第1問 正解解答時") {_ in
             XCTAssertEqual(viewModel.gameState, .verifying(viewModel.currentQuiz.answer), "GameStateが.verifying(解答したOption)")
-            XCTAssertTrue(SoundEffectMock.isPlayCorrect, "正解の音声が流れた")
+            XCTAssertTrue(SoundEffectStub.isPlayCorrect, "正解の音声が流れた")
             XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount-1, "残りの問題数一つ減ってる")
         }
         
@@ -112,13 +112,13 @@ final class ViewModelTests: XCTestCase {
             XCTAssertEqual(viewModel.gameState, .playing, "GameStateが.playing")
             XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount-1, "残りの問題数が総問題数-1")
             XCTAssertEqual(viewModel.wrongCount, 0, "失敗数が0")
-            XCTAssertEqual(SoundEffectMock.spokenWords, viewModel.currentQuiz.answer.call, "読み上げと第2問の答えが一致")
+            XCTAssertEqual(SoundEffectStub.spokenWords, viewModel.currentQuiz.answer.call, "読み上げと第2問の答えが一致")
         }
         let verifyTask2 = viewModel.optionTapped(viewModel.currentQuiz.answer)
         let time = viewModel.time
         XCTContext.runActivity(named: "第2問 正解解答時") {_ in
             XCTAssertEqual(viewModel.gameState, .verifying(viewModel.currentQuiz.answer), "GameStateが.verifying(解答したOption)")
-            XCTAssertTrue(SoundEffectMock.isPlayCorrect, "正解の音声が流れた")
+            XCTAssertTrue(SoundEffectStub.isPlayCorrect, "正解の音声が流れた")
             XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount-2, "残りの問題数2つ減ってる")
         }
         
@@ -131,8 +131,8 @@ final class ViewModelTests: XCTestCase {
     
     @MainActor
     func testペナルティによるGameOver() async throws {
-        let useCase: VoiceQuizUseCaseMock = .init(penalty: .gameOver)
-        let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectMock, VoiceQuizUseCaseMock>(useCase: useCase, dismiss: {})
+        let useCase: VoiceQuizUseCaseStub = .init(penalty: .gameOver)
+        let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectStub, VoiceQuizUseCaseStub>(useCase: useCase, dismiss: {})
         
         viewModel.start()
         
@@ -141,7 +141,7 @@ final class ViewModelTests: XCTestCase {
         let time = viewModel.time
         XCTContext.runActivity(named: "第1問 正解解答時") {_ in
             XCTAssertEqual(viewModel.gameState, .verifying(wrongAnswer), "GameStateが.verifying(解答したOption)")
-            XCTAssertTrue(SoundEffectMock.isPlayWrong, "失敗の音声が流れた")
+            XCTAssertTrue(SoundEffectStub.isPlayWrong, "失敗の音声が流れた")
             XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount, "残りの問題数が減っていない")
         }
         
@@ -154,24 +154,13 @@ final class ViewModelTests: XCTestCase {
     
     @MainActor
     func testタイムオーバーによるGameOver() async throws {
-        let useCase: VoiceQuizUseCaseMock = .init(timeLimit: 0.01, penalty: .gameOver)
-        let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectMock, VoiceQuizUseCaseMock>(useCase: useCase, dismiss: {})
+        let useCase: VoiceQuizUseCaseStub = .init(timeLimit: 0.01, penalty: .gameOver)
+        let viewModel = VoiceQuizViewModelImpl<VoiceQuizDummy, SoundEffectStub, VoiceQuizUseCaseStub>(useCase: useCase, dismiss: {})
         
         viewModel.start()
-        
-        let wrongAnswer = viewModel.currentQuiz.options.first! == viewModel.currentQuiz.answer ? viewModel.currentQuiz.options.last! : viewModel.currentQuiz.options.first!
-        let verifyTask = viewModel.optionTapped(wrongAnswer)
-        let time = viewModel.time
-        XCTContext.runActivity(named: "第1問 正解解答時") {_ in
-            XCTAssertEqual(viewModel.gameState, .verifying(wrongAnswer), "GameStateが.verifying(解答したOption)")
-            XCTAssertTrue(SoundEffectMock.isPlayWrong, "失敗の音声が流れた")
-            XCTAssertEqual(viewModel.remainQuizCount, useCase.quizCount, "残りの問題数が減っていない")
-        }
-        
-        _ = await verifyTask.result
-        XCTContext.runActivity(named: "第1問 判定結果") {_ in
-            XCTAssertEqual(viewModel.time, time, "ゲーム終了判定の場合、解答時にタイマーがストップするので0.01秒経ってもtimeに変更がない")
-            XCTAssertEqual(viewModel.gameState, .gameOver(.gameOver), "GameStateが.gameOver(.gameOver)")
+        try await Task.sleep(seconds: 0.02)
+        XCTContext.runActivity(named: "timelimit後") {_ in
+            XCTAssertEqual(viewModel.gameState, .gameOver(.timeOver), "GameStateが.gameOver(.timeOver)")
         }
     }
 }

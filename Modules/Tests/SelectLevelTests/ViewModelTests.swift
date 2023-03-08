@@ -10,7 +10,7 @@ import XCTest
 @testable import FeatureSelectLevel
 
 final class ViewModelTests: XCTestCase {
-    enum SelectLevelUseCaseMock: SelectLevelUseCase {
+    enum SelectLevelUseCaseStub: SelectLevelUseCase {
         static func fetchGameRecord(id: Core.LevelSelectorID) async throws -> Core.GameRecord? {
             if id == .colorBasic1 {
                 return .init(id: id)
@@ -22,7 +22,7 @@ final class ViewModelTests: XCTestCase {
     
     @MainActor
     func test初期化後に非同期でgameRecordsを取得() async throws {
-        let viewModel = SelectLevelViewModelImpl<VoiceQuizLevelSelectorDummy, SelectLevelUseCaseMock>()
+        let viewModel = SelectLevelViewModelImpl<VoiceQuizLevelSelectorDummy, SelectLevelUseCaseStub>()
         XCTAssertEqual(viewModel.gameRecords, [:], "初期化と同期状態ではgameRecordsが空")
         _ = await viewModel.initialRefreshTask?.result
         XCTAssertEqual(viewModel.gameRecords, [.colorBasic1:.init(id: .colorBasic1)], "initialRefreshTask後gameRecordsは.colorBasic1のみ")
@@ -30,7 +30,7 @@ final class ViewModelTests: XCTestCase {
         
     @MainActor
     func testレベルの選択と選択解除() async throws {
-        let viewModel = SelectLevelViewModelImpl<VoiceQuizLevelSelectorDummy, SelectLevelUseCaseMock>()
+        let viewModel = SelectLevelViewModelImpl<VoiceQuizLevelSelectorDummy, SelectLevelUseCaseStub>()
         
         _ = await viewModel.selectGenerator(generator: viewModel.generators.first).result
         XCTAssertEqual(viewModel.selectedGenerator?.id, viewModel.generators.first?.id, "一つ目選択したら一つ目が選択状態")
