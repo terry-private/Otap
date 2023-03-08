@@ -26,12 +26,17 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
             case .ready:
                 VStack {
                     Spacer()
-                    Text("Ready")
+                    Text(ViewModel.Quiz.title)
                         .font(.largeTitle)
                     
                     Spacer()
+                    Text(viewModel.levelTitle)
+                        .font(.title)
+                    
+                    Spacer()
                     Text("条件: \(viewModel.requirements)")
-                        .font(.title3)
+                        .font(.body)
+                        .foregroundColor(.secondary)
                     
                     Grid(verticalSpacing: 16) {
                         GridRow {

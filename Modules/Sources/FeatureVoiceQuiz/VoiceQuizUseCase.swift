@@ -19,6 +19,7 @@ public protocol VoiceQuizUseCase<Quiz> {
     var quizCount: Int { get }
     var wrongCount: Int { get }
     
+    var levelTitle: String { get }
     var requirements: String { get }
     var star1Description: String { get }
     var star2Description: String { get }
@@ -52,6 +53,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
     
     public var quizCount: Int { quizzes.count }
     
+    public let levelTitle: String
     public let requirements: String
     public let star1Description: String
     public let star2Description: String
@@ -97,6 +99,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
         ),
         timeLimit: Double = 60,
         penalty: PenaltyType = .shuffle,
+        levelTitle: String = "基本1",
         requirements: String = "30秒以内に10問",
         star1Description: String = "クリア",
         star2Description: String = "ノーミス",
@@ -105,6 +108,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
         self.lastRecord = lastRecord
         self.timeLimit = timeLimit
         self.penalty = penalty
+        self.levelTitle = levelTitle
         self.requirements = requirements
         self.star1Description = star1Description
         self.star2Description = star2Description
@@ -142,6 +146,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
     // ------------------------------------------------
     // MARK: 🌎🧮 computed properties
     // ------------------------------------------------
+    public var levelTitle: String { generator.title }
     public var requirements: String { generator.requirements }
     public var star1Description: String { generator.star1.description }
     public var star2Description: String { generator.star2.description }

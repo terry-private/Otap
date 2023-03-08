@@ -65,12 +65,12 @@ public struct VoiceQuizResultView: View {
                 }
                 .fixedSize()
             case .gameOver:
-                Text("Game Over!!")
+                Text("ゲームオーバー!!")
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .padding(40)
             case .timeOver:
-                Text("Time Over!!")
+                Text("タイムオーバー!!")
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .padding(40)
