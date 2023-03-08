@@ -13,6 +13,7 @@ public protocol VoiceQuizUseCase<Quiz> {
     associatedtype Quiz: VoiceQuiz
     var lastRecord: GameRecord { get }
     var timeLimit: Double { get }
+    var verifyDuration: Double { get }
     var penalty: PenaltyType { get }
     
     var quizCount: Int { get }
@@ -46,6 +47,7 @@ public final class VoiceQuizUseCaseDummy: VoiceQuizUseCase {
     public var lastRecord: GameRecord
     
     public let timeLimit: Double
+    public let verifyDuration: Double = 0.4
     public var penalty: PenaltyType
     
     public var quizCount: Int { quizzes.count }
@@ -148,6 +150,7 @@ extension VoiceQuizInteractor: VoiceQuizUseCase {
     public var quizCount: Int {
         quizzes.count
     }
+    public var verifyDuration: Double { 0.4 }
     public var timeLimit: Double {
         generator.timeLimit
     }

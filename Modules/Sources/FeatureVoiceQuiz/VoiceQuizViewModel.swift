@@ -73,7 +73,9 @@ public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
     func start()
     func restart()
     func speakerButtonTapped()
-    func optionTapped(_ option: Quiz.Option)
+    
+    @discardableResult
+    func optionTapped(_ option: Quiz.Option) -> Task<Void, Error>
     func getState(_ option: Quiz.Option) -> OptionState
 }
 
@@ -108,7 +110,6 @@ public final class VoiceQuizViewModelImpl<
         self.useCase = useCase
         self.dismiss = dismiss
         currentQuiz = useCase.nextQuiz()
-        SoundEffect.readyAllPlayer() // TODO: いずれはAppDelegateなどアプリ起動後一度だけ処理する箇所で呼びたい
     }
 }
 
@@ -136,20 +137,18 @@ extension VoiceQuizViewModelImpl: VoiceQuizViewModelProtocol {
 // MARK: - AudioQuizViewModelProtocol methods
 extension VoiceQuizViewModelImpl {
     public func start() {
-        Task {
-            timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
-                guard let self else { return }
-                Task { @MainActor in
-                    self.time += 0.01
-                    switch self.time {
-                    case 0..<self.timeLimit - 10:
-                        break
-                    case self.timeLimit-10 ..< self.timeLimit:
-                        self.isWarning = true
-                    default:
-                        self.stopTimer()
-                        self.gameState = .gameOver(self.useCase.gameResult(time: self.time))
-                    }
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            Task { @MainActor in
+                self.time += 0.01
+                switch self.time {
+                case -.infinity..<self.timeLimit - 10:
+                    break
+                case self.timeLimit-10 ..< self.timeLimit:
+                    self.isWarning = true
+                default:
+                    self.stopTimer()
+                    self.gameState = .gameOver(self.useCase.gameResult(time: self.time))
                 }
             }
         }
@@ -180,16 +179,16 @@ extension VoiceQuizViewModelImpl {
         speak()
     }
     
-    public func optionTapped(_ option: Quiz.Option) {
+    public func optionTapped(_ option: Quiz.Option) -> Task<Void, Error> {
         guard case .playing = gameState else {
-            return
+            return Task {}
         }
         gameState = .verifying(option)
         let isCorrect = option == currentQuiz.answer
         playSoundEffect(isCorrect)
         if isCorrect {
             currentQuizIndex += 1
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: useCase.verifyDuration)) {
                 quizProgress = Double(currentQuizIndex) / Double(useCase.quizCount)
             }
         }
@@ -197,8 +196,8 @@ extension VoiceQuizViewModelImpl {
         if currentQuizIndex == useCase.quizCount || (!isCorrect && useCase.penalty == .gameOver) {
             stopTimer()
         }
-        Task {
-            try? await Task.sleep(seconds: 0.4)
+        return Task {
+            try? await Task.sleep(seconds: useCase.verifyDuration)
             // タイムオーバーになっている場合を考慮している
             guard gameState.shouldStartQuiz else {
                 return
