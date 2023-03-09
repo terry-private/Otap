@@ -47,6 +47,15 @@ extension ColorQuizOption: VoiceQuizOption {
         case .black: return "くろ"
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        [
+            [.red, .blue, .green],
+            [.yellow, .black, .white],
+            [.lightBlue, .pink, .purple],
+            [.orange, .gray, .brown]
+        ]
+    }
 }
  
 private extension ColorQuizOption {

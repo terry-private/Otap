@@ -107,6 +107,12 @@ extension CreatureQuizOption: VoiceQuizOption {
         case .rhinoceros🦏: return "さい"
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        (0..<allCases.count/4).map { rowIndex in
+            allCases[rowIndex*4..<rowIndex*4+4].map { $0 }
+        }
+    }
 }
  
 private extension CreatureQuizOption {

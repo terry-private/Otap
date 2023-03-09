@@ -46,6 +46,7 @@ public enum OptionViewType: Hashable {
 public protocol VoiceQuizOption: Identifiable, Hashable, CaseIterable {
     var viewType: OptionViewType { get }
     var call: String { get }
+    static var practiceRows: [[Self]] { get }
 }
 
 public extension VoiceQuizOption {

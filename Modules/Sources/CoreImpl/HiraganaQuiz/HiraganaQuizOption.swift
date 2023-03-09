@@ -31,6 +31,21 @@ extension HiraganaQuizOption: VoiceQuizOption {
     public var call: String {
         return rawValue
     }
+    
+    public static var practiceRows: [[Self]] {
+        [
+            あ行,
+            か行,
+            さ行,
+            た行,
+            な行,
+            は行,
+            ま行,
+            や行,
+            ら行,
+            わ行
+        ]
+    }
 }
 
 public extension HiraganaQuizOption {
