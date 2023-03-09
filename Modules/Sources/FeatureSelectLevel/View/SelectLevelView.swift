@@ -24,13 +24,18 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                     viewModel.practiceModeTapped()
                 } label: {
                     HStack {
+                        Spacer()
                         Text("練習モード")
-                            .font(.title)
-                            .foregroundColor(.purple)
+                            .font(.title2)
+                            .foregroundColor(.primary)
                         Text("全\(ViewModel.Quiz.Option.allCases.count)種類")
                             .font(.caption)
                             .foregroundColor(.secondary)
+                        Spacer()
                     }
+                    .padding(.vertical, 16)
+                    .background { Color.init(uiColor: .tertiarySystemBackground)}
+                    .cornerRadius(16)
                     .padding(16)
                 }
                 .navigationDestination(isPresented: $viewModel.isPresentingPracticeMode) {
