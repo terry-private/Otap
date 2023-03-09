@@ -6,15 +6,56 @@
 //
 
 import SwiftUI
+import Core
+import Utility
 
-struct PracticeModeView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+public struct PracticeModeView<Quiz: VoiceQuiz, SoundEffect: SoundEffectUseCase>: View {
+    let rows = Quiz.Option.practiceRows
+    public var body: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(rows.indices, id: \.self) { rowIndex in
+                    rowView(rows[rowIndex])
+                }
+            }
+            .padding(16)
+        }
+        .background {
+            Color(uiColor: .secondarySystemBackground)
+                .ignoresSafeArea()
+        }
+        .navigationTitle("\(VoiceQuizDummy.title)")
     }
 }
 
+private extension PracticeModeView {
+    @ViewBuilder
+    func rowView(_ row: [Quiz.Option]) -> some View {
+        HStack {
+            ForEach(row) { option in
+                Button {
+                    SoundEffect.speak(option.call)
+                } label: {
+                    option.viewType.view()
+                        .aspectRatio(1, contentMode: .fill)
+                        .cornerRadius(8)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(style: .init(lineWidth: 1))
+                                .foregroundColor(.init(uiColor: .opaqueSeparator))
+                        }
+                }
+            }
+        }
+    }
+}
+
+#if DEBUG
 struct PracticeModeView_Previews: PreviewProvider {
     static var previews: some View {
-        PracticeModeView()
+        NavigationStack {
+            PracticeModeView<VoiceQuizDummy, SoundEffectUseCaseDummy>()
+        }
     }
 }
+#endif
