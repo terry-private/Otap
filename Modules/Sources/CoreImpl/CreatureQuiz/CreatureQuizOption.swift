@@ -109,9 +109,7 @@ extension CreatureQuizOption: VoiceQuizOption {
     }
     
     public static var practiceRows: [[Self]] {
-        (0..<allCases.count/4).map { rowIndex in
-            allCases[rowIndex*4..<rowIndex*4+4].map { $0 }
-        }
+        allCases.divide(into: 4)
     }
 }
  

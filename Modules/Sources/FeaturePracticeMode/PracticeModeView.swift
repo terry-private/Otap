@@ -11,9 +11,10 @@ import Utility
 
 public struct PracticeModeView<Quiz: VoiceQuiz, SoundEffect: SoundEffectUseCase>: View {
     let rows = Quiz.Option.practiceRows
+    public init() {}
     public var body: some View {
         ScrollView {
-            LazyVStack {
+            Grid {
                 ForEach(rows.indices, id: \.self) { rowIndex in
                     rowView(rows[rowIndex])
                 }
@@ -24,14 +25,14 @@ public struct PracticeModeView<Quiz: VoiceQuiz, SoundEffect: SoundEffectUseCase>
             Color(uiColor: .secondarySystemBackground)
                 .ignoresSafeArea()
         }
-        .navigationTitle("\(VoiceQuizDummy.title)")
+        .navigationTitle("\(Quiz.title)")
     }
 }
 
 private extension PracticeModeView {
     @ViewBuilder
     func rowView(_ row: [Quiz.Option]) -> some View {
-        HStack {
+        GridRow {
             ForEach(row) { option in
                 Button {
                     SoundEffect.speak(option.call)

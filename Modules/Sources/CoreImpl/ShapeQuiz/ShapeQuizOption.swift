@@ -42,8 +42,6 @@ extension ShapeQuizOption: VoiceQuizOption {
     }
     
     public static var practiceRows: [[Self]] {
-        (0..<allCases.count/3).map { rowIndex in
-            allCases[rowIndex*3..<rowIndex*3+3].map { $0 }
-        }
+        allCases.divide(into: 3)
     }
 }

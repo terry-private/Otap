@@ -15,6 +15,7 @@ public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
     var gameRecords: [LevelSelectorID: GameRecord] { get }
     var selectedGenerator: VoiceQuizGenerator<Quiz>? { get }
     var initialRefreshTask: Task<Void, Error>? { get }
+    var isPresentingPracticeMode: Bool { get set }
     
     @discardableResult
     func selectGenerator(generator: VoiceQuizGenerator<Quiz>?) -> Task<Void, Never>
@@ -23,6 +24,8 @@ public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
     func dismissGame() -> Task<Void, Never>
     
     func refresh() async throws
+    
+    func practiceModeTapped()
 }
 
 @MainActor
@@ -31,6 +34,7 @@ public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelecto
     public private(set) var initialRefreshTask: Task<Void, Error>? = nil
     @Published public var gameRecords: [LevelSelectorID: GameRecord] = [:]
     @Published public var selectedGenerator: VoiceQuizGenerator<LevelSelector.Quiz>? = nil
+    @Published public var isPresentingPracticeMode: Bool = false
     public init() {
         initialRefreshTask = Task {
             try await refresh()
@@ -54,6 +58,10 @@ public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelecto
             gameRecords[generator.id] = try await UseCase.fetchGameRecord(id: generator.id)
         }
     }
+    
+    public func practiceModeTapped() {
+        isPresentingPracticeMode.toggle()
+    }
 }
 
 
@@ -66,6 +74,7 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
     public var gameRecords: [LevelSelectorID : GameRecord] = [:]
     public var initialRefreshTask: Task<Void, Error>? = nil
     public var selectedGenerator: VoiceQuizGenerator<VoiceQuizDummy>? = nil
+    public var isPresentingPracticeMode: Bool = false
     
     public init() {
         gameRecords = generators.reduce(into: [:]) { records, generator in
@@ -86,6 +95,10 @@ public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewM
     }
     
     public func refresh() async throws {
+    }
+    
+    public func practiceModeTapped() {
+        isPresentingPracticeMode.toggle()
     }
 }
 #endif

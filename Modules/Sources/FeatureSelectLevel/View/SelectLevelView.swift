@@ -19,17 +19,35 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
     
     public var body: some View {
         ScrollView {
-            LazyVGrid(columns: .init(repeating: .init(spacing: 16), count: columnsCount)) {
-                ForEach(Array(viewModel.generators)) { generator in
-                    SelectLevelViewCell(
-                        generator: generator,
-                        star1: viewModel.gameRecords[generator.id]?.star1,
-                        star2: viewModel.gameRecords[generator.id]?.star2,
-                        star3: viewModel.gameRecords[generator.id]?.star3,
-                        time: viewModel.gameRecords[generator.id]?.time,
-                        locked: viewModel.gameRecords[generator.id] == nil
-                    ) { generator in
-                        viewModel.selectGenerator(generator: generator)
+            VStack {
+                Button {
+                    viewModel.practiceModeTapped()
+                } label: {
+                    HStack {
+                        Text("練習モード")
+                            .font(.title)
+                            .foregroundColor(.purple)
+                        Text("全\(ViewModel.Quiz.Option.allCases.count)種類")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(16)
+                }
+                .navigationDestination(isPresented: $viewModel.isPresentingPracticeMode) {
+                    Factory.practiceModeView(viewModel.generators.first!)
+                }
+                LazyVGrid(columns: .init(repeating: .init(spacing: 16), count: columnsCount)) {
+                    ForEach(Array(viewModel.generators)) { generator in
+                        SelectLevelViewCell(
+                            generator: generator,
+                            star1: viewModel.gameRecords[generator.id]?.star1,
+                            star2: viewModel.gameRecords[generator.id]?.star2,
+                            star3: viewModel.gameRecords[generator.id]?.star3,
+                            time: viewModel.gameRecords[generator.id]?.time,
+                            locked: viewModel.gameRecords[generator.id] == nil
+                        ) { generator in
+                            viewModel.selectGenerator(generator: generator)
+                        }
                     }
                 }
             }

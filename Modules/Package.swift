@@ -70,6 +70,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .ViewFactoryImpl: return [
             .Core,
             .Extensions,
+            .FeaturePracticeMode,
             .FeatureSelectLevel,
             .FeatureSelectQuiz,
             .FeatureVoiceQuiz,

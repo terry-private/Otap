@@ -7,6 +7,7 @@
 
 import Foundation
 import Core
+import FeaturePracticeMode
 import FeatureSelectLevel
 import FeatureVoiceQuiz
 import Repository
@@ -22,5 +23,10 @@ public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
                 useCase: .init(generator: generator, lastRecord: lastRecord),
                 dismiss: dismiss)
         ).toAnyView()
+    }
+    
+    public static func practiceModeView<Q: VoiceQuiz>(_ generator: VoiceQuizGenerator<Q>) -> AnyView {
+        PracticeModeView<Q, SoundEffectInteractor>()
+            .toAnyView()
     }
 }
