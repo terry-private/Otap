@@ -91,6 +91,10 @@ extension NumberQuizOption: VoiceQuizOption {
         case .numeral10: return "10"
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        allCases.divide(into: 4)
+    }
 }
 
 struct SquareGrid_Previews: PreviewProvider {

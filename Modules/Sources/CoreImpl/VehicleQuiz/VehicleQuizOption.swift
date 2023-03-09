@@ -60,4 +60,8 @@ extension VehicleQuizOption: VoiceQuizOption {
         case .bicycle🚲: return "自転車"
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        allCases.divide(into: 3)
+    }
 }

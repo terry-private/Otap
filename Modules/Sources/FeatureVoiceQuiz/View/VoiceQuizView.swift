@@ -104,7 +104,9 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                                 Text("残り")
                                     .font(.body)
                                 Text("\(viewModel.remainQuizCount)")
-                                    .font(.system(size: 22, design: .monospaced))
+                                    .font(.system(size: 22))
+                                    .monospacedDigit()
+                                    .frame(width: 30)
                             }
                             GridRow {
                                 Image(systemName: "xmark")
@@ -112,7 +114,9 @@ public struct VoiceQuizView<ViewModel: VoiceQuizViewModelProtocol>: View {
                                     .foregroundColor(.red)
                                     .padding()
                                 Text("\(viewModel.wrongCount)")
-                                    .font(.system(size: 17, design: .monospaced))
+                                    .font(.system(size: 17))
+                                    .monospacedDigit()
+                                    .frame(width: 30)
                             }
                         }
                         .fixedSize()

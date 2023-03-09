@@ -50,6 +50,10 @@ extension FunnyAnimalQuizOption: VoiceQuizOption {
         case .horseFace🐴: return "うま"
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        allCases.divide(into: 3)
+    }
 }
  
 private extension FunnyAnimalQuizOption {

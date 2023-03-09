@@ -11,33 +11,35 @@ public struct TimeSecondsView: View {
     private let time: Double
     private let secondsSize: CGFloat
     private let decimalSize: CGFloat
-    private let secondsCapHeight: CGFloat
-    private let decimalCapHeight: CGFloat
+    private let secondsFont: UIFont
+    private let decimalFont: UIFont
     public init(_ time: Double = 0, secondsSize: CGFloat = 18, decimalSize: CGFloat = 11) {
         self.time = time
         self.secondsSize = secondsSize
         self.decimalSize = decimalSize
-        secondsCapHeight = UIFont.systemFont(ofSize: secondsSize).capHeight
-        decimalCapHeight = UIFont.systemFont(ofSize: decimalSize).capHeight
+        secondsFont = UIFont.systemFont(ofSize: secondsSize, weight: .bold)
+        decimalFont = UIFont.systemFont(ofSize: decimalSize)
     }
     public var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             Spacer()
                 .overlay(alignment: .bottomTrailing) {
                     Text("\(Int(time))")
-                        .font(.system(size: secondsSize, weight: .bold, design: .monospaced))
-                        .frame(height: secondsCapHeight)
+                        .font(.init(secondsFont))
+                        .monospacedDigit()
+                        .offset(y: -secondsFont.descender)
                         .fixedSize()
                 }
             Spacer()
                 .overlay(alignment: .bottomLeading) {
                     Text(".\(String(format: "%02d", Int(time * 100) - Int(time) * 100))")
-                        .font(.system(size: decimalSize, design: .monospaced))
-                        .frame(height: decimalCapHeight)
+                        .font(.init(decimalFont))
+                        .monospacedDigit()
+                        .offset(y: -decimalFont.descender)
                         .fixedSize()
                 }
         }
-        .offset(x: (secondsSize*2 - decimalSize*3)/3, y: max(secondsCapHeight, decimalCapHeight)/2)
+        .offset(x: (secondsSize*2 - decimalSize*3)/3, y: max(secondsFont.capHeight, decimalFont.capHeight)/2)
     }
 }
 

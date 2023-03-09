@@ -40,4 +40,8 @@ extension ShapeQuizOption: VoiceQuizOption {
         case .heart: return "heart"
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        allCases.divide(into: 3)
+    }
 }

@@ -78,6 +78,10 @@ extension FruitsAndVegetablesQuizOption: VoiceQuizOption {
             
         }
     }
+    
+    public static var practiceRows: [[Self]] {
+        allCases.divide(into: 4)
+    }
 }
 
 private extension FruitsAndVegetablesQuizOption {
