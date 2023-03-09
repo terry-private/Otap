@@ -9,6 +9,7 @@ enum Modules: String, CaseIterable, Hashable {
     case CoreImpl
     case Data
     case Extensions
+    case FeaturePracticeMode
     case FeatureSelectLevel
     case FeatureSelectQuiz
     case FeatureVoiceQuiz
@@ -36,6 +37,12 @@ enum Modules: String, CaseIterable, Hashable {
             
         case .Extensions: return []
             
+        case .FeaturePracticeMode: return [
+            .Core,
+            .Components,
+            .Extensions,
+            .Utility
+        ]
         case .FeatureSelectLevel: return [
             .Core,
             .Components,
@@ -81,6 +88,7 @@ enum Modules: String, CaseIterable, Hashable {
             .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
         ]
         case .Extensions: return []
+        case .FeaturePracticeMode: return []
         case .FeatureSelectLevel: return []
         case .FeatureSelectQuiz: return []
         case .FeatureVoiceQuiz: return [
@@ -98,6 +106,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .CoreImpl: return []
         case .Data: return []
         case .Extensions: return []
+        case .FeaturePracticeMode: return []
         case .FeatureSelectLevel: return []
         case .FeatureSelectQuiz: return []
         case .FeatureVoiceQuiz: return []
