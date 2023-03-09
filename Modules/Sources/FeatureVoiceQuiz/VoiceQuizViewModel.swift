@@ -59,6 +59,7 @@ public protocol VoiceQuizViewModelProtocol<Quiz>: ObservableObject {
     var remainQuizCount: Int { get }
     var wrongCount: Int { get }
     var lastRecord: GameRecord { get }
+    var levelTitle: String { get }
     var requirements: String { get }
     var star1Description: String { get }
     var star2Description: String { get }
@@ -115,6 +116,7 @@ public final class VoiceQuizViewModelImpl<
 
 // MARK: - AudioQuizViewModelProtocol get only properties
 extension VoiceQuizViewModelImpl: VoiceQuizViewModelProtocol {
+    public var levelTitle: String { useCase.levelTitle }
     public var requirements: String { useCase.requirements }
     public var star1Description: String { useCase.star1Description }
     public var star2Description: String { useCase.star2Description }
