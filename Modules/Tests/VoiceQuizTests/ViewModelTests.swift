@@ -28,6 +28,8 @@ final class ViewModelTests: XCTestCase {
     }
     
     final class VoiceQuizUseCaseStub: VoiceQuizUseCase {
+        var levelTitle: String { Quiz.title }
+        
         typealias Quiz = VoiceQuizDummy
         private var quizzes: [Quiz] = [
             .init(options: [.red, .yellow], answer: .red),
