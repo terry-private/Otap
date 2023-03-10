@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0916AE6B29A8B3680094FA78 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE6A29A8B3680094FA78 /* Utility */; };
+		0916AE6D29A8B60F0094FA78 /* ViewFactoryImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */; };
+		0916AE7129B0DDD40094FA78 /* FeatureSelectLevel in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */; };
+		0995D2DF29BB82DF0017C68F /* FeatureDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2DE29BB82DF0017C68F /* FeatureDrill */; };
+		0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E029BB90A80017C68F /* FeatureSelectDrill */; };
+		0995D2E329BB93D60017C68F /* Drills in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E229BB93D60017C68F /* Drills */; };
+		0995D2E529BB9AF40017C68F /* FeaturePrepareMode in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E429BB9AF40017C68F /* FeaturePrepareMode */; };
+		09A49554296D49D3009DBE22 /* TapDrillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A49553296D49D3009DBE22 /* TapDrillApp.swift */; };
+		09A49558296D49D6009DBE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A49557296D49D6009DBE22 /* Assets.xcassets */; };
+		09A4955B296D49D6009DBE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */; };
+		09B14AB3299E77ED00E48A4A /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = 09B14AB2299E77ED00E48A4A /* Repository */; };
+		09B14AC329A35CBF00E48A4A /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 09B14AC229A35CBF00E48A4A /* Data */; };
+		09C3511429923A1600BDC8DF /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 09C3511329923A1600BDC8DF /* Components */; };
+		09C3511629923AC100BDC8DF /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 09C3511529923AC100BDC8DF /* Extensions */; };
+		09C351182993E70000BDC8DF /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 09C351172993E70000BDC8DF /* Core */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		098EB32229B18AA100BF3972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		09A49550296D49D3009DBE22 /* TapDrill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapDrill.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09A49553296D49D3009DBE22 /* TapDrillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapDrillApp.swift; sourceTree = "<group>"; };
+		09A49557296D49D6009DBE22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		09A495A229728824009DBE22 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		09A4954D296D49D3009DBE22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0916AE7129B0DDD40094FA78 /* FeatureSelectLevel in Frameworks */,
+				0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */,
+				0916AE6D29A8B60F0094FA78 /* ViewFactoryImpl in Frameworks */,
+				09C3511429923A1600BDC8DF /* Components in Frameworks */,
+				0995D2E329BB93D60017C68F /* Drills in Frameworks */,
+				09C3511629923AC100BDC8DF /* Extensions in Frameworks */,
+				0916AE6B29A8B3680094FA78 /* Utility in Frameworks */,
+				09B14AB3299E77ED00E48A4A /* Repository in Frameworks */,
+				09C351182993E70000BDC8DF /* Core in Frameworks */,
+				09B14AC329A35CBF00E48A4A /* Data in Frameworks */,
+				0995D2E529BB9AF40017C68F /* FeaturePrepareMode in Frameworks */,
+				0995D2DF29BB82DF0017C68F /* FeatureDrill in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09A49547296D49D3009DBE22 = {
+			isa = PBXGroup;
+			children = (
+				09A495A229728824009DBE22 /* Modules */,
+				09A49552296D49D3009DBE22 /* TapDrill */,
+				09A49551296D49D3009DBE22 /* Products */,
+				09A495A329728EC4009DBE22 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		09A49551296D49D3009DBE22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09A49550296D49D3009DBE22 /* TapDrill.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		09A49552296D49D3009DBE22 /* TapDrill */ = {
+			isa = PBXGroup;
+			children = (
+				098EB32229B18AA100BF3972 /* Info.plist */,
+				09A49553296D49D3009DBE22 /* TapDrillApp.swift */,
+				09A49557296D49D6009DBE22 /* Assets.xcassets */,
+				09A49559296D49D6009DBE22 /* Preview Content */,
+			);
+			path = TapDrill;
+			sourceTree = "<group>";
+		};
+		09A49559296D49D6009DBE22 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		09A495A329728EC4009DBE22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		09A4954F296D49D3009DBE22 /* TapDrill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09A49574296D49D7009DBE22 /* Build configuration list for PBXNativeTarget "TapDrill" */;
+			buildPhases = (
+				09A4954C296D49D3009DBE22 /* Sources */,
+				09A4954D296D49D3009DBE22 /* Frameworks */,
+				09A4954E296D49D3009DBE22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TapDrill;
+			packageProductDependencies = (
+				09C3511329923A1600BDC8DF /* Components */,
+				09C3511529923AC100BDC8DF /* Extensions */,
+				09C351172993E70000BDC8DF /* Core */,
+				09B14AB2299E77ED00E48A4A /* Repository */,
+				09B14AC229A35CBF00E48A4A /* Data */,
+				0916AE6A29A8B3680094FA78 /* Utility */,
+				0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */,
+				0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */,
+				0995D2DE29BB82DF0017C68F /* FeatureDrill */,
+				0995D2E029BB90A80017C68F /* FeatureSelectDrill */,
+				0995D2E229BB93D60017C68F /* Drills */,
+				0995D2E429BB9AF40017C68F /* FeaturePrepareMode */,
+			);
+			productName = TapDrill;
+			productReference = 09A49550296D49D3009DBE22 /* TapDrill.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		09A49548296D49D3009DBE22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					09A4954F296D49D3009DBE22 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 09A4954B296D49D3009DBE22 /* Build configuration list for PBXProject "TapDrill" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 09A49547296D49D3009DBE22;
+			productRefGroup = 09A49551296D49D3009DBE22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				09A4954F296D49D3009DBE22 /* TapDrill */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		09A4954E296D49D3009DBE22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09A4955B296D49D6009DBE22 /* Preview Assets.xcassets in Resources */,
+				09A49558296D49D6009DBE22 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		09A4954C296D49D3009DBE22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09A49554296D49D3009DBE22 /* TapDrillApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		09A49572296D49D7009DBE22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		09A49573296D49D7009DBE22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		09A49575296D49D7009DBE22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TapDrill/Preview Content\"";
+				DEVELOPMENT_TEAM = 58F4SK879Y;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapDrill/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tap Drill";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = terry.TapDrill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09A49576296D49D7009DBE22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TapDrill/Preview Content\"";
+				DEVELOPMENT_TEAM = 58F4SK879Y;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapDrill/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tap Drill";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = terry.TapDrill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09A4954B296D49D3009DBE22 /* Build configuration list for PBXProject "TapDrill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09A49572296D49D7009DBE22 /* Debug */,
+				09A49573296D49D7009DBE22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09A49574296D49D7009DBE22 /* Build configuration list for PBXNativeTarget "TapDrill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09A49575296D49D7009DBE22 /* Debug */,
+				09A49576296D49D7009DBE22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0916AE6A29A8B3680094FA78 /* Utility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utility;
+		};
+		0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ViewFactoryImpl;
+		};
+		0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureSelectLevel;
+		};
+		0995D2DE29BB82DF0017C68F /* FeatureDrill */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureDrill;
+		};
+		0995D2E029BB90A80017C68F /* FeatureSelectDrill */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureSelectDrill;
+		};
+		0995D2E229BB93D60017C68F /* Drills */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Drills;
+		};
+		0995D2E429BB9AF40017C68F /* FeaturePrepareMode */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeaturePrepareMode;
+		};
+		09B14AB2299E77ED00E48A4A /* Repository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Repository;
+		};
+		09B14AC229A35CBF00E48A4A /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		09C3511329923A1600BDC8DF /* Components */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Components;
+		};
+		09C3511529923AC100BDC8DF /* Extensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Extensions;
+		};
+		09C351172993E70000BDC8DF /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 09A49548296D49D3009DBE22 /* Project object */;
+}
