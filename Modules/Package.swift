@@ -6,13 +6,13 @@ import PackageDescription
 enum Modules: String, CaseIterable, Hashable {
     case Components
     case Core
-    case CoreImpl
     case Data
+    case Drills
     case Extensions
-    case FeaturePracticeMode
+    case FeatureDrill
+    case FeaturePrepareMode
     case FeatureSelectLevel
-    case FeatureSelectQuiz
-    case FeatureVoiceQuiz
+    case FeatureSelectDrill
     case Repository
     case Utility
     case ViewFactoryImpl
@@ -26,7 +26,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .Core: return [
             .Extensions
         ]
-        case .CoreImpl: return [
+        case .Drills: return [
             .Core,
             .Extensions
         ]
@@ -37,7 +37,14 @@ enum Modules: String, CaseIterable, Hashable {
             
         case .Extensions: return []
             
-        case .FeaturePracticeMode: return [
+        case .FeatureDrill: return [
+            .Core,
+            .Components,
+            .Extensions,
+            .Repository,
+            .Utility
+        ]
+        case .FeaturePrepareMode: return [
             .Core,
             .Components,
             .Extensions,
@@ -49,18 +56,11 @@ enum Modules: String, CaseIterable, Hashable {
             .Extensions,
             .Repository,
         ]
-        case .FeatureSelectQuiz: return [
+        case .FeatureSelectDrill: return [
             .Core,
             .Components,
             .Extensions,
             .Repository,
-        ]
-        case .FeatureVoiceQuiz: return [
-            .Core,
-            .Components,
-            .Extensions,
-            .Repository,
-            .Utility
         ]
         case .Repository: return [
             .Core,
@@ -69,11 +69,12 @@ enum Modules: String, CaseIterable, Hashable {
         case .Utility: return []
         case .ViewFactoryImpl: return [
             .Core,
+            .Drills,
             .Extensions,
-            .FeaturePracticeMode,
+            .FeatureDrill,
+            .FeaturePrepareMode,
             .FeatureSelectLevel,
-            .FeatureSelectQuiz,
-            .FeatureVoiceQuiz,
+            .FeatureSelectDrill,
             .Repository,
             .Utility
         ]
@@ -83,18 +84,18 @@ enum Modules: String, CaseIterable, Hashable {
         switch self {
         case .Components: return []
         case .Core: return []
-        case .CoreImpl: return []
         case .Data: return [
             .product(name: "Realm", package: "realm-swift"),     // Realm
             .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
         ]
+        case .Drills: return []
         case .Extensions: return []
-        case .FeaturePracticeMode: return []
-        case .FeatureSelectLevel: return []
-        case .FeatureSelectQuiz: return []
-        case .FeatureVoiceQuiz: return [
+        case .FeatureDrill: return [
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
         ]
+        case .FeaturePrepareMode: return []
+        case .FeatureSelectLevel: return []
+        case .FeatureSelectDrill: return []
         case .Repository: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
@@ -104,13 +105,13 @@ enum Modules: String, CaseIterable, Hashable {
         switch self {
         case .Components: return []
         case .Core: return []
-        case .CoreImpl: return []
         case .Data: return []
+        case .Drills: return []
         case .Extensions: return []
-        case .FeaturePracticeMode: return []
+        case .FeatureDrill: return []
+        case .FeaturePrepareMode: return []
         case .FeatureSelectLevel: return []
-        case .FeatureSelectQuiz: return []
-        case .FeatureVoiceQuiz: return []
+        case .FeatureSelectDrill: return []
         case .Repository: return []
         case .Utility: return [
             .copy("./SoundEffect/Resources/correct.mp3"),
@@ -121,20 +122,20 @@ enum Modules: String, CaseIterable, Hashable {
 }
 
 enum TestModule: String, CaseIterable {
+    case DrillTests
     case SelectLevelTests
-    case VoiceQuizTests
     
     var dependencies: [Modules] {
         switch self {
+        case .DrillTests: return [
+            .Core,
+            .FeatureDrill,
+            .Repository,
+            .Utility
+        ]
         case .SelectLevelTests: return [
             .Core,
             .FeatureSelectLevel
-        ]
-        case .VoiceQuizTests: return [
-            .Core,
-            .FeatureVoiceQuiz,
-            .Repository,
-            .Utility
         ]
     }}
 }

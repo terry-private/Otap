@@ -25,10 +25,10 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                 } label: {
                     HStack {
                         Spacer()
-                        Text("練習モード")
+                        Text("予習モード")
                             .font(.title2)
                             .foregroundColor(.primary)
-                        Text("全\(ViewModel.Quiz.Option.allCases.count)種類")
+                        Text("全\(ViewModel.Drill.Option.allCases.count)種類")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -45,11 +45,11 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                     ForEach(Array(viewModel.generators)) { generator in
                         SelectLevelViewCell(
                             generator: generator,
-                            star1: viewModel.gameRecords[generator.id]?.star1,
-                            star2: viewModel.gameRecords[generator.id]?.star2,
-                            star3: viewModel.gameRecords[generator.id]?.star3,
-                            time: viewModel.gameRecords[generator.id]?.time,
-                            locked: viewModel.gameRecords[generator.id] == nil
+                            star1: viewModel.drillRecords[generator.id]?.star1,
+                            star2: viewModel.drillRecords[generator.id]?.star2,
+                            star3: viewModel.drillRecords[generator.id]?.star3,
+                            time: viewModel.drillRecords[generator.id]?.time,
+                            locked: viewModel.drillRecords[generator.id] == nil
                         ) { generator in
                             viewModel.selectGenerator(generator: generator)
                         }
@@ -60,7 +60,7 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
         .onChangeFrame { size in
             columnsCount = max(Int(size.width / 400), 1)
         }
-        .navigationTitle(ViewModel.Quiz.title)
+        .navigationTitle(ViewModel.Drill.title)
         .background {
             Color(uiColor: .secondarySystemBackground)
                 .ignoresSafeArea()
@@ -73,7 +73,7 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
             }
         }
         .fullScreenCover(
-            item: Binding<VoiceQuizGenerator<ViewModel.Quiz>?>(
+            item: Binding<DrillGenerator<ViewModel.Drill>?>(
                 get: { viewModel.selectedGenerator },
                 set: { viewModel.selectGenerator(generator: $0) }
             ), onDismiss: {
@@ -82,12 +82,12 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                 }
             }
         ) { generator in
-            if let record = viewModel.gameRecords[generator.id] {
-                Factory.voiceQuizView(
+            if let record = viewModel.drillRecords[generator.id] {
+                Factory.drillView(
                     generator: generator,
                     lastRecord: record
                 ) {
-                    viewModel.dismissGame()
+                    viewModel.dismissDrill()
                 }
             } else {
                 EmptyView()

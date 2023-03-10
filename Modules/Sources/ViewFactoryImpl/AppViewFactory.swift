@@ -7,23 +7,23 @@
 
 import SwiftUI
 import Core
-import CoreImpl
-import FeatureSelectQuiz
+import Drills
+import FeatureSelectDrill
 
 public enum AppViewFactory {
     @MainActor
-    public static func selectQuizView() -> some View {
-        SelectQuizView<SelectQuizViewFactoryImpl, SelectQuizViewModelImpl>(
+    public static func selectDrillView() -> some View {
+        SelectDrillView<SelectDrillViewFactoryImpl, SelectDrillViewModelImpl>(
             viewModel: .init(
                 selectors: [
-                    ShapeQuizLevelSelector.basic1,
-                    ColorQuizLevelSelector.basic1,
-                    FunnyAnimalQuizLevelSelector.basic1,
-                    CreatureQuizLevelSelector.advanced1,
-                    FruitsAndVegetablesQuizLevelSelector.fruit1,
-                    VehicleQuizLevelSelector.basic1,
-                    NumberQuizLevelSelector.dice123,
-                    HiraganaQuizLevelSelector.あ行
+                    ShapeDrillLevelSelector.basic1,
+                    ColorDrillLevelSelector.basic1,
+                    FunnyAnimalDrillLevelSelector.basic1,
+                    CreatureDrillLevelSelector.advanced1,
+                    FruitsAndVegetablesDrillLevelSelector.fruit1,
+                    VehicleDrillLevelSelector.basic1,
+                    NumberDrillLevelSelector.dice123,
+                    HiraganaDrillLevelSelector.あ行
                 ]
             )
         )
