@@ -1,6 +1,6 @@
 //
-//  OtapApp.swift
-//  Otap
+//  TapDrillApp.swift
+//  TapDrill
 //
 //  Created by 若江照仁 on 2023/01/10.
 //
@@ -10,7 +10,7 @@ import ViewFactoryImpl
 import Utility
 
 @main
-struct OtapApp: App {
+struct TapDrillApp: App {
     init() {
         SoundEffectInteractor.readyAllPlayer()
     }
