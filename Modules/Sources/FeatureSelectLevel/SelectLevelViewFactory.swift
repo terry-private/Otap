@@ -11,19 +11,19 @@ import SwiftUI
 
 public protocol SelectLevelViewFactoryProtocol {
     @MainActor
-    static func drillView<Q: CoreDrill>(generator: DrillGenerator<Q>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView
+    static func drillView<D: CoreDrill>(generator: DrillGenerator<D>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView
     
-    static func practiceModeView<Q: CoreDrill>(_ generator: DrillGenerator<Q>) -> AnyView
+    static func practiceModeView<D: CoreDrill>(_ generator: DrillGenerator<D>) -> AnyView
 }
 
 #if DEBUG
 public enum SelectLevelViewFactoryDummy: SelectLevelViewFactoryProtocol {
     @MainActor
-    public static func drillView<Q: CoreDrill>(generator: DrillGenerator<Q>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
+    public static func drillView<D: CoreDrill>(generator: DrillGenerator<D>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
         EmptyView().toAnyView()
     }
     
-    public static func practiceModeView<Q: CoreDrill>(_ generator: DrillGenerator<Q>) -> AnyView {
+    public static func practiceModeView<D: CoreDrill>(_ generator: DrillGenerator<D>) -> AnyView {
         EmptyView().toAnyView()
     }
 }

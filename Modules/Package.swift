@@ -10,7 +10,7 @@ enum Modules: String, CaseIterable, Hashable {
     case Drills
     case Extensions
     case FeatureDrill
-    case FeaturePracticeMode
+    case FeaturePrepareMode
     case FeatureSelectLevel
     case FeatureSelectDrill
     case Repository
@@ -44,7 +44,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Repository,
             .Utility
         ]
-        case .FeaturePracticeMode: return [
+        case .FeaturePrepareMode: return [
             .Core,
             .Components,
             .Extensions,
@@ -72,7 +72,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Drills,
             .Extensions,
             .FeatureDrill,
-            .FeaturePracticeMode,
+            .FeaturePrepareMode,
             .FeatureSelectLevel,
             .FeatureSelectDrill,
             .Repository,
@@ -93,7 +93,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureDrill: return [
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
         ]
-        case .FeaturePracticeMode: return []
+        case .FeaturePrepareMode: return []
         case .FeatureSelectLevel: return []
         case .FeatureSelectDrill: return []
         case .Repository: return []
@@ -109,7 +109,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .Drills: return []
         case .Extensions: return []
         case .FeatureDrill: return []
-        case .FeaturePracticeMode: return []
+        case .FeaturePrepareMode: return []
         case .FeatureSelectLevel: return []
         case .FeatureSelectDrill: return []
         case .Repository: return []

@@ -1,5 +1,5 @@
 //
-//  PracticeModeView.swift
+//  PrepareModeView.swift
 //  
 //
 //  Created by 若江照仁 on 2023/03/09.
@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 import Utility
 
-public struct PracticeModeView<Drill: CoreDrill, SoundEffect: SoundEffectUseCase>: View {
+public struct PrepareModeView<Drill: CoreDrill, SoundEffect: SoundEffectUseCase>: View {
     let rows = Drill.Option.practiceRows
     public init() {}
     public var body: some View {
@@ -29,7 +29,7 @@ public struct PracticeModeView<Drill: CoreDrill, SoundEffect: SoundEffectUseCase
     }
 }
 
-private extension PracticeModeView {
+private extension PrepareModeView {
     @ViewBuilder
     func rowView(_ row: [Drill.Option]) -> some View {
         GridRow {
@@ -52,10 +52,10 @@ private extension PracticeModeView {
 }
 
 #if DEBUG
-struct PracticeModeView_Previews: PreviewProvider {
+struct PrepareModeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PracticeModeView<DrillDummy, SoundEffectUseCaseDummy>()
+            PrepareModeView<DrillDummy, SoundEffectUseCaseDummy>()
         }
     }
 }
