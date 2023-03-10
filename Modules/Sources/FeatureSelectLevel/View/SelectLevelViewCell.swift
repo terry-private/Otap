@@ -9,16 +9,16 @@ import SwiftUI
 import Core
 import Components
 
-public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
-    private let select: (VoiceQuizGenerator<Quiz>) -> Void
-    private let generator: VoiceQuizGenerator<Quiz>
+public struct SelectLevelViewCell<Drill: CoreDrill>: View {
+    private let select: (DrillGenerator<Drill>) -> Void
+    private let generator: DrillGenerator<Drill>
     private let star1: Bool?
     private let star2: Bool?
     private let star3: Bool?
     private let time: Double?
     private let locked: Bool
     
-    public init(generator: VoiceQuizGenerator<Quiz>, star1: Bool?, star2: Bool?, star3: Bool?, time: Double?, locked: Bool, select: @escaping (VoiceQuizGenerator<Quiz>) -> Void) {
+    public init(generator: DrillGenerator<Drill>, star1: Bool?, star2: Bool?, star3: Bool?, time: Double?, locked: Bool, select: @escaping (DrillGenerator<Drill>) -> Void) {
         self.select = select
         self.generator = generator
         self.star1 = star1
@@ -33,7 +33,7 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
             select(generator)
         } label: {
             HStack(spacing: 0){
-                SquareGrid(generator.previewQuiz.options) { option in
+                SquareGrid(generator.previewDrill.options) { option in
                     option.viewType.view()
                 }
                 .frame(width: 140, height: 140)
@@ -106,8 +106,8 @@ public struct SelectLevelViewCell<Quiz: VoiceQuiz>: View {
 }
 
 struct SelectLevelViewCell_Previews: PreviewProvider {
-    typealias Quiz = VoiceQuizDummy
+    typealias Drill = DrillDummy
     static var previews: some View {
-        SelectLevelViewCell(generator: VoiceQuizLevelSelectorDummy.level1.generator, star1: true, star2: true, star3: false, time: 44, locked: false) { _ in }
+        SelectLevelViewCell(generator: DrillLevelSelectorDummy.level1.generator, star1: true, star2: true, star3: false, time: 44, locked: false) { _ in }
     }
 }

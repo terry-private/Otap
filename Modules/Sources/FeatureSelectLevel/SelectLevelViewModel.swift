@@ -9,19 +9,19 @@ import Foundation
 import Core
 
 @MainActor
-public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
-    associatedtype Quiz: VoiceQuiz
-    var generators: [VoiceQuizGenerator<Quiz>] { get }
-    var gameRecords: [LevelSelectorID: GameRecord] { get }
-    var selectedGenerator: VoiceQuizGenerator<Quiz>? { get }
+public protocol SelectLevelViewModelProtocol<Drill>: ObservableObject {
+    associatedtype Drill: CoreDrill
+    var generators: [DrillGenerator<Drill>] { get }
+    var drillRecords: [LevelSelectorID: DrillRecord] { get }
+    var selectedGenerator: DrillGenerator<Drill>? { get }
     var initialRefreshTask: Task<Void, Error>? { get }
     var isPresentingPracticeMode: Bool { get set }
     
     @discardableResult
-    func selectGenerator(generator: VoiceQuizGenerator<Quiz>?) -> Task<Void, Never>
+    func selectGenerator(generator: DrillGenerator<Drill>?) -> Task<Void, Never>
     
     @discardableResult
-    func dismissGame() -> Task<Void, Never>
+    func dismissDrill() -> Task<Void, Never>
     
     func refresh() async throws
     
@@ -29,11 +29,11 @@ public protocol SelectLevelViewModelProtocol<Quiz>: ObservableObject {
 }
 
 @MainActor
-public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelector, UseCase: SelectLevelUseCase>: ObservableObject, SelectLevelViewModelProtocol {
-    public let generators: [VoiceQuizGenerator<LevelSelector.Quiz>] = LevelSelector.allCases.map { $0.generator }
+public final class SelectLevelViewModelImpl<LevelSelector: DrillLevelSelector, UseCase: SelectLevelUseCase>: ObservableObject, SelectLevelViewModelProtocol {
+    public let generators: [DrillGenerator<LevelSelector.Drill>] = LevelSelector.allCases.map { $0.generator }
     public private(set) var initialRefreshTask: Task<Void, Error>? = nil
-    @Published public var gameRecords: [LevelSelectorID: GameRecord] = [:]
-    @Published public var selectedGenerator: VoiceQuizGenerator<LevelSelector.Quiz>? = nil
+    @Published public var drillRecords: [LevelSelectorID: DrillRecord] = [:]
+    @Published public var selectedGenerator: DrillGenerator<LevelSelector.Drill>? = nil
     @Published public var isPresentingPracticeMode: Bool = false
     public init() {
         initialRefreshTask = Task {
@@ -42,20 +42,20 @@ public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelecto
     }
     
     @discardableResult
-    public func selectGenerator(generator: VoiceQuizGenerator<LevelSelector.Quiz>?) -> Task<Void, Never> {
+    public func selectGenerator(generator: DrillGenerator<LevelSelector.Drill>?) -> Task<Void, Never> {
         Task {
             selectedGenerator = generator
         }
     }
     
     @discardableResult
-    public func dismissGame() -> Task<Void, Never> {
+    public func dismissDrill() -> Task<Void, Never> {
         return selectGenerator(generator: nil)
     }
     
     public func refresh() async throws {
         for generator in generators {
-            gameRecords[generator.id] = try await UseCase.fetchGameRecord(id: generator.id)
+            drillRecords[generator.id] = try await UseCase.fetchDrillRecord(id: generator.id)
         }
     }
     
@@ -68,29 +68,29 @@ public final class SelectLevelViewModelImpl<LevelSelector: VoiceQuizLevelSelecto
 #if DEBUG
 @MainActor
 public final class SelectLevelViewModelDummy: ObservableObject, SelectLevelViewModelProtocol {
-    public typealias Quiz = VoiceQuizDummy
+    public typealias Drill = DrillDummy
     
-    public var generators: [VoiceQuizGenerator<VoiceQuizDummy>] = VoiceQuizLevelSelectorDummy.allCases.map { $0.generator }
-    public var gameRecords: [LevelSelectorID : GameRecord] = [:]
+    public var generators: [DrillGenerator<DrillDummy>] = DrillLevelSelectorDummy.allCases.map { $0.generator }
+    public var drillRecords: [LevelSelectorID : DrillRecord] = [:]
     public var initialRefreshTask: Task<Void, Error>? = nil
-    public var selectedGenerator: VoiceQuizGenerator<VoiceQuizDummy>? = nil
+    public var selectedGenerator: DrillGenerator<DrillDummy>? = nil
     public var isPresentingPracticeMode: Bool = false
     
     public init() {
-        gameRecords = generators.reduce(into: [:]) { records, generator in
+        drillRecords = generators.reduce(into: [:]) { records, generator in
             records[generator.id] = .init(id: generator.id)
         }
     }
     
     @discardableResult
-    public func selectGenerator(generator: VoiceQuizGenerator<VoiceQuizDummy>?) -> Task<Void, Never> {
+    public func selectGenerator(generator: DrillGenerator<DrillDummy>?) -> Task<Void, Never> {
         Task {
             selectedGenerator = generator
         }
     }
     
     @discardableResult
-    public func dismissGame() -> Task<Void, Never> {
+    public func dismissDrill() -> Task<Void, Never> {
         return selectGenerator(generator: nil)
     }
     

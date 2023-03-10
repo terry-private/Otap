@@ -9,8 +9,8 @@ import SwiftUI
 import Core
 import Utility
 
-public struct PracticeModeView<Quiz: VoiceQuiz, SoundEffect: SoundEffectUseCase>: View {
-    let rows = Quiz.Option.practiceRows
+public struct PracticeModeView<Drill: CoreDrill, SoundEffect: SoundEffectUseCase>: View {
+    let rows = Drill.Option.practiceRows
     public init() {}
     public var body: some View {
         ScrollView {
@@ -25,13 +25,13 @@ public struct PracticeModeView<Quiz: VoiceQuiz, SoundEffect: SoundEffectUseCase>
             Color(uiColor: .secondarySystemBackground)
                 .ignoresSafeArea()
         }
-        .navigationTitle("\(Quiz.title)")
+        .navigationTitle("\(Drill.title)")
     }
 }
 
 private extension PracticeModeView {
     @ViewBuilder
-    func rowView(_ row: [Quiz.Option]) -> some View {
+    func rowView(_ row: [Drill.Option]) -> some View {
         GridRow {
             ForEach(row) { option in
                 Button {
@@ -55,7 +55,7 @@ private extension PracticeModeView {
 struct PracticeModeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PracticeModeView<VoiceQuizDummy, SoundEffectUseCaseDummy>()
+            PracticeModeView<DrillDummy, SoundEffectUseCaseDummy>()
         }
     }
 }

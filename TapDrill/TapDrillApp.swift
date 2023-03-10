@@ -17,7 +17,7 @@ struct TapDrillApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                AppViewFactory.selectQuizView()
+                AppViewFactory.selectDrillView()
             }
         }
     }

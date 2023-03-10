@@ -10,11 +10,11 @@ import Core
 import Repository
 
 public protocol SelectLevelUseCase {
-    static func fetchGameRecord(id: LevelSelectorID) async throws -> GameRecord?
+    static func fetchDrillRecord(id: LevelSelectorID) async throws -> DrillRecord?
 }
 
-public enum SelectLevelInteractor<Repository: GameRecordRepository>: SelectLevelUseCase {
-    public static func fetchGameRecord(id: LevelSelectorID) async throws -> GameRecord? {
-        try await Repository.fetchGameRecord(generatorID: id)
+public enum SelectLevelInteractor<Repository: DrillRecordRepository>: SelectLevelUseCase {
+    public static func fetchDrillRecord(id: LevelSelectorID) async throws -> DrillRecord? {
+        try await Repository.fetchDrillRecord(generatorID: id)
     }
 }

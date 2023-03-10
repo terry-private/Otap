@@ -7,9 +7,9 @@
 
 import Foundation
 import Core
+import FeatureDrill
 import FeaturePracticeMode
 import FeatureSelectLevel
-import FeatureVoiceQuiz
 import Repository
 import Utility
 import SwiftUI
@@ -17,15 +17,15 @@ import SwiftUI
 public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
     
     @MainActor
-    public static func voiceQuizView<Q: VoiceQuiz>(generator: VoiceQuizGenerator<Q>, lastRecord: GameRecord, dismiss: @escaping () -> Void) -> AnyView {
-        VoiceQuizView<VoiceQuizViewModelImpl<Q, SoundEffectInteractor, VoiceQuizInteractor<Q, RepositoryImpl>>>(
+    public static func drillView<Q: CoreDrill>(generator: DrillGenerator<Q>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
+        DrillView<DrillViewModelImpl<Q, SoundEffectInteractor, DrillInteractor<Q, RepositoryImpl>>>(
             viewModel: .init(
                 useCase: .init(generator: generator, lastRecord: lastRecord),
                 dismiss: dismiss)
         ).toAnyView()
     }
     
-    public static func practiceModeView<Q: VoiceQuiz>(_ generator: VoiceQuizGenerator<Q>) -> AnyView {
+    public static func practiceModeView<Q: CoreDrill>(_ generator: DrillGenerator<Q>) -> AnyView {
         PracticeModeView<Q, SoundEffectInteractor>()
             .toAnyView()
     }

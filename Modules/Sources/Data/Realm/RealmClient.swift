@@ -9,27 +9,27 @@ import RealmSwift
 import Core
 
 public protocol RealmClientProtocol {
-    static func readGameRecord(for id: LevelSelectorID) -> GameRecord?
+    static func readDrillRecord(for id: LevelSelectorID) -> DrillRecord?
 }
 
 public enum RealmClientImpl: RealmClientProtocol {
-    public static func readGameRecord(for id: LevelSelectorID) -> GameRecord? {
+    public static func readDrillRecord(for id: LevelSelectorID) -> DrillRecord? {
         let realm = try! Realm()
-        let object = realm.object(ofType: GameRecordObject.self, forPrimaryKey: id.rawValue)
-        return object?.toGameRecord()
+        let object = realm.object(ofType: DrillRecordObject.self, forPrimaryKey: id.rawValue)
+        return object?.toDrillRecord()
     }
     
-    public static func updateGameRecord(_ gameRecord: GameRecord) {
+    public static func updateDrillRecord(_ drillRecord: DrillRecord) {
         let realm = try! Realm()
-        let object = realm.object(ofType: GameRecordObject.self, forPrimaryKey: gameRecord.id.rawValue)
+        let object = realm.object(ofType: DrillRecordObject.self, forPrimaryKey: drillRecord.id.rawValue)
         try! realm.write {
             if let object {
-                object.star1 = gameRecord.star1
-                object.star2 = gameRecord.star2
-                object.star3 = gameRecord.star3
-                object.time = gameRecord.time
+                object.star1 = drillRecord.star1
+                object.star2 = drillRecord.star2
+                object.star3 = drillRecord.star3
+                object.time = drillRecord.time
             } else {
-                let newObject = GameRecordObject(record: gameRecord)
+                let newObject = DrillRecordObject(record: drillRecord)
                 realm.add(newObject)
             }
         }
