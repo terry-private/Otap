@@ -24,10 +24,16 @@ public enum SoundEffectInteractor {
         return player
     }()
     
+    private static var utteranceRate: Float = 0.4
+    
     // --------------------------------
     // MARK: public static properties
     // --------------------------------
-    public static let speechSynthesizer = AVSpeechSynthesizer()
+    public static var utteranceVolume: Float = 1
+    
+    public static let speechSynthesizer: AVSpeechSynthesizer = {
+        AVSpeechSynthesizer()
+    }()
 }
 
 // MARK: - private methods
@@ -43,6 +49,16 @@ extension SoundEffectInteractor: SoundEffectUseCase {
         _ = correctSoundPlayer
         _ = wrongSoundPlayer
         _ = speechSynthesizer
+    }
+    
+    public static var effectVolume: Float {
+        get {
+            (correctSoundPlayer?.volume ?? 0) / 0.03
+        }
+        set {
+            correctSoundPlayer?.volume = newValue * 0.03
+            wrongSoundPlayer?.volume = newValue * 0.03
+        }
     }
     
     public static func playCorrect() {
@@ -64,6 +80,8 @@ extension SoundEffectInteractor: SoundEffectUseCase {
             speechSynthesizer.stopSpeaking(at: .immediate)
         }
         let utterance = AVSpeechUtterance(string: words)
+        utterance.volume = utteranceVolume
+        utterance.rate = utteranceRate
         speechSynthesizer.speak(utterance)
     }
 }

@@ -36,6 +36,7 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                     .padding(.vertical, 16)
                     .background { Color.init(uiColor: .tertiarySystemBackground)}
                     .cornerRadius(16)
+                    .shadow(color: .black.opacity(0.2), radius: 4)
                     .padding(16)
                 }
                 .navigationDestination(isPresented: $viewModel.isPresentingPracticeMode) {
