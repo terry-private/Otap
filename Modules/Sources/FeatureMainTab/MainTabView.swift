@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
-    var body: some View {
+public struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
+    public init() {}
+    public var body: some View {
         TabView {
-            Factory.drillView
+            Factory.selectDrillView
                 .tabItem {
                     Label("ドリル", systemImage: "rectangle.grid.2x2")
                 }
@@ -18,6 +19,11 @@ struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
                 .tabItem {
                     Label("設定", systemImage: "gear")
                 }
+        }
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }

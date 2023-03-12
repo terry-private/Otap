@@ -8,13 +8,13 @@
 import SwiftUI
 
 public protocol MainTabViewFactoryProtocol {
-    static var drillView: AnyView { get }
+    static var selectDrillView: AnyView { get }
     static var settingView: AnyView { get }
 }
 
 #if DEBUG
 public enum MainTabViewFactoryDummy: MainTabViewFactoryProtocol {
-    public static var drillView: AnyView { AnyView(Text("ドリル")) }
+    public static var selectDrillView: AnyView { AnyView(Text("ドリル")) }
     public static var settingView: AnyView { AnyView(Text("設定")) }
 }
 #endif

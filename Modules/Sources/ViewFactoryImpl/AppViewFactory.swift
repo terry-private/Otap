@@ -9,23 +9,11 @@ import SwiftUI
 import Core
 import Drills
 import FeatureSelectDrill
+import FeatureMainTab
 
 public enum AppViewFactory {
     @MainActor
-    public static func selectDrillView() -> some View {
-        SelectDrillView<SelectDrillViewFactoryImpl, SelectDrillViewModelImpl>(
-            viewModel: .init(
-                selectors: [
-                    ShapeDrillLevelSelector.basic1,
-                    ColorDrillLevelSelector.basic1,
-                    FunnyAnimalDrillLevelSelector.basic1,
-                    CreatureDrillLevelSelector.advanced1,
-                    FruitsAndVegetablesDrillLevelSelector.fruit1,
-                    VehicleDrillLevelSelector.basic1,
-                    NumberDrillLevelSelector.dice123,
-                    HiraganaDrillLevelSelector.あ行
-                ]
-            )
-        )
+    public static func mainTab() -> some View {
+        MainTabView<MainTabViewFactoryImpl>()
     }
 }

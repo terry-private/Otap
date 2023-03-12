@@ -74,6 +74,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Drills,
             .Extensions,
             .FeatureDrill,
+            .FeatureMainTab,
             .FeaturePrepareMode,
             .FeatureSelectLevel,
             .FeatureSelectDrill,
