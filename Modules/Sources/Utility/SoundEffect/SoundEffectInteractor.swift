@@ -27,7 +27,11 @@ public enum SoundEffectInteractor {
     // --------------------------------
     // MARK: public static properties
     // --------------------------------
-    public static let speechSynthesizer = AVSpeechSynthesizer()
+    static private var utteranceVolume: Float = 1
+    static private var utteranceRate: Float = 0.4
+    public static let speechSynthesizer: AVSpeechSynthesizer = {
+        AVSpeechSynthesizer()
+    }()
 }
 
 // MARK: - private methods
@@ -64,6 +68,8 @@ extension SoundEffectInteractor: SoundEffectUseCase {
             speechSynthesizer.stopSpeaking(at: .immediate)
         }
         let utterance = AVSpeechUtterance(string: words)
+        utterance.volume = utteranceVolume
+        utterance.rate = utteranceRate
         speechSynthesizer.speak(utterance)
     }
 }
