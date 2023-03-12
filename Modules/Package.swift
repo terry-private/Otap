@@ -112,6 +112,27 @@ enum Modules: String, CaseIterable, Hashable {
         case .ViewFactoryImpl: return []
     }}
     
+    var dependenciesPlugins: [PackageDescription.Target.PluginUsage] {
+        switch self {
+        case .Components: return []
+        case .Core: return []
+        case .Data: return []
+        case .Drills: return []
+        case .Extensions: return []
+        case .FeatureDrill: return []
+        case .FeatureMainTab: return []
+        case .FeaturePrepareMode: return []
+        case .FeatureSelectDrill: return []
+        case .FeatureSelectLevel: return []
+        case .FeatureSetting: return [
+            .plugin(name: "LicensesPlugin", package: "LicensesPlugin")
+        ]
+        case .Repository: return []
+        case .Utility: return []
+        case .ViewFactoryImpl: return []
+        }
+    }
+    
     var resources: [PackageDescription.Resource] {
         switch self {
         case .Components: return []
@@ -161,13 +182,15 @@ let package = Package(
     products: Modules.allCases.map { .library(name: $0.rawValue, targets: [$0.rawValue])},
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1"),
-        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0")
+        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0"),
+        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.2")
     ],
     targets: Modules.allCases.map {
         .target(
             name: $0.rawValue,
             dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) } + $0.dependenciesProducts,
-            resources: $0.resources.map { resource in return resource }
+            resources: $0.resources.map { resource in return resource },
+            plugins: $0.dependenciesPlugins
         )
     } + TestModule.allCases.map {
         .testTarget(
