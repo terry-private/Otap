@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-import Core
-import Drills
-import FeatureSelectDrill
 import FeatureMainTab
 
 public enum AppViewFactory {
