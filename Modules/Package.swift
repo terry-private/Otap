@@ -66,6 +66,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Repository,
         ]
         case .FeatureSetting: return [
+            .Extensions,
             .Utility
         ]
         case .Repository: return [
@@ -82,6 +83,7 @@ enum Modules: String, CaseIterable, Hashable {
             .FeaturePrepareMode,
             .FeatureSelectLevel,
             .FeatureSelectDrill,
+            .FeatureSetting,
             .Repository,
             .Utility
         ]

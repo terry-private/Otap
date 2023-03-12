@@ -11,14 +11,19 @@ public struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
     public init() {}
     public var body: some View {
         TabView {
-            Factory.selectDrillView
-                .tabItem {
-                    Label("ドリル", systemImage: "rectangle.grid.2x2")
-                }
-            Factory.settingView
-                .tabItem {
-                    Label("設定", systemImage: "gear")
-                }
+            NavigationStack {
+                Factory.selectDrillView
+            }
+            .tabItem {
+                Label("ドリル", systemImage: "rectangle.grid.2x2")
+            }
+            
+            NavigationStack {
+                Factory.settingView
+            }
+            .tabItem {
+                Label("設定", systemImage: "gear")
+            }
         }
         .onAppear {
             let appearance = UITabBarAppearance()
