@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct MainTabView: View {
+struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
     var body: some View {
         TabView {
-            Text("A")
+            Factory.drillView
                 .tabItem {
                     Label("ドリル", systemImage: "rectangle.grid.2x2")
                 }
-            Text("B")
+            Factory.settingView
                 .tabItem {
                     Label("設定", systemImage: "gear")
                 }
@@ -22,8 +22,10 @@ struct MainTabView: View {
     }
 }
 
+#if DEBUG
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainTabView<MainTabViewFactoryDummy>()
     }
 }
+#endif
