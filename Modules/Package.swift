@@ -12,8 +12,9 @@ enum Modules: String, CaseIterable, Hashable {
     case FeatureDrill
     case FeatureMainTab
     case FeaturePrepareMode
-    case FeatureSelectLevel
     case FeatureSelectDrill
+    case FeatureSelectLevel
+    case FeatureSetting
     case Repository
     case Utility
     case ViewFactoryImpl
@@ -52,17 +53,20 @@ enum Modules: String, CaseIterable, Hashable {
             .Extensions,
             .Utility
         ]
+        case .FeatureSelectDrill: return [
+            .Core,
+            .Components,
+            .Extensions,
+            .Repository,
+        ]
         case .FeatureSelectLevel: return [
             .Core,
             .Components,
             .Extensions,
             .Repository,
         ]
-        case .FeatureSelectDrill: return [
-            .Core,
-            .Components,
-            .Extensions,
-            .Repository,
+        case .FeatureSetting: return [
+            .Utility
         ]
         case .Repository: return [
             .Core,
@@ -98,8 +102,9 @@ enum Modules: String, CaseIterable, Hashable {
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
         ]
         case .FeaturePrepareMode: return []
-        case .FeatureSelectLevel: return []
         case .FeatureSelectDrill: return []
+        case .FeatureSelectLevel: return []
+        case .FeatureSetting: return []
         case .Repository: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
@@ -115,8 +120,9 @@ enum Modules: String, CaseIterable, Hashable {
         case .Extensions: return []
         case .FeatureDrill: return []
         case .FeaturePrepareMode: return []
-        case .FeatureSelectLevel: return []
         case .FeatureSelectDrill: return []
+        case .FeatureSelectLevel: return []
+        case .FeatureSetting: return []
         case .Repository: return []
         case .Utility: return [
             .copy("./SoundEffect/Resources/correct.mp3"),
