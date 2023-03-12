@@ -7,6 +7,8 @@
 
 // MARK: - UseCaseProtocol
 public protocol SoundEffectUseCase {
+    static var effectVolume: Float { get set }
+    static var utteranceVolume: Float { get set }
     static func readyAllPlayer()
     static func playCorrect()
     static func playWrong()
@@ -15,6 +17,10 @@ public protocol SoundEffectUseCase {
 
 #if DEBUG
 public enum SoundEffectUseCaseDummy: SoundEffectUseCase {
+    public static var effectVolume: Float = 1
+    
+    public static var utteranceVolume: Float = 1
+    
     public static func readyAllPlayer() {
         print(#file, #function)
     }

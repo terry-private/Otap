@@ -7,10 +7,9 @@
 
 import SwiftUI
 import Extensions
+import Utility
 
-public struct SettingView: View {
-    @State var volume1: CGFloat = 1
-    @State var volume2: CGFloat = 1
+public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
     public init() {}
     public var body: some View {
         Form {
@@ -18,13 +17,19 @@ public struct SettingView: View {
                 HStack {
                     Text("効果音")
                     Spacer()
-                    Slider(value: $volume1)
-                        .frame(width: 150)
+                    Slider(value: .init(
+                        get: { SoundEffect.effectVolume },
+                        set: { SoundEffect.effectVolume = $0 }
+                    ))
+                    .frame(width: 150)
                 }
                 HStack {
                     Text("読み上げ音声")
                     Spacer()
-                    Slider(value: $volume2)
+                    Slider(value: .init(
+                        get: { SoundEffect.utteranceVolume },
+                        set: { SoundEffect.utteranceVolume = $0 }
+                    ))
                         .frame(width: 150)
                 }
             }
@@ -48,7 +53,7 @@ public struct SettingView: View {
 #if DEBUG
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView<SoundEffectUseCaseDummy>()
     }
 }
 #endif

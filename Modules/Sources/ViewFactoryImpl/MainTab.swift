@@ -11,6 +11,7 @@ import Extensions
 import FeatureMainTab
 import FeatureSelectDrill
 import FeatureSetting
+import Utility
 
 public enum MainTabViewFactoryImpl: MainTabViewFactoryProtocol {
     @MainActor
@@ -34,7 +35,7 @@ public enum MainTabViewFactoryImpl: MainTabViewFactoryProtocol {
     
     @MainActor
     public static var settingView: AnyView {
-        SettingView()
+        SettingView<SoundEffectInteractor>()
             .toAnyView()
     }
 }
