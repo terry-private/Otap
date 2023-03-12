@@ -10,6 +10,7 @@
 		0916AE6B29A8B3680094FA78 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE6A29A8B3680094FA78 /* Utility */; };
 		0916AE6D29A8B60F0094FA78 /* ViewFactoryImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */; };
 		0916AE7129B0DDD40094FA78 /* FeatureSelectLevel in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */; };
+		0939663F29BDAFF1007F7E01 /* FeatureMainTab in Frameworks */ = {isa = PBXBuildFile; productRef = 0939663E29BDAFF1007F7E01 /* FeatureMainTab */; };
 		0995D2DF29BB82DF0017C68F /* FeatureDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2DE29BB82DF0017C68F /* FeatureDrill */; };
 		0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E029BB90A80017C68F /* FeatureSelectDrill */; };
 		0995D2E329BB93D60017C68F /* Drills in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E229BB93D60017C68F /* Drills */; };
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0939663F29BDAFF1007F7E01 /* FeatureMainTab in Frameworks */,
 				0916AE7129B0DDD40094FA78 /* FeatureSelectLevel in Frameworks */,
 				0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */,
 				0916AE6D29A8B60F0094FA78 /* ViewFactoryImpl in Frameworks */,
@@ -129,6 +131,7 @@
 				0995D2E029BB90A80017C68F /* FeatureSelectDrill */,
 				0995D2E229BB93D60017C68F /* Drills */,
 				0995D2E429BB9AF40017C68F /* FeaturePrepareMode */,
+				0939663E29BDAFF1007F7E01 /* FeatureMainTab */,
 			);
 			productName = TapDrill;
 			productReference = 09A49550296D49D3009DBE22 /* TapDrill.app */;
@@ -413,6 +416,10 @@
 		0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureSelectLevel;
+		};
+		0939663E29BDAFF1007F7E01 /* FeatureMainTab */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureMainTab;
 		};
 		0995D2DE29BB82DF0017C68F /* FeatureDrill */ = {
 			isa = XCSwiftPackageProductDependency;

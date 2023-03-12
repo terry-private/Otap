@@ -10,6 +10,7 @@ enum Modules: String, CaseIterable, Hashable {
     case Drills
     case Extensions
     case FeatureDrill
+    case FeatureMainTab
     case FeaturePrepareMode
     case FeatureSelectLevel
     case FeatureSelectDrill
@@ -44,6 +45,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Repository,
             .Utility
         ]
+        case .FeatureMainTab: return []
         case .FeaturePrepareMode: return [
             .Core,
             .Components,
@@ -89,6 +91,7 @@ enum Modules: String, CaseIterable, Hashable {
             .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
         ]
         case .Drills: return []
+        case .FeatureMainTab: return []
         case .Extensions: return []
         case .FeatureDrill: return [
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
@@ -107,6 +110,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .Core: return []
         case .Data: return []
         case .Drills: return []
+        case .FeatureMainTab: return []
         case .Extensions: return []
         case .FeatureDrill: return []
         case .FeaturePrepareMode: return []
