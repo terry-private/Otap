@@ -16,7 +16,7 @@
 		0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E029BB90A80017C68F /* FeatureSelectDrill */; };
 		0995D2E329BB93D60017C68F /* Drills in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E229BB93D60017C68F /* Drills */; };
 		0995D2E529BB9AF40017C68F /* FeaturePrepareMode in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E429BB9AF40017C68F /* FeaturePrepareMode */; };
-		09A49554296D49D3009DBE22 /* TapDrillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A49553296D49D3009DBE22 /* TapDrillApp.swift */; };
+		09A49554296D49D3009DBE22 /* TapDrillForKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A49553296D49D3009DBE22 /* TapDrillForKidsApp.swift */; };
 		09A49558296D49D6009DBE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A49557296D49D6009DBE22 /* Assets.xcassets */; };
 		09A4955B296D49D6009DBE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */; };
 		09B14AB3299E77ED00E48A4A /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = 09B14AB2299E77ED00E48A4A /* Repository */; };
@@ -28,8 +28,8 @@
 
 /* Begin PBXFileReference section */
 		098EB32229B18AA100BF3972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		09A49550296D49D3009DBE22 /* TapDrill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapDrill.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		09A49553296D49D3009DBE22 /* TapDrillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapDrillApp.swift; sourceTree = "<group>"; };
+		09A49550296D49D3009DBE22 /* TapDrillForKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapDrillForKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09A49553296D49D3009DBE22 /* TapDrillForKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapDrillForKidsApp.swift; sourceTree = "<group>"; };
 		09A49557296D49D6009DBE22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09A495A229728824009DBE22 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				09A495A229728824009DBE22 /* Modules */,
-				09A49552296D49D3009DBE22 /* TapDrill */,
+				09A49552296D49D3009DBE22 /* TapDrillForKids */,
 				09A49551296D49D3009DBE22 /* Products */,
 				09A495A329728EC4009DBE22 /* Frameworks */,
 			);
@@ -73,20 +73,20 @@
 		09A49551296D49D3009DBE22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09A49550296D49D3009DBE22 /* TapDrill.app */,
+				09A49550296D49D3009DBE22 /* TapDrillForKids.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		09A49552296D49D3009DBE22 /* TapDrill */ = {
+		09A49552296D49D3009DBE22 /* TapDrillForKids */ = {
 			isa = PBXGroup;
 			children = (
 				098EB32229B18AA100BF3972 /* Info.plist */,
-				09A49553296D49D3009DBE22 /* TapDrillApp.swift */,
+				09A49553296D49D3009DBE22 /* TapDrillForKidsApp.swift */,
 				09A49557296D49D6009DBE22 /* Assets.xcassets */,
 				09A49559296D49D6009DBE22 /* Preview Content */,
 			);
-			path = TapDrill;
+			path = TapDrillForKids;
 			sourceTree = "<group>";
 		};
 		09A49559296D49D6009DBE22 /* Preview Content */ = {
@@ -107,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		09A4954F296D49D3009DBE22 /* TapDrill */ = {
+		09A4954F296D49D3009DBE22 /* TapDrillForKids */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 09A49574296D49D7009DBE22 /* Build configuration list for PBXNativeTarget "TapDrill" */;
+			buildConfigurationList = 09A49574296D49D7009DBE22 /* Build configuration list for PBXNativeTarget "TapDrillForKids" */;
 			buildPhases = (
 				09A4954C296D49D3009DBE22 /* Sources */,
 				09A4954D296D49D3009DBE22 /* Frameworks */,
@@ -119,7 +119,7 @@
 			);
 			dependencies = (
 			);
-			name = TapDrill;
+			name = TapDrillForKids;
 			packageProductDependencies = (
 				09C3511329923A1600BDC8DF /* Components */,
 				09C3511529923AC100BDC8DF /* Extensions */,
@@ -136,8 +136,8 @@
 				0939663E29BDAFF1007F7E01 /* FeatureMainTab */,
 				0939664029BDBDF8007F7E01 /* FeatureSetting */,
 			);
-			productName = TapDrill;
-			productReference = 09A49550296D49D3009DBE22 /* TapDrill.app */;
+			productName = TapDrillForKids;
+			productReference = 09A49550296D49D3009DBE22 /* TapDrillForKids.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,7 +155,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 09A4954B296D49D3009DBE22 /* Build configuration list for PBXProject "TapDrill" */;
+			buildConfigurationList = 09A4954B296D49D3009DBE22 /* Build configuration list for PBXProject "TapDrillForKids" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -168,7 +168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				09A4954F296D49D3009DBE22 /* TapDrill */,
+				09A4954F296D49D3009DBE22 /* TapDrillForKids */,
 			);
 		};
 /* End PBXProject section */
@@ -190,7 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09A49554296D49D3009DBE22 /* TapDrillApp.swift in Sources */,
+				09A49554296D49D3009DBE22 /* TapDrillForKidsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,11 +318,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TapDrill/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TapDrillForKids/Preview Content\"";
 				DEVELOPMENT_TEAM = 58F4SK879Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TapDrill/Info.plist;
+				INFOPLIST_FILE = TapDrillForKids/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tap Drill";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -336,7 +336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = terry.TapDrill;
+				PRODUCT_BUNDLE_IDENTIFIER = terry.TapDrillForKids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -355,11 +355,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TapDrill/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TapDrillForKids/Preview Content\"";
 				DEVELOPMENT_TEAM = 58F4SK879Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TapDrill/Info.plist;
+				INFOPLIST_FILE = TapDrillForKids/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tap Drill";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -373,7 +373,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = terry.TapDrill;
+				PRODUCT_BUNDLE_IDENTIFIER = terry.TapDrillForKids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -387,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		09A4954B296D49D3009DBE22 /* Build configuration list for PBXProject "TapDrill" */ = {
+		09A4954B296D49D3009DBE22 /* Build configuration list for PBXProject "TapDrillForKids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				09A49572296D49D7009DBE22 /* Debug */,
@@ -396,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		09A49574296D49D7009DBE22 /* Build configuration list for PBXNativeTarget "TapDrill" */ = {
+		09A49574296D49D7009DBE22 /* Build configuration list for PBXNativeTarget "TapDrillForKids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				09A49575296D49D7009DBE22 /* Debug */,
