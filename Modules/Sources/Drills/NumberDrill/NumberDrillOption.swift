@@ -97,6 +97,7 @@ extension NumberDrillOption: DrillOption {
     }
 }
 
+#if DEBUG
 struct SquareGrid_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -108,3 +109,4 @@ struct SquareGrid_Previews: PreviewProvider {
         }
     }
 }
+#endif

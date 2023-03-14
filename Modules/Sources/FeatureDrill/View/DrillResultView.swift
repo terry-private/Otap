@@ -119,6 +119,7 @@ public struct DrillResultView: View {
     }
 }
 
+#if DEBUG
 struct DrillResultView_Previews: PreviewProvider {
     static var previews: some View {
         DrillResultView(
@@ -137,3 +138,4 @@ struct DrillResultView_Previews: PreviewProvider {
             }
     }
 }
+#endif
