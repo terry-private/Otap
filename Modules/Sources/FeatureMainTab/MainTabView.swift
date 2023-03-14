@@ -29,6 +29,7 @@ public struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
             let appearance = UITabBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
             UITabBar.appearance().scrollEdgeAppearance = appearance
+            UITabBar.appearance().standardAppearance = appearance
         }
     }
 }
