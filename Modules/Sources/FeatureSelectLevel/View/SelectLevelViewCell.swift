@@ -105,9 +105,11 @@ public struct SelectLevelViewCell<Drill: CoreDrill>: View {
     }
 }
 
+#if DEBUG
 struct SelectLevelViewCell_Previews: PreviewProvider {
     typealias Drill = DrillDummy
     static var previews: some View {
         SelectLevelViewCell(generator: DrillLevelSelectorDummy.level1.generator, star1: true, star2: true, star3: false, time: 44, locked: false) { _ in }
     }
 }
+#endif

@@ -82,8 +82,10 @@ public struct SelectDrillView<Factory: SelectDrillViewFactoryProtocol, ViewModel
     }
 }
 
+#if DEBUG
 struct SelectDrillView_Previews: PreviewProvider {
     static var previews: some View {
         SelectDrillView<SelectDrillViewFactoryDummy, SelectDrillViewModelImpl>(viewModel: .init(selectors: [DrillLevelSelectorDummy.level1]))
     }
 }
+#endif
