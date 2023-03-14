@@ -1,6 +1,6 @@
 //
-//  TapDrillApp.swift
-//  TapDrill
+//  TapDrillForKidsApp.swift
+//  TapDrillForKids
 //
 //  Created by 若江照仁 on 2023/01/10.
 //
@@ -10,7 +10,7 @@ import ViewFactoryImpl
 import Utility
 
 @main
-struct TapDrillApp: App {
+struct TapDrillForKidsApp: App {
     init() {
         SoundEffectInteractor.readyAllPlayer()
     }
