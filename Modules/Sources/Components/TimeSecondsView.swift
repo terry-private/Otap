@@ -9,37 +9,27 @@ import SwiftUI
 
 public struct TimeSecondsView: View {
     private let time: Double
-    private let secondsSize: CGFloat
-    private let decimalSize: CGFloat
     private let secondsFont: UIFont
-    private let decimalFont: UIFont
-    public init(_ time: Double = 0, secondsSize: CGFloat = 18, decimalSize: CGFloat = 11) {
+    private var decimalFont: UIFont {
+        .systemFont(ofSize: secondsFont.xHeight * secondsFont.pointSize / secondsFont.capHeight)
+    }
+    public init(_ time: Double = 0, secondsFont: UIFont = .preferredFont(forTextStyle: .title3)) {
         self.time = time
-        self.secondsSize = secondsSize
-        self.decimalSize = decimalSize
-        secondsFont = UIFont.systemFont(ofSize: secondsSize, weight: .bold)
-        decimalFont = UIFont.systemFont(ofSize: decimalSize)
+        self.secondsFont = secondsFont
     }
     public var body: some View {
-        HStack(alignment: .bottom, spacing: 0) {
-            Spacer()
-                .overlay(alignment: .bottomTrailing) {
-                    Text("\(Int(time))")
-                        .font(.init(secondsFont))
-                        .monospacedDigit()
-                        .offset(y: -secondsFont.descender)
-                        .fixedSize()
-                }
-            Spacer()
-                .overlay(alignment: .bottomLeading) {
-                    Text(".\(String(format: "%02d", Int(time * 100) - Int(time) * 100))")
-                        .font(.init(decimalFont))
-                        .monospacedDigit()
-                        .offset(y: -decimalFont.descender)
-                        .fixedSize()
-                }
+        HStack(alignment: .lastTextBaseline, spacing: 0) {
+            Text("\(String(format: "%02d", Int(time)))")
+                .font(.init(secondsFont))
+                .bold()
+                .monospacedDigit()
+                .fixedSize()
+            Text(".\(String(format: "%02d", Int(time * 100) - Int(time) * 100))")
+                .font(.init(decimalFont))
+                .monospacedDigit()
+                .fixedSize()
         }
-        .offset(x: (secondsSize*2 - decimalSize*3)/3, y: max(secondsFont.capHeight, decimalFont.capHeight)/2)
+        .offset(x: 0)
     }
 }
 
@@ -56,12 +46,12 @@ struct SwiftUIView_Previews: PreviewProvider {
                 circle(width: 50, color: .indigo, time: 0, secondsSize: 18)
             }
             HStack {
-                circle(width: 60, color: .indigo, time: 22.22, secondsSize: 30)
-                circle(width: 60, color: .indigo, time: 0, secondsSize: 30)
+                circle(width: 60, color: .indigo, time: 22.22, secondsSize: 20)
+                circle(width: 60, color: .indigo, time: 0, secondsSize: 20)
             }
             HStack {
-                circle(width: 100, color: .mint, time: 22.22, secondsSize: 50, decimalSize: 20)
-                circle(width: 100, color: .mint, time: 0, secondsSize: 50, decimalSize: 20)
+                circle(width: 100, color: .mint, time: 22.22, secondsSize: 40, decimalSize: 20)
+                circle(width: 100, color: .mint, time: 0, secondsSize: 40, decimalSize: 20)
             }
         }
     }
@@ -73,6 +63,6 @@ struct SwiftUIView_Previews: PreviewProvider {
                 Color.red.frame(height: 1).opacity(showGridLine ? 1 : 0)
                 Color.red.frame(width: 1).opacity(showGridLine ? 1 : 0)
             }
-            .overlay { TimeSecondsView(time, secondsSize: secondsSize, decimalSize: decimalSize) }
+            .overlay { TimeSecondsView(time, secondsFont: .systemFont(ofSize: secondsSize)) }
     }
 }
