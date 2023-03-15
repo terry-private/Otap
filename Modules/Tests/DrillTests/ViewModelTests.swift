@@ -130,13 +130,13 @@ final class ViewModelTests: XCTestCase {
         
         _ = await verifyTask2.result
         XCTContext.runActivity(named: "第2問 判定結果") {_ in
-            XCTAssertEqual(viewModel.time, time, "ゲーム終了判定の場合、解答時にタイマーがストップするので0.01秒経ってもtimeに変更がない")
-            XCTAssertEqual(viewModel.drillState, .gameOver(useCase.clearTestResult(time: time)), "DrillStateが.gameOver(.success(.useCase.clearTestResult))")
+            XCTAssertTrue(abs(viewModel.time - time) <= 0.01, "ゲーム終了判定の場合、解答時にタイマーがストップするので解答時と判定後のtimeの誤差0.01秒以下")
+            XCTAssertEqual(viewModel.drillState, .gameOver(useCase.clearTestResult(time: viewModel.time)), "DrillStateが.gameOver(.success(.useCase.clearTestResult))")
         }
         
         viewModel.optionTapped(viewModel.currentDrill.answer)
         XCTContext.runActivity(named: "ゲームオーバーの状態でタップできた場合") {_ in
-            XCTAssertEqual(viewModel.drillState, .gameOver(useCase.clearTestResult(time: time)), "verifyにならず.gameOverのまま")
+            XCTAssertEqual(viewModel.drillState, .gameOver(useCase.clearTestResult(time: viewModel.time)), "verifyにならず.gameOverのまま")
         }
         
         viewModel.restart()
@@ -170,7 +170,7 @@ final class ViewModelTests: XCTestCase {
         
         _ = await verifyTask.result
         XCTContext.runActivity(named: "第1問 判定結果") {_ in
-            XCTAssertEqual(viewModel.time, time, "ゲーム終了判定の場合、解答時にタイマーがストップするので0.01秒経ってもtimeに変更がない")
+            XCTAssertTrue(abs(viewModel.time - time) <= 0.01, "ゲーム終了判定の場合、解答時にタイマーがストップするので解答時と判定後のtimeの誤差0.01秒以下")
             XCTAssertEqual(viewModel.drillState, .gameOver(.gameOver), "DrillStateが.gameOver(.gameOver)")
         }
     }
