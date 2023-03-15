@@ -36,21 +36,17 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
             Section {
                 NavigationLink {
                     List {
-                        ForEach(LicensesPlugin.licenses) { license in
+                        ForEach(License.allCases) { license in
                             NavigationLink {
                                 Group {
-                                    if let licenseText = license.licenseText {
-                                        ScrollView {
-                                            Text(licenseText)
-                                                .padding()
-                                        }
-                                    } else {
-                                        Text("No License Found")
+                                    ScrollView {
+                                        Text(license.text)
+                                            .padding()
                                     }
                                 }
-                                .navigationTitle(license.name)
+                                .navigationTitle(license.rawValue)
                             } label: {
-                                Text(license.name)
+                                Text(license.rawValue)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
