@@ -183,7 +183,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1"),
         .package(url: "https://github.com/realm/realm-swift", from: "10.36.0"),
-        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.2")
+        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.0")
     ],
     targets: Modules.allCases.map {
         .target(
