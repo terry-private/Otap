@@ -12,6 +12,10 @@ import XCTest
 
 final class ViewModelTests: XCTestCase {
     enum SoundEffectStub: SoundEffectUseCase {
+        static var effectVolume: Float = 0
+        
+        static var utteranceVolume: Float = 0
+        
         static var isPlayCorrect: Bool = false
         static var isPlayWrong: Bool = false
         static var spokenWords: String? = nil
