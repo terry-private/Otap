@@ -124,9 +124,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeaturePrepareMode: return []
         case .FeatureSelectDrill: return []
         case .FeatureSelectLevel: return []
-        case .FeatureSetting: return [
-            .plugin(name: "LicensesPlugin", package: "LicensesPlugin")
-        ]
+        case .FeatureSetting: return []
         case .Repository: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
@@ -182,8 +180,7 @@ let package = Package(
     products: Modules.allCases.map { .library(name: $0.rawValue, targets: [$0.rawValue])},
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1"),
-        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0"),
-        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.2")
+        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0")
     ],
     targets: Modules.allCases.map {
         .target(

@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "licensesplugin",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/maiyama18/LicensesPlugin",
-      "state" : {
-        "revision" : "605ccc3ba104803772417a477009af5784b1e55f",
-        "version" : "0.1.2"
-      }
-    },
-    {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",
