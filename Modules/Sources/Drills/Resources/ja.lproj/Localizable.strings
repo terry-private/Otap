@@ -1,11 +1,12 @@
 // MARK: - Common Level
-"Common.Level.basic1" = "基本1";
-"Common.Level.basic2" = "基本2";
-"Common.Level.basic3" = "基本3";
-"Common.Level.advanced1" = "応用1";
-"Common.Level.advanced2" = "応用2";
-"Common.Level.advanced3" = "応用3";
-"Common.Level.advanced4" = "応用4";
+"Common.Level.basic1" = "基本 1";
+"Common.Level.basic2" = "基本 2";
+"Common.Level.basic3" = "基本 3";
+"Common.Level.advanced1" = "応用 1";
+"Common.Level.advanced2" = "応用 2";
+"Common.Level.advanced3" = "応用 3";
+"Common.Level.advanced4" = "応用 4";
+"Common.Level.advanced5" = "応用 5";
 "Common.Level.challenge" = "チャレンジ";
 "Common.Level.requirements_format" = "%2d秒以内に%1d問正解";
 "Common.Level.clear" = "クリア";
@@ -26,3 +27,54 @@
 "Color.Option.Call.White" = "白";
 "Color.Option.Call.Gray" = "灰色";
 "Color.Option.Call.Black" = "黒";
+
+// MARK: - Creature
+"Creature.Drill.Title" = "生き物";
+"Creature.Option.Call.dog" = "犬";
+"Creature.Option.Call.cat" = "猫";
+"Creature.Option.Call.mouse" = "ねずみ";
+"Creature.Option.Call.cow" = "牛";
+"Creature.Option.Call.rabbit" = "うさぎ";
+"Creature.Option.Call.horse" = "馬";
+"Creature.Option.Call.elephant" = "象";
+"Creature.Option.Call.pig" = "豚";
+"Creature.Option.Call.camel" = "ラクダ";
+"Creature.Option.Call.giraffe" = "キリン";
+"Creature.Option.Call.kangaroo" = "カンガルー";
+"Creature.Option.Call.monkey" = "猿";
+"Creature.Option.Call.rooster" = "鶏";
+"Creature.Option.Call.owl" = "フクロウ";
+"Creature.Option.Call.flamingo" = "フラミンゴ";
+"Creature.Option.Call.swan" = "白鳥";
+"Creature.Option.Call.duck" = "鴨";
+"Creature.Option.Call.bat" = "コウモリ";
+"Creature.Option.Call.turtle" = "亀";
+"Creature.Option.Call.crocodile" = "ワニ";
+"Creature.Option.Call.lizard" = "トカゲ";
+"Creature.Option.Call.snake" = "蛇";
+"Creature.Option.Call.whale" = "鯨";
+"Creature.Option.Call.dolphin" = "イルカ";
+"Creature.Option.Call.shark" = "サメ";
+"Creature.Option.Call.octopus" = "タコ";
+"Creature.Option.Call.bug" = "毛虫";
+"Creature.Option.Call.butterfly" = "ちょうちょ";
+"Creature.Option.Call.ant" = "蟻";
+"Creature.Option.Call.honeybee" = "ミツバチ";
+"Creature.Option.Call.ladyBeetle" = "てんとう虫";
+"Creature.Option.Call.spider" = "蜘蛛";
+"Creature.Option.Call.chipmunk" = "リス";
+"Creature.Option.Call.tiger" = "虎";
+"Creature.Option.Call.zebra" = "しまうま";
+"Creature.Option.Call.rhinoceros" = "サイ";
+
+// Creature Level
+"Creature.Level.Animal1" = "動物 1";
+"Creature.Level.Animal2" = "動物 2";
+"Creature.Level.Animal3" = "動物 3";
+"Creature.Level.Animal4" = "動物 4";
+"Creature.Level.Bird" = "鳥";
+"Creature.Level.Reptile" = "爬虫類";
+"Creature.Level.MarineLife" = "海の生き物";
+"Creature.Level.Insect" = "虫";
+
+

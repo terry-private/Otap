@@ -6,6 +6,7 @@
 "Common.Level.advanced2" = "Advanced 2";
 "Common.Level.advanced3" = "Advanced 3";
 "Common.Level.advanced4" = "Advanced 4";
+"Common.Level.advanced5" = "Advanced 5";
 "Common.Level.challenge" = "Challenge";
 "Common.Level.requirements_format" = "%1d correct in %2ds";
 "Common.Level.clear" = "Clear";
@@ -26,3 +27,53 @@
 "Color.Option.Call.White" = "White";
 "Color.Option.Call.Gray" = "Gray";
 "Color.Option.Call.Black" = "Black";
+
+// MARK: - Creature
+"Creature.Drill.Title" = "Creature";
+"Creature.Option.Call.dog" = "dog";
+"Creature.Option.Call.cat" = "cat";
+"Creature.Option.Call.mouse" = "mouse";
+"Creature.Option.Call.cow" = "cow";
+"Creature.Option.Call.rabbit" = "rabbit";
+"Creature.Option.Call.horse" = "horse";
+"Creature.Option.Call.elephant" = "elephant";
+"Creature.Option.Call.pig" = "pig";
+"Creature.Option.Call.camel" = "camel";
+"Creature.Option.Call.giraffe" = "giraffe";
+"Creature.Option.Call.kangaroo" = "kangaroo";
+"Creature.Option.Call.monkey" = "monkey";
+"Creature.Option.Call.rooster" = "rooster";
+"Creature.Option.Call.owl" = "owl";
+"Creature.Option.Call.flamingo" = "flamingo";
+"Creature.Option.Call.swan" = "swan";
+"Creature.Option.Call.duck" = "duck";
+"Creature.Option.Call.bat" = "bat";
+"Creature.Option.Call.turtle" = "turtle";
+"Creature.Option.Call.crocodile" = "crocodile";
+"Creature.Option.Call.lizard" = "lizard";
+"Creature.Option.Call.snake" = "snake";
+"Creature.Option.Call.whale" = "whale";
+"Creature.Option.Call.dolphin" = "dolphin";
+"Creature.Option.Call.shark" = "shark";
+"Creature.Option.Call.octopus" = "octopus";
+"Creature.Option.Call.bug" = "caterpillar";
+"Creature.Option.Call.butterfly" = "butterfly";
+"Creature.Option.Call.ant" = "ant";
+"Creature.Option.Call.honeybee" = "honeybee";
+"Creature.Option.Call.ladyBeetle" = "ladybug";
+"Creature.Option.Call.spider" = "spider";
+"Creature.Option.Call.chipmunk" = "chipmunk";
+"Creature.Option.Call.tiger" = "tiger";
+"Creature.Option.Call.zebra" = "zebra";
+"Creature.Option.Call.rhinoceros" = "rhinoceros";
+
+// Creature Level
+"Creature.Level.Animal1" = "Animal 1";
+"Creature.Level.Animal2" = "Animal 2";
+"Creature.Level.Animal3" = "Animal 3";
+"Creature.Level.Animal4" = "Animal 4";
+"Creature.Level.Bird" = "Bird";
+"Creature.Level.Reptile" = "Reptile";
+"Creature.Level.MarineLife" = "MarineLife";
+"Creature.Level.Insect" = "Insect";
+
