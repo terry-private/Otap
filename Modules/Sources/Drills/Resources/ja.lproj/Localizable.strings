@@ -77,4 +77,37 @@
 "Creature.Level.MarineLife" = "海の生き物";
 "Creature.Level.Insect" = "虫";
 
+// MARK: - FruitsAndVegetablesDrill
+"FruitsAndVegetables.Drill.Title" = "野菜と果物";
+"FruitsAndVegetables.Option.Call.tomato" = "トマト";
+"FruitsAndVegetables.Option.Call.eggplant" = "ナス";
+"FruitsAndVegetables.Option.Call.potato" = "じゃがいも";
+"FruitsAndVegetables.Option.Call.carrot" = "人参";
+"FruitsAndVegetables.Option.Call.onion" = "たまねぎ";
+"FruitsAndVegetables.Option.Call.cucumber" = "胡瓜";
+"FruitsAndVegetables.Option.Call.corn" = "とうもろこし";
+"FruitsAndVegetables.Option.Call.broccoli" = "ブロッコリー";
+"FruitsAndVegetables.Option.Call.sweetPotato" = "さつまいも";
+"FruitsAndVegetables.Option.Call.greenBellPepper" = "ピーマン";
+"FruitsAndVegetables.Option.Call.chestnuts" = "栗";
+"FruitsAndVegetables.Option.Call.mushrooms" = "きのこ";
+"FruitsAndVegetables.Option.Call.orange" = "オレンジ";
+"FruitsAndVegetables.Option.Call.apple" = "リンゴ";
+"FruitsAndVegetables.Option.Call.grape" = "ぶどう";
+"FruitsAndVegetables.Option.Call.kiwi" = "キウイ";
+"FruitsAndVegetables.Option.Call.watermelon" = "西瓜";
+"FruitsAndVegetables.Option.Call.lemon" = "レモン";
+"FruitsAndVegetables.Option.Call.peach" = "桃";
+"FruitsAndVegetables.Option.Call.strawberry" = "苺";
+"FruitsAndVegetables.Option.Call.banana" = "バナナ";
+"FruitsAndVegetables.Option.Call.pineapple" = "パイナップル";
+"FruitsAndVegetables.Option.Call.melon" = "メロン";
+"FruitsAndVegetables.Option.Call.blueberry" = "ブルーベリー";
 
+// FruitsAndVegetables Level
+"FruitsAndVegetables.Level.Vegetable1" = "野菜 1";
+"FruitsAndVegetables.Level.Vegetable2" = "野菜 2";
+"FruitsAndVegetables.Level.Vegetable3" = "野菜 3";
+"FruitsAndVegetables.Level.Fruit1" = "果物 1";
+"FruitsAndVegetables.Level.Fruit2" = "果物 2";
+"FruitsAndVegetables.Level.Fruit3" = "果物 3";

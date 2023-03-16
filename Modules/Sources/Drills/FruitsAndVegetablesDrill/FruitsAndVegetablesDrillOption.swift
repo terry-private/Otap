@@ -51,31 +51,30 @@ extension FruitsAndVegetablesDrillOption: DrillOption {
     
     public var call: String {
         switch self {
-        case .tomato🍅: return "とまと"
-        case .eggplant🍆: return "なす"
-        case .potato🥔: return "じゃがいも"
-        case .carrot🥕: return "にんじん"
-        case .onion🧅: return "たまねぎ"
-        case .cucumber🥒: return "きゅうり"
-        case .corn🌽: return "とうもろこし"
-        case .broccoli🥦: return "ブロッコリー"
-        case .sweetPotato🍠: return "さつまいも"
-        case .greenBellPepper🫑: return "ぴーまん"
-        case .chestnuts🌰: return "くり"
-        case .mushrooms🍄: return "きのこ"
-        case .orange🍊: return "オレンジ"
-        case .apple🍎: return "りんご"
-        case .grape🍇: return "ぶどう"
-        case .kiwi🥝: return "きうい"
-        case .watermelon🍉: return "すいか"
-        case .lemon🍋: return "れもん"
-        case .peach🍑: return "もも"
-        case .strawberry🍓: return "いちご"
-        case .banana🍌: return "ばなな"
-        case .pineapple🍍: return "ぱいなっぷる"
-        case .melon🍈: return "めろん"
-        case .blueberry🫐: return "ぶるーべりー"
-            
+        case .tomato🍅: return L10n.FruitsAndVegetables.Option.Call.tomato
+        case .eggplant🍆: return L10n.FruitsAndVegetables.Option.Call.eggplant
+        case .potato🥔: return L10n.FruitsAndVegetables.Option.Call.potato
+        case .carrot🥕: return L10n.FruitsAndVegetables.Option.Call.carrot
+        case .onion🧅: return L10n.FruitsAndVegetables.Option.Call.onion
+        case .cucumber🥒: return L10n.FruitsAndVegetables.Option.Call.cucumber
+        case .corn🌽: return L10n.FruitsAndVegetables.Option.Call.corn
+        case .broccoli🥦: return L10n.FruitsAndVegetables.Option.Call.broccoli
+        case .sweetPotato🍠: return L10n.FruitsAndVegetables.Option.Call.sweetPotato
+        case .greenBellPepper🫑: return L10n.FruitsAndVegetables.Option.Call.greenBellPepper
+        case .chestnuts🌰: return L10n.FruitsAndVegetables.Option.Call.chestnuts
+        case .mushrooms🍄: return L10n.FruitsAndVegetables.Option.Call.mushrooms
+        case .orange🍊: return L10n.FruitsAndVegetables.Option.Call.orange
+        case .apple🍎: return L10n.FruitsAndVegetables.Option.Call.apple
+        case .grape🍇: return L10n.FruitsAndVegetables.Option.Call.grape
+        case .kiwi🥝: return L10n.FruitsAndVegetables.Option.Call.kiwi
+        case .watermelon🍉: return L10n.FruitsAndVegetables.Option.Call.watermelon
+        case .lemon🍋: return L10n.FruitsAndVegetables.Option.Call.lemon
+        case .peach🍑: return L10n.FruitsAndVegetables.Option.Call.peach
+        case .strawberry🍓: return L10n.FruitsAndVegetables.Option.Call.strawberry
+        case .banana🍌: return L10n.FruitsAndVegetables.Option.Call.banana
+        case .pineapple🍍: return L10n.FruitsAndVegetables.Option.Call.pineapple
+        case .melon🍈: return L10n.FruitsAndVegetables.Option.Call.melon
+        case .blueberry🫐: return L10n.FruitsAndVegetables.Option.Call.blueberry
         }
     }
     

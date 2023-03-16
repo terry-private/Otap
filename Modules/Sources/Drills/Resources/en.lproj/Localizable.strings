@@ -77,3 +77,38 @@
 "Creature.Level.MarineLife" = "MarineLife";
 "Creature.Level.Insect" = "Insect";
 
+// MARK: - FruitsAndVegetables
+"FruitsAndVegetables.Drill.Title" = "Fruits and Vegetables";
+"FruitsAndVegetables.Option.Call.tomato" = "tomato";
+"FruitsAndVegetables.Option.Call.eggplant" = "eggplant";
+"FruitsAndVegetables.Option.Call.potato" = "potato";
+"FruitsAndVegetables.Option.Call.carrot" = "carrot";
+"FruitsAndVegetables.Option.Call.onion" = "onion";
+"FruitsAndVegetables.Option.Call.cucumber" = "cucumber";
+"FruitsAndVegetables.Option.Call.corn" = "corn";
+"FruitsAndVegetables.Option.Call.broccoli" = "broccoli";
+"FruitsAndVegetables.Option.Call.sweetPotato" = "sweet potato";
+"FruitsAndVegetables.Option.Call.greenBellPepper" = "green bell pepper";
+"FruitsAndVegetables.Option.Call.chestnuts" = "chestnuts";
+"FruitsAndVegetables.Option.Call.mushrooms" = "mushrooms";
+"FruitsAndVegetables.Option.Call.orange" = "orange";
+"FruitsAndVegetables.Option.Call.apple" = "apple";
+"FruitsAndVegetables.Option.Call.grape" = "grape";
+"FruitsAndVegetables.Option.Call.kiwi" = "kiwi";
+"FruitsAndVegetables.Option.Call.watermelon" = "watermelon";
+"FruitsAndVegetables.Option.Call.lemon" = "lemon";
+"FruitsAndVegetables.Option.Call.peach" = "peach";
+"FruitsAndVegetables.Option.Call.strawberry" = "strawberry";
+"FruitsAndVegetables.Option.Call.banana" = "banana";
+"FruitsAndVegetables.Option.Call.pineapple" = "pineapple";
+"FruitsAndVegetables.Option.Call.melon" = "melon";
+"FruitsAndVegetables.Option.Call.blueberry" = "blueberry";
+
+// FruitsAndVegetables Level
+"FruitsAndVegetables.Level.Vegetable1" = "Vegetable 1";
+"FruitsAndVegetables.Level.Vegetable2" = "Vegetable 2";
+"FruitsAndVegetables.Level.Vegetable3" = "Vegetable 3";
+"FruitsAndVegetables.Level.Fruit1" = "Fruit 1";
+"FruitsAndVegetables.Level.Fruit2" = "Fruit 2";
+"FruitsAndVegetables.Level.Fruit3" = "Fruit 3";
+
