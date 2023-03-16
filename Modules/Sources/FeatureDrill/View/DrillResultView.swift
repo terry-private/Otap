@@ -31,7 +31,7 @@ public struct DrillResultView: View {
             switch result {
             case .success(let grades):
                 Grid(verticalSpacing: 23) {
-                    Text("Congratulations!!")
+                    Text(L10n.Result.congratulations)
                         .font(.title)
                         .italic()
                         .foregroundLinearGradient(colors: result.hasFirst ? [.purple, .pink, .blue, .mint] : [], startPoint: .leading, endPoint: .trailing)
@@ -55,7 +55,7 @@ public struct DrillResultView: View {
                     Divider()
                     
                     GridRow {
-                        Text("タイム")
+                        Text(L10n.Result.time)
                         
                         Text(String(format: "%.2f", grades.time))
                             .font(.headline)

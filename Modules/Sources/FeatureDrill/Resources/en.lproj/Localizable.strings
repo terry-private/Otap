@@ -1,0 +1,16 @@
+// MARK: Result
+"Result.Congratulations" = "Congratulations!!";
+"Result.Time" = "Time";
+"Result.GameOver" = "Game Over!!";
+"Result.TimeOver" = "Time Over!!";
+"Result.Close" = "Close";
+"Result.Preview.Star1Description" = "Clear";
+"Result.Preview.Star2Description" = "No Mistakes";
+"Result.Preview.Star3Description" = "Within 20s";
+
+// MARK: Drill
+"Drill.Conditions.Title" = "条件: ";
+"Drill.Record" = "Record";
+"Drill.Start" = "Start!!";
+"Drill.Remain" = "Remain";
+"Drill.SpeakAgain" = "SpeakAgain";

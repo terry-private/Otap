@@ -119,7 +119,9 @@ enum Modules: String, CaseIterable, Hashable {
         case .Data: return []
         case .Drills: return []
         case .Extensions: return []
-        case .FeatureDrill: return []
+        case .FeatureDrill: return [
+            .swiftgen
+        ]
         case .FeatureMainTab: return [
             .swiftgen
         ]

@@ -1,0 +1,16 @@
+// MARK: Result
+"Result.Congratulations" = "おめでとう!!";
+"Result.Time" = "タイム";
+"Result.GameOver" = "ゲームオーバー!!";
+"Result.TimeOver" = "タイムオーバー!!";
+"Result.Close" = "閉じる";
+"Result.Preview.Star1Description" = "クリア";
+"Result.Preview.Star2Description" = "ノーミス";
+"Result.Preview.Star3Description" = "20s以内";
+
+// MARK: Drill
+"Drill.Conditions.Title" = "条件: ";
+"Drill.Record" = "レコード";
+"Drill.Start" = "スタート!!";
+"Drill.Remain" = "残り";
+"Drill.SpeakAgain" = "もう一度聞く";
