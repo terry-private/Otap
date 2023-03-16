@@ -15,14 +15,14 @@ public struct MainTabView<Factory: MainTabViewFactoryProtocol>: View {
                 Factory.selectDrillView
             }
             .tabItem {
-                Label("ドリル", systemImage: "rectangle.grid.2x2")
+                Label(L10n.drill, systemImage: "rectangle.grid.2x2")
             }
             
             NavigationStack {
                 Factory.settingView
             }
             .tabItem {
-                Label("設定", systemImage: "gear")
+                Label(L10n.setting, systemImage: "gear")
             }
         }
         .onAppear {

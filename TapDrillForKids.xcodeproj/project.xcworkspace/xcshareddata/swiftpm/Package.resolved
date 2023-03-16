@@ -26,6 +26,15 @@
         "revision" : "4d55ba88e78ed427eae439e7c15fac2372f95c64",
         "version" : "10.36.0"
       }
+    },
+    {
+      "identity" : "swiftgenplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftGen/SwiftGenPlugin",
+      "state" : {
+        "revision" : "879b85a470cacd70c19e22eb7e11a3aed66f4068",
+        "version" : "6.6.2"
+      }
     }
   ],
   "version" : 2

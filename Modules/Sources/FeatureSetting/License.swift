@@ -13,7 +13,7 @@ enum License: String, Identifiable, CaseIterable {
     var id: Self { self }
     var text: String {
         switch self {
-        case .ConfettiSwiftUI: return """
+        case .ConfettiSwiftUI: return { """
 MIT License
             
             Copyright (c) 2020 Simon Bachmann
@@ -36,8 +36,8 @@ MIT License
             OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
             SOFTWARE.
 
-"""
-        case .Realm: return """
+""" }()
+        case .Realm: return { """
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -216,8 +216,8 @@ MIT License
    END OF TERMS AND CONDITIONS
 
 
-"""
-        case .RealmDatabase: return """
+""" }()
+        case .RealmDatabase: return { """
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -396,7 +396,7 @@ MIT License
    END OF TERMS AND CONDITIONS
 
 
-"""
+""" }()
         }
     }
 }
