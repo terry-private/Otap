@@ -33,18 +33,18 @@ extension ColorDrillOption: DrillOption {
     
     public var call: String {
         switch self {
-        case .red: return "あか"
-        case .pink: return "ぴんく"
-        case .blue: return "あお"
-        case .lightBlue: return "みずいろ"
-        case .green: return "みどり"
-        case .yellow: return "きいろ"
-        case .purple: return "むらさき"
-        case .orange: return "おれんじ"
-        case .brown: return "ちゃいろ"
-        case .white: return "しろ"
-        case .gray: return "はいいろ"
-        case .black: return "くろ"
+        case .red: return L10n.Color.Option.Call.red
+        case .pink: return L10n.Color.Option.Call.pink
+        case .blue: return L10n.Color.Option.Call.blue
+        case .lightBlue: return L10n.Color.Option.Call.lightBlue
+        case .green: return L10n.Color.Option.Call.green
+        case .yellow: return L10n.Color.Option.Call.yellow
+        case .purple: return L10n.Color.Option.Call.purple
+        case .orange: return L10n.Color.Option.Call.orange
+        case .brown: return L10n.Color.Option.Call.brown
+        case .white: return L10n.Color.Option.Call.white
+        case .gray: return L10n.Color.Option.Call.gray
+        case .black: return L10n.Color.Option.Call.black
         }
     }
     

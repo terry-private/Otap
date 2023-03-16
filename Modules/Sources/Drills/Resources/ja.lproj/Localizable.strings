@@ -1,0 +1,28 @@
+// MARK: - Common Level
+"Common.Level.basic1" = "基本1";
+"Common.Level.basic2" = "基本2";
+"Common.Level.basic3" = "基本3";
+"Common.Level.advanced1" = "応用1";
+"Common.Level.advanced2" = "応用2";
+"Common.Level.advanced3" = "応用3";
+"Common.Level.advanced4" = "応用4";
+"Common.Level.challenge" = "チャレンジ";
+"Common.Level.requirements_format" = "%2d秒以内に%1d問正解";
+"Common.Level.clear" = "クリア";
+"Common.Level.noMistakes" = "ノーミス";
+"Common.Level.limit_format" = "%d秒以内";
+
+// MARK: - Color
+"Color.Drill.Title" = "色";
+"Color.Option.Call.Red" = "赤";
+"Color.Option.Call.Pink" = "ピンク";
+"Color.Option.Call.Blue" = "青";
+"Color.Option.Call.LightBlue" = "水色";
+"Color.Option.Call.Green" = "緑";
+"Color.Option.Call.Yellow" = "黄色";
+"Color.Option.Call.Purple" = "紫";
+"Color.Option.Call.Orange" = "オレンジ";
+"Color.Option.Call.Brown" = "茶色";
+"Color.Option.Call.White" = "白";
+"Color.Option.Call.Gray" = "灰色";
+"Color.Option.Call.Black" = "黒";

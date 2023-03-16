@@ -9,7 +9,7 @@ import Core
 
 public struct ColorDrill: CoreDrill {
     public typealias Option = ColorDrillOption
-    public static let title: String = "色"
+    public static let title: String = L10n.Color.Drill.title
     public var options: [Option]
     public let answer: Option
     
