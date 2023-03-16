@@ -9,7 +9,7 @@
 "Result.Preview.Star3Description" = "Within 20s";
 
 // MARK: Drill
-"Drill.Conditions.Title" = "条件: ";
+"Drill.Conditions.Title" = "Conditions: ";
 "Drill.Record" = "Record";
 "Drill.Start" = "Start!!";
 "Drill.Remain" = "Remain";
