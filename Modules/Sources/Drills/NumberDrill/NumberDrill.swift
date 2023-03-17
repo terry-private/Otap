@@ -9,7 +9,7 @@ import Core
 
 public struct NumberDrill: CoreDrill {
     public typealias Option = NumberDrillOption
-    public static let title: String = "数字"
+    public static let title: String = L10n.Number.Drill.title
     public var options: [Option]
     public let answer: Option
     
