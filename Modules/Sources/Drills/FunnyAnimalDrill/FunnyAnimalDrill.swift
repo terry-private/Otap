@@ -9,7 +9,7 @@ import Core
 
 public struct FunnyAnimalDrill: CoreDrill {
     public typealias Option = FunnyAnimalDrillOption
-    public static let title: String = "かわいい動物"
+    public static let title: String = L10n.FunnyAnimal.Drill.title
     public var options: [Option]
     public let answer: Option
     

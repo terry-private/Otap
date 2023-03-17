@@ -36,18 +36,18 @@ extension FunnyAnimalDrillOption: DrillOption {
     
     public var call: String {
         switch self {
-        case .dogFace🐶: return "いぬ"
-        case .monkeyFace🐵: return "さる"
-        case .lionFace🦁: return "らいおん"
-        case .tigerFace🐯: return "とら"
-        case .cowFace🐮: return "うし"
-        case .pigFace🐷: return "ぶた"
-        case .mouseFace🐭: return "ねずみ"
-        case .bearFace🐻: return "くま"
-        case .pandaFace🐼: return "ぱんだ"
-        case .rabbitFace🐰: return "うさぎ"
-        case .catFace🐱: return "ねこ"
-        case .horseFace🐴: return "うま"
+        case .dogFace🐶: return L10n.FunnyAnimal.Option.Call.dog
+        case .monkeyFace🐵: return L10n.FunnyAnimal.Option.Call.monkey
+        case .lionFace🦁: return L10n.FunnyAnimal.Option.Call.lion
+        case .tigerFace🐯: return L10n.FunnyAnimal.Option.Call.tiger
+        case .cowFace🐮: return L10n.FunnyAnimal.Option.Call.cow
+        case .pigFace🐷: return L10n.FunnyAnimal.Option.Call.pig
+        case .mouseFace🐭: return L10n.FunnyAnimal.Option.Call.mouse
+        case .bearFace🐻: return L10n.FunnyAnimal.Option.Call.bear
+        case .pandaFace🐼: return L10n.FunnyAnimal.Option.Call.panda
+        case .rabbitFace🐰: return L10n.FunnyAnimal.Option.Call.rabbit
+        case .catFace🐱: return L10n.FunnyAnimal.Option.Call.cat
+        case .horseFace🐴: return L10n.FunnyAnimal.Option.Call.horse
         }
     }
     

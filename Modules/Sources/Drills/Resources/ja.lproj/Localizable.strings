@@ -111,3 +111,18 @@
 "FruitsAndVegetables.Level.Fruit1" = "果物 1";
 "FruitsAndVegetables.Level.Fruit2" = "果物 2";
 "FruitsAndVegetables.Level.Fruit3" = "果物 3";
+
+// MARK: - FruitsAndVegetables
+"FunnyAnimal.Drill.Title" = "かわいい動物";
+"FunnyAnimal.Option.Call.dog" = "犬";
+"FunnyAnimal.Option.Call.monkey" = "猿";
+"FunnyAnimal.Option.Call.lion" = "ライオン";
+"FunnyAnimal.Option.Call.tiger" = "虎";
+"FunnyAnimal.Option.Call.cow" = "牛";
+"FunnyAnimal.Option.Call.pig" = "豚";
+"FunnyAnimal.Option.Call.mouse" = "ネズミ";
+"FunnyAnimal.Option.Call.bear" = "熊";
+"FunnyAnimal.Option.Call.panda" = "パンダ";
+"FunnyAnimal.Option.Call.rabbit" = "うさぎ";
+"FunnyAnimal.Option.Call.cat" = "猫";
+"FunnyAnimal.Option.Call.horse" = "馬";

@@ -112,3 +112,17 @@
 "FruitsAndVegetables.Level.Fruit2" = "Fruit 2";
 "FruitsAndVegetables.Level.Fruit3" = "Fruit 3";
 
+// MARK: - CuteAnimal
+"FunnyAnimal.Drill.Title" = "Cute Animal";
+"FunnyAnimal.Option.Call.dog" = "Dog";
+"FunnyAnimal.Option.Call.monkey" = "Monkey";
+"FunnyAnimal.Option.Call.lion" = "Lion";
+"FunnyAnimal.Option.Call.tiger" = "Tiger";
+"FunnyAnimal.Option.Call.cow" = "Cow";
+"FunnyAnimal.Option.Call.pig" = "Pig";
+"FunnyAnimal.Option.Call.mouse" = "Mouse";
+"FunnyAnimal.Option.Call.bear" = "Bear";
+"FunnyAnimal.Option.Call.panda" = "Panda";
+"FunnyAnimal.Option.Call.rabbit" = "Rabbit";
+"FunnyAnimal.Option.Call.cat" = "Cat";
+"FunnyAnimal.Option.Call.horse" = "Horse";
