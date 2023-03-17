@@ -30,7 +30,7 @@ public struct SelectDrillView<Factory: SelectDrillViewFactoryProtocol, ViewModel
         .onChangeFrame { size in
             columnsCount = max(Int(size.width / 250), 2)
         }
-        .navigationTitle("ドリルを選択")
+        .navigationTitle(L10n.navigationTitle)
         .background {
             Color(uiColor: .secondarySystemBackground).ignoresSafeArea()
         }
