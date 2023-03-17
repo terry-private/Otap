@@ -24,8 +24,6 @@ public enum SoundEffectInteractor {
         return player
     }()
     
-    private static var utteranceRate: Float = 0.4
-    
     // --------------------------------
     // MARK: public static properties
     // --------------------------------
@@ -75,13 +73,16 @@ extension SoundEffectInteractor: SoundEffectUseCase {
         wrongSoundPlayer?.play()
     }
     
-    public static func speak(_ words: String) {
+    public static func speak(_ words: String, _ specificLanguage: String?) {
         if speechSynthesizer.isSpeaking {
             speechSynthesizer.stopSpeaking(at: .immediate)
         }
         let utterance = AVSpeechUtterance(string: words)
         utterance.volume = utteranceVolume
-        utterance.rate = utteranceRate
+        utterance.rate = words.count == 1 ? 0.3 : 0.4
+        if let specificLanguage {
+            utterance.voice = AVSpeechSynthesisVoice(language: specificLanguage)
+        }
         speechSynthesizer.speak(utterance)
     }
 }

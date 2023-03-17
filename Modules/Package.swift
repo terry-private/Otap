@@ -117,14 +117,26 @@ enum Modules: String, CaseIterable, Hashable {
         case .Components: return []
         case .Core: return []
         case .Data: return []
-        case .Drills: return []
+        case .Drills: return [
+            .swiftgen
+        ]
         case .Extensions: return []
-        case .FeatureDrill: return []
-        case .FeatureMainTab: return []
+        case .FeatureDrill: return [
+            .swiftgen
+        ]
+        case .FeatureMainTab: return [
+            .swiftgen
+        ]
         case .FeaturePrepareMode: return []
-        case .FeatureSelectDrill: return []
-        case .FeatureSelectLevel: return []
-        case .FeatureSetting: return []
+        case .FeatureSelectDrill: return [
+            .swiftgen
+        ]
+        case .FeatureSelectLevel: return [
+            .swiftgen
+        ]
+        case .FeatureSetting: return [
+            .swiftgen
+        ]
         case .Repository: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
@@ -137,9 +149,9 @@ enum Modules: String, CaseIterable, Hashable {
         case .Core: return []
         case .Data: return []
         case .Drills: return []
-        case .FeatureMainTab: return []
         case .Extensions: return []
         case .FeatureDrill: return []
+        case .FeatureMainTab: return [.process("Resources")]
         case .FeaturePrepareMode: return []
         case .FeatureSelectDrill: return []
         case .FeatureSelectLevel: return []
@@ -172,15 +184,21 @@ enum TestModule: String, CaseIterable {
     }}
 }
 
+private extension PackageDescription.Target.PluginUsage {
+    static let swiftgen: Self = .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
+}
+
 let package = Package(
     name: "Modules",
+    defaultLocalization: "ja",
     platforms: [
         .iOS(.v16),
     ],
     products: Modules.allCases.map { .library(name: $0.rawValue, targets: [$0.rawValue])},
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1"),
-        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0")
+        .package(url: "https://github.com/realm/realm-swift", from: "10.36.0"),
+        .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", from: "6.6.2")
     ],
     targets: Modules.allCases.map {
         .target(

@@ -34,7 +34,7 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                         .font(.title)
                     
                     Spacer()
-                    Text("条件: \(viewModel.requirements)")
+                    Text("\(L10n.Drill.Conditions.title) \(viewModel.requirements)")
                         .font(.body)
                         .foregroundColor(.secondary)
                     
@@ -56,7 +56,7 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                         }
                         Divider()
                         GridRow {
-                            Text("レコード")
+                            Text(L10n.Drill.record)
                             
                             Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
                         }
@@ -76,7 +76,7 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                             Image(systemName: "speaker.wave.2.circle")
                                 .font(.system(size: 26))
                             Spacer()
-                            Text("スタート!!")
+                            Text(L10n.Drill.start)
                                 .font(.system(size: 16, weight: .bold))
                             Spacer()
                         }
@@ -101,7 +101,7 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                         // ----------------------------------------------------
                         Grid(verticalSpacing: 4) {
                             GridRow {
-                                Text("残り")
+                                Text(L10n.Drill.remain)
                                     .font(.body)
                                 Text("\(viewModel.remainDrillCount)")
                                     .font(.system(size: 22))
@@ -167,7 +167,7 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                             }
                             Divider()
                             GridRow {
-                                Text("レコード")
+                                Text(L10n.Drill.record)
                                     .font(.caption)
                                 
                                 Text(viewModel.lastRecord.time.map { String(format: "%.2f", $0) } ?? "--.--")
@@ -217,7 +217,7 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                         Image(systemName: "speaker.wave.2.circle")
                             .font(.system(size: 26))
                         Spacer()
-                        Text("もう一度聞く")
+                        Text(L10n.Drill.speakAgain)
                             .font(.system(size: 16, weight: .bold))
                         Spacer()
                     }

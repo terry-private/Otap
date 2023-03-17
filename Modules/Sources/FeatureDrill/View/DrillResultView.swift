@@ -31,7 +31,7 @@ public struct DrillResultView: View {
             switch result {
             case .success(let grades):
                 Grid(verticalSpacing: 23) {
-                    Text("Congratulations!!")
+                    Text(L10n.Result.congratulations)
                         .font(.title)
                         .italic()
                         .foregroundLinearGradient(colors: result.hasFirst ? [.purple, .pink, .blue, .mint] : [], startPoint: .leading, endPoint: .trailing)
@@ -55,7 +55,7 @@ public struct DrillResultView: View {
                     Divider()
                     
                     GridRow {
-                        Text("タイム")
+                        Text(L10n.Result.time)
                         
                         Text(String(format: "%.2f", grades.time))
                             .font(.headline)
@@ -65,12 +65,12 @@ public struct DrillResultView: View {
                 }
                 .fixedSize()
             case .gameOver:
-                Text("ゲームオーバー!!")
+                Text(L10n.Result.gameOver)
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .padding(40)
             case .timeOver:
-                Text("タイムオーバー!!")
+                Text(L10n.Result.timeOver)
                     .font(.largeTitle)
                     .foregroundColor(.red)
                     .padding(40)
@@ -83,7 +83,7 @@ public struct DrillResultView: View {
                 Image(systemName: "xmark.circle")
                     .font(.system(size: 26))
                 Spacer()
-                Text("終了")
+                Text(L10n.Result.close)
                     .font(.system(size: 16, weight: .bold))
                 Spacer()
             }
@@ -131,9 +131,9 @@ struct DrillResultView_Previews: PreviewProvider {
                     time: 43,
                     isNewTimeRecord: true)
             ),
-            star1: "クリア",
-            star2: "ノーミス",
-            star3: "20s以内") {
+            star1: L10n.Result.Preview.star1Description,
+            star2: L10n.Result.Preview.star2Description,
+            star3: L10n.Result.Preview.star3Description) {
                 
             }
     }

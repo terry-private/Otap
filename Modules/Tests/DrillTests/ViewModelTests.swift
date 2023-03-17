@@ -26,7 +26,7 @@ final class ViewModelTests: XCTestCase {
         static func playWrong() {
             isPlayWrong = true
         }
-        static func speak(_ words: String) {
+        static func speak(_ words: String, _ specificLanguage: String?) {
             spokenWords = words
         }
     }

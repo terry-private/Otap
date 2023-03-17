@@ -1,0 +1,163 @@
+// MARK: - Common Level
+"Common.Level.basic1" = "基本 1";
+"Common.Level.basic2" = "基本 2";
+"Common.Level.basic3" = "基本 3";
+"Common.Level.advanced1" = "応用 1";
+"Common.Level.advanced2" = "応用 2";
+"Common.Level.advanced3" = "応用 3";
+"Common.Level.advanced4" = "応用 4";
+"Common.Level.advanced5" = "応用 5";
+"Common.Level.challenge" = "チャレンジ";
+"Common.Level.requirements_format" = "%2d秒以内に%1d問正解";
+"Common.Level.clear" = "クリア";
+"Common.Level.noMistakes" = "ノーミス";
+"Common.Level.limit_format" = "%d秒以内";
+
+// MARK: - Color
+"Color.Drill.Title" = "色";
+"Color.Option.Call.Red" = "赤";
+"Color.Option.Call.Pink" = "ピンク";
+"Color.Option.Call.Blue" = "青";
+"Color.Option.Call.LightBlue" = "水色";
+"Color.Option.Call.Green" = "緑";
+"Color.Option.Call.Yellow" = "黄色";
+"Color.Option.Call.Purple" = "紫";
+"Color.Option.Call.Orange" = "オレンジ";
+"Color.Option.Call.Brown" = "茶色";
+"Color.Option.Call.White" = "白";
+"Color.Option.Call.Gray" = "灰色";
+"Color.Option.Call.Black" = "黒";
+
+// MARK: - Creature
+"Creature.Drill.Title" = "生き物";
+"Creature.Option.Call.dog" = "犬";
+"Creature.Option.Call.cat" = "猫";
+"Creature.Option.Call.mouse" = "ねずみ";
+"Creature.Option.Call.cow" = "牛";
+"Creature.Option.Call.rabbit" = "うさぎ";
+"Creature.Option.Call.horse" = "馬";
+"Creature.Option.Call.elephant" = "象";
+"Creature.Option.Call.pig" = "豚";
+"Creature.Option.Call.camel" = "ラクダ";
+"Creature.Option.Call.giraffe" = "キリン";
+"Creature.Option.Call.kangaroo" = "カンガルー";
+"Creature.Option.Call.monkey" = "猿";
+"Creature.Option.Call.rooster" = "鶏";
+"Creature.Option.Call.owl" = "フクロウ";
+"Creature.Option.Call.flamingo" = "フラミンゴ";
+"Creature.Option.Call.swan" = "白鳥";
+"Creature.Option.Call.duck" = "鴨";
+"Creature.Option.Call.bat" = "コウモリ";
+"Creature.Option.Call.turtle" = "亀";
+"Creature.Option.Call.crocodile" = "ワニ";
+"Creature.Option.Call.lizard" = "トカゲ";
+"Creature.Option.Call.snake" = "蛇";
+"Creature.Option.Call.whale" = "鯨";
+"Creature.Option.Call.dolphin" = "イルカ";
+"Creature.Option.Call.shark" = "サメ";
+"Creature.Option.Call.octopus" = "タコ";
+"Creature.Option.Call.bug" = "毛虫";
+"Creature.Option.Call.butterfly" = "ちょうちょ";
+"Creature.Option.Call.ant" = "蟻";
+"Creature.Option.Call.honeybee" = "ミツバチ";
+"Creature.Option.Call.ladyBeetle" = "てんとう虫";
+"Creature.Option.Call.spider" = "蜘蛛";
+"Creature.Option.Call.chipmunk" = "リス";
+"Creature.Option.Call.tiger" = "虎";
+"Creature.Option.Call.zebra" = "しまうま";
+"Creature.Option.Call.rhinoceros" = "サイ";
+
+// Creature Level
+"Creature.Level.Animal1" = "動物 1";
+"Creature.Level.Animal2" = "動物 2";
+"Creature.Level.Animal3" = "動物 3";
+"Creature.Level.Animal4" = "動物 4";
+"Creature.Level.Bird" = "鳥";
+"Creature.Level.Reptile" = "爬虫類";
+"Creature.Level.MarineLife" = "海の生き物";
+"Creature.Level.Insect" = "虫";
+
+// MARK: - FruitsAndVegetablesDrill
+"FruitsAndVegetables.Drill.Title" = "野菜と果物";
+"FruitsAndVegetables.Option.Call.tomato" = "トマト";
+"FruitsAndVegetables.Option.Call.eggplant" = "ナス";
+"FruitsAndVegetables.Option.Call.potato" = "じゃがいも";
+"FruitsAndVegetables.Option.Call.carrot" = "人参";
+"FruitsAndVegetables.Option.Call.onion" = "たまねぎ";
+"FruitsAndVegetables.Option.Call.cucumber" = "胡瓜";
+"FruitsAndVegetables.Option.Call.corn" = "とうもろこし";
+"FruitsAndVegetables.Option.Call.broccoli" = "ブロッコリー";
+"FruitsAndVegetables.Option.Call.sweetPotato" = "さつまいも";
+"FruitsAndVegetables.Option.Call.greenBellPepper" = "ピーマン";
+"FruitsAndVegetables.Option.Call.chestnuts" = "栗";
+"FruitsAndVegetables.Option.Call.mushrooms" = "きのこ";
+"FruitsAndVegetables.Option.Call.orange" = "オレンジ";
+"FruitsAndVegetables.Option.Call.apple" = "リンゴ";
+"FruitsAndVegetables.Option.Call.grape" = "ぶどう";
+"FruitsAndVegetables.Option.Call.kiwi" = "キウイ";
+"FruitsAndVegetables.Option.Call.watermelon" = "西瓜";
+"FruitsAndVegetables.Option.Call.lemon" = "レモン";
+"FruitsAndVegetables.Option.Call.peach" = "桃";
+"FruitsAndVegetables.Option.Call.strawberry" = "苺";
+"FruitsAndVegetables.Option.Call.banana" = "バナナ";
+"FruitsAndVegetables.Option.Call.pineapple" = "パイナップル";
+"FruitsAndVegetables.Option.Call.melon" = "メロン";
+"FruitsAndVegetables.Option.Call.blueberry" = "ブルーベリー";
+
+// FruitsAndVegetables Level
+"FruitsAndVegetables.Level.Vegetable1" = "野菜 1";
+"FruitsAndVegetables.Level.Vegetable2" = "野菜 2";
+"FruitsAndVegetables.Level.Vegetable3" = "野菜 3";
+"FruitsAndVegetables.Level.Fruit1" = "果物 1";
+"FruitsAndVegetables.Level.Fruit2" = "果物 2";
+"FruitsAndVegetables.Level.Fruit3" = "果物 3";
+
+// MARK: - CuteAnimal
+"FunnyAnimal.Drill.Title" = "かわいい動物";
+"FunnyAnimal.Option.Call.dog" = "犬";
+"FunnyAnimal.Option.Call.monkey" = "猿";
+"FunnyAnimal.Option.Call.lion" = "ライオン";
+"FunnyAnimal.Option.Call.tiger" = "虎";
+"FunnyAnimal.Option.Call.cow" = "牛";
+"FunnyAnimal.Option.Call.pig" = "豚";
+"FunnyAnimal.Option.Call.mouse" = "ネズミ";
+"FunnyAnimal.Option.Call.bear" = "熊";
+"FunnyAnimal.Option.Call.panda" = "パンダ";
+"FunnyAnimal.Option.Call.rabbit" = "うさぎ";
+"FunnyAnimal.Option.Call.cat" = "猫";
+"FunnyAnimal.Option.Call.horse" = "馬";
+
+// MARK: - Shape
+"Shape.Drill.Title" = "形";
+
+"Shape.Option.Call.circle" = "丸";
+"Shape.Option.Call.cross" = "バツ";
+"Shape.Option.Call.triangle" = "三角";
+"Shape.Option.Call.square" = "四角";
+"Shape.Option.Call.star" = "星";
+"Shape.Option.Call.heart" = "ハート";
+
+// MARK: - Vehicle
+"Vehicle.Drill.Title" = "乗り物";
+
+"Vehicle.Option.Call.highSpeedTrain" = "新幹線";
+"Vehicle.Option.Call.train" = "電車";
+"Vehicle.Option.Call.locomotive" = "汽車";
+"Vehicle.Option.Call.airPlane" = "飛行機";
+"Vehicle.Option.Call.bus" = "バス";
+"Vehicle.Option.Call.ambulance" = "救急車";
+"Vehicle.Option.Call.fireEngine" = "消防車";
+"Vehicle.Option.Call.policeCar" = "パトカー";
+"Vehicle.Option.Call.taxi" = "タクシー";
+"Vehicle.Option.Call.truck" = "トラック";
+"Vehicle.Option.Call.bike" = "バイク";
+"Vehicle.Option.Call.bicycle" = "自転車";
+
+// MARK: - Number
+"Number.Drill.Title" = "数字";
+"Number.Level.Finger" = "指";
+
+// MARK: - Hiragana
+"Hiragana.Drill.Title" = "平仮名";
+"Hiragana.row" = "行";
+"Hiragana.review" = "復習";

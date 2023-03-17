@@ -49,7 +49,7 @@ public struct SelectLevelViewCell<Drill: CoreDrill>: View {
                     
                     Spacer()
                     
-                    Text("条件: \(generator.requirements)")
+                    Text("\(L10n.Drill.Conditions.title)\(generator.requirements)")
                         .font(.caption)
                         .foregroundColor(.init(uiColor: .secondaryLabel))
                     

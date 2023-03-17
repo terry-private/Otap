@@ -15,7 +15,7 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
         Form {
             Section {
                 HStack {
-                    Text("効果音")
+                    Text(L10n.SettingView.SoundEffectCell.title)
                     Spacer()
                     Slider(value: .init(
                         get: { SoundEffect.effectVolume },
@@ -24,7 +24,7 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
                     .frame(width: 150)
                 }
                 HStack {
-                    Text("読み上げ音声")
+                    Text(L10n.SettingView.UtteranceVoiceCell.title)
                     Spacer()
                     Slider(value: .init(
                         get: { SoundEffect.utteranceVolume },
@@ -51,19 +51,19 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
                             }
                         }
                     }
-                    .navigationBarTitle("Licenses")
+                    .navigationBarTitle(L10n.LicensesView.navigationBarTitle)
                 } label: {
-                    Text("Licenses")
+                    Text(L10n.SettingView.LicensesCell.title)
                 }
                 
                 HStack {
-                    Text("バージョン")
+                    Text(L10n.SettingView.VersionCell.title)
                     Spacer()
                     Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
                 }
             }
         }
-        .navigationBarTitle("設定")
+        .navigationBarTitle(L10n.SettingView.navigationBarTitle)
     }
 }
 

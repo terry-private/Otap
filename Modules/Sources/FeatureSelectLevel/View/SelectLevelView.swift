@@ -25,10 +25,10 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
                 } label: {
                     HStack {
                         Spacer()
-                        Text("予習モード")
+                        Text(L10n.PreviewMode.title)
                             .font(.title2)
                             .foregroundColor(.primary)
-                        Text("全\(ViewModel.Drill.Option.allCases.count)種類")
+                        Text(L10n.PreviewMode.description(ViewModel.Drill.Option.allCases.count))
                             .font(.caption)
                             .foregroundColor(.secondary)
                         Spacer()
