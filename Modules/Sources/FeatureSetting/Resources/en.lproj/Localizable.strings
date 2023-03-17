@@ -1,0 +1,11 @@
+// MARK: - Setting View
+"setting_view.navigation_bar_title" = "Setting";
+"setting_view.sound_effect_cell.title" = "Sound Effect";
+"setting_view.utterance_voice_cell.title" = "Utterance Voice";
+
+"setting_view.licenses_cell.title" = "Licenses";
+"setting_view.version_cell.title" = "Version";
+
+// MARK: - Licenses View
+"licenses_view.navigation_bar_title" = "Licenses";
+

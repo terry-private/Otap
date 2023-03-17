@@ -134,7 +134,9 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureSelectLevel: return [
             .swiftgen
         ]
-        case .FeatureSetting: return []
+        case .FeatureSetting: return [
+            .swiftgen
+        ]
         case .Repository: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
