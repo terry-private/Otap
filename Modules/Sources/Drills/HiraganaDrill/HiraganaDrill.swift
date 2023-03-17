@@ -9,7 +9,7 @@ import Core
 
 public struct HiraganaDrill: CoreDrill {
     public typealias Option = HiraganaDrillOption
-    public static let title: String = "平仮名"
+    public static let title: String = L10n.Hiragana.Drill.title
     public var options: [Option]
     public let answer: Option
     

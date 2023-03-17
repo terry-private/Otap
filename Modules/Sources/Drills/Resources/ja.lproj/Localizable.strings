@@ -156,3 +156,8 @@
 // MARK: - Number
 "Number.Drill.Title" = "数字";
 "Number.Level.Finger" = "指";
+
+// MARK: - Hiragana
+"Hiragana.Drill.Title" = "平仮名";
+"Hiragana.row" = "行";
+"Hiragana.review" = "復習";
