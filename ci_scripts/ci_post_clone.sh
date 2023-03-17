@@ -8,5 +8,4 @@
 cd $CI_WORKSPACE
 
 # SwiftGen
-brew install swiftgen
-swiftgen config run --config "$CI_WORKSPACE/swiftgen.yml"
+xcodebuild -workspace TapDrillForKids.xcworkspace -scheme swift-gen
