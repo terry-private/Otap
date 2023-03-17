@@ -37,7 +37,7 @@ public enum NumberDrillOption: String {
     case numeral9
     case numeral10
     
-    private static var uniqueNumberOptions: [String: [Self]] = {
+    private static let uniqueNumberOptions: [String: [Self]] = {
         return allCases
             .reduce(into: [:]) { numberOptions, option in
                 numberOptions[option.call, default: []].append(option)

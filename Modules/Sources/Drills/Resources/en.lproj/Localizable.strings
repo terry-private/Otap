@@ -152,3 +152,7 @@
 "Vehicle.Option.Call.truck" = "Truck";
 "Vehicle.Option.Call.bike" = "Motorcycle";
 "Vehicle.Option.Call.bicycle" = "Bicycle";
+
+// MARK: - Number
+"Number.Drill.Title" = "Number";
+"Number.Level.Finger" = "Finger";

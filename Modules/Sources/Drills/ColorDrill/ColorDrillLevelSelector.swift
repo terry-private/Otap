@@ -110,13 +110,13 @@ public enum ColorDrillLevelSelector: DrillLevelSelector {
                 generate: { (0..<15).map { _ in .random(by: 6) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )

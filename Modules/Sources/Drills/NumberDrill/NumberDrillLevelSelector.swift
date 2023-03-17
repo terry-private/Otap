@@ -33,18 +33,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberDice123,
                 nextID: .numberDice456,
-                title: "123",
-                requirements: "60秒以内に10問正解",
+                title: "1~3",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.dice1, .dice2, .dice3].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -52,18 +52,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberDice456,
                 nextID: .numberDiceAll,
-                title: "456",
-                requirements: "60秒以内に10問正解",
+                title: "4~6",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.dice4, .dice5, .dice6].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -72,17 +72,17 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 id: .numberDiceAll,
                 nextID: .numberFinger,
                 title: "1~6",
-                requirements: "60秒以内に10問正解",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.dice1, .dice2, .dice3, .dice4, .dice5, .dice6].prefix(4).shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -91,18 +91,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberFinger,
                 nextID: .numberNumeral0123,
-                title: "指",
-                requirements: "60秒以内に10問正解",
+                title: L10n.Number.Level.finger,
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.finger1, .finger2, .finger3, .finger4, .finger5].shuffled().prefix(4).toArray()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -110,18 +110,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberNumeral0123,
                 nextID: .numberNumeral4567,
-                title: "数字0~3",
-                requirements: "60秒以内に10問正解",
+                title: "\(L10n.Number.Drill.title) 0~3",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.numeral0, .numeral1, .numeral2, .numeral3].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -129,18 +129,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberNumeral4567,
                 nextID: .numberNumeral8910,
-                title: "数字4~7",
-                requirements: "60秒以内に10問正解",
+                title: "\(L10n.Number.Drill.title) 4~7",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.numeral4, .numeral5, .numeral6, .numeral7].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -148,18 +148,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberNumeral8910,
                 nextID: .numberNumeralAll,
-                title: "数字8~10",
-                requirements: "60秒以内に10問正解",
+                title: "\(L10n.Number.Drill.title) 8~10",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.numeral8, .numeral9, .numeral10].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -167,18 +167,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberNumeralAll,
                 nextID: .numberAdvanced1,
-                title: "数字0~10",
-                requirements: "60秒以内に10問正解",
+                title: "\(L10n.Number.Drill.title) 0~10",
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.numeral0, .numeral1, .numeral2, .numeral3, .numeral4, .numeral5, .numeral6 , .numeral7 ,.numeral8, .numeral9, .numeral10].shuffled().prefix(4).toArray()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -186,18 +186,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberAdvanced1,
                 nextID: .numberAdvanced2,
-                title: "応用1",
-                requirements: "60秒以内に15問正解",
+                title: L10n.Common.Level.advanced1,
+                requirements: L10n.Common.Level.requirementsFormat(15, 60),
                 generate: { (0..<15).map { _ in .init(options: NumberDrillOption.randomUniqueNumberOptions(of: 4)) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )
@@ -205,18 +205,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberAdvanced2,
                 nextID: .numberAdvanced3,
-                title: "応用2",
-                requirements: "60秒以内に15問正解",
+                title: L10n.Common.Level.advanced2,
+                requirements: L10n.Common.Level.requirementsFormat(15, 60),
                 generate: { (0..<15).map { _ in .init(options: NumberDrillOption.randomUniqueNumberOptions(of: 6)) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )
@@ -224,18 +224,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberAdvanced3,
                 nextID: .numberChallenge,
-                title: "応用3",
-                requirements: "60秒以内に15問正解",
+                title: L10n.Common.Level.advanced3,
+                requirements: L10n.Common.Level.requirementsFormat(15, 60),
                 generate: { (0..<15).map { _ in .init(options: NumberDrillOption.randomUniqueNumberOptions(of: 9)) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )
@@ -243,18 +243,18 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .numberChallenge,
                 nextID: nil,
-                title: "チャレンジ",
-                requirements: "60秒以内に20問正解（ノーミス）",
+                title: L10n.Common.Level.challenge,
+                requirements: "\(L10n.Common.Level.requirementsFormat(20, 60))(\(L10n.Common.Level.noMistakes))",
                 generate: { (0..<20).map { _ in .init(options: NumberDrillOption.randomUniqueNumberOptions(of: 9)) } },
                 timeLimit: 60,
                 penalty: .gameOver,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )

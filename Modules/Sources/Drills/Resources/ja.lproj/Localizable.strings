@@ -152,3 +152,7 @@
 "Vehicle.Option.Call.truck" = "トラック";
 "Vehicle.Option.Call.bike" = "バイク";
 "Vehicle.Option.Call.bicycle" = "自転車";
+
+// MARK: - Number
+"Number.Drill.Title" = "数字";
+"Number.Level.Finger" = "指";
