@@ -5,12 +5,14 @@
 //  Created by 若江照仁 on 2023/03/02.
 //
 
+import Foundation
 import Core
 
 public struct ShapeDrill: CoreDrill {
     public typealias Option = ShapeDrillOption
     
     public static let title: String = L10n.Shape.Drill.title
+    public static let specificLanguage: Locale.Language? = nil
     public var options: [Option]
     public let answer: Option
     

@@ -10,6 +10,7 @@ import Foundation
 public protocol CoreDrill<Option>: Hashable {
     associatedtype Option: DrillOption
     static var title: String { get }
+    static var specificLanguage: Locale.Language? { get }
     var options: [Option] { get }
     var answer: Option { get }
     init(options: [Option])
@@ -27,6 +28,8 @@ import SwiftUI
 import Extensions
 
 public struct DrillDummy: CoreDrill {
+    public static let specificLanguage: Locale.Language? = nil
+    
     public enum DummyOption: String, DrillOption {
         case red, blue, yellow, green, white, black, pink, purple
         

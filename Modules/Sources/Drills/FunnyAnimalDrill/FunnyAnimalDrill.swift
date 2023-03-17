@@ -5,11 +5,13 @@
 //  Created by 若江照仁 on 2023/03/01.
 //
 
+import Foundation
 import Core
 
 public struct FunnyAnimalDrill: CoreDrill {
     public typealias Option = FunnyAnimalDrillOption
     public static let title: String = L10n.FunnyAnimal.Drill.title
+    public static let specificLanguage: Locale.Language? = nil
     public var options: [Option]
     public let answer: Option
     

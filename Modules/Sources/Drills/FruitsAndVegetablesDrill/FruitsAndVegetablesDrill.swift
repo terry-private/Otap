@@ -5,11 +5,13 @@
 //  Created by 若江照仁 on 2023/03/03.
 //
 
+import Foundation
 import Core
 
 public struct FruitsAndVegetablesDrill: CoreDrill {
     public typealias Option = FruitsAndVegetablesDrillOption
     public static let title: String = L10n.FruitsAndVegetables.Drill.title
+    public static let specificLanguage: Locale.Language? = nil
     public var options: [Option]
     public let answer: Option
     

@@ -5,11 +5,13 @@
 //  Created by 若江照仁 on 2023/01/14.
 //
 
+import Foundation
 import Core
 
 public struct ColorDrill: CoreDrill {
     public typealias Option = ColorDrillOption
     public static let title: String = L10n.Color.Drill.title
+    public static let specificLanguage: Locale.Language? = nil
     public var options: [Option]
     public let answer: Option
     
