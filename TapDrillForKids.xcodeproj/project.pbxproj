@@ -33,6 +33,7 @@
 		09A49557296D49D6009DBE22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09A495A229728824009DBE22 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
+		09DAE93429C493AC00803CB9 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 		09A49547296D49D3009DBE22 = {
 			isa = PBXGroup;
 			children = (
+				09DAE93529C495D200803CB9 /* ci_scripts */,
 				09A495A229728824009DBE22 /* Modules */,
 				09A49552296D49D3009DBE22 /* TapDrillForKids */,
 				09A49551296D49D3009DBE22 /* Products */,
@@ -102,6 +104,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		09DAE93529C495D200803CB9 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				09DAE93429C493AC00803CB9 /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
