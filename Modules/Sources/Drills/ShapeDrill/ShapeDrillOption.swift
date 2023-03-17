@@ -32,12 +32,12 @@ extension ShapeDrillOption: DrillOption {
     
     public var call: String {
         switch self {
-        case .circle: return "まる"
-        case .cross: return "ばつ"
-        case .triangle: return "さんかく"
-        case .square: return "しかく"
-        case .star: return "ほし"
-        case .heart: return "heart"
+        case .circle: return L10n.Shape.Option.Call.circle
+        case .cross: return L10n.Shape.Option.Call.cross
+        case .triangle: return L10n.Shape.Option.Call.triangle
+        case .square: return L10n.Shape.Option.Call.square
+        case .star: return L10n.Shape.Option.Call.star
+        case .heart: return L10n.Shape.Option.Call.heart
         }
     }
     

@@ -126,3 +126,13 @@
 "FunnyAnimal.Option.Call.rabbit" = "Rabbit";
 "FunnyAnimal.Option.Call.cat" = "Cat";
 "FunnyAnimal.Option.Call.horse" = "Horse";
+
+// MARK: - Shape
+"Shape.Drill.Title" = "Shape";
+
+"Shape.Option.Call.circle" = "circle";
+"Shape.Option.Call.cross" = "cross";
+"Shape.Option.Call.triangle" = "triangle";
+"Shape.Option.Call.square" = "square";
+"Shape.Option.Call.star" = "star";
+"Shape.Option.Call.heart" = "heart";

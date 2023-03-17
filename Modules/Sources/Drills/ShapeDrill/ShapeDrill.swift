@@ -10,7 +10,7 @@ import Core
 public struct ShapeDrill: CoreDrill {
     public typealias Option = ShapeDrillOption
     
-    public static let title: String = "形"
+    public static let title: String = L10n.Shape.Drill.title
     public var options: [Option]
     public let answer: Option
     

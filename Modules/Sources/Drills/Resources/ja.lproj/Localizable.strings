@@ -112,7 +112,7 @@
 "FruitsAndVegetables.Level.Fruit2" = "果物 2";
 "FruitsAndVegetables.Level.Fruit3" = "果物 3";
 
-// MARK: - FruitsAndVegetables
+// MARK: - CuteAnimal
 "FunnyAnimal.Drill.Title" = "かわいい動物";
 "FunnyAnimal.Option.Call.dog" = "犬";
 "FunnyAnimal.Option.Call.monkey" = "猿";
@@ -126,3 +126,13 @@
 "FunnyAnimal.Option.Call.rabbit" = "うさぎ";
 "FunnyAnimal.Option.Call.cat" = "猫";
 "FunnyAnimal.Option.Call.horse" = "馬";
+
+// MARK: - Shape
+"Shape.Drill.Title" = "形";
+
+"Shape.Option.Call.circle" = "丸";
+"Shape.Option.Call.cross" = "バツ";
+"Shape.Option.Call.triangle" = "三角";
+"Shape.Option.Call.square" = "四角";
+"Shape.Option.Call.star" = "星";
+"Shape.Option.Call.heart" = "ハート";

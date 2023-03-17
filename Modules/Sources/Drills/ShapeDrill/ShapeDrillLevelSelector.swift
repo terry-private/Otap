@@ -27,18 +27,18 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .shapeBasic1,
                 nextID: .shapeBasic2,
-                title: "基本1",
-                requirements: "60秒以内に10問正解",
+                title: L10n.Common.Level.basic1,
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.circle, .cross].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -46,18 +46,18 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .shapeBasic2,
                 nextID: .shapeBasic3,
-                title: "基本2",
-                requirements: "60秒以内に10問正解",
+                title: L10n.Common.Level.basic2,
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.circle, .triangle, .square].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -65,18 +65,18 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .shapeBasic3,
                 nextID: .shapeAdvanced1,
-                title: "基本3",
-                requirements: "60秒以内に10問正解",
+                title: L10n.Common.Level.basic3,
+                requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { (0..<10).map { _ in .init(options: [.heart, .star].shuffled()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "20s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(20)) { time, missCount in
                     return time <= 20
                 }
             )
@@ -84,18 +84,18 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .shapeAdvanced1,
                 nextID: .shapeAdvanced2,
-                title: "応用1",
-                requirements: "60秒以内に15問正解",
+                title: L10n.Common.Level.advanced1,
+                requirements: L10n.Common.Level.requirementsFormat(15, 60),
                 generate: { (0..<15).map { _ in .random(by: 4) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )
@@ -103,18 +103,18 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .shapeAdvanced2,
                 nextID: .shapeChallenge,
-                title: "応用2",
-                requirements: "60秒以内に15問正解",
+                title: L10n.Common.Level.advanced2,
+                requirements: L10n.Common.Level.requirementsFormat(15, 60),
                 generate: { (0..<15).map { _ in .random(by: 6) } },
                 timeLimit: 60,
                 penalty: .shuffle,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )
@@ -122,18 +122,18 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .shapeChallenge,
                 nextID: nil,
-                title: "チャレンジ",
-                requirements: "60秒以内に20問正解（ノーミス）",
+                title: L10n.Common.Level.challenge,
+                requirements: "\(L10n.Common.Level.requirementsFormat(20, 60))(\(L10n.Common.Level.noMistakes))",
                 generate: { (0..<20).map { _ in .random(by: 6) } },
                 timeLimit: 60,
                 penalty: .gameOver,
-                star1: .init(description: "クリア") { time, missCount in
+                star1: .init(description: L10n.Common.Level.clear) { time, missCount in
                     return true
                 },
-                star2: .init(description: "ノーミス") { time, missCount in
+                star2: .init(description: L10n.Common.Level.noMistakes) { time, missCount in
                     return missCount == 0
                 },
-                star3: .init(description: "30s以内") { time, missCount in
+                star3: .init(description: L10n.Common.Level.limitFormat(30)) { time, missCount in
                     return time <= 30
                 }
             )
