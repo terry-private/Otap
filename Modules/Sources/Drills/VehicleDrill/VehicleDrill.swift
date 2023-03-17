@@ -10,7 +10,7 @@ import Core
 public struct VehicleDrill: CoreDrill {
     public typealias Option = VehicleDrillOption
     
-    public static let title: String = "乗り物"
+    public static let title: String = L10n.Vehicle.Drill.title
     public var options: [Option]
     public let answer: Option
     

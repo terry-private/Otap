@@ -46,18 +46,18 @@ extension VehicleDrillOption: DrillOption {
     
     public var call: String {
         switch self {
-        case .highSpeedTrain🚄: return "新幹線"
-        case .train🚃: return "電車"
-        case .locomotive🚂: return "汽車"
-        case .airPlane🛩: return "飛行機"
-        case .bus🚌: return "バス"
-        case .ambulance🚑: return "救急車"
-        case .fireEngine🚒: return "消防車"
-        case .policeCar🚓: return "パトカー"
-        case .taxi🚕: return "タクシー"
-        case .truck🚛: return "トラック"
-        case .bike🏍: return "バイク"
-        case .bicycle🚲: return "自転車"
+        case .highSpeedTrain🚄: return L10n.Vehicle.Option.Call.highSpeedTrain
+        case .train🚃: return L10n.Vehicle.Option.Call.train
+        case .locomotive🚂: return L10n.Vehicle.Option.Call.locomotive
+        case .airPlane🛩: return L10n.Vehicle.Option.Call.airPlane
+        case .bus🚌: return L10n.Vehicle.Option.Call.bus
+        case .ambulance🚑: return L10n.Vehicle.Option.Call.ambulance
+        case .fireEngine🚒: return L10n.Vehicle.Option.Call.fireEngine
+        case .policeCar🚓: return L10n.Vehicle.Option.Call.policeCar
+        case .taxi🚕: return L10n.Vehicle.Option.Call.taxi
+        case .truck🚛: return L10n.Vehicle.Option.Call.truck
+        case .bike🏍: return L10n.Vehicle.Option.Call.bike
+        case .bicycle🚲: return L10n.Vehicle.Option.Call.bicycle
         }
     }
     

@@ -136,3 +136,19 @@
 "Shape.Option.Call.square" = "四角";
 "Shape.Option.Call.star" = "星";
 "Shape.Option.Call.heart" = "ハート";
+
+// MARK: - Vehicle
+"Vehicle.Drill.Title" = "乗り物";
+
+"Vehicle.Option.Call.highSpeedTrain" = "新幹線";
+"Vehicle.Option.Call.train" = "電車";
+"Vehicle.Option.Call.locomotive" = "汽車";
+"Vehicle.Option.Call.airPlane" = "飛行機";
+"Vehicle.Option.Call.bus" = "バス";
+"Vehicle.Option.Call.ambulance" = "救急車";
+"Vehicle.Option.Call.fireEngine" = "消防車";
+"Vehicle.Option.Call.policeCar" = "パトカー";
+"Vehicle.Option.Call.taxi" = "タクシー";
+"Vehicle.Option.Call.truck" = "トラック";
+"Vehicle.Option.Call.bike" = "バイク";
+"Vehicle.Option.Call.bicycle" = "自転車";

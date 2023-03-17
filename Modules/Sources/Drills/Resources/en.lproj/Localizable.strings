@@ -136,3 +136,19 @@
 "Shape.Option.Call.square" = "square";
 "Shape.Option.Call.star" = "star";
 "Shape.Option.Call.heart" = "heart";
+
+// MARK: - Vehicle
+"Vehicle.Drill.Title" = "Vehicle";
+
+"Vehicle.Option.Call.highSpeedTrain" = "High speed train";
+"Vehicle.Option.Call.train" = "Train";
+"Vehicle.Option.Call.locomotive" = "Locomotive";
+"Vehicle.Option.Call.airPlane" = "Airplane";
+"Vehicle.Option.Call.bus" = "Bus";
+"Vehicle.Option.Call.ambulance" = "Ambulance";
+"Vehicle.Option.Call.fireEngine" = "Fire engine";
+"Vehicle.Option.Call.policeCar" = "Police car";
+"Vehicle.Option.Call.taxi" = "Taxi";
+"Vehicle.Option.Call.truck" = "Truck";
+"Vehicle.Option.Call.bike" = "Motorcycle";
+"Vehicle.Option.Call.bicycle" = "Bicycle";
