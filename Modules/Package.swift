@@ -166,20 +166,16 @@ enum Modules: String, CaseIterable, Hashable {
 }
 
 enum TestModule: String, CaseIterable {
-    case DrillTests
-    case SelectLevelTests
+    case TapDrillForKidsTests
     
     var dependencies: [Modules] {
         switch self {
-        case .DrillTests: return [
+        case .TapDrillForKidsTests: return [
             .Core,
             .FeatureDrill,
+            .FeatureSelectLevel,
             .Repository,
             .Utility
-        ]
-        case .SelectLevelTests: return [
-            .Core,
-            .FeatureSelectLevel
         ]
     }}
 }
