@@ -1,0 +1,30 @@
+//
+//  UserDefaultsClient.swift
+//  
+//
+//  Created by 若江照仁 on 2023/03/19.
+//
+
+import Foundation
+
+public enum UserDefaultsClient {
+    public static var effectVolume: Float {
+        get {
+            UserDefaults.standard.register(defaults: [#function: 1])
+            return UserDefaults.standard.float(forKey: #function)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+    
+    public static var utteranceVolume: Float {
+        get {
+            UserDefaults.standard.register(defaults: [#function: 1])
+            return UserDefaults.standard.float(forKey: #function)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+}
