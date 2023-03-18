@@ -9,7 +9,7 @@ import XCTest
 @testable import Core
 @testable import FeatureSelectLevel
 
-final class ViewModelTests: XCTestCase {
+final class SelectLevelViewModelTests: XCTestCase {
     enum SelectLevelUseCaseStub: SelectLevelUseCase {
         static func fetchDrillRecord(id: Core.LevelSelectorID) async throws -> DrillRecord? {
             if id == .colorBasic1 {

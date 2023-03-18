@@ -1,5 +1,5 @@
 //
-//  ViewModelTests.swift
+//  DrillViewModelTests.swift
 //  
 //
 //  Created by 若江照仁 on 2023/03/07.
@@ -10,7 +10,7 @@ import XCTest
 @testable import FeatureDrill
 @testable import Utility
 
-final class ViewModelTests: XCTestCase {
+final class DrillViewModelTests: XCTestCase {
     enum SoundEffectStub: SoundEffectUseCase {
         static var effectVolume: Float = 0
         
