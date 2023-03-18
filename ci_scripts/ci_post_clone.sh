@@ -6,5 +6,4 @@
 #  Created by 若江照仁 on 2023/03/17.
 #
 
-# SwiftGen
-brew install swiftgen
+defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -bool YES
