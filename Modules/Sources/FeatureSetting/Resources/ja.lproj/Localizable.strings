@@ -3,7 +3,7 @@
 "setting_view.sound_effect_cell.title" = "効果音";
 "setting_view.utterance_voice_cell.title" = "読み上げ音声";
 
-"setting_view.licenses_cell.title" = "ライセ読み上げ音声ンス";
+"setting_view.licenses_cell.title" = "ライセンス";
 "setting_view.version_cell.title" = "バージョン";
 
 // MARK: - Licenses View
