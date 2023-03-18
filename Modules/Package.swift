@@ -73,7 +73,9 @@ enum Modules: String, CaseIterable, Hashable {
             .Core,
             .Data
         ]
-        case .Utility: return []
+        case .Utility: return [
+            .Repository
+        ]
         case .ViewFactoryImpl: return [
             .Core,
             .Drills,
