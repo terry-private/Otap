@@ -6,28 +6,38 @@
 //
 
 import AVFoundation
+import Repository
 
 // MARK: - Interactor
 public enum SoundEffectInteractor {
+    typealias repository = RepositoryImpl
+    private static let effectVolumeRate: Float = 0.04
     // ---------------------------------
     // MARK: private static properties
     // ---------------------------------
     private static let correctSoundPlayer: AVAudioPlayer? = {
         let player = resourceUrl("correct").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
-        player?.volume = 0.03
+        player?.volume = repository.effectVolume * effectVolumeRate
         return player
     }()
     
     private static let wrongSoundPlayer: AVAudioPlayer? = {
         let player = resourceUrl("wrong").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
-        player?.volume = 0.03
+        player?.volume = repository.effectVolume * effectVolumeRate
         return player
     }()
     
     // --------------------------------
     // MARK: public static properties
     // --------------------------------
-    public static var utteranceVolume: Float = 1
+    public static var utteranceVolume: Float {
+        get {
+            repository.utteranceVolume
+        }
+        set {
+            repository.utteranceVolume = newValue
+        }
+    }
     
     public static let speechSynthesizer: AVSpeechSynthesizer = {
         AVSpeechSynthesizer()
@@ -51,11 +61,12 @@ extension SoundEffectInteractor: SoundEffectUseCase {
     
     public static var effectVolume: Float {
         get {
-            (correctSoundPlayer?.volume ?? 0) / 0.03
+            (correctSoundPlayer?.volume ?? 0) / effectVolumeRate
         }
         set {
-            correctSoundPlayer?.volume = newValue * 0.03
-            wrongSoundPlayer?.volume = newValue * 0.03
+            correctSoundPlayer?.volume = newValue * effectVolumeRate
+            wrongSoundPlayer?.volume = newValue * effectVolumeRate
+            repository.effectVolume = newValue
         }
     }
     
