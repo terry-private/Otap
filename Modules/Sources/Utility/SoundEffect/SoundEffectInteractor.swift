@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import Core
 import Repository
 
 // MARK: - Interactor
@@ -43,14 +44,9 @@ public enum SoundEffectInteractor {
         AVSpeechSynthesizer()
     }()
     
-    public static var utteranceLanguage: String {
+    public static var utteranceLanguage: UtteranceLanguage {
         get {
-            switch repository.utteranceLanguage {
-            case "system":
-                return Locale.Language.systemLanguages.first?.minimalIdentifier ?? "en"
-            default:
-                return repository.utteranceLanguage
-            }
+            repository.utteranceLanguage
         }
         set {
             repository.utteranceLanguage = newValue

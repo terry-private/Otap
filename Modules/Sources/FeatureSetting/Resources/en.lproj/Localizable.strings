@@ -2,6 +2,10 @@
 "setting_view.navigation_bar_title" = "Setting";
 "setting_view.sound_effect_cell.title" = "Sound Effect";
 "setting_view.utterance_voice_cell.title" = "Utterance Voice";
+"setting_view.utterance_language.title" = "Utterance Language";
+"setting_view.utterance_language.system" = "System";
+"setting_view.utterance_language.english" = "English";
+"setting_view.utterance_language.japanese" = "Japanese";
 
 "setting_view.licenses_cell.title" = "Licenses";
 "setting_view.version_cell.title" = "Version";

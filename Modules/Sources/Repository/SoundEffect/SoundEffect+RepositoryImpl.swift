@@ -5,6 +5,7 @@
 //  Created by 若江照仁 on 2023/03/19.
 //
 
+import Core
 import Data
 
 extension RepositoryImpl: SoundEffectRepository {
@@ -26,12 +27,12 @@ extension RepositoryImpl: SoundEffectRepository {
         }
     }
     
-    public static var utteranceLanguage: String {
+    public static var utteranceLanguage: UtteranceLanguage {
         get {
-            UserDefaultsClient.utteranceLanguage
+            .init(rawValue: UserDefaultsClient.utteranceLanguage) ?? .system
         }
         set {
-            UserDefaultsClient.utteranceLanguage = newValue
+            UserDefaultsClient.utteranceLanguage = newValue.rawValue
         }
     }
 }
