@@ -12,6 +12,8 @@ import XCTest
 
 final class DrillViewModelTests: XCTestCase {
     enum SoundEffectStub: SoundEffectUseCase {
+        static var utteranceLanguage: Core.UtteranceLanguage = .system
+        
         static var effectVolume: Float = 0
         
         static var utteranceVolume: Float = 0
@@ -102,7 +104,7 @@ final class DrillViewModelTests: XCTestCase {
             XCTAssertEqual(viewModel.drillState, .playing, "DrillStateが.playing")
             XCTAssertEqual(viewModel.remainDrillCount, useCase.drillCount, "残りの問題数が総問題数と一致")
             XCTAssertEqual(viewModel.wrongCount, 0, "失敗数が0")
-            XCTAssertEqual(SoundEffectStub.spokenWords, viewModel.currentDrill.answer.call, "読み上げと第一問の答えが一致")
+            XCTAssertEqual(SoundEffectStub.spokenWords, viewModel.currentDrill.answer.call("ja"), "読み上げと第一問の答えが一致")
         }
                 
         let verifyTask1 = viewModel.optionTapped(viewModel.currentDrill.answer)
@@ -118,7 +120,7 @@ final class DrillViewModelTests: XCTestCase {
             XCTAssertEqual(viewModel.drillState, .playing, "DrillStateが.playing")
             XCTAssertEqual(viewModel.remainDrillCount, useCase.drillCount-1, "残りの問題数が総問題数-1")
             XCTAssertEqual(viewModel.wrongCount, 0, "失敗数が0")
-            XCTAssertEqual(SoundEffectStub.spokenWords, viewModel.currentDrill.answer.call, "読み上げと第2問の答えが一致")
+            XCTAssertEqual(SoundEffectStub.spokenWords, viewModel.currentDrill.answer.call("ja"), "読み上げと第2問の答えが一致")
         }
         let verifyTask2 = viewModel.optionTapped(viewModel.currentDrill.answer)
         let time = viewModel.time
