@@ -67,44 +67,44 @@ extension CreatureDrillOption: DrillOption {
         .text(title: emoji)
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
-        case .dog🐕: return L10n.Creature.Option.Call.dog
-        case .cat🐈: return L10n.Creature.Option.Call.cat
-        case .mouse🐁: return L10n.Creature.Option.Call.mouse
-        case .cow🐄: return L10n.Creature.Option.Call.cow
-        case .rabbit🐇: return L10n.Creature.Option.Call.rabbit
-        case .horse🐎: return L10n.Creature.Option.Call.horse
-        case .elephant🐘: return L10n.Creature.Option.Call.elephant
-        case .pig🐖: return L10n.Creature.Option.Call.pig
-        case .camel🐪: return L10n.Creature.Option.Call.camel
-        case .giraffe🦒: return L10n.Creature.Option.Call.giraffe
-        case .kangaroo🦘: return L10n.Creature.Option.Call.kangaroo
-        case .monkey🐒: return L10n.Creature.Option.Call.monkey
-        case .rooster🐓: return L10n.Creature.Option.Call.rooster
-        case .owl🦉: return L10n.Creature.Option.Call.owl
-        case .flamingo🦩: return L10n.Creature.Option.Call.flamingo
-        case .swan🦢: return L10n.Creature.Option.Call.swan
-        case .duck🦆: return L10n.Creature.Option.Call.duck
-        case .bat🦇: return L10n.Creature.Option.Call.bat
-        case .turtle🐢: return L10n.Creature.Option.Call.turtle
-        case .crocodile🐊: return L10n.Creature.Option.Call.crocodile
-        case .lizard🦎: return L10n.Creature.Option.Call.lizard
-        case .snake🐍: return L10n.Creature.Option.Call.snake
-        case .whale🐋: return L10n.Creature.Option.Call.whale
-        case .dolphin🐬: return L10n.Creature.Option.Call.dolphin
-        case .shark🦈: return L10n.Creature.Option.Call.shark
-        case .octopus🐙: return L10n.Creature.Option.Call.octopus
-        case .bug🐛: return L10n.Creature.Option.Call.bug
-        case .butterfly🦋: return L10n.Creature.Option.Call.butterfly
-        case .ant🐜: return L10n.Creature.Option.Call.ant
-        case .honeybee🐝: return L10n.Creature.Option.Call.honeybee
-        case .ladyBeetle🐞: return L10n.Creature.Option.Call.ladyBeetle
-        case .spider🕷: return L10n.Creature.Option.Call.spider
-        case .chipmunk🐿️: return L10n.Creature.Option.Call.chipmunk
-        case .tiger🐅: return L10n.Creature.Option.Call.tiger
-        case .zebra🦓: return L10n.Creature.Option.Call.zebra
-        case .rhinoceros🦏: return L10n.Creature.Option.Call.rhinoceros
+        case .dog🐕: return localized("Creature.Option.Call.dog", language) ?? "dog"
+        case .cat🐈: return localized("Creature.Option.Call.cat", language) ?? "cat"
+        case .mouse🐁: return localized("Creature.Option.Call.mouse", language) ?? "mouse"
+        case .cow🐄: return localized("Creature.Option.Call.cow", language) ?? "cow"
+        case .rabbit🐇: return localized("Creature.Option.Call.rabbit", language) ?? "rabbit"
+        case .horse🐎: return localized("Creature.Option.Call.horse", language) ?? "horse"
+        case .elephant🐘: return localized("Creature.Option.Call.elephant", language) ?? "elephant"
+        case .pig🐖: return localized("Creature.Option.Call.pig", language) ?? "pig"
+        case .camel🐪: return localized("Creature.Option.Call.camel", language) ?? "camel"
+        case .giraffe🦒: return localized("Creature.Option.Call.giraffe", language) ?? "giraffe"
+        case .kangaroo🦘: return localized("Creature.Option.Call.kangaroo", language) ?? "kangaroo"
+        case .monkey🐒: return localized("Creature.Option.Call.monkey", language) ?? "monkey"
+        case .rooster🐓: return localized("Creature.Option.Call.rooster", language) ?? "rooster"
+        case .owl🦉: return localized("Creature.Option.Call.owl", language) ?? "owl"
+        case .flamingo🦩: return localized("Creature.Option.Call.flamingo", language) ?? "flamingo"
+        case .swan🦢: return localized("Creature.Option.Call.swan", language) ?? "swan"
+        case .duck🦆: return localized("Creature.Option.Call.duck", language) ?? "duck"
+        case .bat🦇: return localized("Creature.Option.Call.bat", language) ?? "bat"
+        case .turtle🐢: return localized("Creature.Option.Call.turtle", language) ?? "turtle"
+        case .crocodile🐊: return localized("Creature.Option.Call.crocodile", language) ?? "crocodile"
+        case .lizard🦎: return localized("Creature.Option.Call.lizard", language) ?? "lizard"
+        case .snake🐍: return localized("Creature.Option.Call.snake", language) ?? "snake"
+        case .whale🐋: return localized("Creature.Option.Call.whale", language) ?? "whale"
+        case .dolphin🐬: return localized("Creature.Option.Call.dolphin", language) ?? "dolphin"
+        case .shark🦈: return localized("Creature.Option.Call.shark", language) ?? "shark"
+        case .octopus🐙: return localized("Creature.Option.Call.octopus", language) ?? "octopus"
+        case .bug🐛: return localized("Creature.Option.Call.bug", language) ?? "bug"
+        case .butterfly🦋: return localized("Creature.Option.Call.butterfly", language) ?? "butterfly"
+        case .ant🐜: return localized("Creature.Option.Call.ant", language) ?? "ant"
+        case .honeybee🐝: return localized("Creature.Option.Call.honeybee", language) ?? "honeybee"
+        case .ladyBeetle🐞: return localized("Creature.Option.Call.ladyBeetle", language) ?? "lady beetle"
+        case .spider🕷: return localized("Creature.Option.Call.spider", language) ?? "spider"
+        case .chipmunk🐿️: return localized("Creature.Option.Call.chipmunk", language) ?? "chipmunk"
+        case .tiger🐅: return localized("Creature.Option.Call.tiger", language) ?? "tiger"
+        case .zebra🦓: return localized("Creature.Option.Call.zebra", language) ?? "zebra"
+        case .rhinoceros🦏: return localized("Creature.Option.Call.rhinoceros", language) ?? "rhinoceros"
         }
     }
     

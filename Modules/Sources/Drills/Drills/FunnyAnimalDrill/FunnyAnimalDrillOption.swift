@@ -34,20 +34,20 @@ extension FunnyAnimalDrillOption: DrillOption {
         .text(title: emoji, textColor: .init(uiColor: .label), backgroundColor: .init(uiColor: .systemFill))
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
-        case .dogFace🐶: return L10n.FunnyAnimal.Option.Call.dog
-        case .monkeyFace🐵: return L10n.FunnyAnimal.Option.Call.monkey
-        case .lionFace🦁: return L10n.FunnyAnimal.Option.Call.lion
-        case .tigerFace🐯: return L10n.FunnyAnimal.Option.Call.tiger
-        case .cowFace🐮: return L10n.FunnyAnimal.Option.Call.cow
-        case .pigFace🐷: return L10n.FunnyAnimal.Option.Call.pig
-        case .mouseFace🐭: return L10n.FunnyAnimal.Option.Call.mouse
-        case .bearFace🐻: return L10n.FunnyAnimal.Option.Call.bear
-        case .pandaFace🐼: return L10n.FunnyAnimal.Option.Call.panda
-        case .rabbitFace🐰: return L10n.FunnyAnimal.Option.Call.rabbit
-        case .catFace🐱: return L10n.FunnyAnimal.Option.Call.cat
-        case .horseFace🐴: return L10n.FunnyAnimal.Option.Call.horse
+        case .dogFace🐶: return localized("FunnyAnimal.Option.Call.dog", language) ?? "dog"
+        case .monkeyFace🐵: return localized("FunnyAnimal.Option.Call.monkey", language) ?? "monkey"
+        case .lionFace🦁: return localized("FunnyAnimal.Option.Call.lion", language) ?? "lion"
+        case .tigerFace🐯: return localized("FunnyAnimal.Option.Call.tiger", language) ?? "tiger"
+        case .cowFace🐮: return localized("FunnyAnimal.Option.Call.cow", language) ?? "cow"
+        case .pigFace🐷: return localized("FunnyAnimal.Option.Call.pig", language) ?? "pig"
+        case .mouseFace🐭: return localized("FunnyAnimal.Option.Call.mouse", language) ?? "mouse"
+        case .bearFace🐻: return localized("FunnyAnimal.Option.Call.bear", language) ?? "bear"
+        case .pandaFace🐼: return localized("FunnyAnimal.Option.Call.panda", language) ?? "panda"
+        case .rabbitFace🐰: return localized("FunnyAnimal.Option.Call.rabbit", language) ?? "rabbit"
+        case .catFace🐱: return localized("FunnyAnimal.Option.Call.cat", language) ?? "cat"
+        case .horseFace🐴: return localized("FunnyAnimal.Option.Call.horse", language) ?? "horse"
         }
     }
     

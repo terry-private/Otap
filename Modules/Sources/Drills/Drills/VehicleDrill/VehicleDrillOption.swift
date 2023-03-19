@@ -44,20 +44,20 @@ extension VehicleDrillOption: DrillOption {
         }
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
-        case .highSpeedTrain🚄: return L10n.Vehicle.Option.Call.highSpeedTrain
-        case .train🚃: return L10n.Vehicle.Option.Call.train
-        case .locomotive🚂: return L10n.Vehicle.Option.Call.locomotive
-        case .airPlane🛩: return L10n.Vehicle.Option.Call.airPlane
-        case .bus🚌: return L10n.Vehicle.Option.Call.bus
-        case .ambulance🚑: return L10n.Vehicle.Option.Call.ambulance
-        case .fireEngine🚒: return L10n.Vehicle.Option.Call.fireEngine
-        case .policeCar🚓: return L10n.Vehicle.Option.Call.policeCar
-        case .taxi🚕: return L10n.Vehicle.Option.Call.taxi
-        case .truck🚛: return L10n.Vehicle.Option.Call.truck
-        case .bike🏍: return L10n.Vehicle.Option.Call.bike
-        case .bicycle🚲: return L10n.Vehicle.Option.Call.bicycle
+        case .highSpeedTrain🚄: return localized("Vehicle.Option.Call.highSpeedTrain", language) ?? "High speed train"
+        case .train🚃: return localized("Vehicle.Option.Call.train", language) ?? "Train"
+        case .locomotive🚂: return localized("Vehicle.Option.Call.locomotive", language) ?? "Locomotive"
+        case .airPlane🛩: return localized("Vehicle.Option.Call.airPlane", language) ?? "Airplane"
+        case .bus🚌: return localized("Vehicle.Option.Call.bus", language) ?? "Bus"
+        case .ambulance🚑: return localized("Vehicle.Option.Call.ambulance", language) ?? "Ambulance"
+        case .fireEngine🚒: return localized("Vehicle.Option.Call.fireEngine", language) ?? "Fire engine"
+        case .policeCar🚓: return localized("Vehicle.Option.Call.policeCar", language) ?? "Police car"
+        case .taxi🚕: return localized("Vehicle.Option.Call.taxi", language) ?? "Taxi"
+        case .truck🚛: return localized("Vehicle.Option.Call.truck", language) ?? "Truck"
+        case .bike🏍: return localized("Vehicle.Option.Call.bike", language) ?? "Bike"
+        case .bicycle🚲: return localized("Vehicle.Option.Call.bicycle", language) ?? "Bicycle"
         }
     }
     

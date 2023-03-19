@@ -30,14 +30,14 @@ extension ShapeDrillOption: DrillOption {
         }
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
-        case .circle: return L10n.Shape.Option.Call.circle
-        case .cross: return L10n.Shape.Option.Call.cross
-        case .triangle: return L10n.Shape.Option.Call.triangle
-        case .square: return L10n.Shape.Option.Call.square
-        case .star: return L10n.Shape.Option.Call.star
-        case .heart: return L10n.Shape.Option.Call.heart
+        case .circle: return localized("Shape.Option.Call.circle", language) ?? "circle"
+        case .cross: return localized("Shape.Option.Call.cross", language) ?? "cross"
+        case .triangle: return localized("Shape.Option.Call.triangle", language) ?? "triangle"
+        case .square: return localized("Shape.Option.Call.square", language) ?? "square"
+        case .star: return localized("Shape.Option.Call.star", language) ?? "star"
+        case .heart: return localized("Shape.Option.Call.heart", language) ?? "heart"
         }
     }
     

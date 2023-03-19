@@ -10,8 +10,8 @@ import Extensions
 
 public protocol DrillOption: Identifiable, Hashable, CaseIterable {
     var viewType: OptionViewType { get }
-    var call: String { get }
     static var practiceRows: [[Self]] { get }
+    func call(_ language: String) -> String
 }
 
 public extension DrillOption {
