@@ -27,4 +27,14 @@ public enum UserDefaultsClient {
             UserDefaults.standard.set(newValue, forKey: #function)
         }
     }
+    
+    public static var utteranceLanguage: String {
+        get {
+            UserDefaults.standard.register(defaults: [#function: "system"])
+            return UserDefaults.standard.string(forKey: #function) ?? "system"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
 }

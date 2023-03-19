@@ -31,20 +31,20 @@ extension ColorDrillOption: DrillOption {
         .color(foregroundColor)
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
-        case .red: return L10n.Color.Option.Call.red
-        case .pink: return L10n.Color.Option.Call.pink
-        case .blue: return L10n.Color.Option.Call.blue
-        case .lightBlue: return L10n.Color.Option.Call.lightBlue
-        case .green: return L10n.Color.Option.Call.green
-        case .yellow: return L10n.Color.Option.Call.yellow
-        case .purple: return L10n.Color.Option.Call.purple
-        case .orange: return L10n.Color.Option.Call.orange
-        case .brown: return L10n.Color.Option.Call.brown
-        case .white: return L10n.Color.Option.Call.white
-        case .gray: return L10n.Color.Option.Call.gray
-        case .black: return L10n.Color.Option.Call.black
+        case .red: return localized("Color.Option.Call.Red", language) ?? "red"
+        case .pink: return localized("Color.Option.Call.Pink", language) ?? "pink"
+        case .blue: return localized("Color.Option.Call.Blue", language) ?? "blue"
+        case .lightBlue: return localized("Color.Option.Call.LightBlue", language) ?? "light blue"
+        case .green: return localized("Color.Option.Call.Green", language) ?? "green"
+        case .yellow: return localized("Color.Option.Call.Yellow", language) ?? "yellow"
+        case .purple: return localized("Color.Option.Call.Purple", language) ?? "purple"
+        case .orange: return localized("Color.Option.Call.Orange", language) ?? "orange"
+        case .brown: return localized("Color.Option.Call.Brown", language) ?? "brown"
+        case .white: return localized("Color.Option.Call.White", language) ?? "white"
+        case .gray: return localized("Color.Option.Call.Gray", language) ?? "gray"
+        case .black: return localized("Color.Option.Call.Black", language) ?? "black"
         }
     }
     

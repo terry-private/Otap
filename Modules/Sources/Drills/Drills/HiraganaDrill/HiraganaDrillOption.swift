@@ -25,10 +25,10 @@ extension HiraganaDrillOption: DrillOption {
     public var id: Self { self }
     
     public var viewType: OptionViewType {
-        .text(title: call)
+        .text(title: call("ja"))
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         return rawValue
     }
     

@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import Core
 import Repository
 
 // MARK: - Interactor
@@ -42,6 +43,15 @@ public enum SoundEffectInteractor {
     public static let speechSynthesizer: AVSpeechSynthesizer = {
         AVSpeechSynthesizer()
     }()
+    
+    public static var utteranceLanguage: UtteranceLanguage {
+        get {
+            repository.utteranceLanguage
+        }
+        set {
+            repository.utteranceLanguage = newValue
+        }
+    }
 }
 
 // MARK: - private methods

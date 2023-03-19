@@ -50,7 +50,7 @@ public struct DrillDummy: CoreDrill {
             }
         }
         
-        public var call: String {
+        public func call(_ language: String) -> String {
             switch self {
             case .red: return "あか"
             case .blue: return "あお"

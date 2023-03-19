@@ -66,6 +66,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Repository,
         ]
         case .FeatureSetting: return [
+            .Core,
             .Extensions,
             .Utility
         ]
@@ -74,6 +75,7 @@ enum Modules: String, CaseIterable, Hashable {
             .Data
         ]
         case .Utility: return [
+            .Core,
             .Repository
         ]
         case .ViewFactoryImpl: return [

@@ -49,32 +49,32 @@ extension FruitsAndVegetablesDrillOption: DrillOption {
         .text(title: emoji, textColor: .init(uiColor: .label), backgroundColor: .init(uiColor: .systemFill))
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
-        case .tomato🍅: return L10n.FruitsAndVegetables.Option.Call.tomato
-        case .eggplant🍆: return L10n.FruitsAndVegetables.Option.Call.eggplant
-        case .potato🥔: return L10n.FruitsAndVegetables.Option.Call.potato
-        case .carrot🥕: return L10n.FruitsAndVegetables.Option.Call.carrot
-        case .onion🧅: return L10n.FruitsAndVegetables.Option.Call.onion
-        case .cucumber🥒: return L10n.FruitsAndVegetables.Option.Call.cucumber
-        case .corn🌽: return L10n.FruitsAndVegetables.Option.Call.corn
-        case .broccoli🥦: return L10n.FruitsAndVegetables.Option.Call.broccoli
-        case .sweetPotato🍠: return L10n.FruitsAndVegetables.Option.Call.sweetPotato
-        case .greenBellPepper🫑: return L10n.FruitsAndVegetables.Option.Call.greenBellPepper
-        case .chestnuts🌰: return L10n.FruitsAndVegetables.Option.Call.chestnuts
-        case .mushrooms🍄: return L10n.FruitsAndVegetables.Option.Call.mushrooms
-        case .orange🍊: return L10n.FruitsAndVegetables.Option.Call.orange
-        case .apple🍎: return L10n.FruitsAndVegetables.Option.Call.apple
-        case .grape🍇: return L10n.FruitsAndVegetables.Option.Call.grape
-        case .kiwi🥝: return L10n.FruitsAndVegetables.Option.Call.kiwi
-        case .watermelon🍉: return L10n.FruitsAndVegetables.Option.Call.watermelon
-        case .lemon🍋: return L10n.FruitsAndVegetables.Option.Call.lemon
-        case .peach🍑: return L10n.FruitsAndVegetables.Option.Call.peach
-        case .strawberry🍓: return L10n.FruitsAndVegetables.Option.Call.strawberry
-        case .banana🍌: return L10n.FruitsAndVegetables.Option.Call.banana
-        case .pineapple🍍: return L10n.FruitsAndVegetables.Option.Call.pineapple
-        case .melon🍈: return L10n.FruitsAndVegetables.Option.Call.melon
-        case .blueberry🫐: return L10n.FruitsAndVegetables.Option.Call.blueberry
+        case .tomato🍅: return localized("FruitsAndVegetables.Option.Call.tomato", language) ?? "tomato"
+        case .eggplant🍆: return localized("FruitsAndVegetables.Option.Call.eggplant", language) ?? "eggplant"
+        case .potato🥔: return localized("FruitsAndVegetables.Option.Call.potato", language) ?? "potato"
+        case .carrot🥕: return localized("FruitsAndVegetables.Option.Call.carrot", language) ?? "carrot"
+        case .onion🧅: return localized("FruitsAndVegetables.Option.Call.onion", language) ?? "onion"
+        case .cucumber🥒: return localized("FruitsAndVegetables.Option.Call.cucumber", language) ?? "cucumber"
+        case .corn🌽: return localized("FruitsAndVegetables.Option.Call.corn", language) ?? "corn"
+        case .broccoli🥦: return localized("FruitsAndVegetables.Option.Call.broccoli", language) ?? "broccoli"
+        case .sweetPotato🍠: return localized("FruitsAndVegetables.Option.Call.sweetPotato", language) ?? "sweet potato"
+        case .greenBellPepper🫑: return localized("FruitsAndVegetables.Option.Call.greenBellPepper", language) ?? "green bell pepper"
+        case .chestnuts🌰: return localized("FruitsAndVegetables.Option.Call.chestnuts", language) ?? "chestnuts"
+        case .mushrooms🍄: return localized("FruitsAndVegetables.Option.Call.mushrooms", language) ?? "mushrooms"
+        case .orange🍊: return localized("FruitsAndVegetables.Option.Call.orange", language) ?? "orange"
+        case .apple🍎: return localized("FruitsAndVegetables.Option.Call.apple", language) ?? "apple"
+        case .grape🍇: return localized("FruitsAndVegetables.Option.Call.grape", language) ?? "grape"
+        case .kiwi🥝: return localized("FruitsAndVegetables.Option.Call.kiwi", language) ?? "kiwi"
+        case .watermelon🍉: return localized("FruitsAndVegetables.Option.Call.watermelon", language) ?? "watermelon"
+        case .lemon🍋: return localized("FruitsAndVegetables.Option.Call.lemon", language) ?? "lemon"
+        case .peach🍑: return localized("FruitsAndVegetables.Option.Call.peach", language) ?? "peach"
+        case .strawberry🍓: return localized("FruitsAndVegetables.Option.Call.strawberry", language) ?? "strawberry"
+        case .banana🍌: return localized("FruitsAndVegetables.Option.Call.banana", language) ?? "banana"
+        case .pineapple🍍: return localized("FruitsAndVegetables.Option.Call.pineapple", language) ?? "pineapple"
+        case .melon🍈: return localized("FruitsAndVegetables.Option.Call.melon", language) ?? "melon"
+        case .blueberry🫐: return localized("FruitsAndVegetables.Option.Call.blueberry", language) ?? "blueberry"
         }
     }
     

@@ -40,7 +40,7 @@ public enum NumberDrillOption: String {
     private static let uniqueNumberOptions: [String: [Self]] = {
         return allCases
             .reduce(into: [:]) { numberOptions, option in
-                numberOptions[option.call, default: []].append(option)
+                numberOptions[option.call("en"), default: []].append(option)
             }
     }()
     
@@ -61,11 +61,11 @@ extension NumberDrillOption: DrillOption {
         case .dice1, .dice2, .dice3, .dice4, .dice5, .dice6, .finger1, .finger2, .finger3, .finger4, .finger5:
             return .image(uiImage: .init(named: rawValue, in: .module, with: nil)!)
         default:
-            return .text(title: call)
+            return .text(title: call("en"))
         }
     }
     
-    public var call: String {
+    public func call(_ language: String) -> String {
         switch self {
         case .dice1: return "1"
         case .dice2: return "2"

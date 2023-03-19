@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Core
 import Extensions
 import Utility
 
 public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
-    public init() {}
+    @State var language: UtteranceLanguage
+    public init() {
+        _language = .init(wrappedValue: SoundEffect.utteranceLanguage)
+    }
     public var body: some View {
         Form {
             Section {
@@ -32,6 +36,23 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
                     ))
                         .frame(width: 150)
                 }
+                Picker(
+                    L10n.SettingView.UtteranceLanguage.title,
+                    selection: .init(
+                        get: {
+                            language
+                        },
+                        set: {
+                            SoundEffect.utteranceLanguage = $0
+                            language = $0
+                        }
+                    )
+                ) {
+                    ForEach(UtteranceLanguage.allCases, id: \.self) {
+                        Text($0.title)
+                    }
+                }
+                .pickerStyle(.menu)
             }
             Section {
                 NavigationLink {
@@ -64,6 +85,16 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
             }
         }
         .navigationBarTitle(L10n.SettingView.navigationBarTitle)
+    }
+}
+
+private extension UtteranceLanguage {
+    var title: String {
+        switch self {
+        case .system: return L10n.SettingView.UtteranceLanguage.system
+        case .english: return L10n.SettingView.UtteranceLanguage.english
+        case .japanese: return L10n.SettingView.UtteranceLanguage.japanese
+        }
     }
 }
 
