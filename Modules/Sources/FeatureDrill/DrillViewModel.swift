@@ -255,7 +255,8 @@ private extension DrillViewModelImpl {
     }
     
     func speak() {
-        SoundEffect.speak(currentDrill.answer.call("ja"), Drill.specificLanguage?.minimalIdentifier)
+        let callLanguage = Drill.specificLanguage?.minimalIdentifier ?? SoundEffect.utteranceLanguage
+        SoundEffect.speak(currentDrill.answer.call(callLanguage), callLanguage)
     }
     
     func playSoundEffect(_ isCorrect: Bool) {

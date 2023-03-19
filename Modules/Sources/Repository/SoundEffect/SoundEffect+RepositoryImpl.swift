@@ -25,4 +25,13 @@ extension RepositoryImpl: SoundEffectRepository {
             UserDefaultsClient.utteranceVolume = newValue
         }
     }
+    
+    public static var utteranceLanguage: String {
+        get {
+            UserDefaultsClient.utteranceLanguage
+        }
+        set {
+            UserDefaultsClient.utteranceLanguage = newValue
+        }
+    }
 }

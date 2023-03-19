@@ -42,6 +42,20 @@ public enum SoundEffectInteractor {
     public static let speechSynthesizer: AVSpeechSynthesizer = {
         AVSpeechSynthesizer()
     }()
+    
+    public static var utteranceLanguage: String {
+        get {
+            switch repository.utteranceLanguage {
+            case "system":
+                return Locale.Language.systemLanguages.first?.minimalIdentifier ?? "en"
+            default:
+                return repository.utteranceLanguage
+            }
+        }
+        set {
+            repository.utteranceLanguage = newValue
+        }
+    }
 }
 
 // MARK: - private methods

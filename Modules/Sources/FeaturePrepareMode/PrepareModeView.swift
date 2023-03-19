@@ -35,7 +35,8 @@ private extension PrepareModeView {
         GridRow {
             ForEach(row) { option in
                 Button {
-                    SoundEffect.speak(option.call("ja"), Drill.specificLanguage?.minimalIdentifier)
+                    let callLanguage = Drill.specificLanguage?.minimalIdentifier ?? SoundEffect.utteranceLanguage
+                    SoundEffect.speak(option.call(callLanguage), callLanguage)
                 } label: {
                     option.viewType.view()
                         .aspectRatio(1, contentMode: .fill)

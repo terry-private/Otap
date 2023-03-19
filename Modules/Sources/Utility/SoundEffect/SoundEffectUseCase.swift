@@ -15,6 +15,7 @@ public enum LocalizeType {
 public protocol SoundEffectUseCase {
     static var effectVolume: Float { get set }
     static var utteranceVolume: Float { get set }
+    static var utteranceLanguage: String { get set }
     static func readyAllPlayer()
     static func playCorrect()
     static func playWrong()
@@ -26,7 +27,7 @@ public enum SoundEffectUseCaseDummy: SoundEffectUseCase {
     public static var effectVolume: Float = 1
     
     public static var utteranceVolume: Float = 1
-    
+    public static var utteranceLanguage: String = "ja"
     public static func readyAllPlayer() {
         print(#file, #function)
     }

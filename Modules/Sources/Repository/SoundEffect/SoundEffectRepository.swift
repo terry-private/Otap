@@ -10,4 +10,5 @@ import Foundation
 public protocol SoundEffectRepository {
     static var effectVolume: Float { get set }
     static var utteranceVolume: Float { get set }
+    static var utteranceLanguage: String { get set }
 }
