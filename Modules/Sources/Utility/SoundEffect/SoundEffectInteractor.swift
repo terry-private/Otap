@@ -94,16 +94,14 @@ extension SoundEffectInteractor: SoundEffectUseCase {
         wrongSoundPlayer?.play()
     }
     
-    public static func speak(_ words: String, _ specificLanguage: String?) {
+    public static func speak(_ words: String, _ specificLanguage: String) {
         if speechSynthesizer.isSpeaking {
             speechSynthesizer.stopSpeaking(at: .immediate)
         }
         let utterance = AVSpeechUtterance(string: words)
         utterance.volume = utteranceVolume
         utterance.rate = words.count == 1 ? 0.3 : 0.4
-        if let specificLanguage {
-            utterance.voice = AVSpeechSynthesisVoice(language: specificLanguage)
-        }
+        utterance.voice = AVSpeechSynthesisVoice(language: specificLanguage)
         speechSynthesizer.speak(utterance)
     }
 }

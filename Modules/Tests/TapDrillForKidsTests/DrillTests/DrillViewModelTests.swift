@@ -28,7 +28,7 @@ final class DrillViewModelTests: XCTestCase {
         static func playWrong() {
             isPlayWrong = true
         }
-        static func speak(_ words: String, _ specificLanguage: String?) {
+        static func speak(_ words: String, _ specificLanguage: String) {
             spokenWords = words
         }
     }

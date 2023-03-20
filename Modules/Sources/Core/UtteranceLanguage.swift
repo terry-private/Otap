@@ -12,10 +12,10 @@ public enum UtteranceLanguage: String, CaseIterable {
     case english = "en"
     case japanese = "ja"
     
-    public var minimalIdentifier: String {
+    public var code: String {
         switch self {
         case .system:
-            return Locale.current.language.minimalIdentifier
+            return Locale.current.language.languageCode?.identifier ?? "en"
         default:
             return rawValue
         }

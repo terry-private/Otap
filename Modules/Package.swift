@@ -190,7 +190,7 @@ private extension PackageDescription.Target.PluginUsage {
 
 let package = Package(
     name: "Modules",
-    defaultLocalization: "ja",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v16),
     ],

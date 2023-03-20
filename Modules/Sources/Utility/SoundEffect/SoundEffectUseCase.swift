@@ -20,7 +20,7 @@ public protocol SoundEffectUseCase {
     static func readyAllPlayer()
     static func playCorrect()
     static func playWrong()
-    static func speak(_ words: String, _ specificLanguage: String?)
+    static func speak(_ words: String, _ specificLanguage: String)
 }
 
 #if DEBUG
@@ -41,7 +41,7 @@ public enum SoundEffectUseCaseDummy: SoundEffectUseCase {
         print(#file, #function)
     }
     
-    public static func speak(_ words: String, _ specificLanguage: String?) {
+    public static func speak(_ words: String, _ specificLanguage: String) {
         print(#file, #function, words)
     }
 }
