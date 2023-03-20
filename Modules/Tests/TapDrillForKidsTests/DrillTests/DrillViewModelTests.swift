@@ -28,7 +28,7 @@ final class DrillViewModelTests: XCTestCase {
         static func playWrong() {
             isPlayWrong = true
         }
-        static func speak(_ words: String, _ specificLanguage: String?) {
+        static func speak(_ words: String, _ specificLanguage: String) {
             spokenWords = words
         }
     }
@@ -183,7 +183,7 @@ final class DrillViewModelTests: XCTestCase {
         let viewModel = DrillViewModelImpl<DrillDummy, SoundEffectStub, DrillUseCaseStub>(useCase: useCase, dismiss: {})
         
         viewModel.start()
-        try await Task.sleep(seconds: 0.02)
+        try await Task.sleep(seconds: 0.03)
         XCTContext.runActivity(named: "timelimit後") {_ in
             XCTAssertEqual(viewModel.drillState, .gameOver(.timeOver), "DrillStateが.gameOver(.timeOver)")
         }
