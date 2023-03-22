@@ -70,7 +70,7 @@ flowchart BT
 - CRUDベースで極力シンプルなインターフェース設計にする
 
 ### Utility
-- 主に副作用を取り扱うUseCase
+- 主に副次効果など画面単位のシナリオに依存しないドメインロジックを取り扱うUseCase
 - 現在はSoundEffectのみだがViewModelのテストがやりにくいのでTimerもインターフェースから設計してここで扱うようにしたいと思いっている。
 
 ### Features
@@ -88,7 +88,7 @@ flowchart BT
   - ViewFactory(Protocol)
     - 責務: DIとそれによって生成したViewをAnyViewとして返す
     - Routerという命名にしないのは遷移を責務とせず、Viewからすると「材料を渡すと欲しいViewを作ってくれる」というインターフェースにする方がシンプルと考えたたため。
-    - ViewFactoryProtocolが他のFeatureに依存しない（つまりFeatureが他のFeatureに依存しない）ようにするため一律AnyViewを返すことを責務としている。
+    - ViewFactoryProtocolが他のFeatureに依存しない（つまりFeatureが他のFeatureに依存しない）ようにするため一律AnyViewを返す仕様にしている。
     - 遷移のためにAnyViewを使う程度だとパフォーマンスには影響はなさそう。
 - Core, Utility, Repositoryに依存
 - 各実装への依存は禁止
