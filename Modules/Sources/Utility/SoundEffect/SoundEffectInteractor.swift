@@ -99,9 +99,10 @@ extension SoundEffectInteractor: SoundEffectUseCase {
             speechSynthesizer.stopSpeaking(at: .immediate)
         }
         let utterance = AVSpeechUtterance(string: words)
-        utterance.volume = utteranceVolume
-        utterance.rate = words.count == 1 ? 0.3 : 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: specificLanguage)
+        utterance.volume = utteranceVolume
+        utterance.rate = Set(["あ", "い", "う", "え", "お"]).contains(words) ? 0.2 : 0.4
+        
         speechSynthesizer.speak(utterance)
     }
 }
