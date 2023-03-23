@@ -18,6 +18,7 @@ public final actor LocaleCache {
         .creatureAnimal1: .init(id: .creatureAnimal1),
         .fruitsAndVegetablesVegetable1: .init(id: .fruitsAndVegetablesVegetable1),
         .vehicleBasic1: .init(id: .vehicleBasic1),
+        .nationalFlagAsia1: .init(id: .nationalFlagAsia1),
         .numberDice123: .init(id: .numberDice123),
         .hiraganaあ行: .init(id: .hiraganaあ行)
     ]

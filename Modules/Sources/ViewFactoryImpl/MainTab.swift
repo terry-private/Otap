@@ -25,6 +25,7 @@ public enum MainTabViewFactoryImpl: MainTabViewFactoryProtocol {
                     CreatureDrillLevelSelector.advanced1,
                     FruitsAndVegetablesDrillLevelSelector.fruit1,
                     VehicleDrillLevelSelector.basic1,
+                    NationalFlagDrillLevelSelector.asia1,
                     NumberDrillLevelSelector.dice123,
                     HiraganaDrillLevelSelector.あ行
                 ]

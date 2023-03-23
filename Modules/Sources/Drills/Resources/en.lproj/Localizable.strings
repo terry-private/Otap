@@ -153,6 +153,61 @@
 "Vehicle.Option.Call.bike" = "Motorcycle";
 "Vehicle.Option.Call.bicycle" = "Bicycle";
 
+// MARK: - NationalFrag
+"NationalFlag.Drill.Title" = "National Flag";
+//* Asia and Oceania */
+"NationalFlag.Option.Call.japan" = "Japan";
+"NationalFlag.Option.Call.korea" = "Korea";
+"NationalFlag.Option.Call.china" = "China";
+"NationalFlag.Option.Call.thailand" = "Thailand";
+"NationalFlag.Option.Call.india" = "India";
+"NationalFlag.Option.Call.indonesia" = "Indonesia";
+"NationalFlag.Option.Call.singapore" = "Singapore";
+"NationalFlag.Option.Call.australia" = "Australia";
+
+/* Americas */
+"NationalFlag.Option.Call.argentina" = "Argentina";
+"NationalFlag.Option.Call.brazil" = "Brazil";
+"NationalFlag.Option.Call.uruguay" = "Uruguay";
+"NationalFlag.Option.Call.unitedstate" = "United States";
+"NationalFlag.Option.Call.canada" = "Canada";
+"NationalFlag.Option.Call.mexico" = "Mexico";
+"NationalFlag.Option.Call.peru" = "Peru";
+"NationalFlag.Option.Call.paraguay" = "Paraguay";
+/* Europe */
+"NationalFlag.Option.Call.unitedkingdom" = "United Kingdom";
+"NationalFlag.Option.Call.germany" = "Germany";
+"NationalFlag.Option.Call.france" = "France";
+"NationalFlag.Option.Call.italy" = "Italy";
+"NationalFlag.Option.Call.spain" = "Spain";
+"NationalFlag.Option.Call.portugal" = "Portugal";
+"NationalFlag.Option.Call.russia" = "Russia";
+"NationalFlag.Option.Call.netherlands" = "Netherlands";
+"NationalFlag.Option.Call.switzerland" = "Switzerland";
+"NationalFlag.Option.Call.sweeden" = "Sweden";
+"NationalFlag.Option.Call.norway" = "Norway";
+"NationalFlag.Option.Call.poland" = "Poland";
+"NationalFlag.Option.Call.belgium" = "belgium";
+"NationalFlag.Option.Call.greece" = "greece";
+"NationalFlag.Option.Call.hungary" = "Hungary";
+"NationalFlag.Option.Call.ukraine" = "Ukraine";
+/* Africa */
+"NationalFlag.Option.Call.cameroun" = "cameroun";
+"NationalFlag.Option.Call.kenya" = "kenya";
+"NationalFlag.Option.Call.nigeria" = "nigeria";
+"NationalFlag.Option.Call.southafrica" = "southafrica";
+
+// NationalFlag Level
+"NationalFlag.Level.Asia1" = "Asia 1";
+"NationalFlag.Level.Asia2AndOceania" = "Asia 2 and Oceania";
+"NationalFlag.Level.Americas1" = "Americas 1";
+"NationalFlag.Level.Americas2" = "Americas 2";
+"NationalFlag.Level.Europe1" = "Europe1";
+"NationalFlag.Level.Europe2" = "Europe2";
+"NationalFlag.Level.Europe3" = "Europe3";
+"NationalFlag.Level.Europe4" = "Europe4";
+"NationalFlag.Level.Africa" = "Africa";
+
 // MARK: - Number
 "Number.Drill.Title" = "Number";
 "Number.Level.Finger" = "Finger";
