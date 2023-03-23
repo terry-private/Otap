@@ -69,6 +69,22 @@ public enum LevelSelectorID: String {
     case vehicleAdvanced4
     case vehicleChallenge
     
+    case nationalFlagAsia1
+    case nationalFlagAsia2AndOceania
+    case nationalFlagAmericas1
+    case nationalFlagAmericas2
+    case nationalFlagEurope1
+    case nationalFlagEurope2
+    case nationalFlagEurope3
+    case nationalFlagEurope4
+    case nationalFlagAfrica
+    case nationalFlagAdvanced1
+    case nationalFlagAdvanced2
+    case nationalFlagAdvanced3
+    case nationalFlagAdvanced4
+    case nationalFlagAdvanced5
+    case nationalFlagChallenge
+    
     case numberDice123
     case numberDice456
     case numberDiceAll

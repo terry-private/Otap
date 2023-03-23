@@ -153,6 +153,63 @@
 "Vehicle.Option.Call.bike" = "バイク";
 "Vehicle.Option.Call.bicycle" = "自転車";
 
+// MARK: - NationalFrag
+"NationalFlag.Drill.Title" = "国旗";
+//* アジア オセアニア */
+"NationalFlag.Option.Call.japan" = "日本";
+"NationalFlag.Option.Call.korea" = "韓国";
+"NationalFlag.Option.Call.china" = "中国";
+"NationalFlag.Option.Call.thailand" = "タイ";
+"NationalFlag.Option.Call.india" = "インド";
+"NationalFlag.Option.Call.indonesia" = "インドネシア";
+"NationalFlag.Option.Call.singapore" = "シンガポール";
+"NationalFlag.Option.Call.australia" = "オーストラリア";
+
+/* アメリカ大陸 */
+"NationalFlag.Option.Call.argentina" = "アルゼンチン";
+"NationalFlag.Option.Call.brazil" = "ブラジル";
+"NationalFlag.Option.Call.uruguay" = "ウルグアイ";
+"NationalFlag.Option.Call.unitedstate" = "アメリカ";
+"NationalFlag.Option.Call.canada" = "カナダ";
+"NationalFlag.Option.Call.mexico" = "メキシコ";
+"NationalFlag.Option.Call.peru" = "ペルー";
+"NationalFlag.Option.Call.paraguay" = "パラグアイ";
+
+/* ヨーロッパ */
+"NationalFlag.Option.Call.unitedkingdom" = "イギリス";
+"NationalFlag.Option.Call.germany" = "ドイツ";
+"NationalFlag.Option.Call.france" = "フランス";
+"NationalFlag.Option.Call.italy" = "イタリア";
+"NationalFlag.Option.Call.spain" = "スペイン";
+"NationalFlag.Option.Call.portugal" = "ポルトガル";
+"NationalFlag.Option.Call.russia" = "ロシア";
+"NationalFlag.Option.Call.netherlands" = "オランダ";
+"NationalFlag.Option.Call.switzerland" = "スイス";
+"NationalFlag.Option.Call.sweeden" = "スウェーデン";
+"NationalFlag.Option.Call.norway" = "ノルウェー";
+"NationalFlag.Option.Call.poland" = "ポーランド";
+"NationalFlag.Option.Call.belgium" = "ベルギー";
+"NationalFlag.Option.Call.greece" = "ギリシャ";
+"NationalFlag.Option.Call.hungary" = "ハンガリー";
+"NationalFlag.Option.Call.ukraine" = "ウクライナ";
+
+/* アフリカ */
+"NationalFlag.Option.Call.cameroun" = "カメルーン";
+"NationalFlag.Option.Call.kenya" = "ケニア";
+"NationalFlag.Option.Call.nigeria" = "ナイジェリア";
+"NationalFlag.Option.Call.southafrica" = "南アフリカ共和国";
+
+// NationalFlag Level
+"NationalFlag.Level.Asia1" = "アジア 1";
+"NationalFlag.Level.Asia2AndOceania" = "アジア 2 と オセアニア";
+"NationalFlag.Level.Americas1" = "アメリカ大陸 1";
+"NationalFlag.Level.Americas2" = "アメリカ大陸 2";
+"NationalFlag.Level.Europe1" = "ヨーロッパ 1";
+"NationalFlag.Level.Europe2" = "ヨーロッパ 2";
+"NationalFlag.Level.Europe3" = "ヨーロッパ 3";
+"NationalFlag.Level.Europe4" = "ヨーロッパ 4";
+"NationalFlag.Level.Africa" = "アフリカ";
+
 // MARK: - Number
 "Number.Drill.Title" = "数字";
 "Number.Level.Finger" = "指";
