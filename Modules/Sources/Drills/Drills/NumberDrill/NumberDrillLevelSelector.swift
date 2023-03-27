@@ -73,7 +73,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberFinger,
                 title: "1~6",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.dice1, .dice2, .dice3, .dice4, .dice5, .dice6].prefix(4).shuffled()) } },
+                generate: { (0..<10).map { _ in .init(options: [.dice1, .dice2, .dice3, .dice4, .dice5, .dice6].shuffled().prefix(4).toArray()) } },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
