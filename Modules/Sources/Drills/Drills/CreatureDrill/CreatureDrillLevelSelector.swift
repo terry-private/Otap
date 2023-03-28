@@ -36,7 +36,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureAnimal2,
                 title: L10n.Creature.Level.animal1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.dog🐕, .cat🐈, .pig🐖, .rabbit🐇].shuffled()) } },
+                generate: { coveredDrills(from: [.dog🐕, .cat🐈, .pig🐖, .rabbit🐇], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -55,7 +55,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureAnimal3,
                 title: L10n.Creature.Level.animal2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.elephant🐘, .giraffe🦒, .chipmunk🐿️, .cow🐄].shuffled()) } },
+                generate: { coveredDrills(from: [.elephant🐘, .giraffe🦒, .chipmunk🐿️, .cow🐄], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -74,7 +74,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureAnimal4,
                 title: L10n.Creature.Level.animal3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.horse🐎, .monkey🐒, .mouse🐁, .tiger🐅].shuffled()) } },
+                generate: { coveredDrills(from: [.horse🐎, .monkey🐒, .mouse🐁, .tiger🐅], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -93,7 +93,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureBird,
                 title: L10n.Creature.Level.animal4,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.zebra🦓, .camel🐪, .kangaroo🦘, .rhinoceros🦏].shuffled()) } },
+                generate: { coveredDrills(from: [.zebra🦓, .camel🐪, .kangaroo🦘, .rhinoceros🦏], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -112,7 +112,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureReptile,
                 title: L10n.Creature.Level.bird,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.rooster🐓, .owl🦉, .flamingo🦩, .swan🦢, .duck🦆, .bat🦇].shuffled()) } },
+                generate: { coveredDrills(from: [.rooster🐓, .owl🦉, .flamingo🦩, .swan🦢, .duck🦆, .bat🦇], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -131,7 +131,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureMarineLife,
                 title: L10n.Creature.Level.reptile,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.turtle🐢, .crocodile🐊, .lizard🦎, .snake🐍].shuffled()) } },
+                generate: { coveredDrills(from: [.turtle🐢, .crocodile🐊, .lizard🦎, .snake🐍], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -150,7 +150,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureInsect,
                 title: L10n.Creature.Level.marineLife,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.whale🐋, .dolphin🐬, .shark🦈, .octopus🐙].shuffled()) } },
+                generate: { coveredDrills(from: [.whale🐋, .dolphin🐬, .shark🦈, .octopus🐙], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -169,7 +169,7 @@ public enum CreatureDrillLevelSelector: DrillLevelSelector {
                 nextID: .creatureAdvanced1,
                 title: L10n.Creature.Level.insect,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.bug🐛, .butterfly🦋, .ant🐜, .honeybee🐝, .ladyBeetle🐞, .spider🕷].shuffled()) } },
+                generate: { coveredDrills(from: [.bug🐛, .butterfly🦋, .ant🐜, .honeybee🐝, .ladyBeetle🐞, .spider🕷], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
