@@ -35,7 +35,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberDice456,
                 title: "1~3",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.dice1, .dice2, .dice3].shuffled()) } },
+                generate: { coveredDrills(from: [.dice1, .dice2, .dice3], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -54,7 +54,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberDiceAll,
                 title: "4~6",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.dice4, .dice5, .dice6].shuffled()) } },
+                generate: { coveredDrills(from: [.dice4, .dice5, .dice6], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -73,7 +73,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberFinger,
                 title: "1~6",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.dice1, .dice2, .dice3, .dice4, .dice5, .dice6].shuffled().prefix(4).toArray()) } },
+                generate: { coveredDrills(from: [.dice1, .dice2, .dice3, .dice4, .dice5, .dice6], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -93,7 +93,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberNumeral0123,
                 title: L10n.Number.Level.finger,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.finger1, .finger2, .finger3, .finger4, .finger5].shuffled().prefix(4).toArray()) } },
+                generate: { coveredDrills(from: [.finger1, .finger2, .finger3, .finger4, .finger5], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -112,7 +112,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberNumeral4567,
                 title: "\(L10n.Number.Drill.title) 0~3",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.numeral0, .numeral1, .numeral2, .numeral3].shuffled()) } },
+                generate: { coveredDrills(from: [.numeral0, .numeral1, .numeral2, .numeral3], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -131,7 +131,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberNumeral8910,
                 title: "\(L10n.Number.Drill.title) 4~7",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.numeral4, .numeral5, .numeral6, .numeral7].shuffled()) } },
+                generate: { coveredDrills(from: [.numeral4, .numeral5, .numeral6, .numeral7], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -150,7 +150,7 @@ public enum NumberDrillLevelSelector: DrillLevelSelector {
                 nextID: .numberNumeralAll,
                 title: "\(L10n.Number.Drill.title) 8~10",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.numeral8, .numeral9, .numeral10].shuffled()) } },
+                generate: { coveredDrills(from: [.numeral8, .numeral9, .numeral10], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in

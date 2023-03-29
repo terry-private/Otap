@@ -31,7 +31,7 @@ public enum ColorDrillLevelSelector: DrillLevelSelector {
                 nextID: .colorBasic2,
                 title: L10n.Common.Level.basic1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in ColorDrill(options: [.red, .blue, .yellow, .green].shuffled()) } },
+                generate: { coveredDrills(from: [.red, .blue, .yellow, .green], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -50,7 +50,7 @@ public enum ColorDrillLevelSelector: DrillLevelSelector {
                 nextID: .colorBasic3,
                 title: L10n.Common.Level.basic2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in ColorDrill(options: [.white, .black, .lightBlue, .pink].shuffled()) } },
+                generate: { coveredDrills(from: [.white, .black, .lightBlue, .pink], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -69,7 +69,7 @@ public enum ColorDrillLevelSelector: DrillLevelSelector {
                 nextID: .colorAdvanced1,
                 title: L10n.Common.Level.basic3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in ColorDrill(options: [.orange, .purple, .gray, .brown].shuffled()) } },
+                generate: { coveredDrills(from: [.orange, .purple, .gray, .brown], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in

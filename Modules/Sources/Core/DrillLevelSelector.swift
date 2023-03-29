@@ -18,6 +18,17 @@ public extension DrillLevelSelector {
     var id: DrillGenerator<Drill>.ID {
         generator.id
     }
+    
+    func coveredDrills(from options: [Drill.Option], count: Int) -> [Drill] {
+        (0..<count)
+            .map { index in
+                .init(
+                    options: options.shuffled(),
+                    answer: options[index < options.count ? index : (0..<options.count).randomElement() ?? 0]
+                )
+            }
+            .shuffled()
+    }
 }
 
 #if DEBUG

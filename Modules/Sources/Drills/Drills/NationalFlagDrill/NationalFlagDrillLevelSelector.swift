@@ -37,7 +37,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagAsia2AndOceania,
                 title: L10n.NationalFlag.Level.asia1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.japan🇯🇵, .korea🇰🇷, .china🇨🇳, .thailand🇹🇭].shuffled()) } },
+                generate: { coveredDrills(from: [.japan🇯🇵, .korea🇰🇷, .china🇨🇳, .thailand🇹🇭], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -56,7 +56,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagAmericas1,
                 title: L10n.NationalFlag.Level.asia2AndOceania,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.india🇮🇳, .indonesia🇮🇩, .singapore🇸🇬, .australia🇦🇺].shuffled()) } },
+                generate: { coveredDrills(from: [.india🇮🇳, .indonesia🇮🇩, .singapore🇸🇬, .australia🇦🇺], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -75,7 +75,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagAmericas2,
                 title: L10n.NationalFlag.Level.americas1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.unitedstate🇺🇸, .canada🇨🇦, .mexico🇲🇽, .brazil🇧🇷].shuffled()) } },
+                generate: { coveredDrills(from: [.unitedstate🇺🇸, .canada🇨🇦, .mexico🇲🇽, .brazil🇧🇷], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -94,7 +94,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagEurope1,
                 title: L10n.NationalFlag.Level.americas2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.argentina🇦🇷, .uruguay🇺🇾, .peru🇵🇪, .paraguay🇵🇾].shuffled()) } },
+                generate: { coveredDrills(from: [.argentina🇦🇷, .uruguay🇺🇾, .peru🇵🇪, .paraguay🇵🇾], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -113,7 +113,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagEurope2,
                 title: L10n.NationalFlag.Level.europe1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.unitedkingdom🇬🇧, .germany🇩🇪, .france🇫🇷, .italy🇮🇹].shuffled()) } },
+                generate: { coveredDrills(from: [.unitedkingdom🇬🇧, .germany🇩🇪, .france🇫🇷, .italy🇮🇹], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -132,7 +132,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagEurope3,
                 title: L10n.NationalFlag.Level.europe2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.spain🇪🇸, .portugal🇵🇹, .russia🇷🇺, .netherlands🇳🇱].shuffled()) } },
+                generate: { coveredDrills(from: [.spain🇪🇸, .portugal🇵🇹, .russia🇷🇺, .netherlands🇳🇱], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -151,7 +151,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagEurope4,
                 title: L10n.NationalFlag.Level.europe3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.switzerland🇨🇭, .sweeden🇸🇪, .norway🇳🇴, .poland🇵🇱].shuffled()) } },
+                generate: { coveredDrills(from: [.switzerland🇨🇭, .sweeden🇸🇪, .norway🇳🇴, .poland🇵🇱], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -170,7 +170,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagAfrica,
                 title: L10n.NationalFlag.Level.europe4,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.belgium🇧🇪, .greece🇬🇷, .hungary🇭🇺, .ukraine🇺🇦].shuffled()) } },
+                generate: { coveredDrills(from: [.belgium🇧🇪, .greece🇬🇷, .hungary🇭🇺, .ukraine🇺🇦], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -189,7 +189,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
                 nextID: .nationalFlagAdvanced1,
                 title: L10n.NationalFlag.Level.africa,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.cameroun🇨🇲, .kenya🇰🇪, .nigeria🇳🇬, .southafrica🇿🇦].shuffled()) } },
+                generate: { coveredDrills(from: [.cameroun🇨🇲, .kenya🇰🇪, .nigeria🇳🇬, .southafrica🇿🇦], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
