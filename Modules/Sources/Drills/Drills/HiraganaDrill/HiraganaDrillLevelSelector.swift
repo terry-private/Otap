@@ -48,7 +48,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaか行,
                 title: "あ\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.あ行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.あ行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -67,7 +67,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview1,
                 title: "か\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.か行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.か行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -106,7 +106,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview2,
                 title: "さ\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.さ行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.さ行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -144,7 +144,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview3,
                 title: "た\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.た行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.た行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -182,7 +182,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview4,
                 title: "な\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.な行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.な行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -220,7 +220,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview5,
                 title: "は\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.は行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.は行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -258,7 +258,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview6,
                 title: "ま\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.ま行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.ま行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -296,7 +296,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview7,
                 title: "や\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.や行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.や行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -334,7 +334,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview8,
                 title: "ら\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.ら行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.ら行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -372,7 +372,7 @@ public enum HiraganaDrillLevelSelector: DrillLevelSelector {
                 nextID: .hiraganaReview9,
                 title: "わ\(L10n.Hiragana.row)",
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: HiraganaDrillOption.わ行.shuffled()) } },
+                generate: { coveredDrills(from: HiraganaDrillOption.わ行, count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
