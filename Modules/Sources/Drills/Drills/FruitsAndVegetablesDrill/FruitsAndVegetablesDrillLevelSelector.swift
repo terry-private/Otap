@@ -34,7 +34,7 @@ public enum FruitsAndVegetablesDrillLevelSelector: DrillLevelSelector {
                 nextID: .fruitsAndVegetablesVegetable2,
                 title: L10n.FruitsAndVegetables.Level.vegetable1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.tomato🍅, .eggplant🍆, .potato🥔, .carrot🥕].shuffled()) } },
+                generate: { coveredDrills(from: [.tomato🍅, .eggplant🍆, .potato🥔, .carrot🥕], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -53,7 +53,7 @@ public enum FruitsAndVegetablesDrillLevelSelector: DrillLevelSelector {
                 nextID: .fruitsAndVegetablesVegetable3,
                 title: L10n.FruitsAndVegetables.Level.vegetable2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.onion🧅, .cucumber🥒, .corn🌽, .broccoli🥦].shuffled()) } },
+                generate: { coveredDrills(from: [.onion🧅, .cucumber🥒, .corn🌽, .broccoli🥦], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -72,7 +72,7 @@ public enum FruitsAndVegetablesDrillLevelSelector: DrillLevelSelector {
                 nextID: .fruitsAndVegetablesFruit1,
                 title: L10n.FruitsAndVegetables.Level.vegetable3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.sweetPotato🍠, .greenBellPepper🫑, .chestnuts🌰, .mushrooms🍄].shuffled()) } },
+                generate: { coveredDrills(from: [.sweetPotato🍠, .greenBellPepper🫑, .chestnuts🌰, .mushrooms🍄], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -91,7 +91,7 @@ public enum FruitsAndVegetablesDrillLevelSelector: DrillLevelSelector {
                 nextID: .fruitsAndVegetablesFruit2,
                 title: L10n.FruitsAndVegetables.Level.fruit1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.orange🍊, .apple🍎, .grape🍇, .kiwi🥝].shuffled()) } },
+                generate: { coveredDrills(from: [.orange🍊, .apple🍎, .grape🍇, .kiwi🥝], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -110,7 +110,7 @@ public enum FruitsAndVegetablesDrillLevelSelector: DrillLevelSelector {
                 nextID: .fruitsAndVegetablesFruit3,
                 title: L10n.FruitsAndVegetables.Level.fruit2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.watermelon🍉, .lemon🍋, .peach🍑, .strawberry🍓].shuffled()) } },
+                generate: { coveredDrills(from: [.watermelon🍉, .lemon🍋, .peach🍑, .strawberry🍓], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -129,7 +129,7 @@ public enum FruitsAndVegetablesDrillLevelSelector: DrillLevelSelector {
                 nextID: .fruitsAndVegetablesAdvanced1,
                 title: L10n.FruitsAndVegetables.Level.fruit3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.banana🍌, .pineapple🍍, .melon🍈, .blueberry🫐].shuffled()) } },
+                generate: { coveredDrills(from: [.banana🍌, .pineapple🍍, .melon🍈, .blueberry🫐], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
