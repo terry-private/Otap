@@ -29,7 +29,7 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
                 nextID: .shapeBasic2,
                 title: L10n.Common.Level.basic1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.circle, .cross].shuffled()) } },
+                generate: { coveredDrills(from: [.circle, .cross], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -48,7 +48,7 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
                 nextID: .shapeBasic3,
                 title: L10n.Common.Level.basic2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.circle, .triangle, .square].shuffled()) } },
+                generate: { coveredDrills(from: [.circle, .triangle, .square], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -67,7 +67,7 @@ public enum ShapeDrillLevelSelector: DrillLevelSelector {
                 nextID: .shapeAdvanced1,
                 title: L10n.Common.Level.basic3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.heart, .star].shuffled()) } },
+                generate: { coveredDrills(from: [.heart, .star], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
