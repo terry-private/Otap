@@ -30,7 +30,7 @@ public enum FunnyAnimalDrillLevelSelector: DrillLevelSelector {
                 nextID: .funnyAnimalBasic2,
                 title: L10n.Common.Level.basic1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.dogFace🐶, .catFace🐱, .pigFace🐷, .rabbitFace🐰].shuffled()) } },
+                generate: { coveredDrills(from: [.dogFace🐶, .catFace🐱, .pigFace🐷, .rabbitFace🐰], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -49,7 +49,7 @@ public enum FunnyAnimalDrillLevelSelector: DrillLevelSelector {
                 nextID: .funnyAnimalBasic3,
                 title: L10n.Common.Level.basic2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.lionFace🦁, .cowFace🐮, .horseFace🐴, .mouseFace🐭].shuffled()) } },
+                generate: { coveredDrills(from: [.lionFace🦁, .cowFace🐮, .horseFace🐴, .mouseFace🐭], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
@@ -68,7 +68,7 @@ public enum FunnyAnimalDrillLevelSelector: DrillLevelSelector {
                 nextID: .funnyAnimalAdvanced1,
                 title: L10n.Common.Level.basic3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
-                generate: { (0..<10).map { _ in .init(options: [.monkeyFace🐵, .pandaFace🐼, .tigerFace🐯, .bearFace🐻].shuffled()) } },
+                generate: { coveredDrills(from: [.monkeyFace🐵, .pandaFace🐼, .tigerFace🐯, .bearFace🐻], count: 10) },
                 timeLimit: 60,
                 penalty: .shuffle,
                 star1: .init(description: L10n.Common.Level.clear) { time, missCount in
