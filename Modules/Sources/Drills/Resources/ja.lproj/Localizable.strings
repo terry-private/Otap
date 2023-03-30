@@ -8,7 +8,7 @@
 "Common.Level.advanced4" = "応用 4";
 "Common.Level.advanced5" = "応用 5";
 "Common.Level.challenge" = "チャレンジ";
-"Common.Level.requirements_format" = "%2d秒以内に%1d問正解";
+"Common.Level.requirements_format" = "%2$d秒以内に%1$d問正解";
 "Common.Level.clear" = "クリア";
 "Common.Level.noMistakes" = "ノーミス";
 "Common.Level.limit_format" = "%d秒以内";

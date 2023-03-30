@@ -8,7 +8,7 @@
 "Common.Level.advanced4" = "Advanced 4";
 "Common.Level.advanced5" = "Advanced 5";
 "Common.Level.challenge" = "Challenge";
-"Common.Level.requirements_format" = "%1d correct in %2ds";
+"Common.Level.requirements_format" = "%1$d correct in %2$ds";
 "Common.Level.clear" = "Clear";
 "Common.Level.noMistakes" = "No Mistakes";
 "Common.Level.limit_format" = "Within %ds";
