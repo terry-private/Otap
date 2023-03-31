@@ -13,8 +13,8 @@ public struct SelectLevelView<Factory: SelectLevelViewFactoryProtocol, ViewModel
     @StateObject private var viewModel: ViewModel
     @State var columnsCount: Int = 0
     
-    public init(viewModel: ViewModel) {
-        self._viewModel = .init(wrappedValue: viewModel)
+    public init(viewModel: @autoclosure @escaping () -> ViewModel) {
+        _viewModel = .init(wrappedValue: viewModel())
     }
     
     public var body: some View {
