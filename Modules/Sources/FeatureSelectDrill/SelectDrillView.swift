@@ -13,9 +13,8 @@ public struct SelectDrillView<Factory: SelectDrillViewFactoryProtocol, ViewModel
     @StateObject var viewModel: ViewModel
     @State var columnsCount: Int = 0
     
-    @MainActor
-    public init(viewModel: ViewModel) {
-        _viewModel = .init(wrappedValue: viewModel)
+    public init(viewModel: @autoclosure @escaping () -> ViewModel) {
+        _viewModel = .init(wrappedValue: viewModel())
     }
     
     public var body: some View {
