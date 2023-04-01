@@ -54,6 +54,15 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
                 }
                 .pickerStyle(.menu)
             }
+            
+            Section(L10n.SettingView.DrillViewConfig.sectionTitle) {
+                NavigationLink {
+                    PanelPositioningView()
+                } label: {
+                    Text(L10n.SettingView.DrillViewConfig.horizontalPaddingAdjustment)
+                }
+            }
+            
             Section {
                 NavigationLink {
                     List {

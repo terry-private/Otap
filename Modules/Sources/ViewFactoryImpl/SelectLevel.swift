@@ -18,7 +18,9 @@ public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
     
     @MainActor
     public static func drillView<D: CoreDrill>(generator: DrillGenerator<D>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
-        DrillView<DrillViewModelImpl<D, SoundEffectInteractor, DrillInteractor<D, RepositoryImpl>>>(
+        typealias UseCase = DrillInteractor<D, RepositoryImpl>
+        typealias ViewModel = DrillViewModelImpl<D, SoundEffectInteractor, UseCase>
+        return DrillView<ViewModel, RepositoryImpl>(
             viewModel: .init(
                 useCase: .init(generator: generator, lastRecord: lastRecord),
                 dismiss: dismiss)
