@@ -17,7 +17,7 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
     }
     public var body: some View {
         Form {
-            Section {
+            Section(L10n.SettingView.SoundConfig.sectionTitle) {
                 HStack {
                     Text(L10n.SettingView.SoundEffectCell.title)
                     Spacer()
@@ -63,7 +63,7 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
                 }
             }
             
-            Section {
+            Section(L10n.SettingView.AppInfo.sectionTitle) {
                 NavigationLink {
                     List {
                         ForEach(LicensesPlugin.licenses) { license in
