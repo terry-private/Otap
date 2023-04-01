@@ -7,6 +7,9 @@
 "setting_view.utterance_language.english" = "English";
 "setting_view.utterance_language.japanese" = "Japanese";
 
+"setting_view.drill_view_config.section_title" = "Drill View Config";
+"setting_view.drill_view_config.horizontal_padding_adjustment" = "Horizontal Padding Adjustment";
+
 "setting_view.licenses_cell.title" = "Licenses";
 "setting_view.version_cell.title" = "Version";
 

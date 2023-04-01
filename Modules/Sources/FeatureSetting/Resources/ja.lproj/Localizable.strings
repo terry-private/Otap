@@ -7,6 +7,9 @@
 "setting_view.utterance_language.english" = "英語";
 "setting_view.utterance_language.japanese" = "日本語";
 
+"setting_view.drill_view_config.section_title" = "ドリル画面設定";
+"setting_view.drill_view_config.horizontal_padding_adjustment" = "左右位置調整";
+
 "setting_view.licenses_cell.title" = "ライセンス";
 "setting_view.version_cell.title" = "バージョン";
 
