@@ -16,8 +16,8 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
     @State var count: Int = 0
     @StateObject var viewModel: ViewModel
     @Namespace var startButton
-    public init(viewModel: ViewModel) {
-        _viewModel = .init(wrappedValue: viewModel)
+    public init(viewModel: @autoclosure @escaping () -> ViewModel) {
+        _viewModel = .init(wrappedValue: viewModel())
     }
     
     public var body: some View {
