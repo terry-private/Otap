@@ -9,13 +9,14 @@ import SwiftUI
 import Core
 import Components
 import Extensions
+import Repository
 
 import ConfettiSwiftUI
 
-public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
+public struct DrillView<ViewModel: DrillViewModelProtocol, Config: ConfigRepository>: View {
     @State var count: Int = 0
     @StateObject var viewModel: ViewModel
-    @Namespace var startButton
+    @Namespace var startButton // TODO: 不要
     public init(viewModel: ViewModel) {
         _viewModel = .init(wrappedValue: viewModel)
     }
@@ -207,6 +208,8 @@ public struct DrillView<ViewModel: DrillViewModelProtocol>: View {
                         }
                         .disabled(viewModel.drillState != .playing)
                     }
+                    .padding(.leading, Config.drillPanelLeadingPadding)
+                    .padding(.trailing, Config.drillPanelTrailingPadding)
                     
                     // ----------------------------------------------------
                     // MARK: Speaker Button
@@ -277,8 +280,8 @@ struct DrillView_Previews: PreviewProvider {
     typealias UseCase = DrillUseCaseDummy
     typealias ViewModel = DrillViewModelImpl<Drill, SoundEffect, UseCase>
     static var previews: some View {
-        DrillView(
-            viewModel: ViewModel(useCase: .init(), dismiss: {})
+        DrillView<ViewModel, RepositoryImpl>(
+            viewModel: .init(useCase: .init(), dismiss: {})
         )
     }
 }

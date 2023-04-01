@@ -36,8 +36,8 @@ struct PanelPositioningView: View {
                     Color.accentColor
                 }
             }
-            .padding(.leading, leadingPadding * 60)
-            .padding(.trailing, trailingPadding * 60)
+            .padding(.leading, leadingPadding)
+            .padding(.trailing, trailingPadding)
             
             VStack(alignment: .leading) {
                 Section("パネル数") {
@@ -54,11 +54,11 @@ struct PanelPositioningView: View {
                         Slider(
                             value: .init(
                                 get: {
-                                    repository.drillPanelLeadingPadding
+                                    repository.drillPanelLeadingPadding / 60
                                 },
                                 set: {
-                                    leadingPadding = $0
-                                    repository.drillPanelLeadingPadding = $0
+                                    leadingPadding = $0 * 60
+                                    repository.drillPanelLeadingPadding = $0 * 60
                                 }
                             )
                         )
@@ -66,11 +66,11 @@ struct PanelPositioningView: View {
                         Slider(
                             value: .init(
                                 get: {
-                                    repository.drillPanelTrailingPadding
+                                    repository.drillPanelTrailingPadding / 60
                                 },
                                 set: {
-                                    trailingPadding = $0
-                                    repository.drillPanelTrailingPadding = $0
+                                    trailingPadding = $0 * 60
+                                    repository.drillPanelTrailingPadding = $0 * 60
                                 }
                             )
                         )
