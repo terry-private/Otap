@@ -34,62 +34,77 @@ struct PanelPositioningView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            SquareGrid(panels) { _ in
-                Button {
-                } label: {
-                    Color.accentColor
-                }
-            }
-            .padding(.leading, leadingPadding)
-            .padding(.trailing, trailingPadding)
+            panelView
+                .padding(.leading, leadingPadding)
+                .padding(.trailing, trailingPadding)
             
             VStack(alignment: .leading) {
-                Section(L10n.PanelPositioningView.PanelCount.title) {
-                    Picker(L10n.PanelPositioningView.PanelCount.title, selection: $panelCount) {
-                        ForEach(panelCounts, id: \.self) { count in
-                            Text("\(count)")
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                }
+                panelCountSection
                 
                 Spacer()
                 
-                Section(L10n.PanelPositioningView.HorizontalPaddingAdjustment.title) {
-                    HStack(spacing: 20) {
-                        Slider(
-                            value: .init(
-                                get: {
-                                    repository.drillPanelLeadingPadding / 60
-                                },
-                                set: {
-                                    leadingPadding = $0 * 60
-                                    repository.drillPanelLeadingPadding = $0 * 60
-                                }
-                            )
-                        )
-                        
-                        Slider(
-                            value: .init(
-                                get: {
-                                    repository.drillPanelTrailingPadding / 60
-                                },
-                                set: {
-                                    trailingPadding = $0 * 60
-                                    repository.drillPanelTrailingPadding = $0 * 60
-                                }
-                            )
-                        )
-                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    }
-                }
+                horizontalPaddingAdjustmentSection
                 
-                Spacer()
             }
             .padding(20)
             .frame(height: bottomHeight)
+            
+            Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private extension PanelPositioningView {
+    var panelView: some View {
+        SquareGrid(panels) { _ in
+            Button {
+            } label: {
+                Color.accentColor
+            }
+        }
+    }
+    
+    var panelCountSection: some View {
+        Section(L10n.PanelPositioningView.PanelCount.title) {
+            Picker(L10n.PanelPositioningView.PanelCount.title, selection: $panelCount) {
+                ForEach(panelCounts, id: \.self) { count in
+                    Text("\(count)")
+                }
+            }
+            .pickerStyle(.segmented)
+        }
+    }
+    
+    var horizontalPaddingAdjustmentSection: some View {
+        Section(L10n.PanelPositioningView.HorizontalPaddingAdjustment.title) {
+            HStack(spacing: 20) {
+                Slider(
+                    value: .init(
+                        get: {
+                            repository.drillPanelLeadingPadding / 60
+                        },
+                        set: {
+                            leadingPadding = $0 * 60
+                            repository.drillPanelLeadingPadding = $0 * 60
+                        }
+                    )
+                )
+                
+                Slider(
+                    value: .init(
+                        get: {
+                            repository.drillPanelTrailingPadding / 60
+                        },
+                        set: {
+                            trailingPadding = $0 * 60
+                            repository.drillPanelTrailingPadding = $0 * 60
+                        }
+                    )
+                )
+                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+            }
+        }
     }
 }
 
