@@ -10,6 +10,10 @@
 "setting_view.licenses_cell.title" = "Licenses";
 "setting_view.version_cell.title" = "Version";
 
+// MARK: - Panel Positioning View
+"panel_positioning_view.panel_count.title" = "Panel Count";
+"panel_positioning_view.horizontal_padding_adjustment.title" = "Horizontal Padding Adjustment";
+
 // MARK: - Licenses View
 "licenses_view.navigation_bar_title" = "Licenses";
 

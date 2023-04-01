@@ -10,5 +10,9 @@
 "setting_view.licenses_cell.title" = "ライセンス";
 "setting_view.version_cell.title" = "バージョン";
 
+// MARK: - Panel Positioning View
+"panel_positioning_view.panel_count.title" = "パネル数";
+"panel_positioning_view.horizontal_padding_adjustment.title" = "左右位置調整";
+
 // MARK: - Licenses View
 "licenses_view.navigation_bar_title" = "ライセンス";

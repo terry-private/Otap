@@ -14,22 +14,26 @@ struct DummyPanel: Identifiable {
 }
 
 struct PanelPositioningView: View {
+    typealias repository = RepositoryImpl
+    // Drill画面上部.height:140 + padding:30 + BottomButton.height: 48
     let bottomHeight: CGFloat = 140 + 30 + 48
-    @State var leadingPadding: CGFloat
-    @State var trailingPadding: CGFloat
-    @State var panelCount: Int = 16
     let panelCounts: [Int] = [2, 4, 6, 9, 12, 16]
     var panels: [DummyPanel] {
         (0..<panelCount).map { _ in .init() }
     }
-    typealias repository = RepositoryImpl
+    
+    @State var leadingPadding: CGFloat
+    @State var trailingPadding: CGFloat
+    @State var panelCount: Int = 16
+    
     init() {
         leadingPadding = repository.drillPanelLeadingPadding
         trailingPadding = repository.drillPanelTrailingPadding
         print(leadingPadding, trailingPadding)
     }
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             SquareGrid(panels) { _ in
                 Button {
                 } label: {
@@ -40,16 +44,18 @@ struct PanelPositioningView: View {
             .padding(.trailing, trailingPadding)
             
             VStack(alignment: .leading) {
-                Section("パネル数") {
-                    Picker("パネル数", selection: $panelCount) {
+                Section(L10n.PanelPositioningView.PanelCount.title) {
+                    Picker(L10n.PanelPositioningView.PanelCount.title, selection: $panelCount) {
                         ForEach(panelCounts, id: \.self) { count in
                             Text("\(count)")
                         }
                     }
                     .pickerStyle(.segmented)
                 }
+                
                 Spacer()
-                Section("左右位置調整") {
+                
+                Section(L10n.PanelPositioningView.HorizontalPaddingAdjustment.title) {
                     HStack(spacing: 20) {
                         Slider(
                             value: .init(
@@ -78,10 +84,12 @@ struct PanelPositioningView: View {
                     }
                 }
                 
+                Spacer()
             }
             .padding(20)
             .frame(height: bottomHeight)
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
