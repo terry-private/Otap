@@ -17,67 +17,79 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
     }
     public var body: some View {
         Form {
-            Section(L10n.SettingView.SoundConfig.sectionTitle) {
-                HStack {
-                    Text(L10n.SettingView.SoundEffectCell.title)
-                    Spacer()
-                    Slider(value: .init(
-                        get: { SoundEffect.effectVolume },
-                        set: { SoundEffect.effectVolume = $0 }
-                    ))
-                    .frame(width: 150)
-                }
-                HStack {
-                    Text(L10n.SettingView.UtteranceVoiceCell.title)
-                    Spacer()
-                    Slider(value: .init(
-                        get: { SoundEffect.utteranceVolume },
-                        set: { SoundEffect.utteranceVolume = $0 }
-                    ))
-                        .frame(width: 150)
-                }
-                Picker(
-                    L10n.SettingView.UtteranceLanguage.title,
-                    selection: .init(
-                        get: {
-                            language
-                        },
-                        set: {
-                            SoundEffect.utteranceLanguage = $0
-                            language = $0
-                        }
-                    )
-                ) {
-                    ForEach(UtteranceLanguage.allCases, id: \.self) {
-                        Text($0.title)
-                    }
-                }
-                .pickerStyle(.menu)
-            }
-            
-            Section(L10n.SettingView.DrillViewConfig.sectionTitle) {
-                NavigationLink {
-                    PanelPositioningView()
-                } label: {
-                    Text(L10n.SettingView.DrillViewConfig.horizontalPaddingAdjustment)
-                }
-            }
-            
-            Section(L10n.SettingView.AppInfo.sectionTitle) {
-                NavigationLink {
-                    LicensesView()
-                } label: {
-                    Text(L10n.SettingView.LicensesCell.title)
-                }
-                
-                HStack {
-                    Text(L10n.SettingView.VersionCell.title)
-                    Spacer()
-                    Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
-                }
-            }
+            soundConfigSection
+            drillViewConfigSection
+            appInfoSection
         }
         .navigationBarTitle(L10n.SettingView.navigationBarTitle)
+    }
+}
+
+private extension SettingView {
+    var soundConfigSection: some View {
+        Section(L10n.SettingView.SoundConfig.sectionTitle) {
+            HStack {
+                Text(L10n.SettingView.SoundEffectCell.title)
+                Spacer()
+                Slider(value: .init(
+                    get: { SoundEffect.effectVolume },
+                    set: { SoundEffect.effectVolume = $0 }
+                ))
+                .frame(width: 150)
+            }
+            HStack {
+                Text(L10n.SettingView.UtteranceVoiceCell.title)
+                Spacer()
+                Slider(value: .init(
+                    get: { SoundEffect.utteranceVolume },
+                    set: { SoundEffect.utteranceVolume = $0 }
+                ))
+                .frame(width: 150)
+            }
+            Picker(
+                L10n.SettingView.UtteranceLanguage.title,
+                selection: .init(
+                    get: {
+                        language
+                    },
+                    set: {
+                        SoundEffect.utteranceLanguage = $0
+                        language = $0
+                    }
+                )
+            ) {
+                ForEach(UtteranceLanguage.allCases, id: \.self) {
+                    Text($0.title)
+                }
+            }
+            .pickerStyle(.menu)
+        }
+    }
+    
+    var drillViewConfigSection: some View {
+        Section(L10n.SettingView.DrillViewConfig.sectionTitle) {
+            NavigationLink {
+                PanelPositioningView()
+            } label: {
+                Text(L10n.SettingView.DrillViewConfig.horizontalPaddingAdjustment)
+            }
+        }
+    }
+    
+    var appInfoSection: some View {
+        Section(L10n.SettingView.AppInfo.sectionTitle) {
+            NavigationLink {
+                LicensesView()
+            } label: {
+                Text(L10n.SettingView.LicensesCell.title)
+            }
+            
+            HStack {
+                Text(L10n.SettingView.VersionCell.title)
+                Spacer()
+                Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
+            }
+        }
     }
 }
 
