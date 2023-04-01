@@ -65,29 +65,7 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
             
             Section(L10n.SettingView.AppInfo.sectionTitle) {
                 NavigationLink {
-                    List {
-                        ForEach(LicensesPlugin.licenses) { license in
-                            NavigationLink {
-                                Group {
-                                    ScrollView {
-                                        if let licenseText = license.licenseText {
-                                            ScrollView {
-                                                Text(licenseText)
-                                                    .padding()
-                                            }
-                                        } else {
-                                            Text("No License Found")
-                                        }
-                                    }
-                                }
-                                .navigationTitle(license.name)
-                            } label: {
-                                Text(license.name)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                        }
-                    }
-                    .navigationBarTitle(L10n.LicensesView.navigationBarTitle)
+                    LicensesView()
                 } label: {
                     Text(L10n.SettingView.LicensesCell.title)
                 }
