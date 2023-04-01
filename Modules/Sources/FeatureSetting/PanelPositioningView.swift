@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Components
+import Repository
 
 struct DummyPanel: Identifiable {
     let id = UUID()
@@ -14,12 +15,18 @@ struct DummyPanel: Identifiable {
 
 struct PanelPositioningView: View {
     let bottomHeight: CGFloat = 140 + 30 + 48
-    @State var leadingPadding: CGFloat = 0
-    @State var trailingPadding: CGFloat = 0
+    @State var leadingPadding: CGFloat
+    @State var trailingPadding: CGFloat
     @State var panelCount: Int = 16
     let panelCounts: [Int] = [2, 4, 6, 9, 12, 16]
     var panels: [DummyPanel] {
         (0..<panelCount).map { _ in .init() }
+    }
+    typealias repository = RepositoryImpl
+    init() {
+        leadingPadding = repository.drillPanelLeadingPadding
+        trailingPadding = repository.drillPanelTrailingPadding
+        print(leadingPadding, trailingPadding)
     }
     var body: some View {
         VStack {
@@ -44,10 +51,30 @@ struct PanelPositioningView: View {
                 Spacer()
                 Section("左右位置調整") {
                     HStack(spacing: 20) {
-                        Slider(value: $leadingPadding)
+                        Slider(
+                            value: .init(
+                                get: {
+                                    repository.drillPanelLeadingPadding
+                                },
+                                set: {
+                                    leadingPadding = $0
+                                    repository.drillPanelLeadingPadding = $0
+                                }
+                            )
+                        )
                         
-                        Slider(value: $trailingPadding)
-                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                        Slider(
+                            value: .init(
+                                get: {
+                                    repository.drillPanelTrailingPadding
+                                },
+                                set: {
+                                    trailingPadding = $0
+                                    repository.drillPanelTrailingPadding = $0
+                                }
+                            )
+                        )
+                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                     }
                 }
                 

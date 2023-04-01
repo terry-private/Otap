@@ -37,4 +37,25 @@ public enum UserDefaultsClient {
             UserDefaults.standard.set(newValue, forKey: #function)
         }
     }
+    
+    // MARK: - Config
+    public static var drillPanelLeadingPadding: CGFloat {
+        get {
+            UserDefaults.standard.register(defaults: [#function: 0])
+            return .init(UserDefaults.standard.double(forKey: #function))
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
+    
+    public static var drillPanelTrailingPadding: CGFloat {
+        get {
+            UserDefaults.standard.register(defaults: [#function: 0])
+            return .init(UserDefaults.standard.double(forKey: #function))
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: #function)
+        }
+    }
 }
