@@ -54,6 +54,15 @@ public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
                 }
                 .pickerStyle(.menu)
             }
+            
+            Section("ドリル画面設定") {
+                NavigationLink {
+                    PanelPositioningView()
+                } label: {
+                    Text("左右位置調整")
+                }
+            }
+            
             Section {
                 NavigationLink {
                     List {

@@ -67,6 +67,7 @@ enum Modules: String, CaseIterable, Hashable {
         ]
         case .FeatureSetting: return [
             .Core,
+            .Components,
             .Extensions,
             .Utility
         ]
