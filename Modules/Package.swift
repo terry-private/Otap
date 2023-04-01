@@ -140,6 +140,7 @@ enum Modules: String, CaseIterable, Hashable {
             .swiftgen
         ]
         case .FeatureSetting: return [
+            .licensesPlugin,
             .swiftgen
         ]
         case .Repository: return []
@@ -187,6 +188,7 @@ enum TestModule: String, CaseIterable {
 
 private extension PackageDescription.Target.PluginUsage {
     static let swiftgen: Self = .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
+    static let licensesPlugin: Self = .plugin(name: "LicensesPlugin", package: "LicensesPlugin")
 }
 
 let package = Package(
@@ -199,7 +201,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", from: "1.0.1"),
         .package(url: "https://github.com/realm/realm-swift", from: "10.36.0"),
-        .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", from: "6.6.2")
+        .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", from: "6.6.2"),
+        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.3")
     ],
     targets: Modules.allCases.map {
         .target(
