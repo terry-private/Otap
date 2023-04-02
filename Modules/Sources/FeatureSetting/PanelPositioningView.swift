@@ -29,7 +29,6 @@ struct PanelPositioningView: View {
     init() {
         leadingPadding = repository.drillPanelLeadingPadding
         trailingPadding = repository.drillPanelTrailingPadding
-        print(leadingPadding, trailingPadding)
     }
     
     var body: some View {

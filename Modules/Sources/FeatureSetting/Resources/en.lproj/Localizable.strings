@@ -1,5 +1,7 @@
 // MARK: - Setting View
 "setting_view.navigation_bar_title" = "Setting";
+
+"setting_view.sound_config.section_title" = "Sound Config";
 "setting_view.sound_effect_cell.title" = "Sound Effect";
 "setting_view.utterance_voice_cell.title" = "Utterance Voice";
 "setting_view.utterance_language.title" = "Utterance Language";
@@ -10,6 +12,7 @@
 "setting_view.drill_view_config.section_title" = "Drill View Config";
 "setting_view.drill_view_config.horizontal_padding_adjustment" = "Horizontal Padding Adjustment";
 
+"setting_view.app_info.section_title" = "App Info";
 "setting_view.licenses_cell.title" = "Licenses";
 "setting_view.version_cell.title" = "Version";
 
