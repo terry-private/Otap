@@ -22,14 +22,9 @@ struct PanelPositioningView: View {
         (0..<panelCount).map { _ in .init() }
     }
     
-    @State var leadingPadding: CGFloat
-    @State var trailingPadding: CGFloat
+    @State var leadingPadding: CGFloat = repository.drillPanelLeadingPadding
+    @State var trailingPadding: CGFloat = repository.drillPanelTrailingPadding
     @State var panelCount: Int = 16
-    
-    init() {
-        leadingPadding = repository.drillPanelLeadingPadding
-        trailingPadding = repository.drillPanelTrailingPadding
-    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -51,6 +46,10 @@ struct PanelPositioningView: View {
             Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear  {
+            leadingPadding = repository.drillPanelLeadingPadding
+            trailingPadding = repository.drillPanelTrailingPadding
+        }
     }
 }
 
