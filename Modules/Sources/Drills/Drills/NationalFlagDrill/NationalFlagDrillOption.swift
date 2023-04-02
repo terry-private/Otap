@@ -175,7 +175,7 @@ extension NationalFlagDrillOption: DrillOption {
         case .austria🇦🇹: return localized("NationalFlag.Option.Call.austria", language) ?? "austria"
         case .denmark🇩🇰: return localized("NationalFlag.Option.Call.denmark", language) ?? "denmark"
         case .finland🇫🇮: return localized("NationalFlag.Option.Call.finland", language) ?? "finland"
-        case .ireland🇮🇪: return localized("NationalFlag.Option.Call.island", language) ?? "island"
+        case .ireland🇮🇪: return localized("NationalFlag.Option.Call.ireland", language) ?? "ireland"
             
         case .iceland🇮🇸: return localized("NationalFlag.Option.Call.iceland", language) ?? "iceland"
         case .croatia🇭🇷: return localized("NationalFlag.Option.Call.croatia", language) ?? "croatia"

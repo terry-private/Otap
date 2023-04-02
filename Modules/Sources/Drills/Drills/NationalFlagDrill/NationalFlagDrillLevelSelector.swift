@@ -63,7 +63,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAsia2,
                 nextID: .nationalFlagAsia3,
-                title: L10n.NationalFlag.Level.asia2AndOceania,
+                title: L10n.NationalFlag.Level.asia2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.india🇮🇳, .indonesia🇮🇩, .singapore🇸🇬, .bangladesh🇧🇩], count: 10) },
                 timeLimit: 60,
@@ -82,7 +82,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAsia3,
                 nextID: .nationalFlagAsia4,
-                title: L10n.NationalFlag.Level.asia2AndOceania,
+                title: L10n.NationalFlag.Level.asia3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.iraq🇮🇶, .iran🇮🇷, .cambodia🇰🇭, .saudiarabia🇸🇦], count: 10) },
                 timeLimit: 60,
@@ -101,7 +101,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAsia4,
                 nextID: .nationalFlagAsia5AndOceania,
-                title: L10n.NationalFlag.Level.asia2AndOceania,
+                title: L10n.NationalFlag.Level.asia4,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.malaysia🇲🇾, .nepal🇳🇵, .philippines🇵🇭, .pakistan🇵🇰], count: 10) },
                 timeLimit: 60,
@@ -120,7 +120,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAsia5AndOceania,
                 nextID: .nationalFlagAmericas1,
-                title: L10n.NationalFlag.Level.asia2AndOceania,
+                title: L10n.NationalFlag.Level.asia5AndOceania,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.turkey🇹🇷, .vietnam🇻🇳, .australia🇦🇺, .newzealand🇳🇿], count: 10) },
                 timeLimit: 60,
@@ -177,7 +177,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAmericas3,
                 nextID: .nationalFlagAmericas4,
-                title: L10n.NationalFlag.Level.americas2,
+                title: L10n.NationalFlag.Level.americas3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.colombia🇨🇴, .jamaica🇯🇲, .chile🇨🇱, .cuba🇨🇺], count: 10) },
                 timeLimit: 60,
@@ -196,7 +196,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAmericas4,
                 nextID: .nationalFlagEurope1,
-                title: L10n.NationalFlag.Level.americas2,
+                title: L10n.NationalFlag.Level.americas4,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.costarica🇨🇷, .panama🇵🇦, .ecuador🇪🇨, .venezuela🇻🇪], count: 10) },
                 timeLimit: 60,
@@ -291,7 +291,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagEurope5,
                 nextID: .nationalFlagEurope6,
-                title: L10n.NationalFlag.Level.europe4,
+                title: L10n.NationalFlag.Level.europe5,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.austria🇦🇹, .denmark🇩🇰, .finland🇫🇮, .ireland🇮🇪], count: 10) },
                 timeLimit: 60,
@@ -310,7 +310,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagEurope6,
                 nextID: .nationalFlagAfrica1,
-                title: L10n.NationalFlag.Level.europe4,
+                title: L10n.NationalFlag.Level.europe6,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.iceland🇮🇸, .croatia🇭🇷, .slovakia🇸🇰, .czech🇨🇿], count: 10) },
                 timeLimit: 60,
@@ -329,7 +329,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAfrica1,
                 nextID: .nationalFlagAfrica2,
-                title: L10n.NationalFlag.Level.africa,
+                title: L10n.NationalFlag.Level.africa1,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.cameroun🇨🇲, .kenya🇰🇪, .nigeria🇳🇬, .southafrica🇿🇦], count: 10) },
                 timeLimit: 60,
@@ -348,7 +348,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAfrica2,
                 nextID: .nationalFlagAfrica3,
-                title: L10n.NationalFlag.Level.africa,
+                title: L10n.NationalFlag.Level.africa2,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.senegal🇸🇳, .egypt🇪🇬, .ghana🇬🇭, .morocco🇲🇦], count: 10) },
                 timeLimit: 60,
@@ -367,7 +367,7 @@ public enum NationalFlagDrillLevelSelector: DrillLevelSelector {
             return .init(
                 id: .nationalFlagAfrica3,
                 nextID: .nationalFlagAdvanced1,
-                title: L10n.NationalFlag.Level.africa,
+                title: L10n.NationalFlag.Level.africa3,
                 requirements: L10n.Common.Level.requirementsFormat(10, 60),
                 generate: { coveredDrills(from: [.tunisia🇹🇳, .ethiopia🇪🇹, .algeria🇩🇿, .cotedIvoire🇨🇮], count: 10) },
                 timeLimit: 60,

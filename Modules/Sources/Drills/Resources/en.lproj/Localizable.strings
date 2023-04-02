@@ -237,14 +237,23 @@
 
 // NationalFlag Level
 "NationalFlag.Level.Asia1" = "Asia 1";
-"NationalFlag.Level.Asia2AndOceania" = "Asia 2 and Oceania";
+"NationalFlag.Level.Asia2" = "Asia 2";
+"NationalFlag.Level.Asia3" = "Asia 3";
+"NationalFlag.Level.Asia4" = "Asia 4";
+"NationalFlag.Level.Asia5AndOceania" = "Asia 5 and Oceania";
 "NationalFlag.Level.Americas1" = "Americas 1";
 "NationalFlag.Level.Americas2" = "Americas 2";
-"NationalFlag.Level.Europe1" = "Europe1";
-"NationalFlag.Level.Europe2" = "Europe2";
-"NationalFlag.Level.Europe3" = "Europe3";
-"NationalFlag.Level.Europe4" = "Europe4";
-"NationalFlag.Level.Africa" = "Africa";
+"NationalFlag.Level.Americas3" = "Americas 3";
+"NationalFlag.Level.Americas4" = "Americas 4";
+"NationalFlag.Level.Europe1" = "Europe 1";
+"NationalFlag.Level.Europe2" = "Europe 2";
+"NationalFlag.Level.Europe3" = "Europe 3";
+"NationalFlag.Level.Europe4" = "Europe 4";
+"NationalFlag.Level.Europe5" = "Europe 5";
+"NationalFlag.Level.Europe6" = "Europe 6";
+"NationalFlag.Level.Africa1" = "Africa 1";
+"NationalFlag.Level.Africa2" = "Africa 2";
+"NationalFlag.Level.Africa3" = "Africa 3";
 
 // MARK: - Number
 "Number.Drill.Title" = "Number";
