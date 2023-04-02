@@ -163,7 +163,19 @@
 "NationalFlag.Option.Call.india" = "India";
 "NationalFlag.Option.Call.indonesia" = "Indonesia";
 "NationalFlag.Option.Call.singapore" = "Singapore";
+"NationalFlag.Option.Call.bangladesh" = "Bangladesh";
+"NationalFlag.Option.Call.iraq" = "Iraq";
+"NationalFlag.Option.Call.iran" = "Iran";
+"NationalFlag.Option.Call.cambodia" = "Cambodia";
+"NationalFlag.Option.Call.saudiarabia" = "Saudi Arabia";
+"NationalFlag.Option.Call.malaysia" = "Malaysia";
+"NationalFlag.Option.Call.nepal" = "Nepal";
+"NationalFlag.Option.Call.philippines" = "Philippines";
+"NationalFlag.Option.Call.pakistan" = "Pakistan";
+"NationalFlag.Option.Call.turkey" = "Turkey";
+"NationalFlag.Option.Call.vietnam" = "Vietnam";
 "NationalFlag.Option.Call.australia" = "Australia";
+"NationalFlag.Option.Call.newzealand" = "New Zealand";
 
 /* Americas */
 "NationalFlag.Option.Call.argentina" = "Argentina";
@@ -174,6 +186,15 @@
 "NationalFlag.Option.Call.mexico" = "Mexico";
 "NationalFlag.Option.Call.peru" = "Peru";
 "NationalFlag.Option.Call.paraguay" = "Paraguay";
+"NationalFlag.Option.Call.colombia" = "Colombia";
+"NationalFlag.Option.Call.jamaica" = "Jamaica";
+"NationalFlag.Option.Call.chile" = "Chile";
+"NationalFlag.Option.Call.cuba" = "Cuba";
+"NationalFlag.Option.Call.costarica" = "Costa Rica";
+"NationalFlag.Option.Call.panama" = "Panama";
+"NationalFlag.Option.Call.ecuador" = "Ecuador";
+"NationalFlag.Option.Call.venezuela" = "Venezuela";
+
 /* Europe */
 "NationalFlag.Option.Call.unitedkingdom" = "United Kingdom";
 "NationalFlag.Option.Call.germany" = "Germany";
@@ -191,11 +212,28 @@
 "NationalFlag.Option.Call.greece" = "greece";
 "NationalFlag.Option.Call.hungary" = "Hungary";
 "NationalFlag.Option.Call.ukraine" = "Ukraine";
+"NationalFlag.Option.Call.austria" = "Austria";
+"NationalFlag.Option.Call.denmark" = "Denmark";
+"NationalFlag.Option.Call.finland" = "Finland";
+"NationalFlag.Option.Call.ireland" = "Ireland";
+"NationalFlag.Option.Call.iceland" = "Iceland";
+"NationalFlag.Option.Call.croatia" = "Croatia";
+"NationalFlag.Option.Call.slovakia" = "Slovakia";
+"NationalFlag.Option.Call.czech" = "Czech";
+
 /* Africa */
 "NationalFlag.Option.Call.cameroun" = "cameroun";
 "NationalFlag.Option.Call.kenya" = "kenya";
 "NationalFlag.Option.Call.nigeria" = "nigeria";
 "NationalFlag.Option.Call.southafrica" = "southafrica";
+"NationalFlag.Option.Call.senegal" = "Senegal";
+"NationalFlag.Option.Call.egypt" = "Egypt";
+"NationalFlag.Option.Call.ghana" = "Ghana";
+"NationalFlag.Option.Call.morocco" = "Morocco";
+"NationalFlag.Option.Call.tunisia" = "Tunisia";
+"NationalFlag.Option.Call.ethiopia" = "Ethiopia";
+"NationalFlag.Option.Call.algeria" = "Algeria";
+"NationalFlag.Option.Call.cotedIvoire" = "Côte d'Ivoire";
 
 // NationalFlag Level
 "NationalFlag.Level.Asia1" = "Asia 1";

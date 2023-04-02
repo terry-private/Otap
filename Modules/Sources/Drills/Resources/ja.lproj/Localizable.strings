@@ -163,7 +163,19 @@
 "NationalFlag.Option.Call.india" = "インド";
 "NationalFlag.Option.Call.indonesia" = "インドネシア";
 "NationalFlag.Option.Call.singapore" = "シンガポール";
+"NationalFlag.Option.Call.bangladesh" = "バングラデシュ";
+"NationalFlag.Option.Call.iraq" = "イラク";
+"NationalFlag.Option.Call.iran" = "イラン";
+"NationalFlag.Option.Call.cambodia" = "カンボジア";
+"NationalFlag.Option.Call.saudiarabia" = "サウジアラビア";
+"NationalFlag.Option.Call.malaysia" = "マレーシア";
+"NationalFlag.Option.Call.nepal" = "ネパール";
+"NationalFlag.Option.Call.philippines" = "フィリピン";
+"NationalFlag.Option.Call.pakistan" = "パキスタン";
+"NationalFlag.Option.Call.turkey" = "トルコ";
+"NationalFlag.Option.Call.vietnam" = "ベトナム";
 "NationalFlag.Option.Call.australia" = "オーストラリア";
+"NationalFlag.Option.Call.newzealand" = "ニュージーランド";
 
 /* アメリカ大陸 */
 "NationalFlag.Option.Call.argentina" = "アルゼンチン";
@@ -174,6 +186,14 @@
 "NationalFlag.Option.Call.mexico" = "メキシコ";
 "NationalFlag.Option.Call.peru" = "ペルー";
 "NationalFlag.Option.Call.paraguay" = "パラグアイ";
+"NationalFlag.Option.Call.colombia" = "コロンビア";
+"NationalFlag.Option.Call.jamaica" = "ジャマイカ";
+"NationalFlag.Option.Call.chile" = "チリ";
+"NationalFlag.Option.Call.cuba" = "キューバ";
+"NationalFlag.Option.Call.costarica" = "コスタリカ";
+"NationalFlag.Option.Call.panama" = "パナマ";
+"NationalFlag.Option.Call.ecuador" = "エクアドル";
+"NationalFlag.Option.Call.venezuela" = "ベネズエラ";
 
 /* ヨーロッパ */
 "NationalFlag.Option.Call.unitedkingdom" = "イギリス";
@@ -192,23 +212,48 @@
 "NationalFlag.Option.Call.greece" = "ギリシャ";
 "NationalFlag.Option.Call.hungary" = "ハンガリー";
 "NationalFlag.Option.Call.ukraine" = "ウクライナ";
+"NationalFlag.Option.Call.austria" = "オーストリア";
+"NationalFlag.Option.Call.denmark" = "デンマーク";
+"NationalFlag.Option.Call.finland" = "フィンランド";
+"NationalFlag.Option.Call.ireland" = "アイルランド";
+"NationalFlag.Option.Call.iceland" = "アイスランド";
+"NationalFlag.Option.Call.croatia" = "クロアチア";
+"NationalFlag.Option.Call.slovakia" = "スロバキア";
+"NationalFlag.Option.Call.czech" = "チェコ";
 
 /* アフリカ */
 "NationalFlag.Option.Call.cameroun" = "カメルーン";
 "NationalFlag.Option.Call.kenya" = "ケニア";
 "NationalFlag.Option.Call.nigeria" = "ナイジェリア";
 "NationalFlag.Option.Call.southafrica" = "南アフリカ共和国";
+"NationalFlag.Option.Call.senegal" = "セネガル";
+"NationalFlag.Option.Call.egypt" = "エジプト";
+"NationalFlag.Option.Call.ghana" = "ガーナ";
+"NationalFlag.Option.Call.morocco" = "モロッコ";
+"NationalFlag.Option.Call.tunisia" = "チュニジア";
+"NationalFlag.Option.Call.ethiopia" = "エチオピア";
+"NationalFlag.Option.Call.algeria" = "アルジェリア";
+"NationalFlag.Option.Call.cotedIvoire" = "コートジボワール";
 
 // NationalFlag Level
 "NationalFlag.Level.Asia1" = "アジア 1";
-"NationalFlag.Level.Asia2AndOceania" = "アジア 2 と オセアニア";
+"NationalFlag.Level.Asia2" = "アジア 2";
+"NationalFlag.Level.Asia3" = "アジア 3";
+"NationalFlag.Level.Asia4" = "アジア 4";
+"NationalFlag.Level.Asia5AndOceania" = "アジア 5 と オセアニア";
 "NationalFlag.Level.Americas1" = "アメリカ大陸 1";
 "NationalFlag.Level.Americas2" = "アメリカ大陸 2";
+"NationalFlag.Level.Americas3" = "アメリカ大陸 3";
+"NationalFlag.Level.Americas4" = "アメリカ大陸 4";
 "NationalFlag.Level.Europe1" = "ヨーロッパ 1";
 "NationalFlag.Level.Europe2" = "ヨーロッパ 2";
 "NationalFlag.Level.Europe3" = "ヨーロッパ 3";
 "NationalFlag.Level.Europe4" = "ヨーロッパ 4";
-"NationalFlag.Level.Africa" = "アフリカ";
+"NationalFlag.Level.Europe5" = "ヨーロッパ 5";
+"NationalFlag.Level.Europe6" = "ヨーロッパ 6";
+"NationalFlag.Level.Africa1" = "アフリカ 1";
+"NationalFlag.Level.Africa2" = "アフリカ 2";
+"NationalFlag.Level.Africa3" = "アフリカ 3";
 
 // MARK: - Number
 "Number.Drill.Title" = "数字";
