@@ -185,9 +185,7 @@ extension DrillInteractor: DrillUseCase {
                 // save
                 try await Repository.updateDrillRecord(drillRecord: self.lastRecord.merged(newRecord))
                 // open next if needed
-                if let nextID = self.generator.nextID {
-                    try await Repository.updateDrillRecord(drillRecord: .init(id: nextID))
-                }
+                try await self.openNextDrillIfNeeded()
             }
             return .success(.init(lastRecord: lastRecord, newRecord: newRecord))
         } else if time >= generator.timeLimit {
@@ -202,5 +200,18 @@ extension DrillInteractor: DrillUseCase {
         drills = generator.generate()
         correctCount = 0
         wrongCount = 0
+    }
+}
+
+private extension DrillInteractor {
+    /// nextIDを持っていて、次のドリルのレコードがない場合のみ初期値レコードを更新
+    func openNextDrillIfNeeded() async throws {
+        guard
+            let nextID = generator.nextID,
+            (try await Repository.fetchDrillRecord(generatorID: nextID)) == nil
+        else {
+            return
+        }
+        try await Repository.updateDrillRecord(drillRecord: .init(id: nextID))
     }
 }
