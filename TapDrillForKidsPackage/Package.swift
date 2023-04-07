@@ -4,12 +4,12 @@
 import PackageDescription
 
 enum Modules: String, CaseIterable, Hashable {
+    case AppProduction
     case Components
     case Core
     case Data
     case Drills
     case Extensions
-    case FeatureApp
     case FeatureDrill
     case FeatureMainTab
     case FeaturePrepareMode
@@ -21,25 +21,7 @@ enum Modules: String, CaseIterable, Hashable {
     
     var dependencies: [Self] {
         switch self {
-        case .Components: return [
-            .Extensions
-        ]
-            
-        case .Core: return [
-            .Extensions
-        ]
-        case .Drills: return [
-            .Core,
-            .Extensions
-        ]
-            
-        case .Data: return [
-            .Core
-        ]
-            
-        case .Extensions: return []
-            
-        case .FeatureApp: return [
+        case .AppProduction: return [
             .Core,
             .Drills,
             .Extensions,
@@ -52,6 +34,20 @@ enum Modules: String, CaseIterable, Hashable {
             .Repository,
             .Utility
         ]
+        case .Components: return [
+            .Extensions
+        ]
+        case .Core: return [
+            .Extensions
+        ]
+        case .Drills: return [
+            .Core,
+            .Extensions
+        ]
+        case .Data: return [
+            .Core
+        ]
+        case .Extensions: return []
         case .FeatureDrill: return [
             .Core,
             .Components,
@@ -96,6 +92,7 @@ enum Modules: String, CaseIterable, Hashable {
     
     var dependenciesProducts: [PackageDescription.Target.Dependency] {
         switch self {
+        case .AppProduction: return []
         case .Components: return []
         case .Core: return []
         case .Data: return [
@@ -104,7 +101,6 @@ enum Modules: String, CaseIterable, Hashable {
         ]
         case .Drills: return []
         case .Extensions: return []
-        case .FeatureApp: return []
         case .FeatureDrill: return [
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
         ]
@@ -119,6 +115,7 @@ enum Modules: String, CaseIterable, Hashable {
     
     var dependenciesPlugins: [PackageDescription.Target.PluginUsage] {
         switch self {
+        case .AppProduction: return []
         case .Components: return []
         case .Core: return []
         case .Data: return []
@@ -126,7 +123,6 @@ enum Modules: String, CaseIterable, Hashable {
             .swiftgen
         ]
         case .Extensions: return []
-        case .FeatureApp: return []
         case .FeatureDrill: return [
             .swiftgen
         ]
@@ -149,14 +145,33 @@ enum Modules: String, CaseIterable, Hashable {
         }
     }
     
+    var path: String? {
+        switch self {
+        case .AppProduction: return "./Sources/Apps/Production"
+        case .Components: return nil
+        case .Core: return nil
+        case .Data: return nil
+        case .Drills: return nil
+        case .Extensions: return nil
+        case .FeatureDrill: return "./Sources/Features/Drill"
+        case .FeatureMainTab: return "./Sources/Features/MainTab"
+        case .FeaturePrepareMode: return "./Sources/Features/PrepareMode"
+        case .FeatureSelectDrill: return "./Sources/Features/SelectDrill"
+        case .FeatureSelectLevel: return "./Sources/Features/SelectLevel"
+        case .FeatureSetting: return "./Sources/Features/Setting"
+        case .Repository: return nil
+        case .Utility: return nil
+        }
+    }
+    
     var resources: [PackageDescription.Resource] {
         switch self {
+        case .AppProduction: return []
         case .Components: return []
         case .Core: return []
         case .Data: return []
         case .Drills: return []
         case .Extensions: return []
-        case .FeatureApp: return []
         case .FeatureDrill: return []
         case .FeatureMainTab: return [.process("Resources")]
         case .FeaturePrepareMode: return []
@@ -207,8 +222,12 @@ let package = Package(
     targets: Modules.allCases.map {
         .target(
             name: $0.rawValue,
-            dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) } + $0.dependenciesProducts,
-            resources: $0.resources.map { resource in return resource },
+            dependencies: $0.dependencies
+                .map { module in
+                    .init(stringLiteral: module.rawValue)
+                } + $0.dependenciesProducts,
+            path: $0.path,
+            resources: $0.resources,
             plugins: $0.dependenciesPlugins
         )
     } + TestModule.allCases.map {

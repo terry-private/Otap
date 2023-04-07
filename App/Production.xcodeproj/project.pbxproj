@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09505B4129DFA9BB001BE3CF /* FeatureApp in Frameworks */ = {isa = PBXBuildFile; productRef = 09505B4029DFA9BB001BE3CF /* FeatureApp */; };
+		09505B4329E005B2001BE3CF /* AppProduction in Frameworks */ = {isa = PBXBuildFile; productRef = 09505B4229E005B2001BE3CF /* AppProduction */; };
 		09A49554296D49D3009DBE22 /* ProductionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A49553296D49D3009DBE22 /* ProductionApp.swift */; };
 		09A49558296D49D6009DBE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A49557296D49D6009DBE22 /* Assets.xcassets */; };
 		09A4955B296D49D6009DBE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */; };
@@ -26,7 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09505B4129DFA9BB001BE3CF /* FeatureApp in Frameworks */,
+				09505B4329E005B2001BE3CF /* AppProduction in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = TapDrillForKids;
 			packageProductDependencies = (
-				09505B4029DFA9BB001BE3CF /* FeatureApp */,
+				09505B4229E005B2001BE3CF /* AppProduction */,
 			);
 			productName = TapDrillForKids;
 			productReference = 09A49550296D49D3009DBE22 /* TapDrillForKids.app */;
@@ -210,6 +210,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -263,6 +264,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -367,9 +369,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		09505B4029DFA9BB001BE3CF /* FeatureApp */ = {
+		09505B4229E005B2001BE3CF /* AppProduction */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = FeatureApp;
+			productName = AppProduction;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -14,10 +14,10 @@ import Repository
 import Utility
 import SwiftUI
 
-public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
+enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
     
     @MainActor
-    public static func drillView<D: CoreDrill>(generator: DrillGenerator<D>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
+    static func drillView<D: CoreDrill>(generator: DrillGenerator<D>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
         typealias UseCase = DrillInteractor<D, RepositoryImpl>
         typealias ViewModel = DrillViewModelImpl<D, SoundEffectInteractor, UseCase>
         return DrillView<ViewModel, RepositoryImpl>(
@@ -27,7 +27,7 @@ public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
         ).toAnyView()
     }
     
-    public static func practiceModeView<D: CoreDrill>(_ generator: DrillGenerator<D>) -> AnyView {
+    static func practiceModeView<D: CoreDrill>(_ generator: DrillGenerator<D>) -> AnyView {
         PrepareModeView<D, SoundEffectInteractor>()
             .toAnyView()
     }

@@ -13,9 +13,9 @@ import FeatureSelectDrill
 import FeatureSetting
 import Utility
 
-public enum MainTabViewFactoryImpl: MainTabViewFactoryProtocol {
+enum MainTabViewFactoryImpl: MainTabViewFactoryProtocol {
     @MainActor
-    public static var selectDrillView: AnyView {
+    static var selectDrillView: AnyView {
         SelectDrillView<SelectDrillViewFactoryImpl, SelectDrillViewModelImpl>(
             viewModel: .init(
                 selectors: [
@@ -35,7 +35,7 @@ public enum MainTabViewFactoryImpl: MainTabViewFactoryProtocol {
     }
     
     @MainActor
-    public static var settingView: AnyView {
+    static var settingView: AnyView {
         SettingView<SoundEffectInteractor>()
             .toAnyView()
     }
