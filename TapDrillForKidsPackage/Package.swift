@@ -9,6 +9,7 @@ enum Modules: String, CaseIterable, Hashable {
     case Data
     case Drills
     case Extensions
+    case FeatureApp
     case FeatureDrill
     case FeatureMainTab
     case FeaturePrepareMode
@@ -17,7 +18,6 @@ enum Modules: String, CaseIterable, Hashable {
     case FeatureSetting
     case Repository
     case Utility
-    case ViewFactoryImpl
     
     var dependencies: [Self] {
         switch self {
@@ -39,6 +39,19 @@ enum Modules: String, CaseIterable, Hashable {
             
         case .Extensions: return []
             
+        case .FeatureApp: return [
+            .Core,
+            .Drills,
+            .Extensions,
+            .FeatureDrill,
+            .FeatureMainTab,
+            .FeaturePrepareMode,
+            .FeatureSelectLevel,
+            .FeatureSelectDrill,
+            .FeatureSetting,
+            .Repository,
+            .Utility
+        ]
         case .FeatureDrill: return [
             .Core,
             .Components,
@@ -79,19 +92,6 @@ enum Modules: String, CaseIterable, Hashable {
             .Core,
             .Repository
         ]
-        case .ViewFactoryImpl: return [
-            .Core,
-            .Drills,
-            .Extensions,
-            .FeatureDrill,
-            .FeatureMainTab,
-            .FeaturePrepareMode,
-            .FeatureSelectLevel,
-            .FeatureSelectDrill,
-            .FeatureSetting,
-            .Repository,
-            .Utility
-        ]
     }}
     
     var dependenciesProducts: [PackageDescription.Target.Dependency] {
@@ -103,18 +103,18 @@ enum Modules: String, CaseIterable, Hashable {
             .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
         ]
         case .Drills: return []
-        case .FeatureMainTab: return []
         case .Extensions: return []
+        case .FeatureApp: return []
         case .FeatureDrill: return [
             .product(name: "ConfettiSwiftUI", package: "ConfettiSwiftUI")
         ]
+        case .FeatureMainTab: return []
         case .FeaturePrepareMode: return []
         case .FeatureSelectDrill: return []
         case .FeatureSelectLevel: return []
         case .FeatureSetting: return []
         case .Repository: return []
         case .Utility: return []
-        case .ViewFactoryImpl: return []
     }}
     
     var dependenciesPlugins: [PackageDescription.Target.PluginUsage] {
@@ -126,6 +126,7 @@ enum Modules: String, CaseIterable, Hashable {
             .swiftgen
         ]
         case .Extensions: return []
+        case .FeatureApp: return []
         case .FeatureDrill: return [
             .swiftgen
         ]
@@ -145,7 +146,6 @@ enum Modules: String, CaseIterable, Hashable {
         ]
         case .Repository: return []
         case .Utility: return []
-        case .ViewFactoryImpl: return []
         }
     }
     
@@ -156,6 +156,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .Data: return []
         case .Drills: return []
         case .Extensions: return []
+        case .FeatureApp: return []
         case .FeatureDrill: return []
         case .FeatureMainTab: return [.process("Resources")]
         case .FeaturePrepareMode: return []
@@ -167,7 +168,6 @@ enum Modules: String, CaseIterable, Hashable {
             .copy("./SoundEffect/Resources/correct.mp3"),
             .copy("./SoundEffect/Resources/wrong.mp3")
         ]
-        case .ViewFactoryImpl: return []
     }}
 }
 
@@ -192,7 +192,7 @@ private extension PackageDescription.Target.PluginUsage {
 }
 
 let package = Package(
-    name: "Modules",
+    name: "TapDrillForKidsPackage",
     defaultLocalization: "en",
     platforms: [
         .iOS(.v16),

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "09A4954F296D49D3009DBE22"
                BuildableName = "TapDrillForKids.app"
                BlueprintName = "TapDrillForKids"
-               ReferencedContainer = "container:TapDrillForKids.xcodeproj">
+               ReferencedContainer = "container:Production.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "09A4954F296D49D3009DBE22"
             BuildableName = "TapDrillForKids.app"
             BlueprintName = "TapDrillForKids"
-            ReferencedContainer = "container:TapDrillForKids.xcodeproj">
+            ReferencedContainer = "container:Production.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "09A4954F296D49D3009DBE22"
             BuildableName = "TapDrillForKids.app"
             BlueprintName = "TapDrillForKids"
-            ReferencedContainer = "container:TapDrillForKids.xcodeproj">
+            ReferencedContainer = "container:Production.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

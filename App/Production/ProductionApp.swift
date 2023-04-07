@@ -1,19 +1,15 @@
 //
-//  TapDrillForKidsApp.swift
+//  ProductionApp.swift
 //  TapDrillForKids
 //
 //  Created by 若江照仁 on 2023/01/10.
 //
 
 import SwiftUI
-import ViewFactoryImpl
-import Utility
+import FeatureApp
 
 @main
-struct TapDrillForKidsApp: App {
-    init() {
-        SoundEffectInteractor.readyAllPlayer()
-    }
+struct ProductionApp: App {
     var body: some Scene {
         WindowGroup {
             AppViewFactory.mainTab()
