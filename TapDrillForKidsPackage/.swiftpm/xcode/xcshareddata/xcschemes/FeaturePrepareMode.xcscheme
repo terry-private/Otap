@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Repository"
-               BuildableName = "Repository"
-               BlueprintName = "Repository"
+               BlueprintIdentifier = "FeaturePrepareMode"
+               BuildableName = "FeaturePrepareMode"
+               BlueprintName = "FeaturePrepareMode"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Repository"
-            BuildableName = "Repository"
-            BlueprintName = "Repository"
+            BlueprintIdentifier = "FeaturePrepareMode"
+            BuildableName = "FeaturePrepareMode"
+            BlueprintName = "FeaturePrepareMode"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
