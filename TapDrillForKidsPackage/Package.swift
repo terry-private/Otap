@@ -149,6 +149,25 @@ enum Modules: String, CaseIterable, Hashable {
         }
     }
     
+    var path: String? {
+        switch self {
+        case .Components: return nil
+        case .Core: return nil
+        case .Data: return nil
+        case .Drills: return nil
+        case .Extensions: return nil
+        case .FeatureDrill: return "./Sources/Features/Drill"
+        case .FeatureMainTab: return "./Sources/Features/MainTab"
+        case .FeaturePrepareMode: return "./Sources/Features/PrepareMode"
+        case .FeatureSelectDrill: return "./Sources/Features/SelectDrill"
+        case .FeatureSelectLevel: return "./Sources/Features/SelectLevel"
+        case .FeatureSetting: return "./Sources/Features/Setting"
+        case .Repository: return nil
+        case .Utility: return nil
+        case .ViewFactoryImpl: return nil
+        }
+    }
+    
     var resources: [PackageDescription.Resource] {
         switch self {
         case .Components: return []
@@ -207,8 +226,12 @@ let package = Package(
     targets: Modules.allCases.map {
         .target(
             name: $0.rawValue,
-            dependencies: $0.dependencies.map { module in .init(stringLiteral: module.rawValue) } + $0.dependenciesProducts,
-            resources: $0.resources.map { resource in return resource },
+            dependencies: $0.dependencies
+                .map { module in
+                    .init(stringLiteral: module.rawValue)
+                } + $0.dependenciesProducts,
+            path: $0.path,
+            resources: $0.resources,
             plugins: $0.dependenciesPlugins
         )
     } + TestModule.allCases.map {
