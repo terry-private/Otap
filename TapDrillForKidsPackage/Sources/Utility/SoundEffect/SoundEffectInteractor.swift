@@ -9,24 +9,37 @@ import AVFoundation
 import Core
 import Repository
 
+// ---------------------------------
+// MARK: private constant properties
+// ---------------------------------
+
+private let effectVolumeRate: Float = 0.04
+private let shortWords: Set<String> = .init(["あ", "い", "う", "え", "お"])
+
+private let correctSoundPlayer: AVAudioPlayer? = {
+    let player = resourceUrl("correct").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil // unwrap double Optional
+    return player
+}()
+
+private let wrongSoundPlayer: AVAudioPlayer? = {
+    let player = resourceUrl("wrong").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil // unwrap double Optional
+    return player
+}()
+
+private let speechSynthesizer: AVSpeechSynthesizer = {
+    AVSpeechSynthesizer()
+}()
+
+// ---------------------------------
+// MARK: private function
+// ---------------------------------
+private func resourceUrl(_ name: String) -> URL? {
+    Bundle.module.url(forResource: name, withExtension: "mp3")
+}
+
 // MARK: - Interactor
-public enum SoundEffectInteractor {
-    typealias repository = RepositoryImpl
-    private static let effectVolumeRate: Float = 0.04
-    // ---------------------------------
-    // MARK: private static properties
-    // ---------------------------------
-    private static let correctSoundPlayer: AVAudioPlayer? = {
-        let player = resourceUrl("correct").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
-        player?.volume = repository.effectVolume * effectVolumeRate
-        return player
-    }()
-    
-    private static let wrongSoundPlayer: AVAudioPlayer? = {
-        let player = resourceUrl("wrong").map { try? AVAudioPlayer(contentsOf: $0) } ?? nil
-        player?.volume = repository.effectVolume * effectVolumeRate
-        return player
-    }()
+public enum SoundEffectInteractor<Repository: SoundEffectRepository> {
+    typealias repository = Repository
     
     // --------------------------------
     // MARK: public static properties
@@ -40,10 +53,6 @@ public enum SoundEffectInteractor {
         }
     }
     
-    public static let speechSynthesizer: AVSpeechSynthesizer = {
-        AVSpeechSynthesizer()
-    }()
-    
     public static var utteranceLanguage: UtteranceLanguage {
         get {
             repository.utteranceLanguage
@@ -54,21 +63,8 @@ public enum SoundEffectInteractor {
     }
 }
 
-// MARK: - private methods
-private extension SoundEffectInteractor {
-    static func resourceUrl(_ name: String) -> URL? {
-        Bundle.module.url(forResource: name, withExtension: "mp3")
-    }
-}
-
 // MARK: - public methods
 extension SoundEffectInteractor: SoundEffectUseCase {
-    public static func readyAllPlayer() {
-        _ = correctSoundPlayer
-        _ = wrongSoundPlayer
-        _ = speechSynthesizer
-    }
-    
     public static var effectVolume: Float {
         get {
             (correctSoundPlayer?.volume ?? 0) / effectVolumeRate
@@ -84,6 +80,7 @@ extension SoundEffectInteractor: SoundEffectUseCase {
         if correctSoundPlayer?.isPlaying == true {
             correctSoundPlayer?.stop()
         }
+        correctSoundPlayer?.volume = repository.effectVolume * effectVolumeRate
         correctSoundPlayer?.play()
     }
     
@@ -91,6 +88,7 @@ extension SoundEffectInteractor: SoundEffectUseCase {
         if wrongSoundPlayer?.isPlaying == true {
             wrongSoundPlayer?.stop()
         }
+        wrongSoundPlayer?.volume = repository.effectVolume * effectVolumeRate
         wrongSoundPlayer?.play()
     }
     
@@ -101,7 +99,7 @@ extension SoundEffectInteractor: SoundEffectUseCase {
         let utterance = AVSpeechUtterance(string: words)
         utterance.voice = AVSpeechSynthesisVoice(language: specificLanguage)
         utterance.volume = utteranceVolume
-        utterance.rate = Set(["あ", "い", "う", "え", "お"]).contains(words) ? 0.2 : 0.4
+        utterance.rate = shortWords.contains(words) ? 0.2 : 0.4
         
         speechSynthesizer.speak(utterance)
     }

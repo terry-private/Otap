@@ -7,8 +7,8 @@
 
 import Foundation
 
-public enum UserDefaultsClient {
-    public static var effectVolume: Float {
+enum UserDefaultsClient {
+    static var effectVolume: Float {
         get {
             UserDefaults.standard.register(defaults: [#function: 1])
             return UserDefaults.standard.float(forKey: #function)
@@ -18,7 +18,7 @@ public enum UserDefaultsClient {
         }
     }
     
-    public static var utteranceVolume: Float {
+    static var utteranceVolume: Float {
         get {
             UserDefaults.standard.register(defaults: [#function: 1])
             return UserDefaults.standard.float(forKey: #function)
@@ -28,7 +28,7 @@ public enum UserDefaultsClient {
         }
     }
     
-    public static var utteranceLanguage: String {
+    static var utteranceLanguage: String {
         get {
             UserDefaults.standard.register(defaults: [#function: "system"])
             return UserDefaults.standard.string(forKey: #function) ?? "system"
@@ -39,7 +39,7 @@ public enum UserDefaultsClient {
     }
     
     // MARK: - Config
-    public static var drillPanelLeadingPadding: CGFloat {
+    static var drillPanelLeadingPadding: CGFloat {
         get {
             UserDefaults.standard.register(defaults: [#function: 0])
             return .init(UserDefaults.standard.double(forKey: #function))
@@ -49,7 +49,7 @@ public enum UserDefaultsClient {
         }
     }
     
-    public static var drillPanelTrailingPadding: CGFloat {
+    static var drillPanelTrailingPadding: CGFloat {
         get {
             UserDefaults.standard.register(defaults: [#function: 0])
             return .init(UserDefaults.standard.double(forKey: #function))

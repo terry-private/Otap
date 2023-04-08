@@ -8,9 +8,10 @@
 import SwiftUI
 import Core
 import Extensions
+import Repository
 import Utility
 
-public struct SettingView<SoundEffect: SoundEffectUseCase>: View {
+public struct SettingView<Repository: ConfigRepository, SoundEffect: SoundEffectUseCase>: View {
     @State var language: UtteranceLanguage
     public init() {
         _language = .init(wrappedValue: SoundEffect.utteranceLanguage)
@@ -69,7 +70,7 @@ private extension SettingView {
     var drillViewConfigSection: some View {
         Section(L10n.SettingView.DrillViewConfig.sectionTitle) {
             NavigationLink {
-                PanelPositioningView()
+                PanelPositioningView<Repository>()
             } label: {
                 Text(L10n.SettingView.DrillViewConfig.horizontalPaddingAdjustment)
             }
@@ -106,7 +107,7 @@ private extension UtteranceLanguage {
 #if DEBUG
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView<SoundEffectUseCaseDummy>()
+        SettingView<ConfigRepositoryDummy, SoundEffectUseCaseDummy>()
     }
 }
 #endif

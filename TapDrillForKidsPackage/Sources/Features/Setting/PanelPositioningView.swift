@@ -13,8 +13,8 @@ struct DummyPanel: Identifiable {
     let id = UUID()
 }
 
-struct PanelPositioningView: View {
-    typealias repository = RepositoryImpl
+struct PanelPositioningView<Repository: ConfigRepository>: View {
+    typealias repository = Repository
     // Drill画面上部.height:140 + padding:30 + BottomButton.height: 48
     let bottomHeight: CGFloat = 140 + 30 + 48
     let panelCounts: [Int] = [2, 4, 6, 9, 12, 16]
@@ -108,6 +108,6 @@ private extension PanelPositioningView {
 
 struct PanelPositioningView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelPositioningView()
+        PanelPositioningView<ConfigRepositoryDummy>()
     }
 }

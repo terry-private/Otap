@@ -7,7 +7,7 @@
 
 import Foundation
 import Core
-import Data
+import Repository
 
 extension RepositoryImpl: DrillRecordRepository {    
     public static func fetchDrillRecord(generatorID: LevelSelectorID) async throws -> DrillRecord? {

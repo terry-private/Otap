@@ -13,10 +13,10 @@ public protocol DrillRecordRepository {
 }
 
 #if DEBUG
-enum DrillRecordRepositoryDummy: DrillRecordRepository {
-    static func fetchDrillRecord(generatorID: LevelSelectorID) async throws -> Core.DrillRecord? {
+public enum DrillRecordRepositoryDummy: DrillRecordRepository {
+    public static func fetchDrillRecord(generatorID: LevelSelectorID) async throws -> Core.DrillRecord? {
         .init(id: generatorID)
     }
-    static func updateDrillRecord(drillRecord: Core.DrillRecord) async throws {}
+    public static func updateDrillRecord(drillRecord: Core.DrillRecord) async throws {}
 }
 #endif

@@ -7,7 +7,6 @@ enum Modules: String, CaseIterable, Hashable {
     case AppProduction
     case Components
     case Core
-    case Data
     case Drills
     case Extensions
     case FeatureDrill
@@ -17,6 +16,7 @@ enum Modules: String, CaseIterable, Hashable {
     case FeatureSelectLevel
     case FeatureSetting
     case Repository
+    case RepositoryImpl
     case Utility
     
     var dependencies: [Self] {
@@ -31,7 +31,7 @@ enum Modules: String, CaseIterable, Hashable {
             .FeatureSelectLevel,
             .FeatureSelectDrill,
             .FeatureSetting,
-            .Repository,
+            .RepositoryImpl,
             .Utility
         ]
         case .Components: return [
@@ -43,9 +43,6 @@ enum Modules: String, CaseIterable, Hashable {
         case .Drills: return [
             .Core,
             .Extensions
-        ]
-        case .Data: return [
-            .Core
         ]
         case .Extensions: return []
         case .FeatureDrill: return [
@@ -78,11 +75,15 @@ enum Modules: String, CaseIterable, Hashable {
             .Core,
             .Components,
             .Extensions,
+            .Repository,
             .Utility
         ]
         case .Repository: return [
+            .Core
+        ]
+        case .RepositoryImpl: return [
             .Core,
-            .Data
+            .Repository
         ]
         case .Utility: return [
             .Core,
@@ -95,10 +96,6 @@ enum Modules: String, CaseIterable, Hashable {
         case .AppProduction: return []
         case .Components: return []
         case .Core: return []
-        case .Data: return [
-            .product(name: "Realm", package: "realm-swift"),     // Realm
-            .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
-        ]
         case .Drills: return []
         case .Extensions: return []
         case .FeatureDrill: return [
@@ -110,6 +107,10 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureSelectLevel: return []
         case .FeatureSetting: return []
         case .Repository: return []
+        case .RepositoryImpl: return [
+            .product(name: "Realm", package: "realm-swift"),     // Realm
+            .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
+        ]
         case .Utility: return []
     }}
     
@@ -118,7 +119,6 @@ enum Modules: String, CaseIterable, Hashable {
         case .AppProduction: return []
         case .Components: return []
         case .Core: return []
-        case .Data: return []
         case .Drills: return [
             .swiftgen
         ]
@@ -141,6 +141,7 @@ enum Modules: String, CaseIterable, Hashable {
             .swiftgen
         ]
         case .Repository: return []
+        case .RepositoryImpl: return []
         case .Utility: return []
         }
     }
@@ -150,7 +151,6 @@ enum Modules: String, CaseIterable, Hashable {
         case .AppProduction: return "./Sources/Apps/Production"
         case .Components: return nil
         case .Core: return nil
-        case .Data: return nil
         case .Drills: return nil
         case .Extensions: return nil
         case .FeatureDrill: return "./Sources/Features/Drill"
@@ -159,7 +159,8 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureSelectDrill: return "./Sources/Features/SelectDrill"
         case .FeatureSelectLevel: return "./Sources/Features/SelectLevel"
         case .FeatureSetting: return "./Sources/Features/Setting"
-        case .Repository: return nil
+        case .Repository: return "./Sources/Data/Repository"
+        case .RepositoryImpl: return "./Sources/Data/RepositoryImpl"
         case .Utility: return nil
         }
     }
@@ -169,7 +170,6 @@ enum Modules: String, CaseIterable, Hashable {
         case .AppProduction: return []
         case .Components: return []
         case .Core: return []
-        case .Data: return []
         case .Drills: return []
         case .Extensions: return []
         case .FeatureDrill: return []
@@ -179,6 +179,7 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureSelectLevel: return []
         case .FeatureSetting: return []
         case .Repository: return []
+        case .RepositoryImpl: return []
         case .Utility: return [
             .copy("./SoundEffect/Resources/correct.mp3"),
             .copy("./SoundEffect/Resources/wrong.mp3")

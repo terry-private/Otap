@@ -6,7 +6,7 @@
 //
 
 import Core
-import Data
+import Repository
 
 extension RepositoryImpl: SoundEffectRepository {
     public static var effectVolume: Float {
