@@ -21,7 +21,6 @@ final class DrillViewModelTests: XCTestCase {
         static var isPlayCorrect: Bool = false
         static var isPlayWrong: Bool = false
         static var spokenWords: String? = nil
-        static func readyAllPlayer() {}
         static func playCorrect() {
             isPlayCorrect = true
         }

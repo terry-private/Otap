@@ -9,7 +9,7 @@ import SwiftUI
 import Core
 import FeatureSelectLevel
 import FeatureSelectDrill
-import Repository
+import RepositoryImpl
 
 public enum SelectDrillViewFactoryImpl: SelectDrillViewFactoryProtocol {
     public typealias ViewModel = SelectDrillViewModelImpl

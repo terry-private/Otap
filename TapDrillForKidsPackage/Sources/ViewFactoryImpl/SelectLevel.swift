@@ -10,7 +10,7 @@ import Core
 import FeatureDrill
 import FeaturePrepareMode
 import FeatureSelectLevel
-import Repository
+import RepositoryImpl
 import Utility
 import SwiftUI
 
@@ -19,7 +19,7 @@ public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
     @MainActor
     public static func drillView<D: CoreDrill>(generator: DrillGenerator<D>, lastRecord: DrillRecord, dismiss: @escaping () -> Void) -> AnyView {
         typealias UseCase = DrillInteractor<D, RepositoryImpl>
-        typealias ViewModel = DrillViewModelImpl<D, SoundEffectInteractor, UseCase>
+        typealias ViewModel = DrillViewModelImpl<D, SoundEffectInteractor<RepositoryImpl>, UseCase>
         return DrillView<ViewModel, RepositoryImpl>(
             viewModel: .init(
                 useCase: .init(generator: generator, lastRecord: lastRecord),
@@ -28,7 +28,7 @@ public enum SelectLevelViewFactoryImpl: SelectLevelViewFactoryProtocol {
     }
     
     public static func practiceModeView<D: CoreDrill>(_ generator: DrillGenerator<D>) -> AnyView {
-        PrepareModeView<D, SoundEffectInteractor>()
+        PrepareModeView<D, SoundEffectInteractor<RepositoryImpl>>()
             .toAnyView()
     }
 }

@@ -17,7 +17,6 @@ public protocol SoundEffectUseCase {
     static var effectVolume: Float { get set }
     static var utteranceVolume: Float { get set }
     static var utteranceLanguage: UtteranceLanguage { get set }
-    static func readyAllPlayer()
     static func playCorrect()
     static func playWrong()
     static func speak(_ words: String, _ specificLanguage: String)
@@ -29,10 +28,6 @@ public enum SoundEffectUseCaseDummy: SoundEffectUseCase {
     
     public static var utteranceVolume: Float = 1
     public static var utteranceLanguage: UtteranceLanguage = .japanese
-    public static func readyAllPlayer() {
-        print(#file, #function)
-    }
-    
     public static func playCorrect() {
         print(#file, #function)
     }

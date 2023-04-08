@@ -7,7 +7,7 @@
 
 import Foundation
 import Core
-import Data
+import Repository
 
 extension RepositoryImpl: ConfigRepository {
     public static var drillPanelLeadingPadding: CGFloat {

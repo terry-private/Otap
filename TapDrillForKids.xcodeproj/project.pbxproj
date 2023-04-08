@@ -20,7 +20,6 @@
 		09A49558296D49D6009DBE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A49557296D49D6009DBE22 /* Assets.xcassets */; };
 		09A4955B296D49D6009DBE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */; };
 		09B14AB3299E77ED00E48A4A /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = 09B14AB2299E77ED00E48A4A /* Repository */; };
-		09B14AC329A35CBF00E48A4A /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 09B14AC229A35CBF00E48A4A /* Data */; };
 		09C3511429923A1600BDC8DF /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 09C3511329923A1600BDC8DF /* Components */; };
 		09C3511629923AC100BDC8DF /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 09C3511529923AC100BDC8DF /* Extensions */; };
 		09C351182993E70000BDC8DF /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 09C351172993E70000BDC8DF /* Core */; };
@@ -52,7 +51,6 @@
 				0916AE6B29A8B3680094FA78 /* Utility in Frameworks */,
 				09B14AB3299E77ED00E48A4A /* Repository in Frameworks */,
 				09C351182993E70000BDC8DF /* Core in Frameworks */,
-				09B14AC329A35CBF00E48A4A /* Data in Frameworks */,
 				0995D2E529BB9AF40017C68F /* FeaturePrepareMode in Frameworks */,
 				0995D2DF29BB82DF0017C68F /* FeatureDrill in Frameworks */,
 			);
@@ -135,7 +133,6 @@
 				09C3511529923AC100BDC8DF /* Extensions */,
 				09C351172993E70000BDC8DF /* Core */,
 				09B14AB2299E77ED00E48A4A /* Repository */,
-				09B14AC229A35CBF00E48A4A /* Data */,
 				0916AE6A29A8B3680094FA78 /* Utility */,
 				0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */,
 				0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */,
@@ -457,10 +454,6 @@
 		09B14AB2299E77ED00E48A4A /* Repository */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Repository;
-		};
-		09B14AC229A35CBF00E48A4A /* Data */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Data;
 		};
 		09C3511329923A1600BDC8DF /* Components */ = {
 			isa = XCSwiftPackageProductDependency;

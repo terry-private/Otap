@@ -6,7 +6,6 @@ import PackageDescription
 enum Modules: String, CaseIterable, Hashable {
     case Components
     case Core
-    case Data
     case Drills
     case Extensions
     case FeatureDrill
@@ -16,6 +15,7 @@ enum Modules: String, CaseIterable, Hashable {
     case FeatureSelectLevel
     case FeatureSetting
     case Repository
+    case RepositoryImpl
     case Utility
     case ViewFactoryImpl
     
@@ -31,10 +31,6 @@ enum Modules: String, CaseIterable, Hashable {
         case .Drills: return [
             .Core,
             .Extensions
-        ]
-            
-        case .Data: return [
-            .Core
         ]
             
         case .Extensions: return []
@@ -73,7 +69,10 @@ enum Modules: String, CaseIterable, Hashable {
         ]
         case .Repository: return [
             .Core,
-            .Data
+        ]
+        case .RepositoryImpl: return [
+            .Core,
+            .Repository
         ]
         case .Utility: return [
             .Core,
@@ -89,7 +88,7 @@ enum Modules: String, CaseIterable, Hashable {
             .FeatureSelectLevel,
             .FeatureSelectDrill,
             .FeatureSetting,
-            .Repository,
+            .RepositoryImpl,
             .Utility
         ]
     }}
@@ -98,10 +97,6 @@ enum Modules: String, CaseIterable, Hashable {
         switch self {
         case .Components: return []
         case .Core: return []
-        case .Data: return [
-            .product(name: "Realm", package: "realm-swift"),     // Realm
-            .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
-        ]
         case .Drills: return []
         case .FeatureMainTab: return []
         case .Extensions: return []
@@ -113,6 +108,10 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureSelectLevel: return []
         case .FeatureSetting: return []
         case .Repository: return []
+        case .RepositoryImpl: return [
+            .product(name: "Realm", package: "realm-swift"),     // Realm
+            .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
+        ]
         case .Utility: return []
         case .ViewFactoryImpl: return []
     }}
@@ -121,7 +120,6 @@ enum Modules: String, CaseIterable, Hashable {
         switch self {
         case .Components: return []
         case .Core: return []
-        case .Data: return []
         case .Drills: return [
             .swiftgen
         ]
@@ -144,6 +142,7 @@ enum Modules: String, CaseIterable, Hashable {
             .swiftgen
         ]
         case .Repository: return []
+        case .RepositoryImpl: return []
         case .Utility: return []
         case .ViewFactoryImpl: return []
         }
@@ -153,7 +152,6 @@ enum Modules: String, CaseIterable, Hashable {
         switch self {
         case .Components: return nil
         case .Core: return nil
-        case .Data: return nil
         case .Drills: return nil
         case .Extensions: return nil
         case .FeatureDrill: return "./Sources/Features/Drill"
@@ -162,7 +160,8 @@ enum Modules: String, CaseIterable, Hashable {
         case .FeatureSelectDrill: return "./Sources/Features/SelectDrill"
         case .FeatureSelectLevel: return "./Sources/Features/SelectLevel"
         case .FeatureSetting: return "./Sources/Features/Setting"
-        case .Repository: return nil
+        case .Repository: return "./Sources/Data/Repository"
+        case .RepositoryImpl: return "./Sources/Data/RepositoryImpl"
         case .Utility: return nil
         case .ViewFactoryImpl: return nil
         }
@@ -172,7 +171,7 @@ enum Modules: String, CaseIterable, Hashable {
         switch self {
         case .Components: return []
         case .Core: return []
-        case .Data: return []
+        case .RepositoryImpl: return []
         case .Drills: return []
         case .Extensions: return []
         case .FeatureDrill: return []

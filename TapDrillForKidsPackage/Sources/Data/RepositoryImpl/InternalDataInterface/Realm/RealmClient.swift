@@ -8,18 +8,18 @@
 import RealmSwift
 import Core
 
-public protocol RealmClientProtocol {
+protocol RealmClientProtocol {
     static func readDrillRecord(for id: LevelSelectorID) -> DrillRecord?
 }
 
-public enum RealmClientImpl: RealmClientProtocol {
-    public static func readDrillRecord(for id: LevelSelectorID) -> DrillRecord? {
+enum RealmClientImpl: RealmClientProtocol {
+    static func readDrillRecord(for id: LevelSelectorID) -> DrillRecord? {
         let realm = try! Realm()
         let object = realm.object(ofType: DrillRecordObject.self, forPrimaryKey: id.rawValue)
         return object?.toDrillRecord()
     }
     
-    public static func updateDrillRecord(_ drillRecord: DrillRecord) {
+    static func updateDrillRecord(_ drillRecord: DrillRecord) {
         let realm = try! Realm()
         let object = realm.object(ofType: DrillRecordObject.self, forPrimaryKey: drillRecord.id.rawValue)
         try! realm.write {

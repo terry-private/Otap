@@ -7,13 +7,9 @@
 
 import SwiftUI
 import ViewFactoryImpl
-import Utility
 
 @main
 struct TapDrillForKidsApp: App {
-    init() {
-        SoundEffectInteractor.readyAllPlayer()
-    }
     var body: some Scene {
         WindowGroup {
             AppViewFactory.mainTab()

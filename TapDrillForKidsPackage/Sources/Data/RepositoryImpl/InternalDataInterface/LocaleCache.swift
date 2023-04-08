@@ -7,11 +7,11 @@
 
 import Core
 
-public final actor LocaleCache {
+final actor LocaleCache {
     private init() {}
-    public static var shared: LocaleCache = .init()
+    static var shared: LocaleCache = .init()
     
-    public var records: [LevelSelectorID: DrillRecord] = [
+    var records: [LevelSelectorID: DrillRecord] = [
         .shapeBasic1: .init(id: .shapeBasic1),
         .colorBasic1: .init(id:.colorBasic1),
         .funnyAnimalBasic1: .init(id: .funnyAnimalBasic1),
@@ -23,7 +23,7 @@ public final actor LocaleCache {
         .hiraganaあ行: .init(id: .hiraganaあ行)
     ]
     
-    public func update(id: LevelSelectorID, _ drillRecord: DrillRecord) {
+    func update(id: LevelSelectorID, _ drillRecord: DrillRecord) {
         records[id, default: .init(id: id)].merge(drillRecord)
     }
 }

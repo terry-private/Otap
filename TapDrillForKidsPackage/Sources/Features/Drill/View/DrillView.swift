@@ -280,7 +280,7 @@ struct DrillView_Previews: PreviewProvider {
     typealias UseCase = DrillUseCaseDummy
     typealias ViewModel = DrillViewModelImpl<Drill, SoundEffect, UseCase>
     static var previews: some View {
-        DrillView<ViewModel, RepositoryImpl>(
+        DrillView<ViewModel, ConfigRepositoryDummy>(
             viewModel: .init(useCase: .init(), dismiss: {})
         )
     }
