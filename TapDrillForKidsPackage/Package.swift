@@ -4,6 +4,7 @@
 import PackageDescription
 
 enum Modules: String, CaseIterable, Hashable {
+    case AppViewFactory
     case Components
     case Core
     case Drills
@@ -17,14 +18,25 @@ enum Modules: String, CaseIterable, Hashable {
     case Repository
     case RepositoryImpl
     case Utility
-    case ViewFactoryImpl
     
     var dependencies: [Self] {
         switch self {
+        case .AppViewFactory: return [
+            .Core,
+            .Drills,
+            .Extensions,
+            .FeatureDrill,
+            .FeatureMainTab,
+            .FeaturePrepareMode,
+            .FeatureSelectLevel,
+            .FeatureSelectDrill,
+            .FeatureSetting,
+            .RepositoryImpl,
+            .Utility
+        ]
         case .Components: return [
             .Extensions
         ]
-            
         case .Core: return [
             .Extensions
         ]
@@ -32,7 +44,6 @@ enum Modules: String, CaseIterable, Hashable {
             .Core,
             .Extensions
         ]
-            
         case .Extensions: return []
             
         case .FeatureDrill: return [
@@ -78,23 +89,11 @@ enum Modules: String, CaseIterable, Hashable {
             .Core,
             .Repository
         ]
-        case .ViewFactoryImpl: return [
-            .Core,
-            .Drills,
-            .Extensions,
-            .FeatureDrill,
-            .FeatureMainTab,
-            .FeaturePrepareMode,
-            .FeatureSelectLevel,
-            .FeatureSelectDrill,
-            .FeatureSetting,
-            .RepositoryImpl,
-            .Utility
-        ]
     }}
     
     var dependenciesProducts: [PackageDescription.Target.Dependency] {
         switch self {
+        case .AppViewFactory: return []
         case .Components: return []
         case .Core: return []
         case .Drills: return []
@@ -113,11 +112,11 @@ enum Modules: String, CaseIterable, Hashable {
             .product(name: "RealmSwift", package: "realm-swift") // ReamSwift
         ]
         case .Utility: return []
-        case .ViewFactoryImpl: return []
     }}
     
     var dependenciesPlugins: [PackageDescription.Target.PluginUsage] {
         switch self {
+        case .AppViewFactory: return []
         case .Components: return []
         case .Core: return []
         case .Drills: return [
@@ -144,12 +143,12 @@ enum Modules: String, CaseIterable, Hashable {
         case .Repository: return []
         case .RepositoryImpl: return []
         case .Utility: return []
-        case .ViewFactoryImpl: return []
         }
     }
     
     var path: String? {
         switch self {
+        case .AppViewFactory: return nil
         case .Components: return nil
         case .Core: return nil
         case .Drills: return nil
@@ -163,12 +162,12 @@ enum Modules: String, CaseIterable, Hashable {
         case .Repository: return "./Sources/Data/Repository"
         case .RepositoryImpl: return "./Sources/Data/RepositoryImpl"
         case .Utility: return nil
-        case .ViewFactoryImpl: return nil
         }
     }
     
     var resources: [PackageDescription.Resource] {
         switch self {
+        case .AppViewFactory: return []
         case .Components: return []
         case .Core: return []
         case .RepositoryImpl: return []
@@ -185,7 +184,6 @@ enum Modules: String, CaseIterable, Hashable {
             .copy("./SoundEffect/Resources/correct.mp3"),
             .copy("./SoundEffect/Resources/wrong.mp3")
         ]
-        case .ViewFactoryImpl: return []
     }}
 }
 

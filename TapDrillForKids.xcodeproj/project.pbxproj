@@ -7,22 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0916AE6B29A8B3680094FA78 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE6A29A8B3680094FA78 /* Utility */; };
-		0916AE6D29A8B60F0094FA78 /* ViewFactoryImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */; };
-		0916AE7129B0DDD40094FA78 /* FeatureSelectLevel in Frameworks */ = {isa = PBXBuildFile; productRef = 0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */; };
-		0939663F29BDAFF1007F7E01 /* FeatureMainTab in Frameworks */ = {isa = PBXBuildFile; productRef = 0939663E29BDAFF1007F7E01 /* FeatureMainTab */; };
-		0939664129BDBDF8007F7E01 /* FeatureSetting in Frameworks */ = {isa = PBXBuildFile; productRef = 0939664029BDBDF8007F7E01 /* FeatureSetting */; };
-		0995D2DF29BB82DF0017C68F /* FeatureDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2DE29BB82DF0017C68F /* FeatureDrill */; };
-		0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E029BB90A80017C68F /* FeatureSelectDrill */; };
-		0995D2E329BB93D60017C68F /* Drills in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E229BB93D60017C68F /* Drills */; };
-		0995D2E529BB9AF40017C68F /* FeaturePrepareMode in Frameworks */ = {isa = PBXBuildFile; productRef = 0995D2E429BB9AF40017C68F /* FeaturePrepareMode */; };
+		0930420A29E1CB8C00E1D062 /* AppViewFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 0930420929E1CB8C00E1D062 /* AppViewFactory */; };
 		09A49554296D49D3009DBE22 /* TapDrillForKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A49553296D49D3009DBE22 /* TapDrillForKidsApp.swift */; };
 		09A49558296D49D6009DBE22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A49557296D49D6009DBE22 /* Assets.xcassets */; };
 		09A4955B296D49D6009DBE22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */; };
-		09B14AB3299E77ED00E48A4A /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = 09B14AB2299E77ED00E48A4A /* Repository */; };
-		09C3511429923A1600BDC8DF /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 09C3511329923A1600BDC8DF /* Components */; };
-		09C3511629923AC100BDC8DF /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 09C3511529923AC100BDC8DF /* Extensions */; };
-		09C351182993E70000BDC8DF /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 09C351172993E70000BDC8DF /* Core */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,19 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0939663F29BDAFF1007F7E01 /* FeatureMainTab in Frameworks */,
-				0916AE7129B0DDD40094FA78 /* FeatureSelectLevel in Frameworks */,
-				0995D2E129BB90A80017C68F /* FeatureSelectDrill in Frameworks */,
-				0916AE6D29A8B60F0094FA78 /* ViewFactoryImpl in Frameworks */,
-				09C3511429923A1600BDC8DF /* Components in Frameworks */,
-				0995D2E329BB93D60017C68F /* Drills in Frameworks */,
-				0939664129BDBDF8007F7E01 /* FeatureSetting in Frameworks */,
-				09C3511629923AC100BDC8DF /* Extensions in Frameworks */,
-				0916AE6B29A8B3680094FA78 /* Utility in Frameworks */,
-				09B14AB3299E77ED00E48A4A /* Repository in Frameworks */,
-				09C351182993E70000BDC8DF /* Core in Frameworks */,
-				0995D2E529BB9AF40017C68F /* FeaturePrepareMode in Frameworks */,
-				0995D2DF29BB82DF0017C68F /* FeatureDrill in Frameworks */,
+				0930420A29E1CB8C00E1D062 /* AppViewFactory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,19 +105,7 @@
 			);
 			name = TapDrillForKids;
 			packageProductDependencies = (
-				09C3511329923A1600BDC8DF /* Components */,
-				09C3511529923AC100BDC8DF /* Extensions */,
-				09C351172993E70000BDC8DF /* Core */,
-				09B14AB2299E77ED00E48A4A /* Repository */,
-				0916AE6A29A8B3680094FA78 /* Utility */,
-				0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */,
-				0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */,
-				0995D2DE29BB82DF0017C68F /* FeatureDrill */,
-				0995D2E029BB90A80017C68F /* FeatureSelectDrill */,
-				0995D2E229BB93D60017C68F /* Drills */,
-				0995D2E429BB9AF40017C68F /* FeaturePrepareMode */,
-				0939663E29BDAFF1007F7E01 /* FeatureMainTab */,
-				0939664029BDBDF8007F7E01 /* FeatureSetting */,
+				0930420929E1CB8C00E1D062 /* AppViewFactory */,
 			);
 			productName = TapDrillForKids;
 			productReference = 09A49550296D49D3009DBE22 /* TapDrillForKids.app */;
@@ -415,57 +379,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0916AE6A29A8B3680094FA78 /* Utility */ = {
+		0930420929E1CB8C00E1D062 /* AppViewFactory */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Utility;
-		};
-		0916AE6C29A8B60F0094FA78 /* ViewFactoryImpl */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ViewFactoryImpl;
-		};
-		0916AE7029B0DDD30094FA78 /* FeatureSelectLevel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureSelectLevel;
-		};
-		0939663E29BDAFF1007F7E01 /* FeatureMainTab */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureMainTab;
-		};
-		0939664029BDBDF8007F7E01 /* FeatureSetting */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureSetting;
-		};
-		0995D2DE29BB82DF0017C68F /* FeatureDrill */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureDrill;
-		};
-		0995D2E029BB90A80017C68F /* FeatureSelectDrill */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureSelectDrill;
-		};
-		0995D2E229BB93D60017C68F /* Drills */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Drills;
-		};
-		0995D2E429BB9AF40017C68F /* FeaturePrepareMode */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeaturePrepareMode;
-		};
-		09B14AB2299E77ED00E48A4A /* Repository */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Repository;
-		};
-		09C3511329923A1600BDC8DF /* Components */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Components;
-		};
-		09C3511529923AC100BDC8DF /* Extensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Extensions;
-		};
-		09C351172993E70000BDC8DF /* Core */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Core;
+			productName = AppViewFactory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

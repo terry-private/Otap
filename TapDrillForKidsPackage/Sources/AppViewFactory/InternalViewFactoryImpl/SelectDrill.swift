@@ -11,11 +11,11 @@ import FeatureSelectLevel
 import FeatureSelectDrill
 import RepositoryImpl
 
-public enum SelectDrillViewFactoryImpl: SelectDrillViewFactoryProtocol {
+enum SelectDrillViewFactoryImpl: SelectDrillViewFactoryProtocol {
     public typealias ViewModel = SelectDrillViewModelImpl
     
     @MainActor
-    public static func DrillLevelSelectorView<T: DrillLevelSelector>(_ selector: T) -> AnyView {
+    static func DrillLevelSelectorView<T: DrillLevelSelector>(_ selector: T) -> AnyView {
         typealias useCase = SelectLevelInteractor<RepositoryImpl>
         typealias viewModel = SelectLevelViewModelImpl<T, useCase>
         return SelectLevelView<SelectLevelViewFactoryImpl, viewModel>(

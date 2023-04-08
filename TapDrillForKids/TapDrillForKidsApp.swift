@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ViewFactoryImpl
+import AppViewFactory
 
 @main
 struct TapDrillForKidsApp: App {
