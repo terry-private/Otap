@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "09A4954F296D49D3009DBE22"
-               BuildableName = "TapDrillForKids.app"
-               BlueprintName = "TapDrillForKids"
-               ReferencedContainer = "container:TapDrillForKids.xcodeproj">
+               BlueprintIdentifier = "Drills"
+               BuildableName = "Drills"
+               BlueprintName = "Drills"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -39,16 +39,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "09A4954F296D49D3009DBE22"
-            BuildableName = "TapDrillForKids.app"
-            BlueprintName = "TapDrillForKids"
-            ReferencedContainer = "container:TapDrillForKids.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -56,16 +46,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "09A4954F296D49D3009DBE22"
-            BuildableName = "TapDrillForKids.app"
-            BlueprintName = "TapDrillForKids"
-            ReferencedContainer = "container:TapDrillForKids.xcodeproj">
+            BlueprintIdentifier = "Drills"
+            BuildableName = "Drills"
+            BlueprintName = "Drills"
+            ReferencedContainer = "container:">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
