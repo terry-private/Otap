@@ -32,7 +32,7 @@
 		09A49553296D49D3009DBE22 /* TapDrillForKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapDrillForKidsApp.swift; sourceTree = "<group>"; };
 		09A49557296D49D6009DBE22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A4955A296D49D6009DBE22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		09A495A229728824009DBE22 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
+		09A495A229728824009DBE22 /* TapDrillForKidsPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TapDrillForKidsPackage; sourceTree = "<group>"; };
 		09DAE93429C493AC00803CB9 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				09DAE93529C495D200803CB9 /* ci_scripts */,
-				09A495A229728824009DBE22 /* Modules */,
+				09A495A229728824009DBE22 /* TapDrillForKidsPackage */,
 				09A49552296D49D3009DBE22 /* TapDrillForKids */,
 				09A49551296D49D3009DBE22 /* Products */,
 				09A495A329728EC4009DBE22 /* Frameworks */,

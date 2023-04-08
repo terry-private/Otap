@@ -192,7 +192,7 @@ private extension PackageDescription.Target.PluginUsage {
 }
 
 let package = Package(
-    name: "Modules",
+    name: "TapDrillForKidsPackage",
     defaultLocalization: "en",
     platforms: [
         .iOS(.v16),
