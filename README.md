@@ -41,7 +41,7 @@ flowchart BT
   RepositoryImpl -.-> |実装| Repository
   Repository --> Core
   RepositoryImpl --> Core
-  Drills --> Core
+  Drills -.-> |実装| Core
   Utility --> Repository
   Utility --> Core
   AppViewFactory --> Core
